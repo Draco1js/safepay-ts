@@ -179,7 +179,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  const result = await safepay.postV1CompanyLogin();
+  const result = await safepay.company.login();
 
   console.log(result);
 }
@@ -195,68 +195,144 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-### [Safepay SDK](docs/sdks/safepay/README.md)
+### [addresses](docs/sdks/addresses/README.md)
 
-* [postV1CompanyLogin](docs/sdks/safepay/README.md#postv1companylogin) - Login Company
-* [postAuthV1CompanyAuthenticate](docs/sdks/safepay/README.md#postauthv1companyauthenticate) - Create Merchant JWT
-* [postAuthV2UserLogin](docs/sdks/safepay/README.md#postauthv2userlogin) - Create Shopper JWT Using Password
-* [postUserV1Guest](docs/sdks/safepay/README.md#postuserv1guest) - Create Guest JWT
-* [postClientApiSettingsV1](docs/sdks/safepay/README.md#postclientapisettingsv1) - Create API Key
-* [getClientApiSettingsV1](docs/sdks/safepay/README.md#getclientapisettingsv1) - Find Api Key
-* [putClientApiSettingsV1](docs/sdks/safepay/README.md#putclientapisettingsv1) - Update Api Key
-* [postClientPassportV1Token](docs/sdks/safepay/README.md#postclientpassportv1token) - Generate Time-Based Token
-* [postUserCustomersV1](docs/sdks/safepay/README.md#postusercustomersv1) - Create Customer
-* [getUserCustomersV1](docs/sdks/safepay/README.md#getusercustomersv1) - List Customers
-* [putUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aa](docs/sdks/safepay/README.md#putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aa) - Update Customer
-* [getUserCustomersV1Cus11db365b4d86494bAcca79d6e09efa67](docs/sdks/safepay/README.md#getusercustomersv1cus11db365b4d86494bacca79d6e09efa67) - Find Customer
-* [deleteUserCustomersV1Cus17febb02B2cd4cf8B2997a447530ef52](docs/sdks/safepay/README.md#deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52) - Delete Customer
-* [getUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89](docs/sdks/safepay/README.md#getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89) - Find Payment Method
-* [deleteUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89](docs/sdks/safepay/README.md#deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89) - Delete Payment Method
-* [getUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWallet](docs/sdks/safepay/README.md#getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawallet) - List Payment Methods
-* [postUserAddressV2](docs/sdks/safepay/README.md#postuseraddressv2) - Create Address
-* [putUserAddressV2Address5ce54f87A8234da689907b26d048ce00](docs/sdks/safepay/README.md#putuseraddressv2address5ce54f87a8234da689907b26d048ce00) - Update Address
-* [getUserAddressV2Address5ce54f87A8234da689907b26d048ce00](docs/sdks/safepay/README.md#getuseraddressv2address5ce54f87a8234da689907b26d048ce00) - Find Address
-* [postOrderPaymentsV3](docs/sdks/safepay/README.md#postorderpaymentsv3) - Payment
-* [postOrderPaymentsV3Track7233ed61Fe5048368a84C5e17ae90f4d](docs/sdks/safepay/README.md#postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4d) - Generate Capture Context
-* [postOrderPaymentsV3TrackDccdef16008e4fae81cc1b7d81bf6c44](docs/sdks/safepay/README.md#postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44) - Process Transient Token
-* [postOrderPaymentsV3TrackA6f9b00c8a254cbf95f9Cd6bc440eca6](docs/sdks/safepay/README.md#postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6) - Payer Authentication Setup
-* [postOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372](docs/sdks/safepay/README.md#postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372) - Enrollment
-* [postOrderPaymentsV3Track1a46dc7091f948928e250bb5205b69c7](docs/sdks/safepay/README.md#postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7) - Capture
-* [putOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920be](docs/sdks/safepay/README.md#putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920be) - Reset
-* [postOrderPaymentsV3TrackAa38d5b7A3a245c5Bed8586b0bae8d06Metadata](docs/sdks/safepay/README.md#postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadata) - Add Metadata
-* [postOrderPaymentsV3Track9d765b77608f46bc84d25f4392753ca3Reversal](docs/sdks/safepay/README.md#postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversal) - Reverse
-* [postOrderPaymentsV3Track70fdbb06Bbf744e1B50a672d9f1d8b26Refund](docs/sdks/safepay/README.md#postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refund) - Refund
-* [postOrderPaymentsV3Track1a46dc7091f948928e250bb5205b69c7Void](docs/sdks/safepay/README.md#postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7void) - Void
-* [getReporterApiV1PaymentsTrackF865abdd3a61484280001cffa38f1fbc](docs/sdks/safepay/README.md#getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbc) - Fetch Payment
-* [getReporterApiV1Payments](docs/sdks/safepay/README.md#getreporterapiv1payments) - Search Payments
-* [getUserMetaV2Countries](docs/sdks/safepay/README.md#getusermetav2countries) - Countries
-* [getUserMetaV2Country](docs/sdks/safepay/README.md#getusermetav2country) - Country
-* [postClientHooksV2Test](docs/sdks/safepay/README.md#postclienthooksv2test) - Test Webhook
-* [postClientPlansV1](docs/sdks/safepay/README.md#postclientplansv1) - Create Plan
-* [getClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd](docs/sdks/safepay/README.md#getclientplansv1pland4869a7800364d6697bd6afeb5282bcd) - Find Plan
-* [putClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd](docs/sdks/safepay/README.md#putclientplansv1pland4869a7800364d6697bd6afeb5282bcd) - Update Plan
-* [deleteClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd](docs/sdks/safepay/README.md#deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcd) - Archive Plan
-* [getClientPlansV1Search](docs/sdks/safepay/README.md#getclientplansv1search) - Search Plans
-* [getClientSubscriptionsV1SubC841ea40613c41a389847cb11f66d541](docs/sdks/safepay/README.md#getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541) - Find Subscription
-* [getClientSubscriptionsV1Search](docs/sdks/safepay/README.md#getclientsubscriptionsv1search) - Search Subscriptions
-* [putClientSubscriptionsV1SubEe09b0f9974f4deeB1b34ad8dad2e7b3](docs/sdks/safepay/README.md#putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3) - Update Subscription
-* [putClientSubscriptionsV1Sub130aa5b290564c8eB9c99149e68f17ceResumption](docs/sdks/safepay/README.md#putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumption) - Resume Subscription
-* [postClientSubscriptionsV1SubEe09b0f9974f4deeB1b34ad8dad2e7b2Cancel](docs/sdks/safepay/README.md#postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancel) - Cancel Subscription
-* [getClientTransactionsV1Search](docs/sdks/safepay/README.md#getclienttransactionsv1search) - Search Transactions
-* [getClientTransactionsV1Txn17553398B91d41e9Ae47165e194d06a1](docs/sdks/safepay/README.md#getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1) - Find Transaction
-* [postClientTransactionsV1Txn17553398B91d41e9Ae47165e194d06a1Refund](docs/sdks/safepay/README.md#postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refund) - Refund Transaction
-* [postInvoiceQuickLinksV2](docs/sdks/safepay/README.md#postinvoicequicklinksv2) - Create
-* [getInvoiceQuickLinksV2Link291208afEf954b7dB171Aaaa16998d31](docs/sdks/safepay/README.md#getinvoicequicklinksv2link291208afef954b7db171aaaa16998d31) - Find
-* [postInvoiceQuickLinksV1](docs/sdks/safepay/README.md#postinvoicequicklinksv1) - Create Quick Link
-* [getInvoiceQuickLinksV1](docs/sdks/safepay/README.md#getinvoicequicklinksv1) - Search Quick Links
-* [getInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c](docs/sdks/safepay/README.md#getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c) - Find Quick Link
-* [putInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c](docs/sdks/safepay/README.md#putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c) - Update Quick Link
-* [deleteInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c](docs/sdks/safepay/README.md#deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c) - Delete Quick Link
-* [postUserV2](docs/sdks/safepay/README.md#postuserv2) - Create Safepay Shopper
-* [getUserV2](docs/sdks/safepay/README.md#getuserv2) - Find Safepay Shopper
-* [getUserV2Exists](docs/sdks/safepay/README.md#getuserv2exists) - Safepay Shopper Exists
-* [getUserWalletsV1](docs/sdks/safepay/README.md#getuserwalletsv1) - List Payment Methods
-* [deleteUserWalletsV1Inst8ed5e401Ab7b442c8473Dee137827448](docs/sdks/safepay/README.md#deleteuserwalletsv1inst8ed5e401ab7b442c8473dee137827448) - Delete Payment Method
+* [create](docs/sdks/addresses/README.md#create) - Create Address
+
+### [apiKeys](docs/sdks/apikeys/README.md)
+
+* [create](docs/sdks/apikeys/README.md#create) - Create API Key
+
+### [apiSettings](docs/sdks/apisettings/README.md)
+
+* [getApiKey](docs/sdks/apisettings/README.md#getapikey) - Find Api Key
+* [updateKey](docs/sdks/apisettings/README.md#updatekey) - Update Api Key
+
+### [auth](docs/sdks/auth/README.md)
+
+* [createMerchantJwt](docs/sdks/auth/README.md#createmerchantjwt) - Create Merchant JWT
+* [login](docs/sdks/auth/README.md#login) - Create Shopper JWT Using Password
+
+### [clientPlans](docs/sdks/clientplans/README.md)
+
+* [deleteById](docs/sdks/clientplans/README.md#deletebyid) - Archive Plan
+
+### [clientSubscriptions](docs/sdks/clientsubscriptions/README.md)
+
+* [update](docs/sdks/clientsubscriptions/README.md#update) - Update Subscription
+* [resume](docs/sdks/clientsubscriptions/README.md#resume) - Resume Subscription
+
+### [clientTransactions](docs/sdks/clienttransactions/README.md)
+
+* [search](docs/sdks/clienttransactions/README.md#search) - Search Transactions
+* [findByTransactionId](docs/sdks/clienttransactions/README.md#findbytransactionid) - Find Transaction
+
+### [company](docs/sdks/company/README.md)
+
+* [login](docs/sdks/company/README.md#login) - Login Company
+
+### [customers](docs/sdks/customers/README.md)
+
+* [create](docs/sdks/customers/README.md#create) - Create Customer
+* [list](docs/sdks/customers/README.md#list) - List Customers
+* [update](docs/sdks/customers/README.md#update) - Update Customer
+* [get](docs/sdks/customers/README.md#get) - Find Customer
+* [delete](docs/sdks/customers/README.md#delete) - Delete Customer
+* [getPaymentMethod](docs/sdks/customers/README.md#getpaymentmethod) - Find Payment Method
+* [listPaymentMethods](docs/sdks/customers/README.md#listpaymentmethods) - List Payment Methods
+
+### [invoices](docs/sdks/invoices/README.md)
+
+* [createQuickLink](docs/sdks/invoices/README.md#createquicklink) - Create
+
+### [links](docs/sdks/links/README.md)
+
+* [get](docs/sdks/links/README.md#get) - Find
+
+### [meta](docs/sdks/meta/README.md)
+
+* [listCountries](docs/sdks/meta/README.md#listcountries) - Countries
+* [getCountry](docs/sdks/meta/README.md#getcountry) - Country
+
+### [orderPayments](docs/sdks/orderpayments/README.md)
+
+* [create](docs/sdks/orderpayments/README.md#create) - Payment
+* [resetTracking](docs/sdks/orderpayments/README.md#resettracking) - Reset
+
+### [passport](docs/sdks/passport/README.md)
+
+* [generateToken](docs/sdks/passport/README.md#generatetoken) - Generate Time-Based Token
+
+### [payments](docs/sdks/payments/README.md)
+
+* [generateCaptureContext](docs/sdks/payments/README.md#generatecapturecontext) - Generate Capture Context
+* [processToken](docs/sdks/payments/README.md#processtoken) - Process Transient Token
+* [authenticate](docs/sdks/payments/README.md#authenticate) - Payer Authentication Setup
+* [enroll](docs/sdks/payments/README.md#enroll) - Enrollment
+* [capture](docs/sdks/payments/README.md#capture) - Capture
+* [addMetadata](docs/sdks/payments/README.md#addmetadata) - Add Metadata
+* [reverse](docs/sdks/payments/README.md#reverse) - Reverse
+* [refund](docs/sdks/payments/README.md#refund) - Refund
+* [void](docs/sdks/payments/README.md#void) - Void
+* [fetch](docs/sdks/payments/README.md#fetch) - Fetch Payment
+* [search](docs/sdks/payments/README.md#search) - Search Payments
+
+### [plans](docs/sdks/plans/README.md)
+
+* [create](docs/sdks/plans/README.md#create) - Create Plan
+* [get](docs/sdks/plans/README.md#get) - Find Plan
+* [update](docs/sdks/plans/README.md#update) - Update Plan
+* [search](docs/sdks/plans/README.md#search) - Search Plans
+
+### [quickLinks](docs/sdks/quicklinks/README.md)
+
+* [create](docs/sdks/quicklinks/README.md#create) - Create Quick Link
+* [search](docs/sdks/quicklinks/README.md#search) - Search Quick Links
+* [get](docs/sdks/quicklinks/README.md#get) - Find Quick Link
+* [update](docs/sdks/quicklinks/README.md#update) - Update Quick Link
+* [delete](docs/sdks/quicklinks/README.md#delete) - Delete Quick Link
+
+
+### [shoppers](docs/sdks/shoppers/README.md)
+
+* [createSafepay](docs/sdks/shoppers/README.md#createsafepay) - Create Safepay Shopper
+
+### [subscriptions](docs/sdks/subscriptions/README.md)
+
+* [get](docs/sdks/subscriptions/README.md#get) - Find Subscription
+* [search](docs/sdks/subscriptions/README.md#search) - Search Subscriptions
+* [cancel](docs/sdks/subscriptions/README.md#cancel) - Cancel Subscription
+
+### [transactions](docs/sdks/transactions/README.md)
+
+* [refund](docs/sdks/transactions/README.md#refund) - Refund Transaction
+
+### [userAddresses](docs/sdks/useraddresses/README.md)
+
+* [updateById](docs/sdks/useraddresses/README.md#updatebyid) - Update Address
+* [findById](docs/sdks/useraddresses/README.md#findbyid) - Find Address
+
+### [userCustomers](docs/sdks/usercustomers/README.md)
+
+* [deletePaymentMethod](docs/sdks/usercustomers/README.md#deletepaymentmethod) - Delete Payment Method
+
+### [users](docs/sdks/users/README.md)
+
+* [createGuestJwt](docs/sdks/users/README.md#createguestjwt) - Create Guest JWT
+* [findSafepayShopper](docs/sdks/users/README.md#findsafepayshopper) - Find Safepay Shopper
+* [exists](docs/sdks/users/README.md#exists) - Safepay Shopper Exists
+
+### [userWallets](docs/sdks/userwallets/README.md)
+
+* [listPaymentMethods](docs/sdks/userwallets/README.md#listpaymentmethods) - List Payment Methods
+
+### [wallets](docs/sdks/wallets/README.md)
+
+* [deletePaymentMethod](docs/sdks/wallets/README.md#deletepaymentmethod) - Delete Payment Method
+
+### [webhooks](docs/sdks/webhooks/README.md)
+
+* [test](docs/sdks/webhooks/README.md#test) - Test Webhook
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -276,66 +352,66 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`deleteClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd`](docs/sdks/safepay/README.md#deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcd) - Archive Plan
-- [`deleteInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c`](docs/sdks/safepay/README.md#deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c) - Delete Quick Link
-- [`deleteUserCustomersV1Cus17febb02B2cd4cf8B2997a447530ef52`](docs/sdks/safepay/README.md#deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52) - Delete Customer
-- [`deleteUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89`](docs/sdks/safepay/README.md#deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89) - Delete Payment Method
-- [`deleteUserWalletsV1Inst8ed5e401Ab7b442c8473Dee137827448`](docs/sdks/safepay/README.md#deleteuserwalletsv1inst8ed5e401ab7b442c8473dee137827448) - Delete Payment Method
-- [`getClientApiSettingsV1`](docs/sdks/safepay/README.md#getclientapisettingsv1) - Find Api Key
-- [`getClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd`](docs/sdks/safepay/README.md#getclientplansv1pland4869a7800364d6697bd6afeb5282bcd) - Find Plan
-- [`getClientPlansV1Search`](docs/sdks/safepay/README.md#getclientplansv1search) - Search Plans
-- [`getClientSubscriptionsV1Search`](docs/sdks/safepay/README.md#getclientsubscriptionsv1search) - Search Subscriptions
-- [`getClientSubscriptionsV1SubC841ea40613c41a389847cb11f66d541`](docs/sdks/safepay/README.md#getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541) - Find Subscription
-- [`getClientTransactionsV1Search`](docs/sdks/safepay/README.md#getclienttransactionsv1search) - Search Transactions
-- [`getClientTransactionsV1Txn17553398B91d41e9Ae47165e194d06a1`](docs/sdks/safepay/README.md#getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1) - Find Transaction
-- [`getInvoiceQuickLinksV1`](docs/sdks/safepay/README.md#getinvoicequicklinksv1) - Search Quick Links
-- [`getInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c`](docs/sdks/safepay/README.md#getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c) - Find Quick Link
-- [`getInvoiceQuickLinksV2Link291208afEf954b7dB171Aaaa16998d31`](docs/sdks/safepay/README.md#getinvoicequicklinksv2link291208afef954b7db171aaaa16998d31) - Find
-- [`getReporterApiV1Payments`](docs/sdks/safepay/README.md#getreporterapiv1payments) - Search Payments
-- [`getReporterApiV1PaymentsTrackF865abdd3a61484280001cffa38f1fbc`](docs/sdks/safepay/README.md#getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbc) - Fetch Payment
-- [`getUserAddressV2Address5ce54f87A8234da689907b26d048ce00`](docs/sdks/safepay/README.md#getuseraddressv2address5ce54f87a8234da689907b26d048ce00) - Find Address
-- [`getUserCustomersV1`](docs/sdks/safepay/README.md#getusercustomersv1) - List Customers
-- [`getUserCustomersV1Cus11db365b4d86494bAcca79d6e09efa67`](docs/sdks/safepay/README.md#getusercustomersv1cus11db365b4d86494bacca79d6e09efa67) - Find Customer
-- [`getUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWallet`](docs/sdks/safepay/README.md#getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawallet) - List Payment Methods
-- [`getUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89`](docs/sdks/safepay/README.md#getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89) - Find Payment Method
-- [`getUserMetaV2Countries`](docs/sdks/safepay/README.md#getusermetav2countries) - Countries
-- [`getUserMetaV2Country`](docs/sdks/safepay/README.md#getusermetav2country) - Country
-- [`getUserV2`](docs/sdks/safepay/README.md#getuserv2) - Find Safepay Shopper
-- [`getUserV2Exists`](docs/sdks/safepay/README.md#getuserv2exists) - Safepay Shopper Exists
-- [`getUserWalletsV1`](docs/sdks/safepay/README.md#getuserwalletsv1) - List Payment Methods
-- [`postAuthV1CompanyAuthenticate`](docs/sdks/safepay/README.md#postauthv1companyauthenticate) - Create Merchant JWT
-- [`postAuthV2UserLogin`](docs/sdks/safepay/README.md#postauthv2userlogin) - Create Shopper JWT Using Password
-- [`postClientApiSettingsV1`](docs/sdks/safepay/README.md#postclientapisettingsv1) - Create API Key
-- [`postClientHooksV2Test`](docs/sdks/safepay/README.md#postclienthooksv2test) - Test Webhook
-- [`postClientPassportV1Token`](docs/sdks/safepay/README.md#postclientpassportv1token) - Generate Time-Based Token
-- [`postClientPlansV1`](docs/sdks/safepay/README.md#postclientplansv1) - Create Plan
-- [`postClientSubscriptionsV1SubEe09b0f9974f4deeB1b34ad8dad2e7b2Cancel`](docs/sdks/safepay/README.md#postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancel) - Cancel Subscription
-- [`postClientTransactionsV1Txn17553398B91d41e9Ae47165e194d06a1Refund`](docs/sdks/safepay/README.md#postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refund) - Refund Transaction
-- [`postInvoiceQuickLinksV1`](docs/sdks/safepay/README.md#postinvoicequicklinksv1) - Create Quick Link
-- [`postInvoiceQuickLinksV2`](docs/sdks/safepay/README.md#postinvoicequicklinksv2) - Create
-- [`postOrderPaymentsV3`](docs/sdks/safepay/README.md#postorderpaymentsv3) - Payment
-- [`postOrderPaymentsV3Track1a46dc7091f948928e250bb5205b69c7`](docs/sdks/safepay/README.md#postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7) - Capture
-- [`postOrderPaymentsV3Track1a46dc7091f948928e250bb5205b69c7Void`](docs/sdks/safepay/README.md#postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7void) - Void
-- [`postOrderPaymentsV3Track70fdbb06Bbf744e1B50a672d9f1d8b26Refund`](docs/sdks/safepay/README.md#postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refund) - Refund
-- [`postOrderPaymentsV3Track7233ed61Fe5048368a84C5e17ae90f4d`](docs/sdks/safepay/README.md#postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4d) - Generate Capture Context
-- [`postOrderPaymentsV3Track9d765b77608f46bc84d25f4392753ca3Reversal`](docs/sdks/safepay/README.md#postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversal) - Reverse
-- [`postOrderPaymentsV3TrackA6f9b00c8a254cbf95f9Cd6bc440eca6`](docs/sdks/safepay/README.md#postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6) - Payer Authentication Setup
-- [`postOrderPaymentsV3TrackAa38d5b7A3a245c5Bed8586b0bae8d06Metadata`](docs/sdks/safepay/README.md#postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadata) - Add Metadata
-- [`postOrderPaymentsV3TrackDccdef16008e4fae81cc1b7d81bf6c44`](docs/sdks/safepay/README.md#postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44) - Process Transient Token
-- [`postOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372`](docs/sdks/safepay/README.md#postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372) - Enrollment
-- [`postUserAddressV2`](docs/sdks/safepay/README.md#postuseraddressv2) - Create Address
-- [`postUserCustomersV1`](docs/sdks/safepay/README.md#postusercustomersv1) - Create Customer
-- [`postUserV1Guest`](docs/sdks/safepay/README.md#postuserv1guest) - Create Guest JWT
-- [`postUserV2`](docs/sdks/safepay/README.md#postuserv2) - Create Safepay Shopper
-- [`postV1CompanyLogin`](docs/sdks/safepay/README.md#postv1companylogin) - Login Company
-- [`putClientApiSettingsV1`](docs/sdks/safepay/README.md#putclientapisettingsv1) - Update Api Key
-- [`putClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd`](docs/sdks/safepay/README.md#putclientplansv1pland4869a7800364d6697bd6afeb5282bcd) - Update Plan
-- [`putClientSubscriptionsV1Sub130aa5b290564c8eB9c99149e68f17ceResumption`](docs/sdks/safepay/README.md#putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumption) - Resume Subscription
-- [`putClientSubscriptionsV1SubEe09b0f9974f4deeB1b34ad8dad2e7b3`](docs/sdks/safepay/README.md#putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3) - Update Subscription
-- [`putInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c`](docs/sdks/safepay/README.md#putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c) - Update Quick Link
-- [`putOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920be`](docs/sdks/safepay/README.md#putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920be) - Reset
-- [`putUserAddressV2Address5ce54f87A8234da689907b26d048ce00`](docs/sdks/safepay/README.md#putuseraddressv2address5ce54f87a8234da689907b26d048ce00) - Update Address
-- [`putUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aa`](docs/sdks/safepay/README.md#putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aa) - Update Customer
+- [`addressesCreate`](docs/sdks/addresses/README.md#create) - Create Address
+- [`apiKeysCreate`](docs/sdks/apikeys/README.md#create) - Create API Key
+- [`apiSettingsGetApiKey`](docs/sdks/apisettings/README.md#getapikey) - Find Api Key
+- [`apiSettingsUpdateKey`](docs/sdks/apisettings/README.md#updatekey) - Update Api Key
+- [`authCreateMerchantJwt`](docs/sdks/auth/README.md#createmerchantjwt) - Create Merchant JWT
+- [`authLogin`](docs/sdks/auth/README.md#login) - Create Shopper JWT Using Password
+- [`clientPlansDeleteById`](docs/sdks/clientplans/README.md#deletebyid) - Archive Plan
+- [`clientSubscriptionsResume`](docs/sdks/clientsubscriptions/README.md#resume) - Resume Subscription
+- [`clientSubscriptionsUpdate`](docs/sdks/clientsubscriptions/README.md#update) - Update Subscription
+- [`clientTransactionsFindByTransactionId`](docs/sdks/clienttransactions/README.md#findbytransactionid) - Find Transaction
+- [`clientTransactionsSearch`](docs/sdks/clienttransactions/README.md#search) - Search Transactions
+- [`companyLogin`](docs/sdks/company/README.md#login) - Login Company
+- [`customersCreate`](docs/sdks/customers/README.md#create) - Create Customer
+- [`customersDelete`](docs/sdks/customers/README.md#delete) - Delete Customer
+- [`customersGet`](docs/sdks/customers/README.md#get) - Find Customer
+- [`customersGetPaymentMethod`](docs/sdks/customers/README.md#getpaymentmethod) - Find Payment Method
+- [`customersList`](docs/sdks/customers/README.md#list) - List Customers
+- [`customersListPaymentMethods`](docs/sdks/customers/README.md#listpaymentmethods) - List Payment Methods
+- [`customersUpdate`](docs/sdks/customers/README.md#update) - Update Customer
+- [`invoicesCreateQuickLink`](docs/sdks/invoices/README.md#createquicklink) - Create
+- [`linksGet`](docs/sdks/links/README.md#get) - Find
+- [`metaGetCountry`](docs/sdks/meta/README.md#getcountry) - Country
+- [`metaListCountries`](docs/sdks/meta/README.md#listcountries) - Countries
+- [`orderPaymentsCreate`](docs/sdks/orderpayments/README.md#create) - Payment
+- [`orderPaymentsResetTracking`](docs/sdks/orderpayments/README.md#resettracking) - Reset
+- [`passportGenerateToken`](docs/sdks/passport/README.md#generatetoken) - Generate Time-Based Token
+- [`paymentsAddMetadata`](docs/sdks/payments/README.md#addmetadata) - Add Metadata
+- [`paymentsAuthenticate`](docs/sdks/payments/README.md#authenticate) - Payer Authentication Setup
+- [`paymentsCapture`](docs/sdks/payments/README.md#capture) - Capture
+- [`paymentsEnroll`](docs/sdks/payments/README.md#enroll) - Enrollment
+- [`paymentsFetch`](docs/sdks/payments/README.md#fetch) - Fetch Payment
+- [`paymentsGenerateCaptureContext`](docs/sdks/payments/README.md#generatecapturecontext) - Generate Capture Context
+- [`paymentsProcessToken`](docs/sdks/payments/README.md#processtoken) - Process Transient Token
+- [`paymentsRefund`](docs/sdks/payments/README.md#refund) - Refund
+- [`paymentsReverse`](docs/sdks/payments/README.md#reverse) - Reverse
+- [`paymentsSearch`](docs/sdks/payments/README.md#search) - Search Payments
+- [`paymentsVoid`](docs/sdks/payments/README.md#void) - Void
+- [`plansCreate`](docs/sdks/plans/README.md#create) - Create Plan
+- [`plansGet`](docs/sdks/plans/README.md#get) - Find Plan
+- [`plansSearch`](docs/sdks/plans/README.md#search) - Search Plans
+- [`plansUpdate`](docs/sdks/plans/README.md#update) - Update Plan
+- [`quickLinksCreate`](docs/sdks/quicklinks/README.md#create) - Create Quick Link
+- [`quickLinksDelete`](docs/sdks/quicklinks/README.md#delete) - Delete Quick Link
+- [`quickLinksGet`](docs/sdks/quicklinks/README.md#get) - Find Quick Link
+- [`quickLinksSearch`](docs/sdks/quicklinks/README.md#search) - Search Quick Links
+- [`quickLinksUpdate`](docs/sdks/quicklinks/README.md#update) - Update Quick Link
+- [`shoppersCreateSafepay`](docs/sdks/shoppers/README.md#createsafepay) - Create Safepay Shopper
+- [`subscriptionsCancel`](docs/sdks/subscriptions/README.md#cancel) - Cancel Subscription
+- [`subscriptionsGet`](docs/sdks/subscriptions/README.md#get) - Find Subscription
+- [`subscriptionsSearch`](docs/sdks/subscriptions/README.md#search) - Search Subscriptions
+- [`transactionsRefund`](docs/sdks/transactions/README.md#refund) - Refund Transaction
+- [`userAddressesFindById`](docs/sdks/useraddresses/README.md#findbyid) - Find Address
+- [`userAddressesUpdateById`](docs/sdks/useraddresses/README.md#updatebyid) - Update Address
+- [`userCustomersDeletePaymentMethod`](docs/sdks/usercustomers/README.md#deletepaymentmethod) - Delete Payment Method
+- [`usersCreateGuestJwt`](docs/sdks/users/README.md#createguestjwt) - Create Guest JWT
+- [`usersExists`](docs/sdks/users/README.md#exists) - Safepay Shopper Exists
+- [`usersFindSafepayShopper`](docs/sdks/users/README.md#findsafepayshopper) - Find Safepay Shopper
+- [`userWalletsListPaymentMethods`](docs/sdks/userwallets/README.md#listpaymentmethods) - List Payment Methods
+- [`walletsDeletePaymentMethod`](docs/sdks/wallets/README.md#deletepaymentmethod) - Delete Payment Method
+- [`webhooksTest`](docs/sdks/webhooks/README.md#test) - Test Webhook
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
@@ -352,7 +428,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  const result = await safepay.postV1CompanyLogin({
+  const result = await safepay.company.login({
     retries: {
       strategy: "backoff",
       backoff: {
@@ -390,7 +466,7 @@ const safepay = new Safepay({
 });
 
 async function run() {
-  const result = await safepay.postV1CompanyLogin();
+  const result = await safepay.company.login();
 
   console.log(result);
 }
@@ -423,7 +499,7 @@ const safepay = new Safepay();
 
 async function run() {
   try {
-    const result = await safepay.postAuthV1CompanyAuthenticate();
+    const result = await safepay.auth.createMerchantJwt();
 
     console.log(result);
   } catch (error) {
@@ -467,6 +543,7 @@ run();
 
 **Inherit from [`SafepayError`](./src/models/errors/safepayerror.ts)**:
 * [`PostAuthV2UserLoginBadRequestError`](./src/models/errors/postauthv2userloginbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
+* [`GetUserV2ExistsBadRequestError`](./src/models/errors/getuserv2existsbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`PostClientApiSettingsV1BadRequestError`](./src/models/errors/postclientapisettingsv1badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`PostUserCustomersV1BadRequestError`](./src/models/errors/postusercustomersv1badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`GetUserCustomersV1BadRequestError`](./src/models/errors/getusercustomersv1badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
@@ -474,14 +551,14 @@ run();
 * [`GetUserCustomersV1Cus11db365b4d86494bAcca79d6e09efa67BadRequestError`](./src/models/errors/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`DeleteUserCustomersV1Cus17febb02B2cd4cf8B2997a447530ef52BadRequestError`](./src/models/errors/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89BadRequestError`](./src/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
-* [`DeleteUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89BadRequestError`](./src/models/errors/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletBadRequestError`](./src/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
+* [`DeleteUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89BadRequestError`](./src/models/errors/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`PostUserAddressV2BadRequestError`](./src/models/errors/postuseraddressv2badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`PutUserAddressV2Address5ce54f87A8234da689907b26d048ce00BadRequestError`](./src/models/errors/putuseraddressv2address5ce54f87a8234da689907b26d048ce00badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`GetUserAddressV2Address5ce54f87A8234da689907b26d048ce00BadRequestError`](./src/models/errors/getuseraddressv2address5ce54f87a8234da689907b26d048ce00badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`PostOrderPaymentsV3BadRequestError`](./src/models/errors/postorderpaymentsv3badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
-* [`PostOrderPaymentsV3Track7233ed61Fe5048368a84C5e17ae90f4dBadRequestError`](./src/models/errors/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`PutOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920beBadRequestError`](./src/models/errors/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920bebadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
+* [`PostOrderPaymentsV3Track7233ed61Fe5048368a84C5e17ae90f4dBadRequestError`](./src/models/errors/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`PostOrderPaymentsV3TrackAa38d5b7A3a245c5Bed8586b0bae8d06MetadataBadRequestError`](./src/models/errors/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatabadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`PostOrderPaymentsV3Track9d765b77608f46bc84d25f4392753ca3ReversalBadRequestError`](./src/models/errors/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`PostOrderPaymentsV3Track70fdbb06Bbf744e1B50a672d9f1d8b26RefundBadRequestError`](./src/models/errors/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
@@ -489,9 +566,9 @@ run();
 * [`PostClientHooksV2TestBadRequestError`](./src/models/errors/postclienthooksv2testbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`PostClientPlansV1BadRequestError`](./src/models/errors/postclientplansv1badrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`GetClientPlansV1SearchBadRequestError`](./src/models/errors/getclientplansv1searchbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
-* [`GetUserV2ExistsBadRequestError`](./src/models/errors/getuserv2existsbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 60 methods.*
 * [`PostAuthV1CompanyAuthenticateUnauthorizedError`](./src/models/errors/postauthv1companyauthenticateunauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`PostAuthV2UserLoginUnauthorizedError`](./src/models/errors/postauthv2userloginunauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
+* [`GetUserV2UnauthorizedError`](./src/models/errors/getuserv2unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`PostClientApiSettingsV1UnauthorizedError`](./src/models/errors/postclientapisettingsv1unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`GetClientApiSettingsV1UnauthorizedError`](./src/models/errors/getclientapisettingsv1unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`PutClientApiSettingsV1UnauthorizedError`](./src/models/errors/putclientapisettingsv1unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
@@ -502,8 +579,8 @@ run();
 * [`GetUserCustomersV1Cus11db365b4d86494bAcca79d6e09efa67UnauthorizedError`](./src/models/errors/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`DeleteUserCustomersV1Cus17febb02B2cd4cf8B2997a447530ef52UnauthorizedError`](./src/models/errors/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89UnauthorizedError`](./src/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
-* [`DeleteUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89UnauthorizedError`](./src/models/errors/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletUnauthorizedError`](./src/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletunauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
+* [`DeleteUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89UnauthorizedError`](./src/models/errors/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`PostUserAddressV2UnauthorizedError`](./src/models/errors/postuseraddressv2unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`PutUserAddressV2Address5ce54f87A8234da689907b26d048ce00UnauthorizedError`](./src/models/errors/putuseraddressv2address5ce54f87a8234da689907b26d048ce00unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`GetUserAddressV2Address5ce54f87A8234da689907b26d048ce00UnauthorizedError`](./src/models/errors/getuseraddressv2address5ce54f87a8234da689907b26d048ce00unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
@@ -514,8 +591,8 @@ run();
 * [`PostClientPlansV1UnauthorizedError`](./src/models/errors/postclientplansv1unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`GetClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcdUnauthorizedError`](./src/models/errors/getclientplansv1pland4869a7800364d6697bd6afeb5282bcdunauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`PutClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcdUnauthorizedError`](./src/models/errors/putclientplansv1pland4869a7800364d6697bd6afeb5282bcdunauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
-* [`DeleteClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcdUnauthorizedError`](./src/models/errors/deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcdunauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`GetClientPlansV1SearchUnauthorizedError`](./src/models/errors/getclientplansv1searchunauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
+* [`DeleteClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcdUnauthorizedError`](./src/models/errors/deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcdunauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`GetClientSubscriptionsV1SubC841ea40613c41a389847cb11f66d541UnauthorizedError`](./src/models/errors/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`GetClientSubscriptionsV1SearchUnauthorizedError`](./src/models/errors/getclientsubscriptionsv1searchunauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`PutClientSubscriptionsV1SubEe09b0f9974f4deeB1b34ad8dad2e7b3UnauthorizedError`](./src/models/errors/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
@@ -527,7 +604,6 @@ run();
 * [`GetInvoiceQuickLinksV1UnauthorizedError`](./src/models/errors/getinvoicequicklinksv1unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`PutInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cUnauthorizedError`](./src/models/errors/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cunauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`DeleteInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cUnauthorizedError`](./src/models/errors/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cunauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
-* [`GetUserV2UnauthorizedError`](./src/models/errors/getuserv2unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`GetUserWalletsV1UnauthorizedError`](./src/models/errors/getuserwalletsv1unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`DeleteUserWalletsV1Inst8ed5e401Ab7b442c8473Dee137827448UnauthorizedError`](./src/models/errors/deleteuserwalletsv1inst8ed5e401ab7b442c8473dee137827448unauthorizederror.ts): 401. Status code `401`. Applicable to 1 of 60 methods.*
 * [`GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89ForbiddenError`](./src/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89forbiddenerror.ts): 403. Status code `403`. Applicable to 1 of 60 methods.*
@@ -538,8 +614,8 @@ run();
 * [`GetUserCustomersV1Cus11db365b4d86494bAcca79d6e09efa67NotFoundError`](./src/models/errors/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67notfounderror.ts): 404. Status code `404`. Applicable to 1 of 60 methods.*
 * [`DeleteUserCustomersV1Cus17febb02B2cd4cf8B2997a447530ef52NotFoundError`](./src/models/errors/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52notfounderror.ts): 404. Status code `404`. Applicable to 1 of 60 methods.*
 * [`GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89NotFoundError`](./src/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89notfounderror.ts): 404. Status code `404`. Applicable to 1 of 60 methods.*
-* [`DeleteUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89NotFoundError`](./src/models/errors/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89notfounderror.ts): 404. Status code `404`. Applicable to 1 of 60 methods.*
 * [`GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletNotFoundError`](./src/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletnotfounderror.ts): 404. Status code `404`. Applicable to 1 of 60 methods.*
+* [`DeleteUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89NotFoundError`](./src/models/errors/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89notfounderror.ts): 404. Status code `404`. Applicable to 1 of 60 methods.*
 * [`PutUserAddressV2Address5ce54f87A8234da689907b26d048ce00NotFoundError`](./src/models/errors/putuseraddressv2address5ce54f87a8234da689907b26d048ce00notfounderror.ts): 404. Status code `404`. Applicable to 1 of 60 methods.*
 * [`GetUserAddressV2Address5ce54f87A8234da689907b26d048ce00NotFoundError`](./src/models/errors/getuseraddressv2address5ce54f87a8234da689907b26d048ce00notfounderror.ts): 404. Status code `404`. Applicable to 1 of 60 methods.*
 * [`PostOrderPaymentsV3NotFoundError`](./src/models/errors/postorderpaymentsv3notfounderror.ts): 404. Status code `404`. Applicable to 1 of 60 methods.*
@@ -562,8 +638,8 @@ run();
 * [`GetInvoiceQuickLinksV1ExpectationFailedError`](./src/models/errors/getinvoicequicklinksv1expectationfailederror.ts): 417. Status code `417`. Applicable to 1 of 60 methods.*
 * [`PostOrderPaymentsV3InternalServerError`](./src/models/errors/postorderpaymentsv3internalservererror.ts): 500. Status code `500`. Applicable to 1 of 60 methods.*
 * [`PostClientPlansV1InternalServerError`](./src/models/errors/postclientplansv1internalservererror.ts): 500. Status code `500`. Applicable to 1 of 60 methods.*
-* [`PutClientSubscriptionsV1Sub130aa5b290564c8eB9c99149e68f17ceResumptionInternalServerError`](./src/models/errors/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptioninternalservererror.ts): 500. Status code `500`. Applicable to 1 of 60 methods.*
 * [`PostClientSubscriptionsV1SubEe09b0f9974f4deeB1b34ad8dad2e7b2CancelInternalServerError`](./src/models/errors/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancelinternalservererror.ts): 500. Status code `500`. Applicable to 1 of 60 methods.*
+* [`PutClientSubscriptionsV1Sub130aa5b290564c8eB9c99149e68f17ceResumptionInternalServerError`](./src/models/errors/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptioninternalservererror.ts): 500. Status code `500`. Applicable to 1 of 60 methods.*
 * [`PutInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cInternalServerError`](./src/models/errors/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cinternalservererror.ts): 500. Status code `500`. Applicable to 1 of 60 methods.*
 * [`DeleteInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cInternalServerError`](./src/models/errors/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cinternalservererror.ts): 500. Status code `500`. Applicable to 1 of 60 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
@@ -604,7 +680,7 @@ const safepay = new Safepay({
 });
 
 async function run() {
-  const result = await safepay.postV1CompanyLogin();
+  const result = await safepay.company.login();
 
   console.log(result);
 }
@@ -624,7 +700,7 @@ const safepay = new Safepay({
 });
 
 async function run() {
-  const result = await safepay.postV1CompanyLogin();
+  const result = await safepay.company.login();
 
   console.log(result);
 }

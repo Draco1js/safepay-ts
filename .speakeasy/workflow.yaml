@@ -4,6 +4,8 @@ sources:
     Safepay:
         inputs:
             - location: safepay.json
+        overlays:
+            - location: .speakeasy/speakeasy-modifications-overlay.yaml
         output: .speakeasy/out.openapi.yaml
         registry:
             location: registry.speakeasyapi.dev/dhaba/safepay-api/safepay

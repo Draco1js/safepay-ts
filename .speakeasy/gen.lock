@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: fefcac39-086a-4bf8-aa47-ffc1643c28d5
 management:
-  docChecksum: 4fe925d5fa62cd9bf5cba292d7a9804d
+  docChecksum: 90d73e86965271fe0e605140f7d2534f
   docVersion: 1.0.0
   speakeasyVersion: 1.580.1
   generationVersion: 2.656.3
-  releaseVersion: 0.0.6
-  configChecksum: cb825b0f60423e0452ad4e82dad693a9
+  releaseVersion: 0.1.0
+  configChecksum: 24c8f3e7a95522eacee9e985df68612a
   published: true
 features:
   typescript:
@@ -17,8 +17,10 @@ features:
     envVarSecurityUsage: 0.1.2
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.5
+    groups: 2.81.2
     mcpServer: 0.9.3
     methodArguments: 0.1.2
+    nameOverrides: 2.81.2
     nullables: 0.1.1
     responseFormat: 0.2.3
     retries: 2.83.0
@@ -747,75 +749,101 @@ generatedFiles:
   - docs/models/operations/tax.md
   - docs/models/operations/user.md
   - docs/models/operations/walletcontact.md
+  - docs/sdks/addresses/README.md
+  - docs/sdks/apikeys/README.md
+  - docs/sdks/apisettings/README.md
+  - docs/sdks/auth/README.md
+  - docs/sdks/clientplans/README.md
+  - docs/sdks/clientsubscriptions/README.md
+  - docs/sdks/clienttransactions/README.md
+  - docs/sdks/company/README.md
+  - docs/sdks/customers/README.md
+  - docs/sdks/invoices/README.md
+  - docs/sdks/links/README.md
+  - docs/sdks/meta/README.md
+  - docs/sdks/orderpayments/README.md
+  - docs/sdks/passport/README.md
+  - docs/sdks/payments/README.md
+  - docs/sdks/plans/README.md
+  - docs/sdks/quicklinks/README.md
   - docs/sdks/safepay/README.md
+  - docs/sdks/shoppers/README.md
+  - docs/sdks/subscriptions/README.md
+  - docs/sdks/transactions/README.md
+  - docs/sdks/useraddresses/README.md
+  - docs/sdks/usercustomers/README.md
+  - docs/sdks/users/README.md
+  - docs/sdks/userwallets/README.md
+  - docs/sdks/wallets/README.md
+  - docs/sdks/webhooks/README.md
   - eslint.config.mjs
   - examples/.env.template
   - examples/README.md
+  - examples/companyLogin.example.ts
   - examples/package.json
-  - examples/postV1CompanyLogin.example.ts
   - jsr.json
   - package.json
   - src/core.ts
-  - src/funcs/deleteClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd.ts
-  - src/funcs/deleteInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c.ts
-  - src/funcs/deleteUserCustomersV1Cus17febb02B2cd4cf8B2997a447530ef52.ts
-  - src/funcs/deleteUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89.ts
-  - src/funcs/deleteUserWalletsV1Inst8ed5e401Ab7b442c8473Dee137827448.ts
-  - src/funcs/getClientApiSettingsV1.ts
-  - src/funcs/getClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd.ts
-  - src/funcs/getClientPlansV1Search.ts
-  - src/funcs/getClientSubscriptionsV1Search.ts
-  - src/funcs/getClientSubscriptionsV1SubC841ea40613c41a389847cb11f66d541.ts
-  - src/funcs/getClientTransactionsV1Search.ts
-  - src/funcs/getClientTransactionsV1Txn17553398B91d41e9Ae47165e194d06a1.ts
-  - src/funcs/getInvoiceQuickLinksV1.ts
-  - src/funcs/getInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c.ts
-  - src/funcs/getInvoiceQuickLinksV2Link291208afEf954b7dB171Aaaa16998d31.ts
-  - src/funcs/getReporterApiV1Payments.ts
-  - src/funcs/getReporterApiV1PaymentsTrackF865abdd3a61484280001cffa38f1fbc.ts
-  - src/funcs/getUserAddressV2Address5ce54f87A8234da689907b26d048ce00.ts
-  - src/funcs/getUserCustomersV1.ts
-  - src/funcs/getUserCustomersV1Cus11db365b4d86494bAcca79d6e09efa67.ts
-  - src/funcs/getUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWallet.ts
-  - src/funcs/getUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89.ts
-  - src/funcs/getUserMetaV2Countries.ts
-  - src/funcs/getUserMetaV2Country.ts
-  - src/funcs/getUserV2.ts
-  - src/funcs/getUserV2Exists.ts
-  - src/funcs/getUserWalletsV1.ts
-  - src/funcs/postAuthV1CompanyAuthenticate.ts
-  - src/funcs/postAuthV2UserLogin.ts
-  - src/funcs/postClientApiSettingsV1.ts
-  - src/funcs/postClientHooksV2Test.ts
-  - src/funcs/postClientPassportV1Token.ts
-  - src/funcs/postClientPlansV1.ts
-  - src/funcs/postClientSubscriptionsV1SubEe09b0f9974f4deeB1b34ad8dad2e7b2Cancel.ts
-  - src/funcs/postClientTransactionsV1Txn17553398B91d41e9Ae47165e194d06a1Refund.ts
-  - src/funcs/postInvoiceQuickLinksV1.ts
-  - src/funcs/postInvoiceQuickLinksV2.ts
-  - src/funcs/postOrderPaymentsV3.ts
-  - src/funcs/postOrderPaymentsV3Track1a46dc7091f948928e250bb5205b69c7.ts
-  - src/funcs/postOrderPaymentsV3Track1a46dc7091f948928e250bb5205b69c7Void.ts
-  - src/funcs/postOrderPaymentsV3Track70fdbb06Bbf744e1B50a672d9f1d8b26Refund.ts
-  - src/funcs/postOrderPaymentsV3Track7233ed61Fe5048368a84C5e17ae90f4d.ts
-  - src/funcs/postOrderPaymentsV3Track9d765b77608f46bc84d25f4392753ca3Reversal.ts
-  - src/funcs/postOrderPaymentsV3TrackA6f9b00c8a254cbf95f9Cd6bc440eca6.ts
-  - src/funcs/postOrderPaymentsV3TrackAa38d5b7A3a245c5Bed8586b0bae8d06Metadata.ts
-  - src/funcs/postOrderPaymentsV3TrackDccdef16008e4fae81cc1b7d81bf6c44.ts
-  - src/funcs/postOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372.ts
-  - src/funcs/postUserAddressV2.ts
-  - src/funcs/postUserCustomersV1.ts
-  - src/funcs/postUserV1Guest.ts
-  - src/funcs/postUserV2.ts
-  - src/funcs/postV1CompanyLogin.ts
-  - src/funcs/putClientApiSettingsV1.ts
-  - src/funcs/putClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd.ts
-  - src/funcs/putClientSubscriptionsV1Sub130aa5b290564c8eB9c99149e68f17ceResumption.ts
-  - src/funcs/putClientSubscriptionsV1SubEe09b0f9974f4deeB1b34ad8dad2e7b3.ts
-  - src/funcs/putInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c.ts
-  - src/funcs/putOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920be.ts
-  - src/funcs/putUserAddressV2Address5ce54f87A8234da689907b26d048ce00.ts
-  - src/funcs/putUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aa.ts
+  - src/funcs/addressesCreate.ts
+  - src/funcs/apiKeysCreate.ts
+  - src/funcs/apiSettingsGetApiKey.ts
+  - src/funcs/apiSettingsUpdateKey.ts
+  - src/funcs/authCreateMerchantJwt.ts
+  - src/funcs/authLogin.ts
+  - src/funcs/clientPlansDeleteById.ts
+  - src/funcs/clientSubscriptionsResume.ts
+  - src/funcs/clientSubscriptionsUpdate.ts
+  - src/funcs/clientTransactionsFindByTransactionId.ts
+  - src/funcs/clientTransactionsSearch.ts
+  - src/funcs/companyLogin.ts
+  - src/funcs/customersCreate.ts
+  - src/funcs/customersDelete.ts
+  - src/funcs/customersGet.ts
+  - src/funcs/customersGetPaymentMethod.ts
+  - src/funcs/customersList.ts
+  - src/funcs/customersListPaymentMethods.ts
+  - src/funcs/customersUpdate.ts
+  - src/funcs/invoicesCreateQuickLink.ts
+  - src/funcs/linksGet.ts
+  - src/funcs/metaGetCountry.ts
+  - src/funcs/metaListCountries.ts
+  - src/funcs/orderPaymentsCreate.ts
+  - src/funcs/orderPaymentsResetTracking.ts
+  - src/funcs/passportGenerateToken.ts
+  - src/funcs/paymentsAddMetadata.ts
+  - src/funcs/paymentsAuthenticate.ts
+  - src/funcs/paymentsCapture.ts
+  - src/funcs/paymentsEnroll.ts
+  - src/funcs/paymentsFetch.ts
+  - src/funcs/paymentsGenerateCaptureContext.ts
+  - src/funcs/paymentsProcessToken.ts
+  - src/funcs/paymentsRefund.ts
+  - src/funcs/paymentsReverse.ts
+  - src/funcs/paymentsSearch.ts
+  - src/funcs/paymentsVoid.ts
+  - src/funcs/plansCreate.ts
+  - src/funcs/plansGet.ts
+  - src/funcs/plansSearch.ts
+  - src/funcs/plansUpdate.ts
+  - src/funcs/quickLinksCreate.ts
+  - src/funcs/quickLinksDelete.ts
+  - src/funcs/quickLinksGet.ts
+  - src/funcs/quickLinksSearch.ts
+  - src/funcs/quickLinksUpdate.ts
+  - src/funcs/shoppersCreateSafepay.ts
+  - src/funcs/subscriptionsCancel.ts
+  - src/funcs/subscriptionsGet.ts
+  - src/funcs/subscriptionsSearch.ts
+  - src/funcs/transactionsRefund.ts
+  - src/funcs/userAddressesFindById.ts
+  - src/funcs/userAddressesUpdateById.ts
+  - src/funcs/userCustomersDeletePaymentMethod.ts
+  - src/funcs/userWalletsListPaymentMethods.ts
+  - src/funcs/usersCreateGuestJwt.ts
+  - src/funcs/usersExists.ts
+  - src/funcs/usersFindSafepayShopper.ts
+  - src/funcs/walletsDeletePaymentMethod.ts
+  - src/funcs/webhooksTest.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
   - src/hooks/types.ts
@@ -849,66 +877,66 @@ generatedFiles:
   - src/mcp-server/server.ts
   - src/mcp-server/shared.ts
   - src/mcp-server/tools.ts
-  - src/mcp-server/tools/deleteClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd.ts
-  - src/mcp-server/tools/deleteInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c.ts
-  - src/mcp-server/tools/deleteUserCustomersV1Cus17febb02B2cd4cf8B2997a447530ef52.ts
-  - src/mcp-server/tools/deleteUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89.ts
-  - src/mcp-server/tools/deleteUserWalletsV1Inst8ed5e401Ab7b442c8473Dee137827448.ts
-  - src/mcp-server/tools/getClientApiSettingsV1.ts
-  - src/mcp-server/tools/getClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd.ts
-  - src/mcp-server/tools/getClientPlansV1Search.ts
-  - src/mcp-server/tools/getClientSubscriptionsV1Search.ts
-  - src/mcp-server/tools/getClientSubscriptionsV1SubC841ea40613c41a389847cb11f66d541.ts
-  - src/mcp-server/tools/getClientTransactionsV1Search.ts
-  - src/mcp-server/tools/getClientTransactionsV1Txn17553398B91d41e9Ae47165e194d06a1.ts
-  - src/mcp-server/tools/getInvoiceQuickLinksV1.ts
-  - src/mcp-server/tools/getInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c.ts
-  - src/mcp-server/tools/getInvoiceQuickLinksV2Link291208afEf954b7dB171Aaaa16998d31.ts
-  - src/mcp-server/tools/getReporterApiV1Payments.ts
-  - src/mcp-server/tools/getReporterApiV1PaymentsTrackF865abdd3a61484280001cffa38f1fbc.ts
-  - src/mcp-server/tools/getUserAddressV2Address5ce54f87A8234da689907b26d048ce00.ts
-  - src/mcp-server/tools/getUserCustomersV1.ts
-  - src/mcp-server/tools/getUserCustomersV1Cus11db365b4d86494bAcca79d6e09efa67.ts
-  - src/mcp-server/tools/getUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWallet.ts
-  - src/mcp-server/tools/getUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89.ts
-  - src/mcp-server/tools/getUserMetaV2Countries.ts
-  - src/mcp-server/tools/getUserMetaV2Country.ts
-  - src/mcp-server/tools/getUserV2.ts
-  - src/mcp-server/tools/getUserV2Exists.ts
-  - src/mcp-server/tools/getUserWalletsV1.ts
-  - src/mcp-server/tools/postAuthV1CompanyAuthenticate.ts
-  - src/mcp-server/tools/postAuthV2UserLogin.ts
-  - src/mcp-server/tools/postClientApiSettingsV1.ts
-  - src/mcp-server/tools/postClientHooksV2Test.ts
-  - src/mcp-server/tools/postClientPassportV1Token.ts
-  - src/mcp-server/tools/postClientPlansV1.ts
-  - src/mcp-server/tools/postClientSubscriptionsV1SubEe09b0f9974f4deeB1b34ad8dad2e7b2Cancel.ts
-  - src/mcp-server/tools/postClientTransactionsV1Txn17553398B91d41e9Ae47165e194d06a1Refund.ts
-  - src/mcp-server/tools/postInvoiceQuickLinksV1.ts
-  - src/mcp-server/tools/postInvoiceQuickLinksV2.ts
-  - src/mcp-server/tools/postOrderPaymentsV3.ts
-  - src/mcp-server/tools/postOrderPaymentsV3Track1a46dc7091f948928e250bb5205b69c7.ts
-  - src/mcp-server/tools/postOrderPaymentsV3Track1a46dc7091f948928e250bb5205b69c7Void.ts
-  - src/mcp-server/tools/postOrderPaymentsV3Track70fdbb06Bbf744e1B50a672d9f1d8b26Refund.ts
-  - src/mcp-server/tools/postOrderPaymentsV3Track7233ed61Fe5048368a84C5e17ae90f4d.ts
-  - src/mcp-server/tools/postOrderPaymentsV3Track9d765b77608f46bc84d25f4392753ca3Reversal.ts
-  - src/mcp-server/tools/postOrderPaymentsV3TrackA6f9b00c8a254cbf95f9Cd6bc440eca6.ts
-  - src/mcp-server/tools/postOrderPaymentsV3TrackAa38d5b7A3a245c5Bed8586b0bae8d06Metadata.ts
-  - src/mcp-server/tools/postOrderPaymentsV3TrackDccdef16008e4fae81cc1b7d81bf6c44.ts
-  - src/mcp-server/tools/postOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372.ts
-  - src/mcp-server/tools/postUserAddressV2.ts
-  - src/mcp-server/tools/postUserCustomersV1.ts
-  - src/mcp-server/tools/postUserV1Guest.ts
-  - src/mcp-server/tools/postUserV2.ts
-  - src/mcp-server/tools/postV1CompanyLogin.ts
-  - src/mcp-server/tools/putClientApiSettingsV1.ts
-  - src/mcp-server/tools/putClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcd.ts
-  - src/mcp-server/tools/putClientSubscriptionsV1Sub130aa5b290564c8eB9c99149e68f17ceResumption.ts
-  - src/mcp-server/tools/putClientSubscriptionsV1SubEe09b0f9974f4deeB1b34ad8dad2e7b3.ts
-  - src/mcp-server/tools/putInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890c.ts
-  - src/mcp-server/tools/putOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920be.ts
-  - src/mcp-server/tools/putUserAddressV2Address5ce54f87A8234da689907b26d048ce00.ts
-  - src/mcp-server/tools/putUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aa.ts
+  - src/mcp-server/tools/addressesCreate.ts
+  - src/mcp-server/tools/apiKeysCreate.ts
+  - src/mcp-server/tools/apiSettingsGetApiKey.ts
+  - src/mcp-server/tools/apiSettingsUpdateKey.ts
+  - src/mcp-server/tools/authCreateMerchantJwt.ts
+  - src/mcp-server/tools/authLogin.ts
+  - src/mcp-server/tools/clientPlansDeleteById.ts
+  - src/mcp-server/tools/clientSubscriptionsResume.ts
+  - src/mcp-server/tools/clientSubscriptionsUpdate.ts
+  - src/mcp-server/tools/clientTransactionsFindByTransactionId.ts
+  - src/mcp-server/tools/clientTransactionsSearch.ts
+  - src/mcp-server/tools/companyLogin.ts
+  - src/mcp-server/tools/customersCreate.ts
+  - src/mcp-server/tools/customersDelete.ts
+  - src/mcp-server/tools/customersGet.ts
+  - src/mcp-server/tools/customersGetPaymentMethod.ts
+  - src/mcp-server/tools/customersList.ts
+  - src/mcp-server/tools/customersListPaymentMethods.ts
+  - src/mcp-server/tools/customersUpdate.ts
+  - src/mcp-server/tools/invoicesCreateQuickLink.ts
+  - src/mcp-server/tools/linksGet.ts
+  - src/mcp-server/tools/metaGetCountry.ts
+  - src/mcp-server/tools/metaListCountries.ts
+  - src/mcp-server/tools/orderPaymentsCreate.ts
+  - src/mcp-server/tools/orderPaymentsResetTracking.ts
+  - src/mcp-server/tools/passportGenerateToken.ts
+  - src/mcp-server/tools/paymentsAddMetadata.ts
+  - src/mcp-server/tools/paymentsAuthenticate.ts
+  - src/mcp-server/tools/paymentsCapture.ts
+  - src/mcp-server/tools/paymentsEnroll.ts
+  - src/mcp-server/tools/paymentsFetch.ts
+  - src/mcp-server/tools/paymentsGenerateCaptureContext.ts
+  - src/mcp-server/tools/paymentsProcessToken.ts
+  - src/mcp-server/tools/paymentsRefund.ts
+  - src/mcp-server/tools/paymentsReverse.ts
+  - src/mcp-server/tools/paymentsSearch.ts
+  - src/mcp-server/tools/paymentsVoid.ts
+  - src/mcp-server/tools/plansCreate.ts
+  - src/mcp-server/tools/plansGet.ts
+  - src/mcp-server/tools/plansSearch.ts
+  - src/mcp-server/tools/plansUpdate.ts
+  - src/mcp-server/tools/quickLinksCreate.ts
+  - src/mcp-server/tools/quickLinksDelete.ts
+  - src/mcp-server/tools/quickLinksGet.ts
+  - src/mcp-server/tools/quickLinksSearch.ts
+  - src/mcp-server/tools/quickLinksUpdate.ts
+  - src/mcp-server/tools/shoppersCreateSafepay.ts
+  - src/mcp-server/tools/subscriptionsCancel.ts
+  - src/mcp-server/tools/subscriptionsGet.ts
+  - src/mcp-server/tools/subscriptionsSearch.ts
+  - src/mcp-server/tools/transactionsRefund.ts
+  - src/mcp-server/tools/userAddressesFindById.ts
+  - src/mcp-server/tools/userAddressesUpdateById.ts
+  - src/mcp-server/tools/userCustomersDeletePaymentMethod.ts
+  - src/mcp-server/tools/userWalletsListPaymentMethods.ts
+  - src/mcp-server/tools/usersCreateGuestJwt.ts
+  - src/mcp-server/tools/usersExists.ts
+  - src/mcp-server/tools/usersFindSafepayShopper.ts
+  - src/mcp-server/tools/walletsDeletePaymentMethod.ts
+  - src/mcp-server/tools/webhooksTest.ts
   - src/models/errors/deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcd.ts
   - src/models/errors/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c.ts
   - src/models/errors/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52.ts
@@ -1027,8 +1055,34 @@ generatedFiles:
   - src/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920be.ts
   - src/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00.ts
   - src/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aa.ts
+  - src/sdk/addresses.ts
+  - src/sdk/apikeys.ts
+  - src/sdk/apisettings.ts
+  - src/sdk/auth.ts
+  - src/sdk/clientplans.ts
+  - src/sdk/clientsubscriptions.ts
+  - src/sdk/clienttransactions.ts
+  - src/sdk/company.ts
+  - src/sdk/customers.ts
   - src/sdk/index.ts
+  - src/sdk/invoices.ts
+  - src/sdk/links.ts
+  - src/sdk/meta.ts
+  - src/sdk/orderpayments.ts
+  - src/sdk/passport.ts
+  - src/sdk/payments.ts
+  - src/sdk/plans.ts
+  - src/sdk/quicklinks.ts
   - src/sdk/sdk.ts
+  - src/sdk/shoppers.ts
+  - src/sdk/subscriptions.ts
+  - src/sdk/transactions.ts
+  - src/sdk/useraddresses.ts
+  - src/sdk/usercustomers.ts
+  - src/sdk/users.ts
+  - src/sdk/userwallets.ts
+  - src/sdk/wallets.ts
+  - src/sdk/webhooks.ts
   - src/types/async.ts
   - src/types/blobs.ts
   - src/types/constdatetime.ts

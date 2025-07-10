@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:dafd8fdcd0efa530f8876b77bf11a0662659a9a0ba73ebee833a26e6d5ca2b98
         sourceBlobDigest: sha256:2f498b240fb13e519917019f56e09a6f5e8f02cd655257202b60e48de257455a
         codeSamplesNamespace: safepay-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:3f18a81d94f363033c14f7aa15c67c778688d794fa64bba502c449301541d517
+        codeSamplesRevisionDigest: sha256:209e3b27e8cf658bbd55c56c0d8b8e900c0ed5b60b5ded62f1783a098672ec22
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -22,6 +22,8 @@ workflow:
         Safepay:
             inputs:
                 - location: safepay.json
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
             output: .speakeasy/out.openapi.yaml
             registry:
                 location: registry.speakeasyapi.dev/dhaba/safepay-api/safepay

@@ -20,19 +20,19 @@ specific category of applications.
 
 ```typescript
 import { SafepayCore } from "@dhaba/safepay-ts/core.js";
-import { postV1CompanyLogin } from "@dhaba/safepay-ts/funcs/postV1CompanyLogin.js";
+import { companyLogin } from "@dhaba/safepay-ts/funcs/companyLogin.js";
 
 // Use `SafepayCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
 const safepay = new SafepayCore();
 
 async function run() {
-  const res = await postV1CompanyLogin(safepay);
+  const res = await companyLogin(safepay);
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
   } else {
-    console.log("postV1CompanyLogin failed:", res.error);
+    console.log("companyLogin failed:", res.error);
   }
 }
 
