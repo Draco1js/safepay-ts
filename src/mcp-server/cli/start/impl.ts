@@ -19,6 +19,9 @@ interface StartCommandFlags {
   readonly tool?: string[];
   readonly "server-url"?: string;
   readonly "server-index"?: SDKOptions["serverIdx"];
+  readonly "base-url"?: SDKOptions["baseUrl"];
+  readonly "auth-port"?: SDKOptions["authPort"];
+  readonly "sandbox-base-url"?: SDKOptions["sandboxBaseUrl"];
   readonly "log-level": ConsoleLoggerLevel;
   readonly env?: [string, string][];
 }
@@ -48,6 +51,9 @@ async function startStdio(flags: StartCommandFlags) {
     allowedTools: flags.tool,
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],
+    baseUrl: flags["base-url"],
+    authPort: flags["auth-port"],
+    sandboxBaseUrl: flags["sandbox-base-url"],
   });
   await server.connect(transport);
 
@@ -67,6 +73,9 @@ async function startSSE(flags: StartCommandFlags) {
     allowedTools: flags.tool,
     serverURL: flags["server-url"],
     serverIdx: flags["server-index"],
+    baseUrl: flags["base-url"],
+    authPort: flags["auth-port"],
+    sandboxBaseUrl: flags["sandbox-base-url"],
   });
   let transport: SSEServerTransport | undefined;
   const controller = new AbortController();

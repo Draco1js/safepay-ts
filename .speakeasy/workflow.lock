@@ -1,0 +1,37 @@
+speakeasyVersion: 1.580.1
+sources:
+    Safepay:
+        sourceNamespace: safepay
+        sourceRevisionDigest: sha256:dafd8fdcd0efa530f8876b77bf11a0662659a9a0ba73ebee833a26e6d5ca2b98
+        sourceBlobDigest: sha256:2f498b240fb13e519917019f56e09a6f5e8f02cd655257202b60e48de257455a
+        tags:
+            - latest
+            - 1.0.0
+targets:
+    safepay:
+        source: Safepay
+        sourceNamespace: safepay
+        sourceRevisionDigest: sha256:dafd8fdcd0efa530f8876b77bf11a0662659a9a0ba73ebee833a26e6d5ca2b98
+        sourceBlobDigest: sha256:2f498b240fb13e519917019f56e09a6f5e8f02cd655257202b60e48de257455a
+        codeSamplesNamespace: safepay-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:30e9ed6cfc1886739effa241eceea6d887001d018db8f45c6cb083cb2273060a
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Safepay:
+            inputs:
+                - location: safepay.json
+            output: .speakeasy/out.openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/dhaba/safepay-api/safepay
+    targets:
+        safepay:
+            target: typescript
+            source: Safepay
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/dhaba/safepay-api/safepay-typescript-code-samples
+                labelOverride:
+                    fixedValue: Typescript (SDK)
+                blocking: false

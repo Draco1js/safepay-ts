@@ -25,17 +25,17 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.0.1
+  version: 0.0.3
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
   author: Speakeasy
-  baseErrorName: ""
+  baseErrorName: SafepayError
   clientServerStatusCodesAsErrors: true
   constFieldsAlwaysOptional: false
-  defaultErrorName: ""
+  defaultErrorName: SafepayDefaultError
   enableCustomCodeRegions: false
   enableMCPServer: true
   enableReactQuery: false

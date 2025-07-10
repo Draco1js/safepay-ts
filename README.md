@@ -584,10 +584,18 @@ run();
 
 You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
 
-| #   | Server                             | Description |
-| --- | ---------------------------------- | ----------- |
-| 0   | `https://{{baseUrl}}{{auth-port}}` |             |
-| 1   | `https://{{sandbox-base-url}}`     |             |
+| #   | Server                         | Variables                 | Description |
+| --- | ------------------------------ | ------------------------- | ----------- |
+| 0   | `https://{baseUrl}{auth-port}` | `baseUrl`<br/>`auth-port` |             |
+| 1   | `https://{sandbox-base-url}`   | `sandbox-base-url`        |             |
+
+If the selected server has variables, you may override its default values through the additional parameters made available in the SDK constructor:
+
+| Variable           | Parameter                | Default                             | Description |
+| ------------------ | ------------------------ | ----------------------------------- | ----------- |
+| `baseUrl`          | `baseUrl: string`        | `"https://api.safepay.com"`         |             |
+| `auth-port`        | `authPort: string`       | `"/auth"`                           |             |
+| `sandbox-base-url` | `sandboxBaseUrl: string` | `"https://api.sandbox.safepay.com"` |             |
 
 #### Example
 
@@ -595,7 +603,8 @@ You can override the default server globally by passing a server index to the `s
 import { Safepay } from "@dhaba/safepay-ts";
 
 const safepay = new Safepay({
-  serverIdx: 1,
+  baseUrl: "https://glaring-granny.org/",
+  authPort: "<value>",
 });
 
 async function run() {
@@ -615,7 +624,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { Safepay } from "@dhaba/safepay-ts";
 
 const safepay = new Safepay({
-  serverURL: "https://{{sandbox-base-url}}",
+  serverURL: "https://https://api.sandbox.safepay.com",
 });
 
 async function run() {

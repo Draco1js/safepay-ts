@@ -7,10 +7,26 @@
 	},
 	"servers": [
 	  {
-		"url": "{{baseUrl}}{{auth-port}}"
+		"url": "{baseUrl}{auth-port}",
+		"variables": {
+			"baseUrl": {
+				"type": "string",
+				"default": "https://api.safepay.com"
+			},
+			"auth-port": {
+				"type": "string",
+				"default": "/auth"
+			}
+		}
 	  },
 	  {
-		"url": "{{sandbox-base-url}}"
+		"url": "{sandbox-base-url}",
+		"variables": {
+			"sandbox-base-url": {
+				"type": "string",
+				"default": "https://api.sandbox.safepay.com"
+			}
+		}
 	  }
 	],
 	"paths": {

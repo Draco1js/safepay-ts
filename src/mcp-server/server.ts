@@ -84,15 +84,21 @@ export function createMCPServer(deps: {
   scopes?: MCPScope[] | undefined;
   serverURL?: string | undefined;
   serverIdx?: SDKOptions["serverIdx"] | undefined;
+  baseUrl?: SDKOptions["baseUrl"] | undefined;
+  authPort?: SDKOptions["authPort"] | undefined;
+  sandboxBaseUrl?: SDKOptions["sandboxBaseUrl"] | undefined;
 }) {
   const server = new McpServer({
     name: "Safepay",
-    version: "0.0.1",
+    version: "0.0.3",
   });
 
   const client = new SafepayCore({
     serverURL: deps.serverURL,
     serverIdx: deps.serverIdx,
+    baseUrl: deps.baseUrl,
+    authPort: deps.authPort,
+    sandboxBaseUrl: deps.sandboxBaseUrl,
   });
 
   const scopes = new Set(deps.scopes);
