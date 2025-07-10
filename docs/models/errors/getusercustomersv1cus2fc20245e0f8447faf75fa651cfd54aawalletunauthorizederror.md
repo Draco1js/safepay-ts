@@ -1,0 +1,18 @@
+# GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletUnauthorizedError
+
+401
+
+## Example Usage
+
+```typescript
+import { GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletUnauthorizedError } from "@dhaba/safepay-ts/models/errors";
+
+// No examples available for this model
+```
+
+## Fields
+
+| Field                                                                                                                                                                                                | Type                                                                                                                                                                                                 | Required                                                                                                                                                                                             | Description                                                                                                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`                                                                                                                                                                                               | *any*                                                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                                                   | N/A                                                                                                                                                                                                  |
+| `status`                                                                                                                                                                                             | [operations.GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletUnauthorizedStatus](../../models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletunauthorizedstatus.md) | :heavy_minus_sign:                                                                                                                                                                                   | N/A                                                                                                                                                                                                  |

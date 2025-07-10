@@ -1,0 +1,16 @@
+# PutOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920beData
+
+## Example Usage
+
+```typescript
+import { PutOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920beData } from "@dhaba/safepay-ts/models/operations";
+
+let value: PutOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920beData = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                            | Type                                                                                                                                                                             | Required                                                                                                                                                                         | Description                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tracker`                                                                                                                                                                        | [operations.PutOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920beTracker](../../models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920betracker.md)           | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
+| `capabilities`                                                                                                                                                                   | [operations.PutOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920beCapabilities](../../models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920becapabilities.md) | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |

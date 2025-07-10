@@ -1,0 +1,24 @@
+# PostUserAddressV2Data
+
+## Example Usage
+
+```typescript
+import { PostUserAddressV2Data } from "@dhaba/safepay-ts/models/operations";
+
+let value: PostUserAddressV2Data = {};
+```
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `token`                                                                                        | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `street1`                                                                                      | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `street2`                                                                                      | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `city`                                                                                         | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `state`                                                                                        | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `postalCode`                                                                                   | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `country`                                                                                      | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `isDefault`                                                                                    | *boolean*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `createdAt`                                                                                    | [operations.PostUserAddressV2CreatedAt](../../models/operations/postuseraddressv2createdat.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| `updatedAt`                                                                                    | [operations.PostUserAddressV2UpdatedAt](../../models/operations/postuseraddressv2updatedat.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |

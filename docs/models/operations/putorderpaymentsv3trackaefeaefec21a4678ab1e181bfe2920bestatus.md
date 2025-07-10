@@ -1,0 +1,16 @@
+# PutOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920beStatus
+
+## Example Usage
+
+```typescript
+import { PutOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920beStatus } from "@dhaba/safepay-ts/models/operations";
+
+let value: PutOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920beStatus = {};
+```
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `errors`           | *any*[]            | :heavy_minus_sign: | N/A                |
+| `message`          | *string*           | :heavy_minus_sign: | N/A                |

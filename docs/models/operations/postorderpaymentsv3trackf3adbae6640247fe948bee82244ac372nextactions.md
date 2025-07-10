@@ -1,0 +1,17 @@
+# PostOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372NextActions
+
+## Example Usage
+
+```typescript
+import { PostOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372NextActions } from "@dhaba/safepay-ts/models/operations";
+
+let value: PostOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372NextActions =
+  {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                            | Type                                                                                                                                                                             | Required                                                                                                                                                                         | Description                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cybersource`                                                                                                                                                                    | [operations.PostOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372CYBERSOURCE](../../models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372cybersource.md) | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |
+| `mpgs`                                                                                                                                                                           | [operations.PostOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372MPGS](../../models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372mpgs.md)               | :heavy_minus_sign:                                                                                                                                                               | N/A                                                                                                                                                                              |

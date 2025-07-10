@@ -1,0 +1,17 @@
+# PostOrderPaymentsV3Track9d765b77608f46bc84d25f4392753ca3ReversalData
+
+## Example Usage
+
+```typescript
+import { PostOrderPaymentsV3Track9d765b77608f46bc84d25f4392753ca3ReversalData } from "@dhaba/safepay-ts/models/operations";
+
+let value:
+  PostOrderPaymentsV3Track9d765b77608f46bc84d25f4392753ca3ReversalData = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                    | Type                                                                                                                                                                                     | Required                                                                                                                                                                                 | Description                                                                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tracker`                                                                                                                                                                                | [operations.PostOrderPaymentsV3Track9d765b77608f46bc84d25f4392753ca3ReversalTracker](../../models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversaltracker.md) | :heavy_minus_sign:                                                                                                                                                                       | N/A                                                                                                                                                                                      |
+| `action`                                                                                                                                                                                 | [operations.PostOrderPaymentsV3Track9d765b77608f46bc84d25f4392753ca3ReversalAction](../../models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalaction.md)   | :heavy_minus_sign:                                                                                                                                                                       | N/A                                                                                                                                                                                      |

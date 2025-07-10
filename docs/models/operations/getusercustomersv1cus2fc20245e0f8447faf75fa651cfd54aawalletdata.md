@@ -1,0 +1,16 @@
+# GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletData
+
+## Example Usage
+
+```typescript
+import { GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletData } from "@dhaba/safepay-ts/models/operations";
+
+let value: GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletData = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                          | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `wallet`                                                                                                                                                                       | [operations.GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletWallet](../../models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletwallet.md)[] | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `count`                                                                                                                                                                        | *number*                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                             | N/A                                                                                                                                                                            |

@@ -1,0 +1,19 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Safepay:
+        inputs:
+            - location: safepay.json
+        output: .speakeasy/out.openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/dhaba/safepay-api/safepay
+targets:
+    safepay:
+        target: typescript
+        source: Safepay
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/dhaba/safepay-api/safepay-typescript-code-samples
+            labelOverride:
+                fixedValue: Typescript (SDK)
+            blocking: false

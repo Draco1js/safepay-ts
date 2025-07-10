@@ -1,0 +1,16 @@
+# GetInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cData
+
+## Example Usage
+
+```typescript
+import { GetInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cData } from "@dhaba/safepay-ts/models/operations";
+
+let value: GetInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cData = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                      | Type                                                                                                                                                                       | Required                                                                                                                                                                   | Description                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `link`                                                                                                                                                                     | [operations.Link](../../models/operations/link.md)                                                                                                                         | :heavy_minus_sign:                                                                                                                                                         | N/A                                                                                                                                                                        |
+| `client`                                                                                                                                                                   | [operations.GetInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cClient](../../models/operations/getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cclient.md) | :heavy_minus_sign:                                                                                                                                                         | N/A                                                                                                                                                                        |

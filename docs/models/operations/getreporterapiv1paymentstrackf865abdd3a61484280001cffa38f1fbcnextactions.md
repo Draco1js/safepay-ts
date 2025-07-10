@@ -1,0 +1,17 @@
+# GetReporterApiV1PaymentsTrackF865abdd3a61484280001cffa38f1fbcNextActions
+
+## Example Usage
+
+```typescript
+import { GetReporterApiV1PaymentsTrackF865abdd3a61484280001cffa38f1fbcNextActions } from "@dhaba/safepay-ts/models/operations";
+
+let value:
+  GetReporterApiV1PaymentsTrackF865abdd3a61484280001cffa38f1fbcNextActions = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                      | Type                                                                                                                                                                                       | Required                                                                                                                                                                                   | Description                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cybersource`                                                                                                                                                                              | [operations.GetReporterApiV1PaymentsTrackF865abdd3a61484280001cffa38f1fbcCYBERSOURCE](../../models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbccybersource.md) | :heavy_minus_sign:                                                                                                                                                                         | N/A                                                                                                                                                                                        |
+| `mpgs`                                                                                                                                                                                     | [operations.GetReporterApiV1PaymentsTrackF865abdd3a61484280001cffa38f1fbcMPGS](../../models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcmpgs.md)               | :heavy_minus_sign:                                                                                                                                                                         | N/A                                                                                                                                                                                        |

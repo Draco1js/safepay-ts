@@ -1,0 +1,16 @@
+# PostOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372Data
+
+## Example Usage
+
+```typescript
+import { PostOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372Data } from "@dhaba/safepay-ts/models/operations";
+
+let value: PostOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372Data = {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                    | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `tracker`                                                                                                                                                                | [operations.PostOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372Tracker](../../models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372tracker.md) | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |
+| `action`                                                                                                                                                                 | [operations.PostOrderPaymentsV3TrackF3adbae6640247fe948bEe82244ac372Action](../../models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372action.md)   | :heavy_minus_sign:                                                                                                                                                       | N/A                                                                                                                                                                      |

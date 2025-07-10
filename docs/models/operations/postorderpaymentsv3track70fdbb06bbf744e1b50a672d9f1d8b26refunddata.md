@@ -1,0 +1,17 @@
+# PostOrderPaymentsV3Track70fdbb06Bbf744e1B50a672d9f1d8b26RefundData
+
+## Example Usage
+
+```typescript
+import { PostOrderPaymentsV3Track70fdbb06Bbf744e1B50a672d9f1d8b26RefundData } from "@dhaba/safepay-ts/models/operations";
+
+let value: PostOrderPaymentsV3Track70fdbb06Bbf744e1B50a672d9f1d8b26RefundData =
+  {};
+```
+
+## Fields
+
+| Field                                                                                                                                                                                | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `tracker`                                                                                                                                                                            | [operations.PostOrderPaymentsV3Track70fdbb06Bbf744e1B50a672d9f1d8b26RefundTracker](../../models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundtracker.md) | :heavy_minus_sign:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
+| `action`                                                                                                                                                                             | [operations.PostOrderPaymentsV3Track70fdbb06Bbf744e1B50a672d9f1d8b26RefundAction](../../models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundaction.md)   | :heavy_minus_sign:                                                                                                                                                                   | N/A                                                                                                                                                                                  |
