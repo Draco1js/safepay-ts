@@ -13,7 +13,7 @@ export class Auth extends ClientSDK {
    * Create Merchant JWT
    */
   async createMerchantJwt(
-    request?: operations.PostAuthV1CompanyAuthenticateRequest | undefined,
+    request: operations.PostAuthV1CompanyAuthenticateRequest,
     options?: RequestOptions,
   ): Promise<operations.PostAuthV1CompanyAuthenticateResponse> {
     return unwrapAsync(authCreateMerchantJwt(
@@ -27,7 +27,7 @@ export class Auth extends ClientSDK {
    * Create Shopper JWT Using Password
    */
   async login(
-    request?: operations.PostAuthV2UserLoginRequest | undefined,
+    request: operations.PostAuthV2UserLoginRequest,
     options?: RequestOptions,
   ): Promise<operations.PostAuthV2UserLoginResponse> {
     return unwrapAsync(authLogin(

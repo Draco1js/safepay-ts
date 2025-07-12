@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type GetReporterApiV1PaymentsRequest = {
   /**
@@ -27,7 +28,7 @@ export type GetReporterApiV1PaymentsRequest = {
   direction?: string | undefined;
 };
 
-export type GetReporterApiV1PaymentsClient = {
+export type Client = {
   apiKey?: string | undefined;
 };
 
@@ -42,7 +43,7 @@ export type GetReporterApiV1PaymentsCreatedAt = {
 export type GetReporterApiV1PaymentsList = {
   token?: string | undefined;
   environment?: string | undefined;
-  client?: GetReporterApiV1PaymentsClient | undefined;
+  client?: Client | undefined;
   customer?: GetReporterApiV1PaymentsCustomer | undefined;
   state?: string | undefined;
   intent?: string | undefined;
@@ -72,6 +73,7 @@ export type GetReporterApiV1PaymentsData = {
 export type GetReporterApiV1PaymentsResponseBody = {
   ok?: boolean | undefined;
   data?: GetReporterApiV1PaymentsData | undefined;
+  status?: models.Status | undefined;
 };
 
 export type GetReporterApiV1PaymentsResponse = {
@@ -153,28 +155,25 @@ export function getReporterApiV1PaymentsRequestFromJSON(
 }
 
 /** @internal */
-export const GetReporterApiV1PaymentsClient$inboundSchema: z.ZodType<
-  GetReporterApiV1PaymentsClient,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  api_key: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "api_key": "apiKey",
+export const Client$inboundSchema: z.ZodType<Client, z.ZodTypeDef, unknown> = z
+  .object({
+    api_key: z.string().optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "api_key": "apiKey",
+    });
   });
-});
 
 /** @internal */
-export type GetReporterApiV1PaymentsClient$Outbound = {
+export type Client$Outbound = {
   api_key?: string | undefined;
 };
 
 /** @internal */
-export const GetReporterApiV1PaymentsClient$outboundSchema: z.ZodType<
-  GetReporterApiV1PaymentsClient$Outbound,
+export const Client$outboundSchema: z.ZodType<
+  Client$Outbound,
   z.ZodTypeDef,
-  GetReporterApiV1PaymentsClient
+  Client
 > = z.object({
   apiKey: z.string().optional(),
 }).transform((v) => {
@@ -187,32 +186,26 @@ export const GetReporterApiV1PaymentsClient$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetReporterApiV1PaymentsClient$ {
-  /** @deprecated use `GetReporterApiV1PaymentsClient$inboundSchema` instead. */
-  export const inboundSchema = GetReporterApiV1PaymentsClient$inboundSchema;
-  /** @deprecated use `GetReporterApiV1PaymentsClient$outboundSchema` instead. */
-  export const outboundSchema = GetReporterApiV1PaymentsClient$outboundSchema;
-  /** @deprecated use `GetReporterApiV1PaymentsClient$Outbound` instead. */
-  export type Outbound = GetReporterApiV1PaymentsClient$Outbound;
+export namespace Client$ {
+  /** @deprecated use `Client$inboundSchema` instead. */
+  export const inboundSchema = Client$inboundSchema;
+  /** @deprecated use `Client$outboundSchema` instead. */
+  export const outboundSchema = Client$outboundSchema;
+  /** @deprecated use `Client$Outbound` instead. */
+  export type Outbound = Client$Outbound;
 }
 
-export function getReporterApiV1PaymentsClientToJSON(
-  getReporterApiV1PaymentsClient: GetReporterApiV1PaymentsClient,
-): string {
-  return JSON.stringify(
-    GetReporterApiV1PaymentsClient$outboundSchema.parse(
-      getReporterApiV1PaymentsClient,
-    ),
-  );
+export function clientToJSON(client: Client): string {
+  return JSON.stringify(Client$outboundSchema.parse(client));
 }
 
-export function getReporterApiV1PaymentsClientFromJSON(
+export function clientFromJSON(
   jsonString: string,
-): SafeParseResult<GetReporterApiV1PaymentsClient, SDKValidationError> {
+): SafeParseResult<Client, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => GetReporterApiV1PaymentsClient$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetReporterApiV1PaymentsClient' from JSON`,
+    (x) => Client$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Client' from JSON`,
   );
 }
 
@@ -337,7 +330,7 @@ export const GetReporterApiV1PaymentsList$inboundSchema: z.ZodType<
 > = z.object({
   token: z.string().optional(),
   environment: z.string().optional(),
-  client: z.lazy(() => GetReporterApiV1PaymentsClient$inboundSchema).optional(),
+  client: z.lazy(() => Client$inboundSchema).optional(),
   customer: z.lazy(() => GetReporterApiV1PaymentsCustomer$inboundSchema)
     .optional(),
   state: z.string().optional(),
@@ -358,7 +351,7 @@ export const GetReporterApiV1PaymentsList$inboundSchema: z.ZodType<
 export type GetReporterApiV1PaymentsList$Outbound = {
   token?: string | undefined;
   environment?: string | undefined;
-  client?: GetReporterApiV1PaymentsClient$Outbound | undefined;
+  client?: Client$Outbound | undefined;
   customer?: GetReporterApiV1PaymentsCustomer$Outbound | undefined;
   state?: string | undefined;
   intent?: string | undefined;
@@ -376,8 +369,7 @@ export const GetReporterApiV1PaymentsList$outboundSchema: z.ZodType<
 > = z.object({
   token: z.string().optional(),
   environment: z.string().optional(),
-  client: z.lazy(() => GetReporterApiV1PaymentsClient$outboundSchema)
-    .optional(),
+  client: z.lazy(() => Client$outboundSchema).optional(),
   customer: z.lazy(() => GetReporterApiV1PaymentsCustomer$outboundSchema)
     .optional(),
   state: z.string().optional(),
@@ -563,12 +555,14 @@ export const GetReporterApiV1PaymentsResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   ok: z.boolean().optional(),
   data: z.lazy(() => GetReporterApiV1PaymentsData$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetReporterApiV1PaymentsResponseBody$Outbound = {
   ok?: boolean | undefined;
   data?: GetReporterApiV1PaymentsData$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -579,6 +573,7 @@ export const GetReporterApiV1PaymentsResponseBody$outboundSchema: z.ZodType<
 > = z.object({
   ok: z.boolean().optional(),
   data: z.lazy(() => GetReporterApiV1PaymentsData$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

@@ -29,13 +29,13 @@ import { Result } from "../types/fp.js";
  */
 export function orderPaymentsCreate(
   client: SafepayCore,
-  request?: operations.PostOrderPaymentsV3Request | undefined,
+  request: operations.PostOrderPaymentsV3Request,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     operations.PostOrderPaymentsV3Response,
-    | errors.PostOrderPaymentsV3BadRequestError
-    | errors.PostOrderPaymentsV3NotFoundError
+    | errors.PostClientApiSettingsV1BadRequestError
+    | errors.NotFoundError
     | errors.PostOrderPaymentsV3InternalServerError
     | SafepayError
     | ResponseValidationError
@@ -56,14 +56,14 @@ export function orderPaymentsCreate(
 
 async function $do(
   client: SafepayCore,
-  request?: operations.PostOrderPaymentsV3Request | undefined,
+  request: operations.PostOrderPaymentsV3Request,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       operations.PostOrderPaymentsV3Response,
-      | errors.PostOrderPaymentsV3BadRequestError
-      | errors.PostOrderPaymentsV3NotFoundError
+      | errors.PostClientApiSettingsV1BadRequestError
+      | errors.NotFoundError
       | errors.PostOrderPaymentsV3InternalServerError
       | SafepayError
       | ResponseValidationError
@@ -80,18 +80,14 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.PostOrderPaymentsV3Request$outboundSchema.optional().parse(
-        value,
-      ),
+      operations.PostOrderPaymentsV3Request$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = payload === undefined
-    ? null
-    : encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/order/payments/v3")();
 
@@ -111,8 +107,18 @@ async function $do(
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 3600000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["5XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -146,8 +152,8 @@ async function $do(
 
   const [result] = await M.match<
     operations.PostOrderPaymentsV3Response,
-    | errors.PostOrderPaymentsV3BadRequestError
-    | errors.PostOrderPaymentsV3NotFoundError
+    | errors.PostClientApiSettingsV1BadRequestError
+    | errors.NotFoundError
     | errors.PostOrderPaymentsV3InternalServerError
     | SafepayError
     | ResponseValidationError
@@ -162,12 +168,12 @@ async function $do(
       hdrs: true,
       key: "Result",
     }),
-    M.jsonErr(400, errors.PostOrderPaymentsV3BadRequestError$inboundSchema, {
-      hdrs: true,
-    }),
-    M.jsonErr(404, errors.PostOrderPaymentsV3NotFoundError$inboundSchema, {
-      hdrs: true,
-    }),
+    M.jsonErr(
+      400,
+      errors.PostClientApiSettingsV1BadRequestError$inboundSchema,
+      { hdrs: true },
+    ),
+    M.jsonErr(404, errors.NotFoundError$inboundSchema, { hdrs: true }),
     M.jsonErr(
       500,
       errors.PostOrderPaymentsV3InternalServerError$inboundSchema,

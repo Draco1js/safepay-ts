@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type PostUserV1GuestRequest = {
   firstName?: string | undefined;
@@ -16,19 +17,9 @@ export type PostUserV1GuestRequest = {
   phone?: string | undefined;
 };
 
-export type PostUserV1GuestExpectationFailedStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
 export type PostUserV1GuestData = {
   session?: string | undefined;
   token?: string | undefined;
-};
-
-export type PostUserV1GuestStatus = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
 };
 
 /**
@@ -36,7 +27,7 @@ export type PostUserV1GuestStatus = {
  */
 export type PostUserV1GuestResponseBody = {
   data?: PostUserV1GuestData | undefined;
-  status?: PostUserV1GuestStatus | undefined;
+  status?: models.Status | undefined;
 };
 
 export type PostUserV1GuestResponse = {
@@ -121,69 +112,6 @@ export function postUserV1GuestRequestFromJSON(
 }
 
 /** @internal */
-export const PostUserV1GuestExpectationFailedStatus$inboundSchema: z.ZodType<
-  PostUserV1GuestExpectationFailedStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostUserV1GuestExpectationFailedStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostUserV1GuestExpectationFailedStatus$outboundSchema: z.ZodType<
-  PostUserV1GuestExpectationFailedStatus$Outbound,
-  z.ZodTypeDef,
-  PostUserV1GuestExpectationFailedStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostUserV1GuestExpectationFailedStatus$ {
-  /** @deprecated use `PostUserV1GuestExpectationFailedStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostUserV1GuestExpectationFailedStatus$inboundSchema;
-  /** @deprecated use `PostUserV1GuestExpectationFailedStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostUserV1GuestExpectationFailedStatus$outboundSchema;
-  /** @deprecated use `PostUserV1GuestExpectationFailedStatus$Outbound` instead. */
-  export type Outbound = PostUserV1GuestExpectationFailedStatus$Outbound;
-}
-
-export function postUserV1GuestExpectationFailedStatusToJSON(
-  postUserV1GuestExpectationFailedStatus:
-    PostUserV1GuestExpectationFailedStatus,
-): string {
-  return JSON.stringify(
-    PostUserV1GuestExpectationFailedStatus$outboundSchema.parse(
-      postUserV1GuestExpectationFailedStatus,
-    ),
-  );
-}
-
-export function postUserV1GuestExpectationFailedStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostUserV1GuestExpectationFailedStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostUserV1GuestExpectationFailedStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostUserV1GuestExpectationFailedStatus' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostUserV1GuestData$inboundSchema: z.ZodType<
   PostUserV1GuestData,
   z.ZodTypeDef,
@@ -241,76 +169,19 @@ export function postUserV1GuestDataFromJSON(
 }
 
 /** @internal */
-export const PostUserV1GuestStatus$inboundSchema: z.ZodType<
-  PostUserV1GuestStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostUserV1GuestStatus$Outbound = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostUserV1GuestStatus$outboundSchema: z.ZodType<
-  PostUserV1GuestStatus$Outbound,
-  z.ZodTypeDef,
-  PostUserV1GuestStatus
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostUserV1GuestStatus$ {
-  /** @deprecated use `PostUserV1GuestStatus$inboundSchema` instead. */
-  export const inboundSchema = PostUserV1GuestStatus$inboundSchema;
-  /** @deprecated use `PostUserV1GuestStatus$outboundSchema` instead. */
-  export const outboundSchema = PostUserV1GuestStatus$outboundSchema;
-  /** @deprecated use `PostUserV1GuestStatus$Outbound` instead. */
-  export type Outbound = PostUserV1GuestStatus$Outbound;
-}
-
-export function postUserV1GuestStatusToJSON(
-  postUserV1GuestStatus: PostUserV1GuestStatus,
-): string {
-  return JSON.stringify(
-    PostUserV1GuestStatus$outboundSchema.parse(postUserV1GuestStatus),
-  );
-}
-
-export function postUserV1GuestStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostUserV1GuestStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostUserV1GuestStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostUserV1GuestStatus' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostUserV1GuestResponseBody$inboundSchema: z.ZodType<
   PostUserV1GuestResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.lazy(() => PostUserV1GuestData$inboundSchema).optional(),
-  status: z.lazy(() => PostUserV1GuestStatus$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PostUserV1GuestResponseBody$Outbound = {
   data?: PostUserV1GuestData$Outbound | undefined;
-  status?: PostUserV1GuestStatus$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -320,7 +191,7 @@ export const PostUserV1GuestResponseBody$outboundSchema: z.ZodType<
   PostUserV1GuestResponseBody
 > = z.object({
   data: z.lazy(() => PostUserV1GuestData$outboundSchema).optional(),
-  status: z.lazy(() => PostUserV1GuestStatus$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

@@ -11,8 +11,14 @@ import { Params, pathToFunc } from "./url.js";
  * Contains the list of servers available to the SDK
  */
 export const ServerList = [
-  "https://{baseUrl}{auth-port}",
-  "https://{sandbox-base-url}",
+  /**
+   * Sandbox environment
+   */
+  "https://api.sandbox.safepay.com",
+  /**
+   * Production environment
+   */
+  "https://api.safepay.com",
 ] as const;
 
 export type SDKOptions = {
@@ -21,18 +27,6 @@ export type SDKOptions = {
    * Allows overriding the default server used by the SDK
    */
   serverIdx?: number | undefined;
-  /**
-   * Sets the baseUrl variable for url substitution
-   */
-  baseUrl?: string | undefined;
-  /**
-   * Sets the auth-port variable for url substitution
-   */
-  authPort?: string | undefined;
-  /**
-   * Sets the sandbox-base-url variable for url substitution
-   */
-  sandboxBaseUrl?: string | undefined;
   /**
    * Allows overriding the default server URL used by the SDK
    */
@@ -52,17 +46,7 @@ export type SDKOptions = {
 export function serverURLFromOptions(options: SDKOptions): URL | null {
   let serverURL = options.serverURL;
 
-  const serverParams: Params[] = [
-    {
-      "baseUrl": options.baseUrl ?? "https://api.safepay.com",
-      "auth-port": options.authPort ?? "/auth",
-    },
-    {
-      "sandbox-base-url": options.sandboxBaseUrl
-        ?? "https://api.sandbox.safepay.com",
-    },
-  ];
-  let params: Params = {};
+  const params: Params = {};
 
   if (!serverURL) {
     const serverIdx = options.serverIdx ?? 0;
@@ -70,7 +54,6 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
       throw new Error(`Invalid server index ${serverIdx}`);
     }
     serverURL = ServerList[serverIdx] || "";
-    params = serverParams[serverIdx] || {};
   }
 
   const u = pathToFunc(serverURL)(params);
@@ -80,7 +63,7 @@ export function serverURLFromOptions(options: SDKOptions): URL | null {
 export const SDK_METADATA = {
   language: "typescript",
   openapiDocVersion: "1.0.0",
-  sdkVersion: "0.1.0",
-  genVersion: "2.656.3",
-  userAgent: "speakeasy-sdk/typescript 0.1.0 2.656.3 1.0.0 @dhaba/safepay-ts",
+  sdkVersion: "0.0.3",
+  genVersion: "2.656.5",
+  userAgent: "speakeasy-sdk/typescript 0.0.3 2.656.5 1.0.0 @dhaba/safepay-ts",
 } as const;

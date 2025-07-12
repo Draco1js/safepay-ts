@@ -19,59 +19,26 @@ import { tool$apiSettingsGetApiKey } from "./tools/apiSettingsGetApiKey.js";
 import { tool$apiSettingsUpdateKey } from "./tools/apiSettingsUpdateKey.js";
 import { tool$authCreateMerchantJwt } from "./tools/authCreateMerchantJwt.js";
 import { tool$authLogin } from "./tools/authLogin.js";
-import { tool$clientPlansDeleteById } from "./tools/clientPlansDeleteById.js";
-import { tool$clientSubscriptionsResume } from "./tools/clientSubscriptionsResume.js";
-import { tool$clientSubscriptionsUpdate } from "./tools/clientSubscriptionsUpdate.js";
-import { tool$clientTransactionsFindByTransactionId } from "./tools/clientTransactionsFindByTransactionId.js";
 import { tool$clientTransactionsSearch } from "./tools/clientTransactionsSearch.js";
 import { tool$companyLogin } from "./tools/companyLogin.js";
 import { tool$customersCreate } from "./tools/customersCreate.js";
-import { tool$customersDelete } from "./tools/customersDelete.js";
-import { tool$customersGet } from "./tools/customersGet.js";
-import { tool$customersGetPaymentMethod } from "./tools/customersGetPaymentMethod.js";
 import { tool$customersList } from "./tools/customersList.js";
-import { tool$customersListPaymentMethods } from "./tools/customersListPaymentMethods.js";
-import { tool$customersUpdate } from "./tools/customersUpdate.js";
 import { tool$invoicesCreateQuickLink } from "./tools/invoicesCreateQuickLink.js";
-import { tool$linksGet } from "./tools/linksGet.js";
 import { tool$metaGetCountry } from "./tools/metaGetCountry.js";
 import { tool$metaListCountries } from "./tools/metaListCountries.js";
 import { tool$orderPaymentsCreate } from "./tools/orderPaymentsCreate.js";
-import { tool$orderPaymentsResetTracking } from "./tools/orderPaymentsResetTracking.js";
 import { tool$passportGenerateToken } from "./tools/passportGenerateToken.js";
-import { tool$paymentsAddMetadata } from "./tools/paymentsAddMetadata.js";
-import { tool$paymentsAuthenticate } from "./tools/paymentsAuthenticate.js";
-import { tool$paymentsCapture } from "./tools/paymentsCapture.js";
-import { tool$paymentsEnroll } from "./tools/paymentsEnroll.js";
-import { tool$paymentsFetch } from "./tools/paymentsFetch.js";
-import { tool$paymentsGenerateCaptureContext } from "./tools/paymentsGenerateCaptureContext.js";
-import { tool$paymentsProcessToken } from "./tools/paymentsProcessToken.js";
-import { tool$paymentsRefund } from "./tools/paymentsRefund.js";
-import { tool$paymentsReverse } from "./tools/paymentsReverse.js";
 import { tool$paymentsSearch } from "./tools/paymentsSearch.js";
-import { tool$paymentsVoid } from "./tools/paymentsVoid.js";
 import { tool$plansCreate } from "./tools/plansCreate.js";
-import { tool$plansGet } from "./tools/plansGet.js";
 import { tool$plansSearch } from "./tools/plansSearch.js";
-import { tool$plansUpdate } from "./tools/plansUpdate.js";
 import { tool$quickLinksCreate } from "./tools/quickLinksCreate.js";
-import { tool$quickLinksDelete } from "./tools/quickLinksDelete.js";
-import { tool$quickLinksGet } from "./tools/quickLinksGet.js";
 import { tool$quickLinksSearch } from "./tools/quickLinksSearch.js";
-import { tool$quickLinksUpdate } from "./tools/quickLinksUpdate.js";
 import { tool$shoppersCreateSafepay } from "./tools/shoppersCreateSafepay.js";
-import { tool$subscriptionsCancel } from "./tools/subscriptionsCancel.js";
-import { tool$subscriptionsGet } from "./tools/subscriptionsGet.js";
 import { tool$subscriptionsSearch } from "./tools/subscriptionsSearch.js";
-import { tool$transactionsRefund } from "./tools/transactionsRefund.js";
-import { tool$userAddressesFindById } from "./tools/userAddressesFindById.js";
-import { tool$userAddressesUpdateById } from "./tools/userAddressesUpdateById.js";
-import { tool$userCustomersDeletePaymentMethod } from "./tools/userCustomersDeletePaymentMethod.js";
 import { tool$usersCreateGuestJwt } from "./tools/usersCreateGuestJwt.js";
 import { tool$usersExists } from "./tools/usersExists.js";
 import { tool$usersFindSafepayShopper } from "./tools/usersFindSafepayShopper.js";
 import { tool$userWalletsListPaymentMethods } from "./tools/userWalletsListPaymentMethods.js";
-import { tool$walletsDeletePaymentMethod } from "./tools/walletsDeletePaymentMethod.js";
 import { tool$webhooksTest } from "./tools/webhooksTest.js";
 
 export function createMCPServer(deps: {
@@ -80,21 +47,15 @@ export function createMCPServer(deps: {
   scopes?: MCPScope[] | undefined;
   serverURL?: string | undefined;
   serverIdx?: SDKOptions["serverIdx"] | undefined;
-  baseUrl?: SDKOptions["baseUrl"] | undefined;
-  authPort?: SDKOptions["authPort"] | undefined;
-  sandboxBaseUrl?: SDKOptions["sandboxBaseUrl"] | undefined;
 }) {
   const server = new McpServer({
     name: "Safepay",
-    version: "0.1.0",
+    version: "0.0.3",
   });
 
   const client = new SafepayCore({
     serverURL: deps.serverURL,
     serverIdx: deps.serverIdx,
-    baseUrl: deps.baseUrl,
-    authPort: deps.authPort,
-    sandboxBaseUrl: deps.sandboxBaseUrl,
   });
 
   const scopes = new Set(deps.scopes);
@@ -130,54 +91,21 @@ export function createMCPServer(deps: {
   tool(tool$passportGenerateToken);
   tool(tool$customersCreate);
   tool(tool$customersList);
-  tool(tool$customersUpdate);
-  tool(tool$customersGet);
-  tool(tool$customersDelete);
-  tool(tool$customersGetPaymentMethod);
-  tool(tool$customersListPaymentMethods);
-  tool(tool$userCustomersDeletePaymentMethod);
   tool(tool$addressesCreate);
-  tool(tool$userAddressesUpdateById);
-  tool(tool$userAddressesFindById);
   tool(tool$orderPaymentsCreate);
-  tool(tool$orderPaymentsResetTracking);
-  tool(tool$paymentsGenerateCaptureContext);
-  tool(tool$paymentsProcessToken);
-  tool(tool$paymentsAuthenticate);
-  tool(tool$paymentsEnroll);
-  tool(tool$paymentsCapture);
-  tool(tool$paymentsAddMetadata);
-  tool(tool$paymentsReverse);
-  tool(tool$paymentsRefund);
-  tool(tool$paymentsVoid);
-  tool(tool$paymentsFetch);
   tool(tool$paymentsSearch);
   tool(tool$metaListCountries);
   tool(tool$metaGetCountry);
   tool(tool$webhooksTest);
   tool(tool$plansCreate);
-  tool(tool$plansGet);
-  tool(tool$plansUpdate);
   tool(tool$plansSearch);
-  tool(tool$clientPlansDeleteById);
-  tool(tool$subscriptionsGet);
   tool(tool$subscriptionsSearch);
-  tool(tool$subscriptionsCancel);
-  tool(tool$clientSubscriptionsUpdate);
-  tool(tool$clientSubscriptionsResume);
   tool(tool$clientTransactionsSearch);
-  tool(tool$clientTransactionsFindByTransactionId);
-  tool(tool$transactionsRefund);
   tool(tool$invoicesCreateQuickLink);
-  tool(tool$linksGet);
   tool(tool$quickLinksCreate);
   tool(tool$quickLinksSearch);
-  tool(tool$quickLinksGet);
-  tool(tool$quickLinksUpdate);
-  tool(tool$quickLinksDelete);
   tool(tool$shoppersCreateSafepay);
   tool(tool$userWalletsListPaymentMethods);
-  tool(tool$walletsDeletePaymentMethod);
 
   return server;
 }

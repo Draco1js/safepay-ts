@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type PostUserV2Request = {
   firstName?: string | undefined;
@@ -68,6 +69,7 @@ export type PostUserV2Data = {
  */
 export type PostUserV2ResponseBody = {
   data?: PostUserV2Data | undefined;
+  status?: models.Status | undefined;
 };
 
 export type PostUserV2Response = {
@@ -558,11 +560,13 @@ export const PostUserV2ResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   data: z.lazy(() => PostUserV2Data$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PostUserV2ResponseBody$Outbound = {
   data?: PostUserV2Data$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -572,6 +576,7 @@ export const PostUserV2ResponseBody$outboundSchema: z.ZodType<
   PostUserV2ResponseBody
 > = z.object({
   data: z.lazy(() => PostUserV2Data$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

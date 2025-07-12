@@ -29,13 +29,13 @@ import { Result } from "../types/fp.js";
  */
 export function authCreateMerchantJwt(
   client: SafepayCore,
-  request?: operations.PostAuthV1CompanyAuthenticateRequest | undefined,
+  request: operations.PostAuthV1CompanyAuthenticateRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     operations.PostAuthV1CompanyAuthenticateResponse,
     | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
-    | errors.PostAuthV1CompanyAuthenticateExpectationFailedError
+    | errors.ExpectationFailedError
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -55,14 +55,14 @@ export function authCreateMerchantJwt(
 
 async function $do(
   client: SafepayCore,
-  request?: operations.PostAuthV1CompanyAuthenticateRequest | undefined,
+  request: operations.PostAuthV1CompanyAuthenticateRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       operations.PostAuthV1CompanyAuthenticateResponse,
       | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
-      | errors.PostAuthV1CompanyAuthenticateExpectationFailedError
+      | errors.ExpectationFailedError
       | SafepayError
       | ResponseValidationError
       | ConnectionError
@@ -78,17 +78,16 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.PostAuthV1CompanyAuthenticateRequest$outboundSchema.optional()
-        .parse(value),
+      operations.PostAuthV1CompanyAuthenticateRequest$outboundSchema.parse(
+        value,
+      ),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = payload === undefined
-    ? null
-    : encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/auth/v1/company/authenticate")();
 
@@ -108,8 +107,18 @@ async function $do(
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 3600000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["5XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -144,7 +153,7 @@ async function $do(
   const [result] = await M.match<
     operations.PostAuthV1CompanyAuthenticateResponse,
     | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
-    | errors.PostAuthV1CompanyAuthenticateExpectationFailedError
+    | errors.ExpectationFailedError
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -164,11 +173,7 @@ async function $do(
       errors.PostAuthV1CompanyAuthenticateUnauthorizedError$inboundSchema,
       { hdrs: true },
     ),
-    M.jsonErr(
-      417,
-      errors.PostAuthV1CompanyAuthenticateExpectationFailedError$inboundSchema,
-      { hdrs: true },
-    ),
+    M.jsonErr(417, errors.ExpectationFailedError$inboundSchema, { hdrs: true }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

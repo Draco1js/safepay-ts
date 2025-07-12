@@ -3,12 +3,7 @@
  */
 
 import { customersCreate } from "../funcs/customersCreate.js";
-import { customersDelete } from "../funcs/customersDelete.js";
-import { customersGet } from "../funcs/customersGet.js";
-import { customersGetPaymentMethod } from "../funcs/customersGetPaymentMethod.js";
 import { customersList } from "../funcs/customersList.js";
-import { customersListPaymentMethods } from "../funcs/customersListPaymentMethods.js";
-import { customersUpdate } from "../funcs/customersUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -18,7 +13,7 @@ export class Customers extends ClientSDK {
    * Create Customer
    */
   async create(
-    request?: operations.PostUserCustomersV1Request | undefined,
+    request: operations.PostUserCustomersV1Request,
     options?: RequestOptions,
   ): Promise<operations.PostUserCustomersV1Response> {
     return unwrapAsync(customersCreate(
@@ -36,84 +31,6 @@ export class Customers extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.GetUserCustomersV1Response> {
     return unwrapAsync(customersList(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Update Customer
-   */
-  async update(
-    request?:
-      | operations.PutUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaRequest
-      | undefined,
-    options?: RequestOptions,
-  ): Promise<
-    operations.PutUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaResponse
-  > {
-    return unwrapAsync(customersUpdate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Find Customer
-   */
-  async get(
-    options?: RequestOptions,
-  ): Promise<
-    operations.GetUserCustomersV1Cus11db365b4d86494bAcca79d6e09efa67Response
-  > {
-    return unwrapAsync(customersGet(
-      this,
-      options,
-    ));
-  }
-
-  /**
-   * Delete Customer
-   */
-  async delete(
-    options?: RequestOptions,
-  ): Promise<
-    operations.DeleteUserCustomersV1Cus17febb02B2cd4cf8B2997a447530ef52Response
-  > {
-    return unwrapAsync(customersDelete(
-      this,
-      options,
-    ));
-  }
-
-  /**
-   * Find Payment Method
-   */
-  async getPaymentMethod(
-    options?: RequestOptions,
-  ): Promise<
-    operations.GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletPmBea0077422ba44ce82c53cdd1a342e89Response
-  > {
-    return unwrapAsync(customersGetPaymentMethod(
-      this,
-      options,
-    ));
-  }
-
-  /**
-   * List Payment Methods
-   */
-  async listPaymentMethods(
-    request?:
-      | operations.GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletRequest
-      | undefined,
-    options?: RequestOptions,
-  ): Promise<
-    operations.GetUserCustomersV1Cus2fc20245E0f8447fAf75Fa651cfd54aaWalletResponse
-  > {
-    return unwrapAsync(customersListPaymentMethods(
       this,
       request,
       options,

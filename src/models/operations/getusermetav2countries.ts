@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type GetUserMetaV2CountriesRequest = {
   lang?: string | undefined;
@@ -23,6 +24,7 @@ export type GetUserMetaV2CountriesData = {
 export type GetUserMetaV2CountriesResponseBody = {
   apiVersion?: string | undefined;
   data?: Array<GetUserMetaV2CountriesData> | undefined;
+  status?: models.Status | undefined;
 };
 
 export type GetUserMetaV2CountriesResponse = {
@@ -152,6 +154,7 @@ export const GetUserMetaV2CountriesResponseBody$inboundSchema: z.ZodType<
   api_version: z.string().optional(),
   data: z.array(z.lazy(() => GetUserMetaV2CountriesData$inboundSchema))
     .optional(),
+  status: models.Status$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "api_version": "apiVersion",
@@ -162,6 +165,7 @@ export const GetUserMetaV2CountriesResponseBody$inboundSchema: z.ZodType<
 export type GetUserMetaV2CountriesResponseBody$Outbound = {
   api_version?: string | undefined;
   data?: Array<GetUserMetaV2CountriesData$Outbound> | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -173,6 +177,7 @@ export const GetUserMetaV2CountriesResponseBody$outboundSchema: z.ZodType<
   apiVersion: z.string().optional(),
   data: z.array(z.lazy(() => GetUserMetaV2CountriesData$outboundSchema))
     .optional(),
+  status: models.Status$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     apiVersion: "api_version",

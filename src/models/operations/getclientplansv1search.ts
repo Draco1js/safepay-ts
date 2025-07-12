@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type GetClientPlansV1SearchRequest = {
   /**
@@ -41,11 +42,6 @@ export type GetClientPlansV1SearchRequest = {
    * Direction specifies the data sort order either ASC or DESC
    */
   direction?: string | undefined;
-};
-
-export type GetClientPlansV1SearchStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
 };
 
 export type GetClientPlansV1SearchPriceMoney = {
@@ -86,6 +82,7 @@ export type GetClientPlansV1SearchData = {
  */
 export type GetClientPlansV1SearchResponseBody = {
   data?: GetClientPlansV1SearchData | undefined;
+  status?: models.Status | undefined;
 };
 
 export type GetClientPlansV1SearchResponse = {
@@ -177,65 +174,6 @@ export function getClientPlansV1SearchRequestFromJSON(
     jsonString,
     (x) => GetClientPlansV1SearchRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetClientPlansV1SearchRequest' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetClientPlansV1SearchStatus$inboundSchema: z.ZodType<
-  GetClientPlansV1SearchStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type GetClientPlansV1SearchStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetClientPlansV1SearchStatus$outboundSchema: z.ZodType<
-  GetClientPlansV1SearchStatus$Outbound,
-  z.ZodTypeDef,
-  GetClientPlansV1SearchStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetClientPlansV1SearchStatus$ {
-  /** @deprecated use `GetClientPlansV1SearchStatus$inboundSchema` instead. */
-  export const inboundSchema = GetClientPlansV1SearchStatus$inboundSchema;
-  /** @deprecated use `GetClientPlansV1SearchStatus$outboundSchema` instead. */
-  export const outboundSchema = GetClientPlansV1SearchStatus$outboundSchema;
-  /** @deprecated use `GetClientPlansV1SearchStatus$Outbound` instead. */
-  export type Outbound = GetClientPlansV1SearchStatus$Outbound;
-}
-
-export function getClientPlansV1SearchStatusToJSON(
-  getClientPlansV1SearchStatus: GetClientPlansV1SearchStatus,
-): string {
-  return JSON.stringify(
-    GetClientPlansV1SearchStatus$outboundSchema.parse(
-      getClientPlansV1SearchStatus,
-    ),
-  );
-}
-
-export function getClientPlansV1SearchStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<GetClientPlansV1SearchStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetClientPlansV1SearchStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetClientPlansV1SearchStatus' from JSON`,
   );
 }
 
@@ -511,11 +449,13 @@ export const GetClientPlansV1SearchResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   data: z.lazy(() => GetClientPlansV1SearchData$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetClientPlansV1SearchResponseBody$Outbound = {
   data?: GetClientPlansV1SearchData$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -525,6 +465,7 @@ export const GetClientPlansV1SearchResponseBody$outboundSchema: z.ZodType<
   GetClientPlansV1SearchResponseBody
 > = z.object({
   data: z.lazy(() => GetClientPlansV1SearchData$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

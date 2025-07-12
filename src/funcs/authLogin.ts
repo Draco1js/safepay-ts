@@ -29,7 +29,7 @@ import { Result } from "../types/fp.js";
  */
 export function authLogin(
   client: SafepayCore,
-  request?: operations.PostAuthV2UserLoginRequest | undefined,
+  request: operations.PostAuthV2UserLoginRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -55,7 +55,7 @@ export function authLogin(
 
 async function $do(
   client: SafepayCore,
-  request?: operations.PostAuthV2UserLoginRequest | undefined,
+  request: operations.PostAuthV2UserLoginRequest,
   options?: RequestOptions,
 ): Promise<
   [
@@ -78,18 +78,14 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.PostAuthV2UserLoginRequest$outboundSchema.optional().parse(
-        value,
-      ),
+      operations.PostAuthV2UserLoginRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = payload === undefined
-    ? null
-    : encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/auth/v2/user/login")();
 
@@ -109,8 +105,18 @@ async function $do(
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 3600000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["5XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {

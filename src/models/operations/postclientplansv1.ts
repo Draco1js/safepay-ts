@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type PostClientPlansV1Request = {
   amount?: string | undefined;
@@ -16,11 +17,6 @@ export type PostClientPlansV1Request = {
   intervalCount?: number | undefined;
   product?: string | undefined;
   active?: boolean | undefined;
-};
-
-export type PostClientPlansV1Status = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
 };
 
 export type PostClientPlansV1Data = {
@@ -33,6 +29,7 @@ export type PostClientPlansV1Data = {
  */
 export type PostClientPlansV1ResponseBody = {
   data?: PostClientPlansV1Data | undefined;
+  status?: models.Status | undefined;
 };
 
 export type PostClientPlansV1Response = {
@@ -121,63 +118,6 @@ export function postClientPlansV1RequestFromJSON(
 }
 
 /** @internal */
-export const PostClientPlansV1Status$inboundSchema: z.ZodType<
-  PostClientPlansV1Status,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostClientPlansV1Status$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostClientPlansV1Status$outboundSchema: z.ZodType<
-  PostClientPlansV1Status$Outbound,
-  z.ZodTypeDef,
-  PostClientPlansV1Status
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostClientPlansV1Status$ {
-  /** @deprecated use `PostClientPlansV1Status$inboundSchema` instead. */
-  export const inboundSchema = PostClientPlansV1Status$inboundSchema;
-  /** @deprecated use `PostClientPlansV1Status$outboundSchema` instead. */
-  export const outboundSchema = PostClientPlansV1Status$outboundSchema;
-  /** @deprecated use `PostClientPlansV1Status$Outbound` instead. */
-  export type Outbound = PostClientPlansV1Status$Outbound;
-}
-
-export function postClientPlansV1StatusToJSON(
-  postClientPlansV1Status: PostClientPlansV1Status,
-): string {
-  return JSON.stringify(
-    PostClientPlansV1Status$outboundSchema.parse(postClientPlansV1Status),
-  );
-}
-
-export function postClientPlansV1StatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostClientPlansV1Status, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostClientPlansV1Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostClientPlansV1Status' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostClientPlansV1Data$inboundSchema: z.ZodType<
   PostClientPlansV1Data,
   z.ZodTypeDef,
@@ -251,11 +191,13 @@ export const PostClientPlansV1ResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   data: z.lazy(() => PostClientPlansV1Data$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PostClientPlansV1ResponseBody$Outbound = {
   data?: PostClientPlansV1Data$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -265,6 +207,7 @@ export const PostClientPlansV1ResponseBody$outboundSchema: z.ZodType<
   PostClientPlansV1ResponseBody
 > = z.object({
   data: z.lazy(() => PostClientPlansV1Data$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

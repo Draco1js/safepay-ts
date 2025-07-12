@@ -7,7 +7,7 @@ import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: operations.PostInvoiceQuickLinksV1Request$inboundSchema.optional(),
+  request: operations.PostInvoiceQuickLinksV1Request$inboundSchema,
 };
 
 export const tool$quickLinksCreate: ToolDefinition<typeof args> = {

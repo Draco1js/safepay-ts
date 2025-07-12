@@ -20,7 +20,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  const result = await safepay.auth.createMerchantJwt();
+  const result = await safepay.auth.createMerchantJwt({});
 
   console.log(result);
 }
@@ -41,7 +41,7 @@ import { authCreateMerchantJwt } from "@dhaba/safepay-ts/funcs/authCreateMerchan
 const safepay = new SafepayCore();
 
 async function run() {
-  const res = await authCreateMerchantJwt(safepay);
+  const res = await authCreateMerchantJwt(safepay, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -68,11 +68,11 @@ run();
 
 ### Errors
 
-| Error Type                                                 | Status Code                                                | Content Type                                               |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| errors.PostAuthV1CompanyAuthenticateUnauthorizedError      | 401                                                        | application/json                                           |
-| errors.PostAuthV1CompanyAuthenticateExpectationFailedError | 417                                                        | application/json                                           |
-| errors.SafepayDefaultError                                 | 4XX, 5XX                                                   | \*/\*                                                      |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| errors.PostAuthV1CompanyAuthenticateUnauthorizedError | 401                                                   | application/json                                      |
+| errors.ExpectationFailedError                         | 417                                                   | application/json                                      |
+| errors.SafepayDefaultError                            | 4XX, 5XX                                              | \*/\*                                                 |
 
 ## login
 
@@ -86,7 +86,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  const result = await safepay.auth.login();
+  const result = await safepay.auth.login({});
 
   console.log(result);
 }
@@ -107,7 +107,7 @@ import { authLogin } from "@dhaba/safepay-ts/funcs/authLogin.js";
 const safepay = new SafepayCore();
 
 async function run() {
-  const res = await authLogin(safepay);
+  const res = await authLogin(safepay, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);

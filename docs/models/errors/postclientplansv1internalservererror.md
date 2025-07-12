@@ -12,6 +12,7 @@ import { PostClientPlansV1InternalServerError } from "@dhaba/safepay-ts/models/e
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `error`            | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                   | Type                                    | Required                                | Description                             |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| `error`                                 | *string*                                | :heavy_minus_sign:                      | N/A                                     |
+| `status`                                | [models.Status](../../models/status.md) | :heavy_minus_sign:                      | N/A                                     |

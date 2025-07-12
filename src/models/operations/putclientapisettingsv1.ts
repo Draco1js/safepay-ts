@@ -7,11 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export type PutClientApiSettingsV1UnauthorizedStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
+import * as models from "../index.js";
 
 export type PutClientApiSettingsV1Data = {
   token?: string | undefined;
@@ -21,91 +17,18 @@ export type PutClientApiSettingsV1Data = {
   updatedAt?: Date | undefined;
 };
 
-export type PutClientApiSettingsV1Status = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
 /**
  * 200
  */
 export type PutClientApiSettingsV1ResponseBody = {
   data?: PutClientApiSettingsV1Data | undefined;
-  status?: PutClientApiSettingsV1Status | undefined;
+  status?: models.Status | undefined;
 };
 
 export type PutClientApiSettingsV1Response = {
   headers: { [k: string]: Array<string> };
   result: PutClientApiSettingsV1ResponseBody;
 };
-
-/** @internal */
-export const PutClientApiSettingsV1UnauthorizedStatus$inboundSchema: z.ZodType<
-  PutClientApiSettingsV1UnauthorizedStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PutClientApiSettingsV1UnauthorizedStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PutClientApiSettingsV1UnauthorizedStatus$outboundSchema: z.ZodType<
-  PutClientApiSettingsV1UnauthorizedStatus$Outbound,
-  z.ZodTypeDef,
-  PutClientApiSettingsV1UnauthorizedStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutClientApiSettingsV1UnauthorizedStatus$ {
-  /** @deprecated use `PutClientApiSettingsV1UnauthorizedStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PutClientApiSettingsV1UnauthorizedStatus$inboundSchema;
-  /** @deprecated use `PutClientApiSettingsV1UnauthorizedStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PutClientApiSettingsV1UnauthorizedStatus$outboundSchema;
-  /** @deprecated use `PutClientApiSettingsV1UnauthorizedStatus$Outbound` instead. */
-  export type Outbound = PutClientApiSettingsV1UnauthorizedStatus$Outbound;
-}
-
-export function putClientApiSettingsV1UnauthorizedStatusToJSON(
-  putClientApiSettingsV1UnauthorizedStatus:
-    PutClientApiSettingsV1UnauthorizedStatus,
-): string {
-  return JSON.stringify(
-    PutClientApiSettingsV1UnauthorizedStatus$outboundSchema.parse(
-      putClientApiSettingsV1UnauthorizedStatus,
-    ),
-  );
-}
-
-export function putClientApiSettingsV1UnauthorizedStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PutClientApiSettingsV1UnauthorizedStatus,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PutClientApiSettingsV1UnauthorizedStatus$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PutClientApiSettingsV1UnauthorizedStatus' from JSON`,
-  );
-}
 
 /** @internal */
 export const PutClientApiSettingsV1Data$inboundSchema: z.ZodType<
@@ -190,78 +113,19 @@ export function putClientApiSettingsV1DataFromJSON(
 }
 
 /** @internal */
-export const PutClientApiSettingsV1Status$inboundSchema: z.ZodType<
-  PutClientApiSettingsV1Status,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PutClientApiSettingsV1Status$Outbound = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PutClientApiSettingsV1Status$outboundSchema: z.ZodType<
-  PutClientApiSettingsV1Status$Outbound,
-  z.ZodTypeDef,
-  PutClientApiSettingsV1Status
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PutClientApiSettingsV1Status$ {
-  /** @deprecated use `PutClientApiSettingsV1Status$inboundSchema` instead. */
-  export const inboundSchema = PutClientApiSettingsV1Status$inboundSchema;
-  /** @deprecated use `PutClientApiSettingsV1Status$outboundSchema` instead. */
-  export const outboundSchema = PutClientApiSettingsV1Status$outboundSchema;
-  /** @deprecated use `PutClientApiSettingsV1Status$Outbound` instead. */
-  export type Outbound = PutClientApiSettingsV1Status$Outbound;
-}
-
-export function putClientApiSettingsV1StatusToJSON(
-  putClientApiSettingsV1Status: PutClientApiSettingsV1Status,
-): string {
-  return JSON.stringify(
-    PutClientApiSettingsV1Status$outboundSchema.parse(
-      putClientApiSettingsV1Status,
-    ),
-  );
-}
-
-export function putClientApiSettingsV1StatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PutClientApiSettingsV1Status, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PutClientApiSettingsV1Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PutClientApiSettingsV1Status' from JSON`,
-  );
-}
-
-/** @internal */
 export const PutClientApiSettingsV1ResponseBody$inboundSchema: z.ZodType<
   PutClientApiSettingsV1ResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.lazy(() => PutClientApiSettingsV1Data$inboundSchema).optional(),
-  status: z.lazy(() => PutClientApiSettingsV1Status$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PutClientApiSettingsV1ResponseBody$Outbound = {
   data?: PutClientApiSettingsV1Data$Outbound | undefined;
-  status?: PutClientApiSettingsV1Status$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -271,7 +135,7 @@ export const PutClientApiSettingsV1ResponseBody$outboundSchema: z.ZodType<
   PutClientApiSettingsV1ResponseBody
 > = z.object({
   data: z.lazy(() => PutClientApiSettingsV1Data$outboundSchema).optional(),
-  status: z.lazy(() => PutClientApiSettingsV1Status$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

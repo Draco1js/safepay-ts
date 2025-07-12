@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import * as models from "../index.js";
 import { SafepayError } from "./safepayerror.js";
 
 /**
@@ -11,6 +12,7 @@ import { SafepayError } from "./safepayerror.js";
 export type PostAuthV2UserLoginUnauthorizedErrorData = {
   code?: string | undefined;
   message?: string | undefined;
+  status?: models.Status | undefined;
 };
 
 /**
@@ -18,6 +20,7 @@ export type PostAuthV2UserLoginUnauthorizedErrorData = {
  */
 export class PostAuthV2UserLoginUnauthorizedError extends SafepayError {
   code?: string | undefined;
+  status?: models.Status | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: PostAuthV2UserLoginUnauthorizedErrorData;
@@ -30,6 +33,7 @@ export class PostAuthV2UserLoginUnauthorizedError extends SafepayError {
     super(message, httpMeta);
     this.data$ = err;
     if (err.code != null) this.code = err.code;
+    if (err.status != null) this.status = err.status;
 
     this.name = "PostAuthV2UserLoginUnauthorizedError";
   }
@@ -41,6 +45,7 @@ export class PostAuthV2UserLoginUnauthorizedError extends SafepayError {
 export type PostAuthV2UserLoginBadRequestErrorData = {
   code?: string | undefined;
   message?: string | undefined;
+  status?: models.Status | undefined;
 };
 
 /**
@@ -48,6 +53,7 @@ export type PostAuthV2UserLoginBadRequestErrorData = {
  */
 export class PostAuthV2UserLoginBadRequestError extends SafepayError {
   code?: string | undefined;
+  status?: models.Status | undefined;
 
   /** The original data that was passed to this error instance. */
   data$: PostAuthV2UserLoginBadRequestErrorData;
@@ -60,6 +66,7 @@ export class PostAuthV2UserLoginBadRequestError extends SafepayError {
     super(message, httpMeta);
     this.data$ = err;
     if (err.code != null) this.code = err.code;
+    if (err.status != null) this.status = err.status;
 
     this.name = "PostAuthV2UserLoginBadRequestError";
   }
@@ -73,6 +80,7 @@ export const PostAuthV2UserLoginUnauthorizedError$inboundSchema: z.ZodType<
 > = z.object({
   code: z.string().optional(),
   message: z.string().optional(),
+  status: models.Status$inboundSchema.optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -89,6 +97,7 @@ export const PostAuthV2UserLoginUnauthorizedError$inboundSchema: z.ZodType<
 export type PostAuthV2UserLoginUnauthorizedError$Outbound = {
   code?: string | undefined;
   message?: string | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -101,6 +110,7 @@ export const PostAuthV2UserLoginUnauthorizedError$outboundSchema: z.ZodType<
   .pipe(z.object({
     code: z.string().optional(),
     message: z.string().optional(),
+    status: models.Status$outboundSchema.optional(),
   }));
 
 /**
@@ -126,6 +136,7 @@ export const PostAuthV2UserLoginBadRequestError$inboundSchema: z.ZodType<
 > = z.object({
   code: z.string().optional(),
   message: z.string().optional(),
+  status: models.Status$inboundSchema.optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
@@ -142,6 +153,7 @@ export const PostAuthV2UserLoginBadRequestError$inboundSchema: z.ZodType<
 export type PostAuthV2UserLoginBadRequestError$Outbound = {
   code?: string | undefined;
   message?: string | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -154,6 +166,7 @@ export const PostAuthV2UserLoginBadRequestError$outboundSchema: z.ZodType<
   .pipe(z.object({
     code: z.string().optional(),
     message: z.string().optional(),
+    status: models.Status$outboundSchema.optional(),
   }));
 
 /**

@@ -7,8 +7,7 @@ import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: operations.PostAuthV1CompanyAuthenticateRequest$inboundSchema
-    .optional(),
+  request: operations.PostAuthV1CompanyAuthenticateRequest$inboundSchema,
 };
 
 export const tool$authCreateMerchantJwt: ToolDefinition<typeof args> = {

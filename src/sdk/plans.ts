@@ -3,9 +3,7 @@
  */
 
 import { plansCreate } from "../funcs/plansCreate.js";
-import { plansGet } from "../funcs/plansGet.js";
 import { plansSearch } from "../funcs/plansSearch.js";
-import { plansUpdate } from "../funcs/plansUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -15,42 +13,10 @@ export class Plans extends ClientSDK {
    * Create Plan
    */
   async create(
-    request?: operations.PostClientPlansV1Request | undefined,
+    request: operations.PostClientPlansV1Request,
     options?: RequestOptions,
   ): Promise<operations.PostClientPlansV1Response> {
     return unwrapAsync(plansCreate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Find Plan
-   */
-  async get(
-    options?: RequestOptions,
-  ): Promise<
-    operations.GetClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcdResponse
-  > {
-    return unwrapAsync(plansGet(
-      this,
-      options,
-    ));
-  }
-
-  /**
-   * Update Plan
-   */
-  async update(
-    request?:
-      | operations.PutClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcdRequest
-      | undefined,
-    options?: RequestOptions,
-  ): Promise<
-    operations.PutClientPlansV1PlanD4869a7800364d6697bd6afeb5282bcdResponse
-  > {
-    return unwrapAsync(plansUpdate(
       this,
       request,
       options,

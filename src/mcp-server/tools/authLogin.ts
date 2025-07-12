@@ -7,7 +7,7 @@ import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: operations.PostAuthV2UserLoginRequest$inboundSchema.optional(),
+  request: operations.PostAuthV2UserLoginRequest$inboundSchema,
 };
 
 export const tool$authLogin: ToolDefinition<typeof args> = {

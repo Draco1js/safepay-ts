@@ -29,13 +29,14 @@ import { Result } from "../types/fp.js";
  */
 export function quickLinksCreate(
   client: SafepayCore,
-  request?: operations.PostInvoiceQuickLinksV1Request | undefined,
+  request: operations.PostInvoiceQuickLinksV1Request,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     operations.PostInvoiceQuickLinksV1Response,
-    | errors.PostInvoiceQuickLinksV1UnauthorizedError
-    | errors.PostInvoiceQuickLinksV1ExpectationFailedError
+    | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
+    | errors.ErrorT
+    | errors.ExpectationFailedError
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -55,14 +56,15 @@ export function quickLinksCreate(
 
 async function $do(
   client: SafepayCore,
-  request?: operations.PostInvoiceQuickLinksV1Request | undefined,
+  request: operations.PostInvoiceQuickLinksV1Request,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       operations.PostInvoiceQuickLinksV1Response,
-      | errors.PostInvoiceQuickLinksV1UnauthorizedError
-      | errors.PostInvoiceQuickLinksV1ExpectationFailedError
+      | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
+      | errors.ErrorT
+      | errors.ExpectationFailedError
       | SafepayError
       | ResponseValidationError
       | ConnectionError
@@ -78,18 +80,14 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.PostInvoiceQuickLinksV1Request$outboundSchema.optional().parse(
-        value,
-      ),
+      operations.PostInvoiceQuickLinksV1Request$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = payload === undefined
-    ? null
-    : encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/invoice/quick-links/v1")();
 
@@ -109,8 +107,18 @@ async function $do(
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 3600000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["5XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -129,7 +137,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["401", "417", "4XX", "5XX"],
+    errorCodes: ["401", "404", "417", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -144,8 +152,9 @@ async function $do(
 
   const [result] = await M.match<
     operations.PostInvoiceQuickLinksV1Response,
-    | errors.PostInvoiceQuickLinksV1UnauthorizedError
-    | errors.PostInvoiceQuickLinksV1ExpectationFailedError
+    | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
+    | errors.ErrorT
+    | errors.ExpectationFailedError
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -161,14 +170,12 @@ async function $do(
     }),
     M.jsonErr(
       401,
-      errors.PostInvoiceQuickLinksV1UnauthorizedError$inboundSchema,
+      errors.PostAuthV1CompanyAuthenticateUnauthorizedError$inboundSchema,
       { hdrs: true },
     ),
-    M.jsonErr(
-      417,
-      errors.PostInvoiceQuickLinksV1ExpectationFailedError$inboundSchema,
-      { hdrs: true },
-    ),
+    M.jsonErr(404, errors.ErrorT$inboundSchema),
+    M.jsonErr(417, errors.ExpectationFailedError$inboundSchema, { hdrs: true }),
+    M.jsonErr(500, errors.ErrorT$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

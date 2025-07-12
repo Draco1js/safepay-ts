@@ -21,7 +21,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  const result = await safepay.users.createGuestJwt();
+  const result = await safepay.users.createGuestJwt({});
 
   console.log(result);
 }
@@ -42,7 +42,7 @@ import { usersCreateGuestJwt } from "@dhaba/safepay-ts/funcs/usersCreateGuestJwt
 const safepay = new SafepayCore();
 
 async function run() {
-  const res = await usersCreateGuestJwt(safepay);
+  const res = await usersCreateGuestJwt(safepay, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -69,10 +69,10 @@ run();
 
 ### Errors
 
-| Error Type                                   | Status Code                                  | Content Type                                 |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| errors.PostUserV1GuestExpectationFailedError | 417                                          | application/json                             |
-| errors.SafepayDefaultError                   | 4XX, 5XX                                     | \*/\*                                        |
+| Error Type                    | Status Code                   | Content Type                  |
+| ----------------------------- | ----------------------------- | ----------------------------- |
+| errors.ExpectationFailedError | 417                           | application/json              |
+| errors.SafepayDefaultError    | 4XX, 5XX                      | \*/\*                         |
 
 ## findSafepayShopper
 
@@ -133,10 +133,10 @@ run();
 
 ### Errors
 
-| Error Type                        | Status Code                       | Content Type                      |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| errors.GetUserV2UnauthorizedError | 401                               | application/json                  |
-| errors.SafepayDefaultError        | 4XX, 5XX                          | \*/\*                             |
+| Error Type                                  | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| errors.PostAuthV2UserLoginUnauthorizedError | 401                                         | application/json                            |
+| errors.SafepayDefaultError                  | 4XX, 5XX                                    | \*/\*                                       |
 
 ## exists
 

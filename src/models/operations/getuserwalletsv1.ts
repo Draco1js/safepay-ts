@@ -7,11 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export type GetUserWalletsV1Status = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
+import * as models from "../index.js";
 
 export type GetUserWalletsV1ContactCreatedAt = {
   seconds?: number | undefined;
@@ -33,30 +29,11 @@ export type GetUserWalletsV1Contact = {
   updatedAt?: GetUserWalletsV1ContactUpdatedAt | undefined;
 };
 
-export type AddressCreatedAt = {
+export type CybersourceCreatedAt = {
   seconds?: number | undefined;
 };
 
-export type AddressUpdatedAt = {
-  seconds?: number | undefined;
-};
-
-export type Address = {
-  token?: string | undefined;
-  owner?: string | undefined;
-  street1?: string | undefined;
-  city?: string | undefined;
-  country?: string | undefined;
-  isDefault?: boolean | undefined;
-  createdAt?: AddressCreatedAt | undefined;
-  updatedAt?: AddressUpdatedAt | undefined;
-};
-
-export type GetUserWalletsV1CybersourceCreatedAt = {
-  seconds?: number | undefined;
-};
-
-export type GetUserWalletsV1CybersourceUpdatedAt = {
+export type CybersourceUpdatedAt = {
   seconds?: number | undefined;
 };
 
@@ -68,8 +45,8 @@ export type GetUserWalletsV1Cybersource = {
   lastFour?: string | undefined;
   expiryMonth?: string | undefined;
   expiryYear?: string | undefined;
-  createdAt?: GetUserWalletsV1CybersourceCreatedAt | undefined;
-  updatedAt?: GetUserWalletsV1CybersourceUpdatedAt | undefined;
+  createdAt?: CybersourceCreatedAt | undefined;
+  updatedAt?: CybersourceUpdatedAt | undefined;
 };
 
 export type GetUserWalletsV1Data = {
@@ -83,7 +60,7 @@ export type GetUserWalletsV1Data = {
   expiryMonth?: string | undefined;
   expiryYear?: string | undefined;
   contact?: GetUserWalletsV1Contact | undefined;
-  address?: Address | undefined;
+  address?: models.Address | undefined;
   cybersource?: GetUserWalletsV1Cybersource | undefined;
   createdAt?: Date | undefined;
   updatedAt?: Date | undefined;
@@ -94,69 +71,13 @@ export type GetUserWalletsV1Data = {
  */
 export type GetUserWalletsV1ResponseBody = {
   data?: Array<GetUserWalletsV1Data> | undefined;
+  status?: models.Status | undefined;
 };
 
 export type GetUserWalletsV1Response = {
   headers: { [k: string]: Array<string> };
   result: GetUserWalletsV1ResponseBody;
 };
-
-/** @internal */
-export const GetUserWalletsV1Status$inboundSchema: z.ZodType<
-  GetUserWalletsV1Status,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type GetUserWalletsV1Status$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetUserWalletsV1Status$outboundSchema: z.ZodType<
-  GetUserWalletsV1Status$Outbound,
-  z.ZodTypeDef,
-  GetUserWalletsV1Status
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUserWalletsV1Status$ {
-  /** @deprecated use `GetUserWalletsV1Status$inboundSchema` instead. */
-  export const inboundSchema = GetUserWalletsV1Status$inboundSchema;
-  /** @deprecated use `GetUserWalletsV1Status$outboundSchema` instead. */
-  export const outboundSchema = GetUserWalletsV1Status$outboundSchema;
-  /** @deprecated use `GetUserWalletsV1Status$Outbound` instead. */
-  export type Outbound = GetUserWalletsV1Status$Outbound;
-}
-
-export function getUserWalletsV1StatusToJSON(
-  getUserWalletsV1Status: GetUserWalletsV1Status,
-): string {
-  return JSON.stringify(
-    GetUserWalletsV1Status$outboundSchema.parse(getUserWalletsV1Status),
-  );
-}
-
-export function getUserWalletsV1StatusFromJSON(
-  jsonString: string,
-): SafeParseResult<GetUserWalletsV1Status, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetUserWalletsV1Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetUserWalletsV1Status' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetUserWalletsV1ContactCreatedAt$inboundSchema: z.ZodType<
@@ -369,8 +290,8 @@ export function getUserWalletsV1ContactFromJSON(
 }
 
 /** @internal */
-export const AddressCreatedAt$inboundSchema: z.ZodType<
-  AddressCreatedAt,
+export const CybersourceCreatedAt$inboundSchema: z.ZodType<
+  CybersourceCreatedAt,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -378,15 +299,15 @@ export const AddressCreatedAt$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type AddressCreatedAt$Outbound = {
+export type CybersourceCreatedAt$Outbound = {
   seconds?: number | undefined;
 };
 
 /** @internal */
-export const AddressCreatedAt$outboundSchema: z.ZodType<
-  AddressCreatedAt$Outbound,
+export const CybersourceCreatedAt$outboundSchema: z.ZodType<
+  CybersourceCreatedAt$Outbound,
   z.ZodTypeDef,
-  AddressCreatedAt
+  CybersourceCreatedAt
 > = z.object({
   seconds: z.number().int().optional(),
 });
@@ -395,36 +316,36 @@ export const AddressCreatedAt$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AddressCreatedAt$ {
-  /** @deprecated use `AddressCreatedAt$inboundSchema` instead. */
-  export const inboundSchema = AddressCreatedAt$inboundSchema;
-  /** @deprecated use `AddressCreatedAt$outboundSchema` instead. */
-  export const outboundSchema = AddressCreatedAt$outboundSchema;
-  /** @deprecated use `AddressCreatedAt$Outbound` instead. */
-  export type Outbound = AddressCreatedAt$Outbound;
+export namespace CybersourceCreatedAt$ {
+  /** @deprecated use `CybersourceCreatedAt$inboundSchema` instead. */
+  export const inboundSchema = CybersourceCreatedAt$inboundSchema;
+  /** @deprecated use `CybersourceCreatedAt$outboundSchema` instead. */
+  export const outboundSchema = CybersourceCreatedAt$outboundSchema;
+  /** @deprecated use `CybersourceCreatedAt$Outbound` instead. */
+  export type Outbound = CybersourceCreatedAt$Outbound;
 }
 
-export function addressCreatedAtToJSON(
-  addressCreatedAt: AddressCreatedAt,
+export function cybersourceCreatedAtToJSON(
+  cybersourceCreatedAt: CybersourceCreatedAt,
 ): string {
   return JSON.stringify(
-    AddressCreatedAt$outboundSchema.parse(addressCreatedAt),
+    CybersourceCreatedAt$outboundSchema.parse(cybersourceCreatedAt),
   );
 }
 
-export function addressCreatedAtFromJSON(
+export function cybersourceCreatedAtFromJSON(
   jsonString: string,
-): SafeParseResult<AddressCreatedAt, SDKValidationError> {
+): SafeParseResult<CybersourceCreatedAt, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AddressCreatedAt$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddressCreatedAt' from JSON`,
+    (x) => CybersourceCreatedAt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CybersourceCreatedAt' from JSON`,
   );
 }
 
 /** @internal */
-export const AddressUpdatedAt$inboundSchema: z.ZodType<
-  AddressUpdatedAt,
+export const CybersourceUpdatedAt$inboundSchema: z.ZodType<
+  CybersourceUpdatedAt,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -432,15 +353,15 @@ export const AddressUpdatedAt$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type AddressUpdatedAt$Outbound = {
+export type CybersourceUpdatedAt$Outbound = {
   seconds?: number | undefined;
 };
 
 /** @internal */
-export const AddressUpdatedAt$outboundSchema: z.ZodType<
-  AddressUpdatedAt$Outbound,
+export const CybersourceUpdatedAt$outboundSchema: z.ZodType<
+  CybersourceUpdatedAt$Outbound,
   z.ZodTypeDef,
-  AddressUpdatedAt
+  CybersourceUpdatedAt
 > = z.object({
   seconds: z.number().int().optional(),
 });
@@ -449,228 +370,30 @@ export const AddressUpdatedAt$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AddressUpdatedAt$ {
-  /** @deprecated use `AddressUpdatedAt$inboundSchema` instead. */
-  export const inboundSchema = AddressUpdatedAt$inboundSchema;
-  /** @deprecated use `AddressUpdatedAt$outboundSchema` instead. */
-  export const outboundSchema = AddressUpdatedAt$outboundSchema;
-  /** @deprecated use `AddressUpdatedAt$Outbound` instead. */
-  export type Outbound = AddressUpdatedAt$Outbound;
+export namespace CybersourceUpdatedAt$ {
+  /** @deprecated use `CybersourceUpdatedAt$inboundSchema` instead. */
+  export const inboundSchema = CybersourceUpdatedAt$inboundSchema;
+  /** @deprecated use `CybersourceUpdatedAt$outboundSchema` instead. */
+  export const outboundSchema = CybersourceUpdatedAt$outboundSchema;
+  /** @deprecated use `CybersourceUpdatedAt$Outbound` instead. */
+  export type Outbound = CybersourceUpdatedAt$Outbound;
 }
 
-export function addressUpdatedAtToJSON(
-  addressUpdatedAt: AddressUpdatedAt,
+export function cybersourceUpdatedAtToJSON(
+  cybersourceUpdatedAt: CybersourceUpdatedAt,
 ): string {
   return JSON.stringify(
-    AddressUpdatedAt$outboundSchema.parse(addressUpdatedAt),
+    CybersourceUpdatedAt$outboundSchema.parse(cybersourceUpdatedAt),
   );
 }
 
-export function addressUpdatedAtFromJSON(
+export function cybersourceUpdatedAtFromJSON(
   jsonString: string,
-): SafeParseResult<AddressUpdatedAt, SDKValidationError> {
+): SafeParseResult<CybersourceUpdatedAt, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AddressUpdatedAt$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AddressUpdatedAt' from JSON`,
-  );
-}
-
-/** @internal */
-export const Address$inboundSchema: z.ZodType<Address, z.ZodTypeDef, unknown> =
-  z.object({
-    token: z.string().optional(),
-    owner: z.string().optional(),
-    street1: z.string().optional(),
-    city: z.string().optional(),
-    country: z.string().optional(),
-    is_default: z.boolean().optional(),
-    created_at: z.lazy(() => AddressCreatedAt$inboundSchema).optional(),
-    updated_at: z.lazy(() => AddressUpdatedAt$inboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "is_default": "isDefault",
-      "created_at": "createdAt",
-      "updated_at": "updatedAt",
-    });
-  });
-
-/** @internal */
-export type Address$Outbound = {
-  token?: string | undefined;
-  owner?: string | undefined;
-  street1?: string | undefined;
-  city?: string | undefined;
-  country?: string | undefined;
-  is_default?: boolean | undefined;
-  created_at?: AddressCreatedAt$Outbound | undefined;
-  updated_at?: AddressUpdatedAt$Outbound | undefined;
-};
-
-/** @internal */
-export const Address$outboundSchema: z.ZodType<
-  Address$Outbound,
-  z.ZodTypeDef,
-  Address
-> = z.object({
-  token: z.string().optional(),
-  owner: z.string().optional(),
-  street1: z.string().optional(),
-  city: z.string().optional(),
-  country: z.string().optional(),
-  isDefault: z.boolean().optional(),
-  createdAt: z.lazy(() => AddressCreatedAt$outboundSchema).optional(),
-  updatedAt: z.lazy(() => AddressUpdatedAt$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    isDefault: "is_default",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Address$ {
-  /** @deprecated use `Address$inboundSchema` instead. */
-  export const inboundSchema = Address$inboundSchema;
-  /** @deprecated use `Address$outboundSchema` instead. */
-  export const outboundSchema = Address$outboundSchema;
-  /** @deprecated use `Address$Outbound` instead. */
-  export type Outbound = Address$Outbound;
-}
-
-export function addressToJSON(address: Address): string {
-  return JSON.stringify(Address$outboundSchema.parse(address));
-}
-
-export function addressFromJSON(
-  jsonString: string,
-): SafeParseResult<Address, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Address$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Address' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetUserWalletsV1CybersourceCreatedAt$inboundSchema: z.ZodType<
-  GetUserWalletsV1CybersourceCreatedAt,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  seconds: z.number().int().optional(),
-});
-
-/** @internal */
-export type GetUserWalletsV1CybersourceCreatedAt$Outbound = {
-  seconds?: number | undefined;
-};
-
-/** @internal */
-export const GetUserWalletsV1CybersourceCreatedAt$outboundSchema: z.ZodType<
-  GetUserWalletsV1CybersourceCreatedAt$Outbound,
-  z.ZodTypeDef,
-  GetUserWalletsV1CybersourceCreatedAt
-> = z.object({
-  seconds: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUserWalletsV1CybersourceCreatedAt$ {
-  /** @deprecated use `GetUserWalletsV1CybersourceCreatedAt$inboundSchema` instead. */
-  export const inboundSchema =
-    GetUserWalletsV1CybersourceCreatedAt$inboundSchema;
-  /** @deprecated use `GetUserWalletsV1CybersourceCreatedAt$outboundSchema` instead. */
-  export const outboundSchema =
-    GetUserWalletsV1CybersourceCreatedAt$outboundSchema;
-  /** @deprecated use `GetUserWalletsV1CybersourceCreatedAt$Outbound` instead. */
-  export type Outbound = GetUserWalletsV1CybersourceCreatedAt$Outbound;
-}
-
-export function getUserWalletsV1CybersourceCreatedAtToJSON(
-  getUserWalletsV1CybersourceCreatedAt: GetUserWalletsV1CybersourceCreatedAt,
-): string {
-  return JSON.stringify(
-    GetUserWalletsV1CybersourceCreatedAt$outboundSchema.parse(
-      getUserWalletsV1CybersourceCreatedAt,
-    ),
-  );
-}
-
-export function getUserWalletsV1CybersourceCreatedAtFromJSON(
-  jsonString: string,
-): SafeParseResult<GetUserWalletsV1CybersourceCreatedAt, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetUserWalletsV1CybersourceCreatedAt$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetUserWalletsV1CybersourceCreatedAt' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetUserWalletsV1CybersourceUpdatedAt$inboundSchema: z.ZodType<
-  GetUserWalletsV1CybersourceUpdatedAt,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  seconds: z.number().int().optional(),
-});
-
-/** @internal */
-export type GetUserWalletsV1CybersourceUpdatedAt$Outbound = {
-  seconds?: number | undefined;
-};
-
-/** @internal */
-export const GetUserWalletsV1CybersourceUpdatedAt$outboundSchema: z.ZodType<
-  GetUserWalletsV1CybersourceUpdatedAt$Outbound,
-  z.ZodTypeDef,
-  GetUserWalletsV1CybersourceUpdatedAt
-> = z.object({
-  seconds: z.number().int().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUserWalletsV1CybersourceUpdatedAt$ {
-  /** @deprecated use `GetUserWalletsV1CybersourceUpdatedAt$inboundSchema` instead. */
-  export const inboundSchema =
-    GetUserWalletsV1CybersourceUpdatedAt$inboundSchema;
-  /** @deprecated use `GetUserWalletsV1CybersourceUpdatedAt$outboundSchema` instead. */
-  export const outboundSchema =
-    GetUserWalletsV1CybersourceUpdatedAt$outboundSchema;
-  /** @deprecated use `GetUserWalletsV1CybersourceUpdatedAt$Outbound` instead. */
-  export type Outbound = GetUserWalletsV1CybersourceUpdatedAt$Outbound;
-}
-
-export function getUserWalletsV1CybersourceUpdatedAtToJSON(
-  getUserWalletsV1CybersourceUpdatedAt: GetUserWalletsV1CybersourceUpdatedAt,
-): string {
-  return JSON.stringify(
-    GetUserWalletsV1CybersourceUpdatedAt$outboundSchema.parse(
-      getUserWalletsV1CybersourceUpdatedAt,
-    ),
-  );
-}
-
-export function getUserWalletsV1CybersourceUpdatedAtFromJSON(
-  jsonString: string,
-): SafeParseResult<GetUserWalletsV1CybersourceUpdatedAt, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetUserWalletsV1CybersourceUpdatedAt$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetUserWalletsV1CybersourceUpdatedAt' from JSON`,
+    (x) => CybersourceUpdatedAt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CybersourceUpdatedAt' from JSON`,
   );
 }
 
@@ -687,10 +410,8 @@ export const GetUserWalletsV1Cybersource$inboundSchema: z.ZodType<
   last_four: z.string().optional(),
   expiry_month: z.string().optional(),
   expiry_year: z.string().optional(),
-  created_at: z.lazy(() => GetUserWalletsV1CybersourceCreatedAt$inboundSchema)
-    .optional(),
-  updated_at: z.lazy(() => GetUserWalletsV1CybersourceUpdatedAt$inboundSchema)
-    .optional(),
+  created_at: z.lazy(() => CybersourceCreatedAt$inboundSchema).optional(),
+  updated_at: z.lazy(() => CybersourceUpdatedAt$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "payment_method": "paymentMethod",
@@ -711,8 +432,8 @@ export type GetUserWalletsV1Cybersource$Outbound = {
   last_four?: string | undefined;
   expiry_month?: string | undefined;
   expiry_year?: string | undefined;
-  created_at?: GetUserWalletsV1CybersourceCreatedAt$Outbound | undefined;
-  updated_at?: GetUserWalletsV1CybersourceUpdatedAt$Outbound | undefined;
+  created_at?: CybersourceCreatedAt$Outbound | undefined;
+  updated_at?: CybersourceUpdatedAt$Outbound | undefined;
 };
 
 /** @internal */
@@ -728,10 +449,8 @@ export const GetUserWalletsV1Cybersource$outboundSchema: z.ZodType<
   lastFour: z.string().optional(),
   expiryMonth: z.string().optional(),
   expiryYear: z.string().optional(),
-  createdAt: z.lazy(() => GetUserWalletsV1CybersourceCreatedAt$outboundSchema)
-    .optional(),
-  updatedAt: z.lazy(() => GetUserWalletsV1CybersourceUpdatedAt$outboundSchema)
-    .optional(),
+  createdAt: z.lazy(() => CybersourceCreatedAt$outboundSchema).optional(),
+  updatedAt: z.lazy(() => CybersourceUpdatedAt$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     paymentMethod: "payment_method",
@@ -792,7 +511,7 @@ export const GetUserWalletsV1Data$inboundSchema: z.ZodType<
   expiry_month: z.string().optional(),
   expiry_year: z.string().optional(),
   contact: z.lazy(() => GetUserWalletsV1Contact$inboundSchema).optional(),
-  address: z.lazy(() => Address$inboundSchema).optional(),
+  address: models.Address$inboundSchema.optional(),
   cybersource: z.lazy(() => GetUserWalletsV1Cybersource$inboundSchema)
     .optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
@@ -824,7 +543,7 @@ export type GetUserWalletsV1Data$Outbound = {
   expiry_month?: string | undefined;
   expiry_year?: string | undefined;
   contact?: GetUserWalletsV1Contact$Outbound | undefined;
-  address?: Address$Outbound | undefined;
+  address?: models.Address$Outbound | undefined;
   cybersource?: GetUserWalletsV1Cybersource$Outbound | undefined;
   created_at?: string | undefined;
   updated_at?: string | undefined;
@@ -846,7 +565,7 @@ export const GetUserWalletsV1Data$outboundSchema: z.ZodType<
   expiryMonth: z.string().optional(),
   expiryYear: z.string().optional(),
   contact: z.lazy(() => GetUserWalletsV1Contact$outboundSchema).optional(),
-  address: z.lazy(() => Address$outboundSchema).optional(),
+  address: models.Address$outboundSchema.optional(),
   cybersource: z.lazy(() => GetUserWalletsV1Cybersource$outboundSchema)
     .optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
@@ -902,11 +621,13 @@ export const GetUserWalletsV1ResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   data: z.array(z.lazy(() => GetUserWalletsV1Data$inboundSchema)).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetUserWalletsV1ResponseBody$Outbound = {
   data?: Array<GetUserWalletsV1Data$Outbound> | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -916,6 +637,7 @@ export const GetUserWalletsV1ResponseBody$outboundSchema: z.ZodType<
   GetUserWalletsV1ResponseBody
 > = z.object({
   data: z.array(z.lazy(() => GetUserWalletsV1Data$outboundSchema)).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

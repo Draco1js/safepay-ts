@@ -48,24 +48,6 @@ export const startCommand = buildCommand({
         optional: true,
         parse: numberParser,
       },
-      "base-url": {
-        kind: "parsed",
-        brief: "Sets the baseUrl variable for url substitution",
-        optional: true,
-        parse: (value) => value,
-      },
-      "auth-port": {
-        kind: "parsed",
-        brief: "Sets the auth-port variable for url substitution",
-        optional: true,
-        parse: (value) => value,
-      },
-      "sandbox-base-url": {
-        kind: "parsed",
-        brief: "Sets the sandbox-base-url variable for url substitution",
-        optional: true,
-        parse: (value) => value,
-      },
       "log-level": {
         kind: "enum",
         brief: "The log level to use for the server",

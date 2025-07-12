@@ -12,7 +12,7 @@ export class Invoices extends ClientSDK {
    * Create
    */
   async createQuickLink(
-    request?: operations.PostInvoiceQuickLinksV2Request | undefined,
+    request: operations.PostInvoiceQuickLinksV2Request,
     options?: RequestOptions,
   ): Promise<void> {
     return unwrapAsync(invoicesCreateQuickLink(

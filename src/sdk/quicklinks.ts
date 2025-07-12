@@ -3,10 +3,7 @@
  */
 
 import { quickLinksCreate } from "../funcs/quickLinksCreate.js";
-import { quickLinksDelete } from "../funcs/quickLinksDelete.js";
-import { quickLinksGet } from "../funcs/quickLinksGet.js";
 import { quickLinksSearch } from "../funcs/quickLinksSearch.js";
-import { quickLinksUpdate } from "../funcs/quickLinksUpdate.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -16,7 +13,7 @@ export class QuickLinks extends ClientSDK {
    * Create Quick Link
    */
   async create(
-    request?: operations.PostInvoiceQuickLinksV1Request | undefined,
+    request: operations.PostInvoiceQuickLinksV1Request,
     options?: RequestOptions,
   ): Promise<operations.PostInvoiceQuickLinksV1Response> {
     return unwrapAsync(quickLinksCreate(
@@ -36,52 +33,6 @@ export class QuickLinks extends ClientSDK {
     return unwrapAsync(quickLinksSearch(
       this,
       request,
-      options,
-    ));
-  }
-
-  /**
-   * Find Quick Link
-   */
-  async get(
-    options?: RequestOptions,
-  ): Promise<
-    operations.GetInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cResponse
-  > {
-    return unwrapAsync(quickLinksGet(
-      this,
-      options,
-    ));
-  }
-
-  /**
-   * Update Quick Link
-   */
-  async update(
-    request?:
-      | operations.PutInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cRequest
-      | undefined,
-    options?: RequestOptions,
-  ): Promise<
-    operations.PutInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cResponse
-  > {
-    return unwrapAsync(quickLinksUpdate(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete Quick Link
-   */
-  async delete(
-    options?: RequestOptions,
-  ): Promise<
-    operations.DeleteInvoiceQuickLinksV1Link297bfa4bF61c4c7280a4368d731e890cResponse
-  > {
-    return unwrapAsync(quickLinksDelete(
-      this,
       options,
     ));
   }

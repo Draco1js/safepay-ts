@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type GetClientSubscriptionsV1SearchRequest = {
   /**
@@ -43,11 +44,6 @@ export type GetClientSubscriptionsV1SearchRequest = {
   direction?: string | undefined;
 };
 
-export type GetClientSubscriptionsV1SearchStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
 export type GetClientSubscriptionsV1SearchPlanPriceMoney = {
   currency?: string | undefined;
   amount?: string | undefined;
@@ -79,7 +75,7 @@ export type GetClientSubscriptionsV1SearchPriceMoney = {
   amount?: string | undefined;
 };
 
-export type GetClientSubscriptionsV1SearchSubscription = {
+export type Subscription = {
   token?: string | undefined;
   planId?: string | undefined;
   userId?: string | undefined;
@@ -106,7 +102,7 @@ export type GetClientSubscriptionsV1SearchSubscription = {
 };
 
 export type GetClientSubscriptionsV1SearchData = {
-  subscriptions?: Array<GetClientSubscriptionsV1SearchSubscription> | undefined;
+  subscriptions?: Array<Subscription> | undefined;
   count?: string | undefined;
   direction?: string | undefined;
   sortBy?: string | undefined;
@@ -117,6 +113,7 @@ export type GetClientSubscriptionsV1SearchData = {
  */
 export type GetClientSubscriptionsV1SearchResponseBody = {
   data?: GetClientSubscriptionsV1SearchData | undefined;
+  status?: models.Status | undefined;
 };
 
 export type GetClientSubscriptionsV1SearchResponse = {
@@ -213,68 +210,6 @@ export function getClientSubscriptionsV1SearchRequestFromJSON(
     (x) =>
       GetClientSubscriptionsV1SearchRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetClientSubscriptionsV1SearchRequest' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetClientSubscriptionsV1SearchStatus$inboundSchema: z.ZodType<
-  GetClientSubscriptionsV1SearchStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type GetClientSubscriptionsV1SearchStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetClientSubscriptionsV1SearchStatus$outboundSchema: z.ZodType<
-  GetClientSubscriptionsV1SearchStatus$Outbound,
-  z.ZodTypeDef,
-  GetClientSubscriptionsV1SearchStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetClientSubscriptionsV1SearchStatus$ {
-  /** @deprecated use `GetClientSubscriptionsV1SearchStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetClientSubscriptionsV1SearchStatus$inboundSchema;
-  /** @deprecated use `GetClientSubscriptionsV1SearchStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetClientSubscriptionsV1SearchStatus$outboundSchema;
-  /** @deprecated use `GetClientSubscriptionsV1SearchStatus$Outbound` instead. */
-  export type Outbound = GetClientSubscriptionsV1SearchStatus$Outbound;
-}
-
-export function getClientSubscriptionsV1SearchStatusToJSON(
-  getClientSubscriptionsV1SearchStatus: GetClientSubscriptionsV1SearchStatus,
-): string {
-  return JSON.stringify(
-    GetClientSubscriptionsV1SearchStatus$outboundSchema.parse(
-      getClientSubscriptionsV1SearchStatus,
-    ),
-  );
-}
-
-export function getClientSubscriptionsV1SearchStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<GetClientSubscriptionsV1SearchStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetClientSubscriptionsV1SearchStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetClientSubscriptionsV1SearchStatus' from JSON`,
   );
 }
 
@@ -558,78 +493,77 @@ export function getClientSubscriptionsV1SearchPriceMoneyFromJSON(
 }
 
 /** @internal */
-export const GetClientSubscriptionsV1SearchSubscription$inboundSchema:
-  z.ZodType<GetClientSubscriptionsV1SearchSubscription, z.ZodTypeDef, unknown> =
-    z.object({
-      token: z.string().optional(),
-      plan_id: z.string().optional(),
-      user_id: z.string().optional(),
-      instrument_id: z.string().optional(),
-      status: z.string().optional(),
-      billing_cycle_anchor: z.string().datetime({ offset: true }).transform(v =>
-        new Date(v)
-      ).optional(),
-      price_amount: z.string().optional(),
-      price_currency: z.string().optional(),
-      balance: z.string().optional(),
-      start_date: z.string().datetime({ offset: true }).transform(v =>
-        new Date(v)
-      ).optional(),
-      trial_start_date: z.string().datetime({ offset: true }).transform(v =>
-        new Date(v)
-      ).optional(),
-      trial_end_date: z.string().datetime({ offset: true }).transform(v =>
-        new Date(v)
-      ).optional(),
-      cancel_at_period_end: z.boolean().optional(),
-      canceled_at: z.string().datetime({ offset: true }).transform(v =>
-        new Date(v)
-      ).optional(),
-      created_at: z.string().datetime({ offset: true }).transform(v =>
-        new Date(v)
-      ).optional(),
-      updated_at: z.string().datetime({ offset: true }).transform(v =>
-        new Date(v)
-      ).optional(),
-      plan: z.lazy(() => GetClientSubscriptionsV1SearchPlan$inboundSchema)
-        .optional(),
-      current_period_start_date: z.string().datetime({ offset: true })
-        .transform(v => new Date(v)).optional(),
-      current_period_end_date: z.string().datetime({ offset: true }).transform(
-        v => new Date(v)
-      ).optional(),
-      never_expires: z.boolean().optional(),
-      number_of_billing_cycles: z.number().int().optional(),
-      merchant_api_key: z.string().optional(),
-      price_money: z.lazy(() =>
-        GetClientSubscriptionsV1SearchPriceMoney$inboundSchema
-      ).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        "plan_id": "planId",
-        "user_id": "userId",
-        "instrument_id": "instrumentId",
-        "billing_cycle_anchor": "billingCycleAnchor",
-        "price_amount": "priceAmount",
-        "price_currency": "priceCurrency",
-        "start_date": "startDate",
-        "trial_start_date": "trialStartDate",
-        "trial_end_date": "trialEndDate",
-        "cancel_at_period_end": "cancelAtPeriodEnd",
-        "canceled_at": "canceledAt",
-        "created_at": "createdAt",
-        "updated_at": "updatedAt",
-        "current_period_start_date": "currentPeriodStartDate",
-        "current_period_end_date": "currentPeriodEndDate",
-        "never_expires": "neverExpires",
-        "number_of_billing_cycles": "numberOfBillingCycles",
-        "merchant_api_key": "merchantApiKey",
-        "price_money": "priceMoney",
-      });
-    });
+export const Subscription$inboundSchema: z.ZodType<
+  Subscription,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  token: z.string().optional(),
+  plan_id: z.string().optional(),
+  user_id: z.string().optional(),
+  instrument_id: z.string().optional(),
+  status: z.string().optional(),
+  billing_cycle_anchor: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ).optional(),
+  price_amount: z.string().optional(),
+  price_currency: z.string().optional(),
+  balance: z.string().optional(),
+  start_date: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  trial_start_date: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ).optional(),
+  trial_end_date: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ).optional(),
+  cancel_at_period_end: z.boolean().optional(),
+  canceled_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  plan: z.lazy(() => GetClientSubscriptionsV1SearchPlan$inboundSchema)
+    .optional(),
+  current_period_start_date: z.string().datetime({ offset: true }).transform(
+    v => new Date(v)
+  ).optional(),
+  current_period_end_date: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ).optional(),
+  never_expires: z.boolean().optional(),
+  number_of_billing_cycles: z.number().int().optional(),
+  merchant_api_key: z.string().optional(),
+  price_money: z.lazy(() =>
+    GetClientSubscriptionsV1SearchPriceMoney$inboundSchema
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "plan_id": "planId",
+    "user_id": "userId",
+    "instrument_id": "instrumentId",
+    "billing_cycle_anchor": "billingCycleAnchor",
+    "price_amount": "priceAmount",
+    "price_currency": "priceCurrency",
+    "start_date": "startDate",
+    "trial_start_date": "trialStartDate",
+    "trial_end_date": "trialEndDate",
+    "cancel_at_period_end": "cancelAtPeriodEnd",
+    "canceled_at": "canceledAt",
+    "created_at": "createdAt",
+    "updated_at": "updatedAt",
+    "current_period_start_date": "currentPeriodStartDate",
+    "current_period_end_date": "currentPeriodEndDate",
+    "never_expires": "neverExpires",
+    "number_of_billing_cycles": "numberOfBillingCycles",
+    "merchant_api_key": "merchantApiKey",
+    "price_money": "priceMoney",
+  });
+});
 
 /** @internal */
-export type GetClientSubscriptionsV1SearchSubscription$Outbound = {
+export type Subscription$Outbound = {
   token?: string | undefined;
   plan_id?: string | undefined;
   user_id?: string | undefined;
@@ -656,101 +590,85 @@ export type GetClientSubscriptionsV1SearchSubscription$Outbound = {
 };
 
 /** @internal */
-export const GetClientSubscriptionsV1SearchSubscription$outboundSchema:
-  z.ZodType<
-    GetClientSubscriptionsV1SearchSubscription$Outbound,
-    z.ZodTypeDef,
-    GetClientSubscriptionsV1SearchSubscription
-  > = z.object({
-    token: z.string().optional(),
-    planId: z.string().optional(),
-    userId: z.string().optional(),
-    instrumentId: z.string().optional(),
-    status: z.string().optional(),
-    billingCycleAnchor: z.date().transform(v => v.toISOString()).optional(),
-    priceAmount: z.string().optional(),
-    priceCurrency: z.string().optional(),
-    balance: z.string().optional(),
-    startDate: z.date().transform(v => v.toISOString()).optional(),
-    trialStartDate: z.date().transform(v => v.toISOString()).optional(),
-    trialEndDate: z.date().transform(v => v.toISOString()).optional(),
-    cancelAtPeriodEnd: z.boolean().optional(),
-    canceledAt: z.date().transform(v => v.toISOString()).optional(),
-    createdAt: z.date().transform(v => v.toISOString()).optional(),
-    updatedAt: z.date().transform(v => v.toISOString()).optional(),
-    plan: z.lazy(() => GetClientSubscriptionsV1SearchPlan$outboundSchema)
-      .optional(),
-    currentPeriodStartDate: z.date().transform(v => v.toISOString()).optional(),
-    currentPeriodEndDate: z.date().transform(v => v.toISOString()).optional(),
-    neverExpires: z.boolean().optional(),
-    numberOfBillingCycles: z.number().int().optional(),
-    merchantApiKey: z.string().optional(),
-    priceMoney: z.lazy(() =>
-      GetClientSubscriptionsV1SearchPriceMoney$outboundSchema
-    ).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      planId: "plan_id",
-      userId: "user_id",
-      instrumentId: "instrument_id",
-      billingCycleAnchor: "billing_cycle_anchor",
-      priceAmount: "price_amount",
-      priceCurrency: "price_currency",
-      startDate: "start_date",
-      trialStartDate: "trial_start_date",
-      trialEndDate: "trial_end_date",
-      cancelAtPeriodEnd: "cancel_at_period_end",
-      canceledAt: "canceled_at",
-      createdAt: "created_at",
-      updatedAt: "updated_at",
-      currentPeriodStartDate: "current_period_start_date",
-      currentPeriodEndDate: "current_period_end_date",
-      neverExpires: "never_expires",
-      numberOfBillingCycles: "number_of_billing_cycles",
-      merchantApiKey: "merchant_api_key",
-      priceMoney: "price_money",
-    });
+export const Subscription$outboundSchema: z.ZodType<
+  Subscription$Outbound,
+  z.ZodTypeDef,
+  Subscription
+> = z.object({
+  token: z.string().optional(),
+  planId: z.string().optional(),
+  userId: z.string().optional(),
+  instrumentId: z.string().optional(),
+  status: z.string().optional(),
+  billingCycleAnchor: z.date().transform(v => v.toISOString()).optional(),
+  priceAmount: z.string().optional(),
+  priceCurrency: z.string().optional(),
+  balance: z.string().optional(),
+  startDate: z.date().transform(v => v.toISOString()).optional(),
+  trialStartDate: z.date().transform(v => v.toISOString()).optional(),
+  trialEndDate: z.date().transform(v => v.toISOString()).optional(),
+  cancelAtPeriodEnd: z.boolean().optional(),
+  canceledAt: z.date().transform(v => v.toISOString()).optional(),
+  createdAt: z.date().transform(v => v.toISOString()).optional(),
+  updatedAt: z.date().transform(v => v.toISOString()).optional(),
+  plan: z.lazy(() => GetClientSubscriptionsV1SearchPlan$outboundSchema)
+    .optional(),
+  currentPeriodStartDate: z.date().transform(v => v.toISOString()).optional(),
+  currentPeriodEndDate: z.date().transform(v => v.toISOString()).optional(),
+  neverExpires: z.boolean().optional(),
+  numberOfBillingCycles: z.number().int().optional(),
+  merchantApiKey: z.string().optional(),
+  priceMoney: z.lazy(() =>
+    GetClientSubscriptionsV1SearchPriceMoney$outboundSchema
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    planId: "plan_id",
+    userId: "user_id",
+    instrumentId: "instrument_id",
+    billingCycleAnchor: "billing_cycle_anchor",
+    priceAmount: "price_amount",
+    priceCurrency: "price_currency",
+    startDate: "start_date",
+    trialStartDate: "trial_start_date",
+    trialEndDate: "trial_end_date",
+    cancelAtPeriodEnd: "cancel_at_period_end",
+    canceledAt: "canceled_at",
+    createdAt: "created_at",
+    updatedAt: "updated_at",
+    currentPeriodStartDate: "current_period_start_date",
+    currentPeriodEndDate: "current_period_end_date",
+    neverExpires: "never_expires",
+    numberOfBillingCycles: "number_of_billing_cycles",
+    merchantApiKey: "merchant_api_key",
+    priceMoney: "price_money",
   });
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetClientSubscriptionsV1SearchSubscription$ {
-  /** @deprecated use `GetClientSubscriptionsV1SearchSubscription$inboundSchema` instead. */
-  export const inboundSchema =
-    GetClientSubscriptionsV1SearchSubscription$inboundSchema;
-  /** @deprecated use `GetClientSubscriptionsV1SearchSubscription$outboundSchema` instead. */
-  export const outboundSchema =
-    GetClientSubscriptionsV1SearchSubscription$outboundSchema;
-  /** @deprecated use `GetClientSubscriptionsV1SearchSubscription$Outbound` instead. */
-  export type Outbound = GetClientSubscriptionsV1SearchSubscription$Outbound;
+export namespace Subscription$ {
+  /** @deprecated use `Subscription$inboundSchema` instead. */
+  export const inboundSchema = Subscription$inboundSchema;
+  /** @deprecated use `Subscription$outboundSchema` instead. */
+  export const outboundSchema = Subscription$outboundSchema;
+  /** @deprecated use `Subscription$Outbound` instead. */
+  export type Outbound = Subscription$Outbound;
 }
 
-export function getClientSubscriptionsV1SearchSubscriptionToJSON(
-  getClientSubscriptionsV1SearchSubscription:
-    GetClientSubscriptionsV1SearchSubscription,
-): string {
-  return JSON.stringify(
-    GetClientSubscriptionsV1SearchSubscription$outboundSchema.parse(
-      getClientSubscriptionsV1SearchSubscription,
-    ),
-  );
+export function subscriptionToJSON(subscription: Subscription): string {
+  return JSON.stringify(Subscription$outboundSchema.parse(subscription));
 }
 
-export function getClientSubscriptionsV1SearchSubscriptionFromJSON(
+export function subscriptionFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetClientSubscriptionsV1SearchSubscription,
-  SDKValidationError
-> {
+): SafeParseResult<Subscription, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetClientSubscriptionsV1SearchSubscription$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetClientSubscriptionsV1SearchSubscription' from JSON`,
+    (x) => Subscription$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Subscription' from JSON`,
   );
 }
 
@@ -760,9 +678,7 @@ export const GetClientSubscriptionsV1SearchData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  subscriptions: z.array(
-    z.lazy(() => GetClientSubscriptionsV1SearchSubscription$inboundSchema),
-  ).optional(),
+  subscriptions: z.array(z.lazy(() => Subscription$inboundSchema)).optional(),
   count: z.string().optional(),
   direction: z.string().optional(),
   sort_by: z.string().optional(),
@@ -774,9 +690,7 @@ export const GetClientSubscriptionsV1SearchData$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetClientSubscriptionsV1SearchData$Outbound = {
-  subscriptions?:
-    | Array<GetClientSubscriptionsV1SearchSubscription$Outbound>
-    | undefined;
+  subscriptions?: Array<Subscription$Outbound> | undefined;
   count?: string | undefined;
   direction?: string | undefined;
   sort_by?: string | undefined;
@@ -788,9 +702,7 @@ export const GetClientSubscriptionsV1SearchData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetClientSubscriptionsV1SearchData
 > = z.object({
-  subscriptions: z.array(
-    z.lazy(() => GetClientSubscriptionsV1SearchSubscription$outboundSchema),
-  ).optional(),
+  subscriptions: z.array(z.lazy(() => Subscription$outboundSchema)).optional(),
   count: z.string().optional(),
   direction: z.string().optional(),
   sortBy: z.string().optional(),
@@ -841,11 +753,13 @@ export const GetClientSubscriptionsV1SearchResponseBody$inboundSchema:
     z.object({
       data: z.lazy(() => GetClientSubscriptionsV1SearchData$inboundSchema)
         .optional(),
+      status: models.Status$inboundSchema.optional(),
     });
 
 /** @internal */
 export type GetClientSubscriptionsV1SearchResponseBody$Outbound = {
   data?: GetClientSubscriptionsV1SearchData$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -857,6 +771,7 @@ export const GetClientSubscriptionsV1SearchResponseBody$outboundSchema:
   > = z.object({
     data: z.lazy(() => GetClientSubscriptionsV1SearchData$outboundSchema)
       .optional(),
+    status: models.Status$outboundSchema.optional(),
   });
 
 /**

@@ -7,7 +7,7 @@ import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: operations.PostClientHooksV2TestRequest$inboundSchema.optional(),
+  request: operations.PostClientHooksV2TestRequest$inboundSchema,
 };
 
 export const tool$webhooksTest: ToolDefinition<typeof args> = {

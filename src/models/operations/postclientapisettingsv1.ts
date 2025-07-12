@@ -7,16 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export type PostClientApiSettingsV1UnauthorizedStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-export type PostClientApiSettingsV1BadRequestStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
+import * as models from "../index.js";
 
 export type PostClientApiSettingsV1Data = {
   token?: string | undefined;
@@ -26,160 +17,18 @@ export type PostClientApiSettingsV1Data = {
   updatedAt?: Date | undefined;
 };
 
-export type PostClientApiSettingsV1Status = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
 /**
  * 200
  */
 export type PostClientApiSettingsV1ResponseBody = {
   data?: PostClientApiSettingsV1Data | undefined;
-  status?: PostClientApiSettingsV1Status | undefined;
+  status?: models.Status | undefined;
 };
 
 export type PostClientApiSettingsV1Response = {
   headers: { [k: string]: Array<string> };
   result: PostClientApiSettingsV1ResponseBody;
 };
-
-/** @internal */
-export const PostClientApiSettingsV1UnauthorizedStatus$inboundSchema: z.ZodType<
-  PostClientApiSettingsV1UnauthorizedStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostClientApiSettingsV1UnauthorizedStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostClientApiSettingsV1UnauthorizedStatus$outboundSchema:
-  z.ZodType<
-    PostClientApiSettingsV1UnauthorizedStatus$Outbound,
-    z.ZodTypeDef,
-    PostClientApiSettingsV1UnauthorizedStatus
-  > = z.object({
-    errors: z.array(z.string()).optional(),
-    message: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostClientApiSettingsV1UnauthorizedStatus$ {
-  /** @deprecated use `PostClientApiSettingsV1UnauthorizedStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostClientApiSettingsV1UnauthorizedStatus$inboundSchema;
-  /** @deprecated use `PostClientApiSettingsV1UnauthorizedStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostClientApiSettingsV1UnauthorizedStatus$outboundSchema;
-  /** @deprecated use `PostClientApiSettingsV1UnauthorizedStatus$Outbound` instead. */
-  export type Outbound = PostClientApiSettingsV1UnauthorizedStatus$Outbound;
-}
-
-export function postClientApiSettingsV1UnauthorizedStatusToJSON(
-  postClientApiSettingsV1UnauthorizedStatus:
-    PostClientApiSettingsV1UnauthorizedStatus,
-): string {
-  return JSON.stringify(
-    PostClientApiSettingsV1UnauthorizedStatus$outboundSchema.parse(
-      postClientApiSettingsV1UnauthorizedStatus,
-    ),
-  );
-}
-
-export function postClientApiSettingsV1UnauthorizedStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostClientApiSettingsV1UnauthorizedStatus,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostClientApiSettingsV1UnauthorizedStatus$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostClientApiSettingsV1UnauthorizedStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostClientApiSettingsV1BadRequestStatus$inboundSchema: z.ZodType<
-  PostClientApiSettingsV1BadRequestStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostClientApiSettingsV1BadRequestStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostClientApiSettingsV1BadRequestStatus$outboundSchema: z.ZodType<
-  PostClientApiSettingsV1BadRequestStatus$Outbound,
-  z.ZodTypeDef,
-  PostClientApiSettingsV1BadRequestStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostClientApiSettingsV1BadRequestStatus$ {
-  /** @deprecated use `PostClientApiSettingsV1BadRequestStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostClientApiSettingsV1BadRequestStatus$inboundSchema;
-  /** @deprecated use `PostClientApiSettingsV1BadRequestStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostClientApiSettingsV1BadRequestStatus$outboundSchema;
-  /** @deprecated use `PostClientApiSettingsV1BadRequestStatus$Outbound` instead. */
-  export type Outbound = PostClientApiSettingsV1BadRequestStatus$Outbound;
-}
-
-export function postClientApiSettingsV1BadRequestStatusToJSON(
-  postClientApiSettingsV1BadRequestStatus:
-    PostClientApiSettingsV1BadRequestStatus,
-): string {
-  return JSON.stringify(
-    PostClientApiSettingsV1BadRequestStatus$outboundSchema.parse(
-      postClientApiSettingsV1BadRequestStatus,
-    ),
-  );
-}
-
-export function postClientApiSettingsV1BadRequestStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostClientApiSettingsV1BadRequestStatus,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostClientApiSettingsV1BadRequestStatus$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostClientApiSettingsV1BadRequestStatus' from JSON`,
-  );
-}
 
 /** @internal */
 export const PostClientApiSettingsV1Data$inboundSchema: z.ZodType<
@@ -266,78 +115,19 @@ export function postClientApiSettingsV1DataFromJSON(
 }
 
 /** @internal */
-export const PostClientApiSettingsV1Status$inboundSchema: z.ZodType<
-  PostClientApiSettingsV1Status,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostClientApiSettingsV1Status$Outbound = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostClientApiSettingsV1Status$outboundSchema: z.ZodType<
-  PostClientApiSettingsV1Status$Outbound,
-  z.ZodTypeDef,
-  PostClientApiSettingsV1Status
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostClientApiSettingsV1Status$ {
-  /** @deprecated use `PostClientApiSettingsV1Status$inboundSchema` instead. */
-  export const inboundSchema = PostClientApiSettingsV1Status$inboundSchema;
-  /** @deprecated use `PostClientApiSettingsV1Status$outboundSchema` instead. */
-  export const outboundSchema = PostClientApiSettingsV1Status$outboundSchema;
-  /** @deprecated use `PostClientApiSettingsV1Status$Outbound` instead. */
-  export type Outbound = PostClientApiSettingsV1Status$Outbound;
-}
-
-export function postClientApiSettingsV1StatusToJSON(
-  postClientApiSettingsV1Status: PostClientApiSettingsV1Status,
-): string {
-  return JSON.stringify(
-    PostClientApiSettingsV1Status$outboundSchema.parse(
-      postClientApiSettingsV1Status,
-    ),
-  );
-}
-
-export function postClientApiSettingsV1StatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostClientApiSettingsV1Status, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostClientApiSettingsV1Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostClientApiSettingsV1Status' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostClientApiSettingsV1ResponseBody$inboundSchema: z.ZodType<
   PostClientApiSettingsV1ResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.lazy(() => PostClientApiSettingsV1Data$inboundSchema).optional(),
-  status: z.lazy(() => PostClientApiSettingsV1Status$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PostClientApiSettingsV1ResponseBody$Outbound = {
   data?: PostClientApiSettingsV1Data$Outbound | undefined;
-  status?: PostClientApiSettingsV1Status$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -347,7 +137,7 @@ export const PostClientApiSettingsV1ResponseBody$outboundSchema: z.ZodType<
   PostClientApiSettingsV1ResponseBody
 > = z.object({
   data: z.lazy(() => PostClientApiSettingsV1Data$outboundSchema).optional(),
-  status: z.lazy(() => PostClientApiSettingsV1Status$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

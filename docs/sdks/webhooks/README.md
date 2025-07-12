@@ -19,7 +19,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  const result = await safepay.webhooks.test();
+  const result = await safepay.webhooks.test({});
 
   console.log(result);
 }
@@ -40,7 +40,7 @@ import { webhooksTest } from "@dhaba/safepay-ts/funcs/webhooksTest.js";
 const safepay = new SafepayCore();
 
 async function run() {
-  const res = await webhooksTest(safepay);
+  const res = await webhooksTest(safepay, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -67,8 +67,10 @@ run();
 
 ### Errors
 
-| Error Type                                    | Status Code                                   | Content Type                                  |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| errors.PostClientHooksV2TestBadRequestError   | 400                                           | application/json                              |
-| errors.PostClientHooksV2TestUnauthorizedError | 401                                           | application/json                              |
-| errors.SafepayDefaultError                    | 4XX, 5XX                                      | \*/\*                                         |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| errors.PostClientHooksV2TestBadRequestError           | 400                                                   | application/json                                      |
+| errors.PostAuthV1CompanyAuthenticateUnauthorizedError | 401                                                   | application/json                                      |
+| errors.ErrorT                                         | 404                                                   | application/json                                      |
+| errors.ErrorT                                         | 500                                                   | application/json                                      |
+| errors.SafepayDefaultError                            | 4XX, 5XX                                              | \*/\*                                                 |

@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type PostUserAddressV2Request = {
   street1?: string | undefined;
@@ -15,16 +16,6 @@ export type PostUserAddressV2Request = {
   state?: string | undefined;
   postalCode?: string | undefined;
   country?: string | undefined;
-};
-
-export type PostUserAddressV2UnauthorizedStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-export type PostUserAddressV2BadRequestStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
 };
 
 export type PostUserAddressV2CreatedAt = {
@@ -50,17 +41,12 @@ export type PostUserAddressV2Data = {
   updatedAt?: PostUserAddressV2UpdatedAt | undefined;
 };
 
-export type PostUserAddressV2Status = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
 /**
  * 201
  */
 export type PostUserAddressV2ResponseBody = {
   data?: PostUserAddressV2Data | undefined;
-  status?: PostUserAddressV2Status | undefined;
+  status?: models.Status | undefined;
 };
 
 export type PostUserAddressV2Response = {
@@ -142,128 +128,6 @@ export function postUserAddressV2RequestFromJSON(
     jsonString,
     (x) => PostUserAddressV2Request$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'PostUserAddressV2Request' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostUserAddressV2UnauthorizedStatus$inboundSchema: z.ZodType<
-  PostUserAddressV2UnauthorizedStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostUserAddressV2UnauthorizedStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostUserAddressV2UnauthorizedStatus$outboundSchema: z.ZodType<
-  PostUserAddressV2UnauthorizedStatus$Outbound,
-  z.ZodTypeDef,
-  PostUserAddressV2UnauthorizedStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostUserAddressV2UnauthorizedStatus$ {
-  /** @deprecated use `PostUserAddressV2UnauthorizedStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostUserAddressV2UnauthorizedStatus$inboundSchema;
-  /** @deprecated use `PostUserAddressV2UnauthorizedStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostUserAddressV2UnauthorizedStatus$outboundSchema;
-  /** @deprecated use `PostUserAddressV2UnauthorizedStatus$Outbound` instead. */
-  export type Outbound = PostUserAddressV2UnauthorizedStatus$Outbound;
-}
-
-export function postUserAddressV2UnauthorizedStatusToJSON(
-  postUserAddressV2UnauthorizedStatus: PostUserAddressV2UnauthorizedStatus,
-): string {
-  return JSON.stringify(
-    PostUserAddressV2UnauthorizedStatus$outboundSchema.parse(
-      postUserAddressV2UnauthorizedStatus,
-    ),
-  );
-}
-
-export function postUserAddressV2UnauthorizedStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostUserAddressV2UnauthorizedStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostUserAddressV2UnauthorizedStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostUserAddressV2UnauthorizedStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostUserAddressV2BadRequestStatus$inboundSchema: z.ZodType<
-  PostUserAddressV2BadRequestStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostUserAddressV2BadRequestStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostUserAddressV2BadRequestStatus$outboundSchema: z.ZodType<
-  PostUserAddressV2BadRequestStatus$Outbound,
-  z.ZodTypeDef,
-  PostUserAddressV2BadRequestStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostUserAddressV2BadRequestStatus$ {
-  /** @deprecated use `PostUserAddressV2BadRequestStatus$inboundSchema` instead. */
-  export const inboundSchema = PostUserAddressV2BadRequestStatus$inboundSchema;
-  /** @deprecated use `PostUserAddressV2BadRequestStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostUserAddressV2BadRequestStatus$outboundSchema;
-  /** @deprecated use `PostUserAddressV2BadRequestStatus$Outbound` instead. */
-  export type Outbound = PostUserAddressV2BadRequestStatus$Outbound;
-}
-
-export function postUserAddressV2BadRequestStatusToJSON(
-  postUserAddressV2BadRequestStatus: PostUserAddressV2BadRequestStatus,
-): string {
-  return JSON.stringify(
-    PostUserAddressV2BadRequestStatus$outboundSchema.parse(
-      postUserAddressV2BadRequestStatus,
-    ),
-  );
-}
-
-export function postUserAddressV2BadRequestStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostUserAddressV2BadRequestStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostUserAddressV2BadRequestStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostUserAddressV2BadRequestStatus' from JSON`,
   );
 }
 
@@ -477,76 +341,19 @@ export function postUserAddressV2DataFromJSON(
 }
 
 /** @internal */
-export const PostUserAddressV2Status$inboundSchema: z.ZodType<
-  PostUserAddressV2Status,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostUserAddressV2Status$Outbound = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostUserAddressV2Status$outboundSchema: z.ZodType<
-  PostUserAddressV2Status$Outbound,
-  z.ZodTypeDef,
-  PostUserAddressV2Status
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostUserAddressV2Status$ {
-  /** @deprecated use `PostUserAddressV2Status$inboundSchema` instead. */
-  export const inboundSchema = PostUserAddressV2Status$inboundSchema;
-  /** @deprecated use `PostUserAddressV2Status$outboundSchema` instead. */
-  export const outboundSchema = PostUserAddressV2Status$outboundSchema;
-  /** @deprecated use `PostUserAddressV2Status$Outbound` instead. */
-  export type Outbound = PostUserAddressV2Status$Outbound;
-}
-
-export function postUserAddressV2StatusToJSON(
-  postUserAddressV2Status: PostUserAddressV2Status,
-): string {
-  return JSON.stringify(
-    PostUserAddressV2Status$outboundSchema.parse(postUserAddressV2Status),
-  );
-}
-
-export function postUserAddressV2StatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostUserAddressV2Status, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostUserAddressV2Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostUserAddressV2Status' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostUserAddressV2ResponseBody$inboundSchema: z.ZodType<
   PostUserAddressV2ResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.lazy(() => PostUserAddressV2Data$inboundSchema).optional(),
-  status: z.lazy(() => PostUserAddressV2Status$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PostUserAddressV2ResponseBody$Outbound = {
   data?: PostUserAddressV2Data$Outbound | undefined;
-  status?: PostUserAddressV2Status$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -556,7 +363,7 @@ export const PostUserAddressV2ResponseBody$outboundSchema: z.ZodType<
   PostUserAddressV2ResponseBody
 > = z.object({
   data: z.lazy(() => PostUserAddressV2Data$outboundSchema).optional(),
-  status: z.lazy(() => PostUserAddressV2Status$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

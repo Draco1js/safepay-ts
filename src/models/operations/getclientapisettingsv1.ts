@@ -7,11 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export type GetClientApiSettingsV1UnauthorizedStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
+import * as models from "../index.js";
 
 export type GetClientApiSettingsV1Data = {
   token?: string | undefined;
@@ -21,91 +17,18 @@ export type GetClientApiSettingsV1Data = {
   updatedAt?: Date | undefined;
 };
 
-export type GetClientApiSettingsV1Status = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
 /**
  * 200
  */
 export type GetClientApiSettingsV1ResponseBody = {
   data?: GetClientApiSettingsV1Data | undefined;
-  status?: GetClientApiSettingsV1Status | undefined;
+  status?: models.Status | undefined;
 };
 
 export type GetClientApiSettingsV1Response = {
   headers: { [k: string]: Array<string> };
   result: GetClientApiSettingsV1ResponseBody;
 };
-
-/** @internal */
-export const GetClientApiSettingsV1UnauthorizedStatus$inboundSchema: z.ZodType<
-  GetClientApiSettingsV1UnauthorizedStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type GetClientApiSettingsV1UnauthorizedStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetClientApiSettingsV1UnauthorizedStatus$outboundSchema: z.ZodType<
-  GetClientApiSettingsV1UnauthorizedStatus$Outbound,
-  z.ZodTypeDef,
-  GetClientApiSettingsV1UnauthorizedStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetClientApiSettingsV1UnauthorizedStatus$ {
-  /** @deprecated use `GetClientApiSettingsV1UnauthorizedStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetClientApiSettingsV1UnauthorizedStatus$inboundSchema;
-  /** @deprecated use `GetClientApiSettingsV1UnauthorizedStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetClientApiSettingsV1UnauthorizedStatus$outboundSchema;
-  /** @deprecated use `GetClientApiSettingsV1UnauthorizedStatus$Outbound` instead. */
-  export type Outbound = GetClientApiSettingsV1UnauthorizedStatus$Outbound;
-}
-
-export function getClientApiSettingsV1UnauthorizedStatusToJSON(
-  getClientApiSettingsV1UnauthorizedStatus:
-    GetClientApiSettingsV1UnauthorizedStatus,
-): string {
-  return JSON.stringify(
-    GetClientApiSettingsV1UnauthorizedStatus$outboundSchema.parse(
-      getClientApiSettingsV1UnauthorizedStatus,
-    ),
-  );
-}
-
-export function getClientApiSettingsV1UnauthorizedStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetClientApiSettingsV1UnauthorizedStatus,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetClientApiSettingsV1UnauthorizedStatus$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetClientApiSettingsV1UnauthorizedStatus' from JSON`,
-  );
-}
 
 /** @internal */
 export const GetClientApiSettingsV1Data$inboundSchema: z.ZodType<
@@ -190,78 +113,19 @@ export function getClientApiSettingsV1DataFromJSON(
 }
 
 /** @internal */
-export const GetClientApiSettingsV1Status$inboundSchema: z.ZodType<
-  GetClientApiSettingsV1Status,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type GetClientApiSettingsV1Status$Outbound = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetClientApiSettingsV1Status$outboundSchema: z.ZodType<
-  GetClientApiSettingsV1Status$Outbound,
-  z.ZodTypeDef,
-  GetClientApiSettingsV1Status
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetClientApiSettingsV1Status$ {
-  /** @deprecated use `GetClientApiSettingsV1Status$inboundSchema` instead. */
-  export const inboundSchema = GetClientApiSettingsV1Status$inboundSchema;
-  /** @deprecated use `GetClientApiSettingsV1Status$outboundSchema` instead. */
-  export const outboundSchema = GetClientApiSettingsV1Status$outboundSchema;
-  /** @deprecated use `GetClientApiSettingsV1Status$Outbound` instead. */
-  export type Outbound = GetClientApiSettingsV1Status$Outbound;
-}
-
-export function getClientApiSettingsV1StatusToJSON(
-  getClientApiSettingsV1Status: GetClientApiSettingsV1Status,
-): string {
-  return JSON.stringify(
-    GetClientApiSettingsV1Status$outboundSchema.parse(
-      getClientApiSettingsV1Status,
-    ),
-  );
-}
-
-export function getClientApiSettingsV1StatusFromJSON(
-  jsonString: string,
-): SafeParseResult<GetClientApiSettingsV1Status, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetClientApiSettingsV1Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetClientApiSettingsV1Status' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetClientApiSettingsV1ResponseBody$inboundSchema: z.ZodType<
   GetClientApiSettingsV1ResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.lazy(() => GetClientApiSettingsV1Data$inboundSchema).optional(),
-  status: z.lazy(() => GetClientApiSettingsV1Status$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetClientApiSettingsV1ResponseBody$Outbound = {
   data?: GetClientApiSettingsV1Data$Outbound | undefined;
-  status?: GetClientApiSettingsV1Status$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -271,7 +135,7 @@ export const GetClientApiSettingsV1ResponseBody$outboundSchema: z.ZodType<
   GetClientApiSettingsV1ResponseBody
 > = z.object({
   data: z.lazy(() => GetClientApiSettingsV1Data$outboundSchema).optional(),
-  status: z.lazy(() => GetClientApiSettingsV1Status$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

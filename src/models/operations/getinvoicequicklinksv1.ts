@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type GetInvoiceQuickLinksV1Request = {
   /**
@@ -21,16 +22,6 @@ export type GetInvoiceQuickLinksV1Request = {
    * One of EMAIL or MANUAL
    */
   workflow?: string | undefined;
-};
-
-export type GetInvoiceQuickLinksV1ExpectationFailedStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-export type GetInvoiceQuickLinksV1UnauthorizedStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
 };
 
 export type GetInvoiceQuickLinksV1Metadatum = {
@@ -62,17 +53,12 @@ export type GetInvoiceQuickLinksV1Data = {
   list?: Array<GetInvoiceQuickLinksV1List> | undefined;
 };
 
-export type GetInvoiceQuickLinksV1Status = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
 /**
  * 200
  */
 export type GetInvoiceQuickLinksV1ResponseBody = {
   data?: GetInvoiceQuickLinksV1Data | undefined;
-  status?: GetInvoiceQuickLinksV1Status | undefined;
+  status?: models.Status | undefined;
 };
 
 export type GetInvoiceQuickLinksV1Response = {
@@ -139,144 +125,6 @@ export function getInvoiceQuickLinksV1RequestFromJSON(
     jsonString,
     (x) => GetInvoiceQuickLinksV1Request$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetInvoiceQuickLinksV1Request' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetInvoiceQuickLinksV1ExpectationFailedStatus$inboundSchema:
-  z.ZodType<
-    GetInvoiceQuickLinksV1ExpectationFailedStatus,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    errors: z.array(z.string()).optional(),
-    message: z.string().optional(),
-  });
-
-/** @internal */
-export type GetInvoiceQuickLinksV1ExpectationFailedStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetInvoiceQuickLinksV1ExpectationFailedStatus$outboundSchema:
-  z.ZodType<
-    GetInvoiceQuickLinksV1ExpectationFailedStatus$Outbound,
-    z.ZodTypeDef,
-    GetInvoiceQuickLinksV1ExpectationFailedStatus
-  > = z.object({
-    errors: z.array(z.string()).optional(),
-    message: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInvoiceQuickLinksV1ExpectationFailedStatus$ {
-  /** @deprecated use `GetInvoiceQuickLinksV1ExpectationFailedStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetInvoiceQuickLinksV1ExpectationFailedStatus$inboundSchema;
-  /** @deprecated use `GetInvoiceQuickLinksV1ExpectationFailedStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetInvoiceQuickLinksV1ExpectationFailedStatus$outboundSchema;
-  /** @deprecated use `GetInvoiceQuickLinksV1ExpectationFailedStatus$Outbound` instead. */
-  export type Outbound = GetInvoiceQuickLinksV1ExpectationFailedStatus$Outbound;
-}
-
-export function getInvoiceQuickLinksV1ExpectationFailedStatusToJSON(
-  getInvoiceQuickLinksV1ExpectationFailedStatus:
-    GetInvoiceQuickLinksV1ExpectationFailedStatus,
-): string {
-  return JSON.stringify(
-    GetInvoiceQuickLinksV1ExpectationFailedStatus$outboundSchema.parse(
-      getInvoiceQuickLinksV1ExpectationFailedStatus,
-    ),
-  );
-}
-
-export function getInvoiceQuickLinksV1ExpectationFailedStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetInvoiceQuickLinksV1ExpectationFailedStatus,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetInvoiceQuickLinksV1ExpectationFailedStatus$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetInvoiceQuickLinksV1ExpectationFailedStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetInvoiceQuickLinksV1UnauthorizedStatus$inboundSchema: z.ZodType<
-  GetInvoiceQuickLinksV1UnauthorizedStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type GetInvoiceQuickLinksV1UnauthorizedStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetInvoiceQuickLinksV1UnauthorizedStatus$outboundSchema: z.ZodType<
-  GetInvoiceQuickLinksV1UnauthorizedStatus$Outbound,
-  z.ZodTypeDef,
-  GetInvoiceQuickLinksV1UnauthorizedStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInvoiceQuickLinksV1UnauthorizedStatus$ {
-  /** @deprecated use `GetInvoiceQuickLinksV1UnauthorizedStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetInvoiceQuickLinksV1UnauthorizedStatus$inboundSchema;
-  /** @deprecated use `GetInvoiceQuickLinksV1UnauthorizedStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetInvoiceQuickLinksV1UnauthorizedStatus$outboundSchema;
-  /** @deprecated use `GetInvoiceQuickLinksV1UnauthorizedStatus$Outbound` instead. */
-  export type Outbound = GetInvoiceQuickLinksV1UnauthorizedStatus$Outbound;
-}
-
-export function getInvoiceQuickLinksV1UnauthorizedStatusToJSON(
-  getInvoiceQuickLinksV1UnauthorizedStatus:
-    GetInvoiceQuickLinksV1UnauthorizedStatus,
-): string {
-  return JSON.stringify(
-    GetInvoiceQuickLinksV1UnauthorizedStatus$outboundSchema.parse(
-      getInvoiceQuickLinksV1UnauthorizedStatus,
-    ),
-  );
-}
-
-export function getInvoiceQuickLinksV1UnauthorizedStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  GetInvoiceQuickLinksV1UnauthorizedStatus,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetInvoiceQuickLinksV1UnauthorizedStatus$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetInvoiceQuickLinksV1UnauthorizedStatus' from JSON`,
   );
 }
 
@@ -531,78 +379,19 @@ export function getInvoiceQuickLinksV1DataFromJSON(
 }
 
 /** @internal */
-export const GetInvoiceQuickLinksV1Status$inboundSchema: z.ZodType<
-  GetInvoiceQuickLinksV1Status,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type GetInvoiceQuickLinksV1Status$Outbound = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetInvoiceQuickLinksV1Status$outboundSchema: z.ZodType<
-  GetInvoiceQuickLinksV1Status$Outbound,
-  z.ZodTypeDef,
-  GetInvoiceQuickLinksV1Status
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetInvoiceQuickLinksV1Status$ {
-  /** @deprecated use `GetInvoiceQuickLinksV1Status$inboundSchema` instead. */
-  export const inboundSchema = GetInvoiceQuickLinksV1Status$inboundSchema;
-  /** @deprecated use `GetInvoiceQuickLinksV1Status$outboundSchema` instead. */
-  export const outboundSchema = GetInvoiceQuickLinksV1Status$outboundSchema;
-  /** @deprecated use `GetInvoiceQuickLinksV1Status$Outbound` instead. */
-  export type Outbound = GetInvoiceQuickLinksV1Status$Outbound;
-}
-
-export function getInvoiceQuickLinksV1StatusToJSON(
-  getInvoiceQuickLinksV1Status: GetInvoiceQuickLinksV1Status,
-): string {
-  return JSON.stringify(
-    GetInvoiceQuickLinksV1Status$outboundSchema.parse(
-      getInvoiceQuickLinksV1Status,
-    ),
-  );
-}
-
-export function getInvoiceQuickLinksV1StatusFromJSON(
-  jsonString: string,
-): SafeParseResult<GetInvoiceQuickLinksV1Status, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetInvoiceQuickLinksV1Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetInvoiceQuickLinksV1Status' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetInvoiceQuickLinksV1ResponseBody$inboundSchema: z.ZodType<
   GetInvoiceQuickLinksV1ResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.lazy(() => GetInvoiceQuickLinksV1Data$inboundSchema).optional(),
-  status: z.lazy(() => GetInvoiceQuickLinksV1Status$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetInvoiceQuickLinksV1ResponseBody$Outbound = {
   data?: GetInvoiceQuickLinksV1Data$Outbound | undefined;
-  status?: GetInvoiceQuickLinksV1Status$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -612,7 +401,7 @@ export const GetInvoiceQuickLinksV1ResponseBody$outboundSchema: z.ZodType<
   GetInvoiceQuickLinksV1ResponseBody
 > = z.object({
   data: z.lazy(() => GetInvoiceQuickLinksV1Data$outboundSchema).optional(),
-  status: z.lazy(() => GetInvoiceQuickLinksV1Status$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

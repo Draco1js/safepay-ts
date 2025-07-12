@@ -1,13 +1,12 @@
 lockVersion: 2.0.0
-id: fefcac39-086a-4bf8-aa47-ffc1643c28d5
+id: e1e7f164-18ca-4348-b11a-3f32d0c7a1fa
 management:
-  docChecksum: 90d73e86965271fe0e605140f7d2534f
+  docChecksum: 945f3e1212cba6cd66abc30a84d5026c
   docVersion: 1.0.0
-  speakeasyVersion: 1.580.1
-  generationVersion: 2.656.3
-  releaseVersion: 0.1.0
-  configChecksum: 24c8f3e7a95522eacee9e985df68612a
-  published: true
+  speakeasyVersion: 1.581.0
+  generationVersion: 2.656.5
+  releaseVersion: 0.0.3
+  configChecksum: 7629b93aedbfce9a81ff3bcc4b1d1ad7
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -35,194 +34,38 @@ generatedFiles:
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
-  - docs/models/errors/deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcdnotfounderror.md
-  - docs/models/errors/deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcdunauthorizederror.md
-  - docs/models/errors/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cinternalservererror.md
-  - docs/models/errors/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cunauthorizederror.md
-  - docs/models/errors/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52badrequesterror.md
-  - docs/models/errors/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52notfounderror.md
-  - docs/models/errors/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52unauthorizederror.md
-  - docs/models/errors/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89badrequesterror.md
-  - docs/models/errors/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89forbiddenerror.md
-  - docs/models/errors/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89notfounderror.md
-  - docs/models/errors/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89unauthorizederror.md
-  - docs/models/errors/deleteuserwalletsv1inst8ed5e401ab7b442c8473dee137827448notfounderror.md
-  - docs/models/errors/deleteuserwalletsv1inst8ed5e401ab7b442c8473dee137827448unauthorizederror.md
-  - docs/models/errors/getclientapisettingsv1unauthorizederror.md
-  - docs/models/errors/getclientplansv1pland4869a7800364d6697bd6afeb5282bcdnotfounderror.md
-  - docs/models/errors/getclientplansv1pland4869a7800364d6697bd6afeb5282bcdunauthorizederror.md
-  - docs/models/errors/getclientplansv1searchbadrequesterror.md
-  - docs/models/errors/getclientplansv1searchunauthorizederror.md
-  - docs/models/errors/getclientsubscriptionsv1searchunauthorizederror.md
-  - docs/models/errors/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541notfounderror.md
-  - docs/models/errors/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541unauthorizederror.md
-  - docs/models/errors/getclienttransactionsv1searchunauthorizederror.md
-  - docs/models/errors/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1notfounderror.md
-  - docs/models/errors/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1unauthorizederror.md
-  - docs/models/errors/getinvoicequicklinksv1expectationfailederror.md
-  - docs/models/errors/getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cnotfounderror.md
-  - docs/models/errors/getinvoicequicklinksv1unauthorizederror.md
-  - docs/models/errors/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcunauthorizederror.md
-  - docs/models/errors/getuseraddressv2address5ce54f87a8234da689907b26d048ce00badrequesterror.md
-  - docs/models/errors/getuseraddressv2address5ce54f87a8234da689907b26d048ce00notfounderror.md
-  - docs/models/errors/getuseraddressv2address5ce54f87a8234da689907b26d048ce00unauthorizederror.md
-  - docs/models/errors/getusercustomersv1badrequesterror.md
-  - docs/models/errors/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67badrequesterror.md
-  - docs/models/errors/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67notfounderror.md
-  - docs/models/errors/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67unauthorizederror.md
-  - docs/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletbadrequesterror.md
-  - docs/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletnotfounderror.md
-  - docs/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89badrequesterror.md
-  - docs/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89forbiddenerror.md
-  - docs/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89notfounderror.md
-  - docs/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89unauthorizederror.md
-  - docs/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletunauthorizederror.md
-  - docs/models/errors/getusercustomersv1unauthorizederror.md
+  - docs/models/address.md
+  - docs/models/datetimeseconds.md
+  - docs/models/errors/conflicterror.md
+  - docs/models/errors/errort.md
+  - docs/models/errors/expectationfailederror.md
   - docs/models/errors/getuserv2existsbadrequesterror.md
-  - docs/models/errors/getuserv2unauthorizederror.md
-  - docs/models/errors/getuserwalletsv1unauthorizederror.md
-  - docs/models/errors/notacceptableerror.md
-  - docs/models/errors/postauthv1companyauthenticateexpectationfailederror.md
+  - docs/models/errors/notfounderror.md
   - docs/models/errors/postauthv1companyauthenticateunauthorizederror.md
   - docs/models/errors/postauthv2userloginbadrequesterror.md
   - docs/models/errors/postauthv2userloginunauthorizederror.md
   - docs/models/errors/postclientapisettingsv1badrequesterror.md
-  - docs/models/errors/postclientapisettingsv1unauthorizederror.md
   - docs/models/errors/postclienthooksv2testbadrequesterror.md
-  - docs/models/errors/postclienthooksv2testunauthorizederror.md
-  - docs/models/errors/postclientpassportv1tokenunauthorizederror.md
   - docs/models/errors/postclientplansv1badrequesterror.md
   - docs/models/errors/postclientplansv1internalservererror.md
-  - docs/models/errors/postclientplansv1unauthorizederror.md
-  - docs/models/errors/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancelinternalservererror.md
-  - docs/models/errors/postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refundconflicterror.md
-  - docs/models/errors/postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refundnotfounderror.md
-  - docs/models/errors/postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refundunauthorizederror.md
-  - docs/models/errors/postinvoicequicklinksv1expectationfailederror.md
-  - docs/models/errors/postinvoicequicklinksv1unauthorizederror.md
-  - docs/models/errors/postorderpaymentsv3badrequesterror.md
   - docs/models/errors/postorderpaymentsv3internalservererror.md
-  - docs/models/errors/postorderpaymentsv3notfounderror.md
-  - docs/models/errors/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidbadrequesterror.md
-  - docs/models/errors/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundbadrequesterror.md
-  - docs/models/errors/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dbadrequesterror.md
-  - docs/models/errors/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dforbiddenerror.md
-  - docs/models/errors/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalbadrequesterror.md
-  - docs/models/errors/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalunauthorizederror.md
-  - docs/models/errors/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6unauthorizederror.md
-  - docs/models/errors/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatabadrequesterror.md
-  - docs/models/errors/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44forbiddenerror.md
-  - docs/models/errors/postuseraddressv2badrequesterror.md
-  - docs/models/errors/postuseraddressv2unauthorizederror.md
-  - docs/models/errors/postusercustomersv1badrequesterror.md
-  - docs/models/errors/postusercustomersv1unauthorizederror.md
-  - docs/models/errors/postuserv1guestexpectationfailederror.md
-  - docs/models/errors/postuserv2conflicterror.md
-  - docs/models/errors/putclientapisettingsv1unauthorizederror.md
-  - docs/models/errors/putclientplansv1pland4869a7800364d6697bd6afeb5282bcdnotfounderror.md
-  - docs/models/errors/putclientplansv1pland4869a7800364d6697bd6afeb5282bcdunauthorizederror.md
-  - docs/models/errors/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptioninternalservererror.md
-  - docs/models/errors/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptionnotfounderror.md
-  - docs/models/errors/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptionunauthorizederror.md
-  - docs/models/errors/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3notfounderror.md
-  - docs/models/errors/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3unauthorizederror.md
-  - docs/models/errors/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cinternalservererror.md
-  - docs/models/errors/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cunauthorizederror.md
-  - docs/models/errors/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920bebadrequesterror.md
-  - docs/models/errors/putuseraddressv2address5ce54f87a8234da689907b26d048ce00badrequesterror.md
-  - docs/models/errors/putuseraddressv2address5ce54f87a8234da689907b26d048ce00notfounderror.md
-  - docs/models/errors/putuseraddressv2address5ce54f87a8234da689907b26d048ce00unauthorizederror.md
-  - docs/models/errors/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aabadrequesterror.md
-  - docs/models/errors/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aanotfounderror.md
-  - docs/models/errors/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aaunauthorizederror.md
-  - docs/models/operations/actionsperformed.md
-  - docs/models/operations/actionsperformedcreatedat.md
-  - docs/models/operations/actionsperformedupdatedat.md
-  - docs/models/operations/address.md
-  - docs/models/operations/addresscreatedat.md
-  - docs/models/operations/addressupdatedat.md
   - docs/models/operations/administrativearea.md
-  - docs/models/operations/amount.md
-  - docs/models/operations/attempt.md
-  - docs/models/operations/attemptcapture.md
-  - docs/models/operations/attemptcapturecreatedat.md
-  - docs/models/operations/attemptcapturetotals.md
-  - docs/models/operations/attemptcaptureupdatedat.md
-  - docs/models/operations/attemptcreatedat.md
-  - docs/models/operations/attemptcustomer.md
-  - docs/models/operations/attemptupdatedat.md
-  - docs/models/operations/authenticationsetup.md
-  - docs/models/operations/authorizationcreatedat.md
-  - docs/models/operations/authorizationtotals.md
-  - docs/models/operations/authorizationupdatedat.md
-  - docs/models/operations/balance.md
-  - docs/models/operations/billingcreatedat.md
-  - docs/models/operations/billingupdatedat.md
-  - docs/models/operations/card.md
-  - docs/models/operations/charge.md
-  - docs/models/operations/chargecapture.md
-  - docs/models/operations/chargecapturecreatedat.md
-  - docs/models/operations/chargecaptureupdatedat.md
-  - docs/models/operations/chargecreatedat.md
-  - docs/models/operations/chargetotals.md
-  - docs/models/operations/chargeupdatedat.md
-  - docs/models/operations/datarequest.md
-  - docs/models/operations/deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcddata.md
-  - docs/models/operations/deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcdresponse.md
-  - docs/models/operations/deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcdresponsebody.md
-  - docs/models/operations/deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcdstatus.md
-  - docs/models/operations/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cinternalservererrorstatus.md
-  - docs/models/operations/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cresponse.md
-  - docs/models/operations/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cresponsebody.md
-  - docs/models/operations/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cstatus.md
-  - docs/models/operations/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cunauthorizedstatus.md
-  - docs/models/operations/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52badrequeststatus.md
-  - docs/models/operations/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52data.md
-  - docs/models/operations/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52notfoundstatus.md
-  - docs/models/operations/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52response.md
-  - docs/models/operations/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52responsebody.md
-  - docs/models/operations/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52status.md
-  - docs/models/operations/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52unauthorizedstatus.md
-  - docs/models/operations/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89badrequeststatus.md
-  - docs/models/operations/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89data.md
-  - docs/models/operations/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89forbiddenstatus.md
-  - docs/models/operations/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89notfoundstatus.md
-  - docs/models/operations/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89response.md
-  - docs/models/operations/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89responsebody.md
-  - docs/models/operations/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89status.md
-  - docs/models/operations/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89unauthorizedstatus.md
-  - docs/models/operations/deleteuserwalletsv1inst8ed5e401ab7b442c8473dee137827448notfoundstatus.md
-  - docs/models/operations/deleteuserwalletsv1inst8ed5e401ab7b442c8473dee137827448response.md
-  - docs/models/operations/deleteuserwalletsv1inst8ed5e401ab7b442c8473dee137827448responsebody.md
-  - docs/models/operations/deleteuserwalletsv1inst8ed5e401ab7b442c8473dee137827448unauthorizedstatus.md
+  - docs/models/operations/baseamount.md
+  - docs/models/operations/capabilities.md
+  - docs/models/operations/client.md
+  - docs/models/operations/conversionrate.md
+  - docs/models/operations/cybersourcecreatedat.md
+  - docs/models/operations/cybersourceupdatedat.md
   - docs/models/operations/details.md
-  - docs/models/operations/device.md
-  - docs/models/operations/devicecreatedat.md
-  - docs/models/operations/deviceupdatedat.md
-  - docs/models/operations/enrollment.md
-  - docs/models/operations/enrollmentcreatedat.md
-  - docs/models/operations/enrollmentupdatedat.md
-  - docs/models/operations/event.md
-  - docs/models/operations/eventcreatedat.md
-  - docs/models/operations/fees.md
   - docs/models/operations/getclientapisettingsv1data.md
   - docs/models/operations/getclientapisettingsv1response.md
   - docs/models/operations/getclientapisettingsv1responsebody.md
-  - docs/models/operations/getclientapisettingsv1status.md
-  - docs/models/operations/getclientapisettingsv1unauthorizedstatus.md
-  - docs/models/operations/getclientplansv1pland4869a7800364d6697bd6afeb5282bcddata.md
-  - docs/models/operations/getclientplansv1pland4869a7800364d6697bd6afeb5282bcdplan.md
-  - docs/models/operations/getclientplansv1pland4869a7800364d6697bd6afeb5282bcdpricemoney.md
-  - docs/models/operations/getclientplansv1pland4869a7800364d6697bd6afeb5282bcdresponse.md
-  - docs/models/operations/getclientplansv1pland4869a7800364d6697bd6afeb5282bcdresponsebody.md
-  - docs/models/operations/getclientplansv1pland4869a7800364d6697bd6afeb5282bcdstatus.md
   - docs/models/operations/getclientplansv1searchdata.md
   - docs/models/operations/getclientplansv1searchplan.md
   - docs/models/operations/getclientplansv1searchpricemoney.md
   - docs/models/operations/getclientplansv1searchrequest.md
   - docs/models/operations/getclientplansv1searchresponse.md
   - docs/models/operations/getclientplansv1searchresponsebody.md
-  - docs/models/operations/getclientplansv1searchstatus.md
   - docs/models/operations/getclientsubscriptionsv1searchdata.md
   - docs/models/operations/getclientsubscriptionsv1searchplan.md
   - docs/models/operations/getclientsubscriptionsv1searchplanpricemoney.md
@@ -230,52 +73,17 @@ generatedFiles:
   - docs/models/operations/getclientsubscriptionsv1searchrequest.md
   - docs/models/operations/getclientsubscriptionsv1searchresponse.md
   - docs/models/operations/getclientsubscriptionsv1searchresponsebody.md
-  - docs/models/operations/getclientsubscriptionsv1searchstatus.md
-  - docs/models/operations/getclientsubscriptionsv1searchsubscription.md
-  - docs/models/operations/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541contact.md
-  - docs/models/operations/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541data.md
-  - docs/models/operations/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541plan.md
-  - docs/models/operations/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541planpricemoney.md
-  - docs/models/operations/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541pricemoney.md
-  - docs/models/operations/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541response.md
-  - docs/models/operations/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541responsebody.md
-  - docs/models/operations/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541status.md
-  - docs/models/operations/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541subscription.md
-  - docs/models/operations/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541wallet.md
   - docs/models/operations/getclienttransactionsv1searchdata.md
   - docs/models/operations/getclienttransactionsv1searchpricemoney.md
   - docs/models/operations/getclienttransactionsv1searchrequest.md
   - docs/models/operations/getclienttransactionsv1searchresponse.md
   - docs/models/operations/getclienttransactionsv1searchresponsebody.md
-  - docs/models/operations/getclienttransactionsv1searchstatus.md
-  - docs/models/operations/getclienttransactionsv1searchtransaction.md
-  - docs/models/operations/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1data.md
-  - docs/models/operations/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1plan.md
-  - docs/models/operations/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1planpricemoney.md
-  - docs/models/operations/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1pricemoney.md
-  - docs/models/operations/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1response.md
-  - docs/models/operations/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1responsebody.md
-  - docs/models/operations/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1status.md
-  - docs/models/operations/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1subscription.md
-  - docs/models/operations/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1subscriptionpricemoney.md
-  - docs/models/operations/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1transaction.md
   - docs/models/operations/getinvoicequicklinksv1data.md
-  - docs/models/operations/getinvoicequicklinksv1expectationfailedstatus.md
-  - docs/models/operations/getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cclient.md
-  - docs/models/operations/getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cdata.md
-  - docs/models/operations/getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cmetadatum.md
-  - docs/models/operations/getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cnotfoundstatus.md
-  - docs/models/operations/getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cresponse.md
-  - docs/models/operations/getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cresponsebody.md
-  - docs/models/operations/getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cstatus.md
   - docs/models/operations/getinvoicequicklinksv1list.md
   - docs/models/operations/getinvoicequicklinksv1metadatum.md
   - docs/models/operations/getinvoicequicklinksv1request.md
   - docs/models/operations/getinvoicequicklinksv1response.md
   - docs/models/operations/getinvoicequicklinksv1responsebody.md
-  - docs/models/operations/getinvoicequicklinksv1status.md
-  - docs/models/operations/getinvoicequicklinksv1unauthorizedstatus.md
-  - docs/models/operations/getreporterapiv1paymentsclient.md
   - docs/models/operations/getreporterapiv1paymentscreatedat.md
   - docs/models/operations/getreporterapiv1paymentscustomer.md
   - docs/models/operations/getreporterapiv1paymentsdata.md
@@ -283,87 +91,12 @@ generatedFiles:
   - docs/models/operations/getreporterapiv1paymentsrequest.md
   - docs/models/operations/getreporterapiv1paymentsresponse.md
   - docs/models/operations/getreporterapiv1paymentsresponsebody.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcauthorization.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcbaseamount.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcbilling.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcclient.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcconversionrate.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbccreatedat.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbccustomer.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbccybersource.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcdata.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcmetadata.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcmpgs.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcnextactions.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcpaymentmethod.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcpurchasetotals.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcquoteamount.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcresponse.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcresponsebody.md
-  - docs/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbcupdatedat.md
-  - docs/models/operations/getuseraddressv2address5ce54f87a8234da689907b26d048ce00badrequeststatus.md
-  - docs/models/operations/getuseraddressv2address5ce54f87a8234da689907b26d048ce00createdat.md
-  - docs/models/operations/getuseraddressv2address5ce54f87a8234da689907b26d048ce00data.md
-  - docs/models/operations/getuseraddressv2address5ce54f87a8234da689907b26d048ce00notfoundstatus.md
-  - docs/models/operations/getuseraddressv2address5ce54f87a8234da689907b26d048ce00response.md
-  - docs/models/operations/getuseraddressv2address5ce54f87a8234da689907b26d048ce00responsebody.md
-  - docs/models/operations/getuseraddressv2address5ce54f87a8234da689907b26d048ce00status.md
-  - docs/models/operations/getuseraddressv2address5ce54f87a8234da689907b26d048ce00unauthorizedstatus.md
-  - docs/models/operations/getuseraddressv2address5ce54f87a8234da689907b26d048ce00updatedat.md
-  - docs/models/operations/getusercustomersv1badrequeststatus.md
   - docs/models/operations/getusercustomersv1createdat.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67badrequeststatus.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67createdat.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67cybersource.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67cybersourcecreatedat.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67cybersourceupdatedat.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67data.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67expiresat.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67notfoundstatus.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67response.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67responsebody.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67status.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67unauthorizedstatus.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67updatedat.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67wallet.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67walletcreatedat.md
-  - docs/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67walletupdatedat.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletbadrequeststatus.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletcreatedat.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletcybersource.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletcybersourcecreatedat.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletcybersourceupdatedat.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletdata.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletexpiresat.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletnotfoundstatus.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89badrequeststatus.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89createdat.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89cybersource.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89cybersourcecreatedat.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89cybersourceupdatedat.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89data.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89expiresat.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89forbiddenstatus.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89notfoundstatus.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89response.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89responsebody.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89status.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89unauthorizedstatus.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89updatedat.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletrequest.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletresponse.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletresponsebody.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletstatus.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletunauthorizedstatus.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletupdatedat.md
-  - docs/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletwallet.md
   - docs/models/operations/getusercustomersv1customer.md
   - docs/models/operations/getusercustomersv1data.md
   - docs/models/operations/getusercustomersv1request.md
   - docs/models/operations/getusercustomersv1response.md
   - docs/models/operations/getusercustomersv1responsebody.md
-  - docs/models/operations/getusercustomersv1status.md
-  - docs/models/operations/getusercustomersv1unauthorizedstatus.md
   - docs/models/operations/getusercustomersv1updatedat.md
   - docs/models/operations/getusermetav2countriesdata.md
   - docs/models/operations/getusermetav2countriesrequest.md
@@ -388,268 +121,65 @@ generatedFiles:
   - docs/models/operations/getuserwalletsv1contactcreatedat.md
   - docs/models/operations/getuserwalletsv1contactupdatedat.md
   - docs/models/operations/getuserwalletsv1cybersource.md
-  - docs/models/operations/getuserwalletsv1cybersourcecreatedat.md
-  - docs/models/operations/getuserwalletsv1cybersourceupdatedat.md
   - docs/models/operations/getuserwalletsv1data.md
   - docs/models/operations/getuserwalletsv1response.md
   - docs/models/operations/getuserwalletsv1responsebody.md
-  - docs/models/operations/getuserwalletsv1status.md
-  - docs/models/operations/link.md
   - docs/models/operations/locality.md
-  - docs/models/operations/location.md
-  - docs/models/operations/locationcreatedat.md
-  - docs/models/operations/locationupdatedat.md
   - docs/models/operations/meta.md
-  - docs/models/operations/metadatadata.md
   - docs/models/operations/metadatarequest.md
-  - docs/models/operations/net.md
+  - docs/models/operations/metadataresponse.md
+  - docs/models/operations/mpgs.md
+  - docs/models/operations/nextactions.md
   - docs/models/operations/option.md
-  - docs/models/operations/orderid.md
-  - docs/models/operations/orderidcreatedat.md
-  - docs/models/operations/orderidupdatedat.md
-  - docs/models/operations/pausecollection.md
-  - docs/models/operations/payerauthenticationenrollment.md
-  - docs/models/operations/paymentmethodcreatedat.md
-  - docs/models/operations/paymentmethodupdatedat.md
   - docs/models/operations/postauthv1companyauthenticatedata.md
-  - docs/models/operations/postauthv1companyauthenticateexpectationfailedstatus.md
   - docs/models/operations/postauthv1companyauthenticaterequest.md
   - docs/models/operations/postauthv1companyauthenticateresponse.md
   - docs/models/operations/postauthv1companyauthenticateresponsebody.md
-  - docs/models/operations/postauthv1companyauthenticatestatus.md
-  - docs/models/operations/postauthv1companyauthenticateunauthorizedstatus.md
   - docs/models/operations/postauthv2userlogindata.md
   - docs/models/operations/postauthv2userloginrequest.md
   - docs/models/operations/postauthv2userloginresponse.md
   - docs/models/operations/postauthv2userloginresponsebody.md
-  - docs/models/operations/postclientapisettingsv1badrequeststatus.md
   - docs/models/operations/postclientapisettingsv1data.md
   - docs/models/operations/postclientapisettingsv1response.md
   - docs/models/operations/postclientapisettingsv1responsebody.md
-  - docs/models/operations/postclientapisettingsv1status.md
-  - docs/models/operations/postclientapisettingsv1unauthorizedstatus.md
   - docs/models/operations/postclienthooksv2testdata.md
   - docs/models/operations/postclienthooksv2testrequest.md
   - docs/models/operations/postclienthooksv2testresponse.md
   - docs/models/operations/postclienthooksv2testresponsebody.md
-  - docs/models/operations/postclienthooksv2teststatus.md
   - docs/models/operations/postclientpassportv1tokenresponse.md
   - docs/models/operations/postclientpassportv1tokenresponsebody.md
-  - docs/models/operations/postclientpassportv1tokenstatus.md
   - docs/models/operations/postclientplansv1data.md
   - docs/models/operations/postclientplansv1request.md
   - docs/models/operations/postclientplansv1response.md
   - docs/models/operations/postclientplansv1responsebody.md
-  - docs/models/operations/postclientplansv1status.md
-  - docs/models/operations/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2canceldata.md
-  - docs/models/operations/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancelplan.md
-  - docs/models/operations/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancelplanpricemoney.md
-  - docs/models/operations/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancelpricemoney.md
-  - docs/models/operations/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancelrequest.md
-  - docs/models/operations/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancelresponse.md
-  - docs/models/operations/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancelresponsebody.md
-  - docs/models/operations/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancelsubscription.md
-  - docs/models/operations/postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refunddata.md
-  - docs/models/operations/postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refundresponse.md
-  - docs/models/operations/postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refundresponsebody.md
-  - docs/models/operations/postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refundstatus.md
-  - docs/models/operations/postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refundtransaction.md
   - docs/models/operations/postcode.md
   - docs/models/operations/postinvoicequicklinksv1data.md
-  - docs/models/operations/postinvoicequicklinksv1expectationfailedstatus.md
   - docs/models/operations/postinvoicequicklinksv1metadatum.md
   - docs/models/operations/postinvoicequicklinksv1request.md
   - docs/models/operations/postinvoicequicklinksv1response.md
   - docs/models/operations/postinvoicequicklinksv1responsebody.md
-  - docs/models/operations/postinvoicequicklinksv1status.md
-  - docs/models/operations/postinvoicequicklinksv1unauthorizedstatus.md
   - docs/models/operations/postinvoicequicklinksv2request.md
-  - docs/models/operations/postorderpaymentsv3badrequeststatus.md
-  - docs/models/operations/postorderpaymentsv3baseamount.md
-  - docs/models/operations/postorderpaymentsv3capabilities.md
-  - docs/models/operations/postorderpaymentsv3conversionrate.md
   - docs/models/operations/postorderpaymentsv3cybersource.md
   - docs/models/operations/postorderpaymentsv3data.md
-  - docs/models/operations/postorderpaymentsv3internalservererrorstatus.md
-  - docs/models/operations/postorderpaymentsv3mpgs.md
-  - docs/models/operations/postorderpaymentsv3nextactions.md
-  - docs/models/operations/postorderpaymentsv3notfoundstatus.md
-  - docs/models/operations/postorderpaymentsv3purchasetotals.md
-  - docs/models/operations/postorderpaymentsv3quoteamount.md
   - docs/models/operations/postorderpaymentsv3request.md
   - docs/models/operations/postorderpaymentsv3response.md
   - docs/models/operations/postorderpaymentsv3responsebody.md
-  - docs/models/operations/postorderpaymentsv3status.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7action.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7baseamount.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7conversionrate.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7cybersource.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7data.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7nextactions.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7paymentmethod.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7purchasetotals.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7quoteamount.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7request.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7response.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7responsebody.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7status.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7tracker.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidaction.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidbadrequeststatus.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidbaseamount.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidconversionrate.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidcybersource.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voiddata.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidnextactions.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidpurchasetotals.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidquoteamount.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidrequest.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidresponse.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidresponsebody.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidstatus.md
-  - docs/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7voidtracker.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundaction.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundbadrequeststatus.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundbaseamount.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundconversionrate.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundcybersource.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refunddata.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundnextactions.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundpurchasetotals.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundquoteamount.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundrequest.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundresponse.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundresponsebody.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundstatus.md
-  - docs/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refundtracker.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4daction.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dbadrequeststatus.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dbaseamount.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dconversionrate.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dcybersource.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4ddata.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dflex.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dforbiddenstatus.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dnextactions.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dpurchasetotals.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dquoteamount.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4drequest.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dresponse.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dresponsebody.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dstatus.md
-  - docs/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4dtracker.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalaction.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalbadrequeststatus.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalbaseamount.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalconversionrate.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalcybersource.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversaldata.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalnextactions.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalpurchasetotals.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalquoteamount.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalrequest.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalresponse.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalresponsebody.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalstatus.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversaltracker.md
-  - docs/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversalunauthorizedstatus.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6action.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6actionpaymentmethod.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6baseamount.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6conversionrate.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6cybersource.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6data.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6metadata.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6nextactions.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6payerauthenticationsetup.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6payload.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6paymentmethodrequest.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6purchasetotals.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6quoteamount.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6request.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6response.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6responsebody.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6status.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6tracker.md
-  - docs/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6unauthorizedstatus.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatabadrequeststatus.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatabaseamount.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadataconversionrate.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatacybersource.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatadataresponse.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatametadata.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatanextactions.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatapurchasetotals.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadataquoteamount.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatarequest.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadataresponse.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadataresponsebody.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatastatus.md
-  - docs/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadatatracker.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44action.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44actionpaymentmethod.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44baseamount.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44conversionrate.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44cybersource.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44data.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44flex.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44forbiddenstatus.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44nextactions.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44payerauthenticationsetup.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44payload.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44paymentmethodrequest.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44purchasetotals.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44quoteamount.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44request.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44response.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44responsebody.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44status.md
-  - docs/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44tracker.md
-  - docs/models/operations/postorderpaymentsv3tracker.md
-  - docs/models/operations/postorderpaymentsv3trackermetadata.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372action.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372authorization.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372baseamount.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372billing.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372conversionrate.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372cybersource.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372data.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372metadata.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372mpgs.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372nextactions.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372payload.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372paymentmethod.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372purchasetotals.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372quoteamount.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372request.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372response.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372responsebody.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372status.md
-  - docs/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372tracker.md
-  - docs/models/operations/postuseraddressv2badrequeststatus.md
   - docs/models/operations/postuseraddressv2createdat.md
   - docs/models/operations/postuseraddressv2data.md
   - docs/models/operations/postuseraddressv2request.md
   - docs/models/operations/postuseraddressv2response.md
   - docs/models/operations/postuseraddressv2responsebody.md
-  - docs/models/operations/postuseraddressv2status.md
-  - docs/models/operations/postuseraddressv2unauthorizedstatus.md
   - docs/models/operations/postuseraddressv2updatedat.md
-  - docs/models/operations/postusercustomersv1badrequeststatus.md
   - docs/models/operations/postusercustomersv1createdat.md
   - docs/models/operations/postusercustomersv1data.md
   - docs/models/operations/postusercustomersv1request.md
   - docs/models/operations/postusercustomersv1response.md
   - docs/models/operations/postusercustomersv1responsebody.md
-  - docs/models/operations/postusercustomersv1status.md
-  - docs/models/operations/postusercustomersv1unauthorizedstatus.md
   - docs/models/operations/postusercustomersv1updatedat.md
   - docs/models/operations/postuserv1guestdata.md
-  - docs/models/operations/postuserv1guestexpectationfailedstatus.md
   - docs/models/operations/postuserv1guestrequest.md
   - docs/models/operations/postuserv1guestresponse.md
   - docs/models/operations/postuserv1guestresponsebody.md
-  - docs/models/operations/postuserv1gueststatus.md
   - docs/models/operations/postuserv2contact.md
   - docs/models/operations/postuserv2createdat.md
   - docs/models/operations/postuserv2data.md
@@ -662,104 +192,24 @@ generatedFiles:
   - docs/models/operations/postv1companyloginlist.md
   - docs/models/operations/postv1companyloginresponse.md
   - docs/models/operations/postv1companyloginresponsebody.md
-  - docs/models/operations/postv1companyloginstatus.md
+  - docs/models/operations/purchasetotals.md
   - docs/models/operations/putclientapisettingsv1data.md
   - docs/models/operations/putclientapisettingsv1response.md
   - docs/models/operations/putclientapisettingsv1responsebody.md
-  - docs/models/operations/putclientapisettingsv1status.md
-  - docs/models/operations/putclientapisettingsv1unauthorizedstatus.md
-  - docs/models/operations/putclientplansv1pland4869a7800364d6697bd6afeb5282bcddata.md
-  - docs/models/operations/putclientplansv1pland4869a7800364d6697bd6afeb5282bcdrequest.md
-  - docs/models/operations/putclientplansv1pland4869a7800364d6697bd6afeb5282bcdresponse.md
-  - docs/models/operations/putclientplansv1pland4869a7800364d6697bd6afeb5282bcdresponsebody.md
-  - docs/models/operations/putclientplansv1pland4869a7800364d6697bd6afeb5282bcdstatus.md
-  - docs/models/operations/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptiondata.md
-  - docs/models/operations/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptionplan.md
-  - docs/models/operations/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptionplanpricemoney.md
-  - docs/models/operations/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptionpricemoney.md
-  - docs/models/operations/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptionrequest.md
-  - docs/models/operations/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptionresponse.md
-  - docs/models/operations/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptionresponsebody.md
-  - docs/models/operations/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptionstatus.md
-  - docs/models/operations/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumptionsubscription.md
-  - docs/models/operations/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3data.md
-  - docs/models/operations/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3plan.md
-  - docs/models/operations/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3planpricemoney.md
-  - docs/models/operations/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3pricemoney.md
-  - docs/models/operations/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3request.md
-  - docs/models/operations/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3response.md
-  - docs/models/operations/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3responsebody.md
-  - docs/models/operations/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3status.md
-  - docs/models/operations/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3subscription.md
-  - docs/models/operations/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cdata.md
-  - docs/models/operations/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cinternalservererrorstatus.md
-  - docs/models/operations/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cmetadatum.md
-  - docs/models/operations/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890crequest.md
-  - docs/models/operations/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cresponse.md
-  - docs/models/operations/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cresponsebody.md
-  - docs/models/operations/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cstatus.md
-  - docs/models/operations/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890cunauthorizedstatus.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920bebadrequeststatus.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920bebaseamount.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920becapabilities.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920beconversionrate.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920becybersource.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920bedata.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920benextactions.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920bepurchasetotals.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920bequoteamount.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920beresponse.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920beresponsebody.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920bestatus.md
-  - docs/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920betracker.md
-  - docs/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00badrequeststatus.md
-  - docs/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00createdat.md
-  - docs/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00data.md
-  - docs/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00notfoundstatus.md
-  - docs/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00request.md
-  - docs/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00response.md
-  - docs/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00responsebody.md
-  - docs/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00status.md
-  - docs/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00unauthorizedstatus.md
-  - docs/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00updatedat.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aabadrequeststatus.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aacreatedat.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aacybersource.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aacybersourcecreatedat.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aacybersourceupdatedat.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aadata.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aaexpiresat.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aanotfoundstatus.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aarequest.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aaresponse.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aaresponsebody.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aastatus.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aaunauthorizedstatus.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aaupdatedat.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawallet.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletcreatedat.md
-  - docs/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletupdatedat.md
-  - docs/models/operations/risk.md
-  - docs/models/operations/riskcreatedat.md
-  - docs/models/operations/riskupdatedat.md
-  - docs/models/operations/source.md
-  - docs/models/operations/sourcecreatedat.md
-  - docs/models/operations/sourceupdatedat.md
+  - docs/models/operations/quoteamount.md
   - docs/models/operations/streetaddress.md
-  - docs/models/operations/tax.md
-  - docs/models/operations/user.md
-  - docs/models/operations/walletcontact.md
+  - docs/models/operations/subscription.md
+  - docs/models/operations/tracker.md
+  - docs/models/operations/transaction.md
+  - docs/models/status.md
   - docs/sdks/addresses/README.md
   - docs/sdks/apikeys/README.md
   - docs/sdks/apisettings/README.md
   - docs/sdks/auth/README.md
-  - docs/sdks/clientplans/README.md
-  - docs/sdks/clientsubscriptions/README.md
   - docs/sdks/clienttransactions/README.md
   - docs/sdks/company/README.md
   - docs/sdks/customers/README.md
   - docs/sdks/invoices/README.md
-  - docs/sdks/links/README.md
   - docs/sdks/meta/README.md
   - docs/sdks/orderpayments/README.md
   - docs/sdks/passport/README.md
@@ -769,12 +219,8 @@ generatedFiles:
   - docs/sdks/safepay/README.md
   - docs/sdks/shoppers/README.md
   - docs/sdks/subscriptions/README.md
-  - docs/sdks/transactions/README.md
-  - docs/sdks/useraddresses/README.md
-  - docs/sdks/usercustomers/README.md
   - docs/sdks/users/README.md
   - docs/sdks/userwallets/README.md
-  - docs/sdks/wallets/README.md
   - docs/sdks/webhooks/README.md
   - eslint.config.mjs
   - examples/.env.template
@@ -790,59 +236,26 @@ generatedFiles:
   - src/funcs/apiSettingsUpdateKey.ts
   - src/funcs/authCreateMerchantJwt.ts
   - src/funcs/authLogin.ts
-  - src/funcs/clientPlansDeleteById.ts
-  - src/funcs/clientSubscriptionsResume.ts
-  - src/funcs/clientSubscriptionsUpdate.ts
-  - src/funcs/clientTransactionsFindByTransactionId.ts
   - src/funcs/clientTransactionsSearch.ts
   - src/funcs/companyLogin.ts
   - src/funcs/customersCreate.ts
-  - src/funcs/customersDelete.ts
-  - src/funcs/customersGet.ts
-  - src/funcs/customersGetPaymentMethod.ts
   - src/funcs/customersList.ts
-  - src/funcs/customersListPaymentMethods.ts
-  - src/funcs/customersUpdate.ts
   - src/funcs/invoicesCreateQuickLink.ts
-  - src/funcs/linksGet.ts
   - src/funcs/metaGetCountry.ts
   - src/funcs/metaListCountries.ts
   - src/funcs/orderPaymentsCreate.ts
-  - src/funcs/orderPaymentsResetTracking.ts
   - src/funcs/passportGenerateToken.ts
-  - src/funcs/paymentsAddMetadata.ts
-  - src/funcs/paymentsAuthenticate.ts
-  - src/funcs/paymentsCapture.ts
-  - src/funcs/paymentsEnroll.ts
-  - src/funcs/paymentsFetch.ts
-  - src/funcs/paymentsGenerateCaptureContext.ts
-  - src/funcs/paymentsProcessToken.ts
-  - src/funcs/paymentsRefund.ts
-  - src/funcs/paymentsReverse.ts
   - src/funcs/paymentsSearch.ts
-  - src/funcs/paymentsVoid.ts
   - src/funcs/plansCreate.ts
-  - src/funcs/plansGet.ts
   - src/funcs/plansSearch.ts
-  - src/funcs/plansUpdate.ts
   - src/funcs/quickLinksCreate.ts
-  - src/funcs/quickLinksDelete.ts
-  - src/funcs/quickLinksGet.ts
   - src/funcs/quickLinksSearch.ts
-  - src/funcs/quickLinksUpdate.ts
   - src/funcs/shoppersCreateSafepay.ts
-  - src/funcs/subscriptionsCancel.ts
-  - src/funcs/subscriptionsGet.ts
   - src/funcs/subscriptionsSearch.ts
-  - src/funcs/transactionsRefund.ts
-  - src/funcs/userAddressesFindById.ts
-  - src/funcs/userAddressesUpdateById.ts
-  - src/funcs/userCustomersDeletePaymentMethod.ts
   - src/funcs/userWalletsListPaymentMethods.ts
   - src/funcs/usersCreateGuestJwt.ts
   - src/funcs/usersExists.ts
   - src/funcs/usersFindSafepayShopper.ts
-  - src/funcs/walletsDeletePaymentMethod.ts
   - src/funcs/webhooksTest.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
@@ -883,139 +296,48 @@ generatedFiles:
   - src/mcp-server/tools/apiSettingsUpdateKey.ts
   - src/mcp-server/tools/authCreateMerchantJwt.ts
   - src/mcp-server/tools/authLogin.ts
-  - src/mcp-server/tools/clientPlansDeleteById.ts
-  - src/mcp-server/tools/clientSubscriptionsResume.ts
-  - src/mcp-server/tools/clientSubscriptionsUpdate.ts
-  - src/mcp-server/tools/clientTransactionsFindByTransactionId.ts
   - src/mcp-server/tools/clientTransactionsSearch.ts
   - src/mcp-server/tools/companyLogin.ts
   - src/mcp-server/tools/customersCreate.ts
-  - src/mcp-server/tools/customersDelete.ts
-  - src/mcp-server/tools/customersGet.ts
-  - src/mcp-server/tools/customersGetPaymentMethod.ts
   - src/mcp-server/tools/customersList.ts
-  - src/mcp-server/tools/customersListPaymentMethods.ts
-  - src/mcp-server/tools/customersUpdate.ts
   - src/mcp-server/tools/invoicesCreateQuickLink.ts
-  - src/mcp-server/tools/linksGet.ts
   - src/mcp-server/tools/metaGetCountry.ts
   - src/mcp-server/tools/metaListCountries.ts
   - src/mcp-server/tools/orderPaymentsCreate.ts
-  - src/mcp-server/tools/orderPaymentsResetTracking.ts
   - src/mcp-server/tools/passportGenerateToken.ts
-  - src/mcp-server/tools/paymentsAddMetadata.ts
-  - src/mcp-server/tools/paymentsAuthenticate.ts
-  - src/mcp-server/tools/paymentsCapture.ts
-  - src/mcp-server/tools/paymentsEnroll.ts
-  - src/mcp-server/tools/paymentsFetch.ts
-  - src/mcp-server/tools/paymentsGenerateCaptureContext.ts
-  - src/mcp-server/tools/paymentsProcessToken.ts
-  - src/mcp-server/tools/paymentsRefund.ts
-  - src/mcp-server/tools/paymentsReverse.ts
   - src/mcp-server/tools/paymentsSearch.ts
-  - src/mcp-server/tools/paymentsVoid.ts
   - src/mcp-server/tools/plansCreate.ts
-  - src/mcp-server/tools/plansGet.ts
   - src/mcp-server/tools/plansSearch.ts
-  - src/mcp-server/tools/plansUpdate.ts
   - src/mcp-server/tools/quickLinksCreate.ts
-  - src/mcp-server/tools/quickLinksDelete.ts
-  - src/mcp-server/tools/quickLinksGet.ts
   - src/mcp-server/tools/quickLinksSearch.ts
-  - src/mcp-server/tools/quickLinksUpdate.ts
   - src/mcp-server/tools/shoppersCreateSafepay.ts
-  - src/mcp-server/tools/subscriptionsCancel.ts
-  - src/mcp-server/tools/subscriptionsGet.ts
   - src/mcp-server/tools/subscriptionsSearch.ts
-  - src/mcp-server/tools/transactionsRefund.ts
-  - src/mcp-server/tools/userAddressesFindById.ts
-  - src/mcp-server/tools/userAddressesUpdateById.ts
-  - src/mcp-server/tools/userCustomersDeletePaymentMethod.ts
   - src/mcp-server/tools/userWalletsListPaymentMethods.ts
   - src/mcp-server/tools/usersCreateGuestJwt.ts
   - src/mcp-server/tools/usersExists.ts
   - src/mcp-server/tools/usersFindSafepayShopper.ts
-  - src/mcp-server/tools/walletsDeletePaymentMethod.ts
   - src/mcp-server/tools/webhooksTest.ts
-  - src/models/errors/deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcd.ts
-  - src/models/errors/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c.ts
-  - src/models/errors/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52.ts
-  - src/models/errors/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89.ts
-  - src/models/errors/deleteuserwalletsv1inst8ed5e401ab7b442c8473dee137827448.ts
-  - src/models/errors/getclientapisettingsv1.ts
-  - src/models/errors/getclientplansv1pland4869a7800364d6697bd6afeb5282bcd.ts
-  - src/models/errors/getclientplansv1search.ts
-  - src/models/errors/getclientsubscriptionsv1search.ts
-  - src/models/errors/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541.ts
-  - src/models/errors/getclienttransactionsv1search.ts
-  - src/models/errors/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1.ts
-  - src/models/errors/getinvoicequicklinksv1.ts
-  - src/models/errors/getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c.ts
-  - src/models/errors/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbc.ts
-  - src/models/errors/getuseraddressv2address5ce54f87a8234da689907b26d048ce00.ts
-  - src/models/errors/getusercustomersv1.ts
-  - src/models/errors/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67.ts
-  - src/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawallet.ts
-  - src/models/errors/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89.ts
-  - src/models/errors/getuserv2.ts
+  - src/models/address.ts
+  - src/models/datetimeseconds.ts
+  - src/models/errors/error.ts
   - src/models/errors/getuserv2exists.ts
-  - src/models/errors/getuserwalletsv1.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
   - src/models/errors/postauthv1companyauthenticate.ts
   - src/models/errors/postauthv2userlogin.ts
-  - src/models/errors/postclientapisettingsv1.ts
-  - src/models/errors/postclienthooksv2test.ts
-  - src/models/errors/postclientpassportv1token.ts
-  - src/models/errors/postclientplansv1.ts
-  - src/models/errors/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancel.ts
-  - src/models/errors/postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refund.ts
-  - src/models/errors/postinvoicequicklinksv1.ts
-  - src/models/errors/postorderpaymentsv3.ts
-  - src/models/errors/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7void.ts
-  - src/models/errors/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refund.ts
-  - src/models/errors/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4d.ts
-  - src/models/errors/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversal.ts
-  - src/models/errors/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6.ts
-  - src/models/errors/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadata.ts
-  - src/models/errors/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44.ts
-  - src/models/errors/postuseraddressv2.ts
-  - src/models/errors/postusercustomersv1.ts
-  - src/models/errors/postuserv1guest.ts
   - src/models/errors/postuserv2.ts
-  - src/models/errors/putclientapisettingsv1.ts
-  - src/models/errors/putclientplansv1pland4869a7800364d6697bd6afeb5282bcd.ts
-  - src/models/errors/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumption.ts
-  - src/models/errors/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3.ts
-  - src/models/errors/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c.ts
-  - src/models/errors/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920be.ts
-  - src/models/errors/putuseraddressv2address5ce54f87a8234da689907b26d048ce00.ts
-  - src/models/errors/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aa.ts
   - src/models/errors/responsevalidationerror.ts
   - src/models/errors/safepaydefaulterror.ts
   - src/models/errors/safepayerror.ts
   - src/models/errors/sdkvalidationerror.ts
-  - src/models/operations/deleteclientplansv1pland4869a7800364d6697bd6afeb5282bcd.ts
-  - src/models/operations/deleteinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c.ts
-  - src/models/operations/deleteusercustomersv1cus17febb02b2cd4cf8b2997a447530ef52.ts
-  - src/models/operations/deleteusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89.ts
-  - src/models/operations/deleteuserwalletsv1inst8ed5e401ab7b442c8473dee137827448.ts
+  - src/models/index.ts
   - src/models/operations/getclientapisettingsv1.ts
-  - src/models/operations/getclientplansv1pland4869a7800364d6697bd6afeb5282bcd.ts
   - src/models/operations/getclientplansv1search.ts
   - src/models/operations/getclientsubscriptionsv1search.ts
-  - src/models/operations/getclientsubscriptionsv1subc841ea40613c41a389847cb11f66d541.ts
   - src/models/operations/getclienttransactionsv1search.ts
-  - src/models/operations/getclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1.ts
   - src/models/operations/getinvoicequicklinksv1.ts
-  - src/models/operations/getinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c.ts
   - src/models/operations/getreporterapiv1payments.ts
-  - src/models/operations/getreporterapiv1paymentstrackf865abdd3a61484280001cffa38f1fbc.ts
-  - src/models/operations/getuseraddressv2address5ce54f87a8234da689907b26d048ce00.ts
   - src/models/operations/getusercustomersv1.ts
-  - src/models/operations/getusercustomersv1cus11db365b4d86494bacca79d6e09efa67.ts
-  - src/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawallet.ts
-  - src/models/operations/getusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aawalletpmbea0077422ba44ce82c53cdd1a342e89.ts
   - src/models/operations/getusermetav2countries.ts
   - src/models/operations/getusermetav2country.ts
   - src/models/operations/getuserv2.ts
@@ -1028,45 +350,25 @@ generatedFiles:
   - src/models/operations/postclienthooksv2test.ts
   - src/models/operations/postclientpassportv1token.ts
   - src/models/operations/postclientplansv1.ts
-  - src/models/operations/postclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b2cancel.ts
-  - src/models/operations/postclienttransactionsv1txn17553398b91d41e9ae47165e194d06a1refund.ts
   - src/models/operations/postinvoicequicklinksv1.ts
   - src/models/operations/postinvoicequicklinksv2.ts
   - src/models/operations/postorderpaymentsv3.ts
-  - src/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7.ts
-  - src/models/operations/postorderpaymentsv3track1a46dc7091f948928e250bb5205b69c7void.ts
-  - src/models/operations/postorderpaymentsv3track70fdbb06bbf744e1b50a672d9f1d8b26refund.ts
-  - src/models/operations/postorderpaymentsv3track7233ed61fe5048368a84c5e17ae90f4d.ts
-  - src/models/operations/postorderpaymentsv3track9d765b77608f46bc84d25f4392753ca3reversal.ts
-  - src/models/operations/postorderpaymentsv3tracka6f9b00c8a254cbf95f9cd6bc440eca6.ts
-  - src/models/operations/postorderpaymentsv3trackaa38d5b7a3a245c5bed8586b0bae8d06metadata.ts
-  - src/models/operations/postorderpaymentsv3trackdccdef16008e4fae81cc1b7d81bf6c44.ts
-  - src/models/operations/postorderpaymentsv3trackf3adbae6640247fe948bee82244ac372.ts
   - src/models/operations/postuseraddressv2.ts
   - src/models/operations/postusercustomersv1.ts
   - src/models/operations/postuserv1guest.ts
   - src/models/operations/postuserv2.ts
   - src/models/operations/postv1companylogin.ts
   - src/models/operations/putclientapisettingsv1.ts
-  - src/models/operations/putclientplansv1pland4869a7800364d6697bd6afeb5282bcd.ts
-  - src/models/operations/putclientsubscriptionsv1sub130aa5b290564c8eb9c99149e68f17ceresumption.ts
-  - src/models/operations/putclientsubscriptionsv1subee09b0f9974f4deeb1b34ad8dad2e7b3.ts
-  - src/models/operations/putinvoicequicklinksv1link297bfa4bf61c4c7280a4368d731e890c.ts
-  - src/models/operations/putorderpaymentsv3trackaefeaefec21a4678ab1e181bfe2920be.ts
-  - src/models/operations/putuseraddressv2address5ce54f87a8234da689907b26d048ce00.ts
-  - src/models/operations/putusercustomersv1cus2fc20245e0f8447faf75fa651cfd54aa.ts
+  - src/models/status.ts
   - src/sdk/addresses.ts
   - src/sdk/apikeys.ts
   - src/sdk/apisettings.ts
   - src/sdk/auth.ts
-  - src/sdk/clientplans.ts
-  - src/sdk/clientsubscriptions.ts
   - src/sdk/clienttransactions.ts
   - src/sdk/company.ts
   - src/sdk/customers.ts
   - src/sdk/index.ts
   - src/sdk/invoices.ts
-  - src/sdk/links.ts
   - src/sdk/meta.ts
   - src/sdk/orderpayments.ts
   - src/sdk/passport.ts
@@ -1076,12 +378,8 @@ generatedFiles:
   - src/sdk/sdk.ts
   - src/sdk/shoppers.ts
   - src/sdk/subscriptions.ts
-  - src/sdk/transactions.ts
-  - src/sdk/useraddresses.ts
-  - src/sdk/usercustomers.ts
   - src/sdk/users.ts
   - src/sdk/userwallets.ts
-  - src/sdk/wallets.ts
   - src/sdk/webhooks.ts
   - src/types/async.ts
   - src/types/blobs.ts
@@ -1099,8 +397,14 @@ examples:
       responses:
         "200":
           application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
   post_/auth/v1/company/authenticate:
     speakeasy-default-post-/auth/v1-/company/authenticate:
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {}
@@ -1110,6 +414,8 @@ examples:
           application/json: {}
   post_/auth/v2/user/login:
     speakeasy-default-post-/auth/v2-/user/login:
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {}
@@ -1119,10 +425,29 @@ examples:
           application/json: {}
   post_/user/v1/guest:
     speakeasy-default-post-/user/v1-/guest:
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {}
         "417":
+          application/json: {}
+  get_/user/v2:
+    speakeasy-default-get-/user/v2:
+      responses:
+        "200":
+          application/json: {}
+        "401":
+          application/json: {}
+  get_/user/v2/exists:
+    speakeasy-default-get-/user/v2-/exists:
+      parameters:
+        query:
+          email: "hzaidi@getsafepay.com"
+      responses:
+        "200":
+          application/json: {}
+        "400":
           application/json: {}
   post_/client/api-settings/v1:
     speakeasy-default-post-/client/api-settings/v1:
@@ -1156,6 +481,8 @@ examples:
           application/json: {}
   post_/user/customers/v1:
     speakeasy-default-post-/user/customers/v1:
+      requestBody:
+        application/json: {}
       responses:
         "201":
           application/json: {}
@@ -1176,82 +503,10 @@ examples:
           application/json: {}
         "401":
           application/json: {}
-  put_/user/customers/v1/cus_2fc20245-e0f8-447f-af75-fa651cfd54aa:
-    speakeasy-default-put-/user/customers/v1-/cus-2fc20245-e0f8-447f-af75-fa651cfd54aa:
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
-  get_/user/customers/v1/cus_11db365b-4d86-494b-acca-79d6e09efa67:
-    speakeasy-default-get-/user/customers/v1-/cus-11db365b-4d86-494b-acca-79d6e09efa67:
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
-  delete_/user/customers/v1/cus_17febb02-b2cd-4cf8-b299-7a447530ef52:
-    speakeasy-default-delete-/user/customers/v1-/cus-17febb02-b2cd-4cf8-b299-7a447530ef52:
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
-  get_/user/customers/v1/cus_2fc20245-e0f8-447f-af75-fa651cfd54aa/wallet/pm_bea00774-22ba-44ce-82c5-3cdd1a342e89:
-    ? speakeasy-default-get-/user/customers/v1-/cus-2fc20245-e0f8-447f-af75-fa651cfd54aa/wallet/pm-bea00774-22ba-44ce-82c5-3cdd1a342e89
-    : responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "401":
-          application/json: {}
-        "403":
-          application/json: {}
-        "404":
-          application/json: {}
-  delete_/user/customers/v1/cus_2fc20245-e0f8-447f-af75-fa651cfd54aa/wallet/pm_bea00774-22ba-44ce-82c5-3cdd1a342e89:
-    ? speakeasy-default-delete-/user/customers/v1-/cus-2fc20245-e0f8-447f-af75-fa651cfd54aa/wallet/pm-bea00774-22ba-44ce-82c5-3cdd1a342e89
-    : responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "401":
-          application/json: {}
-        "403":
-          application/json: {}
-        "404":
-          application/json: {}
-  get_/user/customers/v1/cus_2fc20245-e0f8-447f-af75-fa651cfd54aa/wallet:
-    speakeasy-default-get-/user/customers/v1-/cus-2fc20245-e0f8-447f-af75-fa651cfd54aa/wallet:
-      parameters:
-        query:
-          limit: 20
-          page: 1
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
   post_/user/address/v2:
     speakeasy-default-post-/user/address/v2:
+      requestBody:
+        application/json: {}
       responses:
         "201":
           application/json: {}
@@ -1259,30 +514,10 @@ examples:
           application/json: {}
         "401":
           application/json: {}
-  put_/user/address/v2/address_5ce54f87-a823-4da6-8990-7b26d048ce00:
-    speakeasy-default-put-/user/address/v2-/address-5ce54f87-a823-4da6-8990-7b26d048ce00:
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
-  get_/user/address/v2/address_5ce54f87-a823-4da6-8990-7b26d048ce00:
-    speakeasy-default-get-/user/address/v2-/address-5ce54f87-a823-4da6-8990-7b26d048ce00:
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
   post_/order/payments/v3:
     speakeasy-default-post-/order/payments/v3:
+      requestBody:
+        application/json: {}
       responses:
         "201":
           application/json: {}
@@ -1291,83 +526,6 @@ examples:
         "404":
           application/json: {}
         "500":
-          application/json: {}
-  post_/order/payments/v3/track_7233ed61-fe50-4836-8a84-c5e17ae90f4d:
-    speakeasy-default-post-/order/payments/v3-/track-7233ed61-fe50-4836-8a84-c5e17ae90f4d:
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "403":
-          application/json: {}
-  post_/order/payments/v3/track_dccdef16-008e-4fae-81cc-1b7d81bf6c44:
-    speakeasy-default-post-/order/payments/v3-/track-dccdef16-008e-4fae-81cc-1b7d81bf6c44:
-      responses:
-        "200":
-          application/json: {}
-        "403":
-          application/json: {}
-  post_/order/payments/v3/track_a6f9b00c-8a25-4cbf-95f9-cd6bc440eca6:
-    speakeasy-default-post-/order/payments/v3-/track-a6f9b00c-8a25-4cbf-95f9-cd6bc440eca6:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-  post_/order/payments/v3/track_f3adbae6-6402-47fe-948b-ee82244ac372:
-    speakeasy-default-post-/order/payments/v3-/track-f3adbae6-6402-47fe-948b-ee82244ac372:
-      responses:
-        "200":
-          application/json: {}
-  post_/order/payments/v3/track_1a46dc70-91f9-4892-8e25-0bb5205b69c7:
-    speakeasy-default-post-/order/payments/v3-/track-1a46dc70-91f9-4892-8e25-0bb5205b69c7:
-      responses:
-        "200":
-          application/json: {}
-  put_/order/payments/v3/track_aefeaefe-c21a-4678-ab1e-181bfe2920be:
-    speakeasy-default-put-/order/payments/v3-/track-aefeaefe-c21a-4678-ab1e-181bfe2920be:
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-  post_/order/payments/v3/track_aa38d5b7-a3a2-45c5-bed8-586b0bae8d06/metadata:
-    speakeasy-default-post-/order/payments/v3-/track-aa38d5b7-a3a2-45c5-bed8-586b0bae8d06-/metadata:
-      responses:
-        "201":
-          application/json: {}
-        "400":
-          application/json: {}
-  post_/order/payments/v3/track_9d765b77-608f-46bc-84d2-5f4392753ca3/reversal:
-    speakeasy-default-post-/order/payments/v3-/track-9d765b77-608f-46bc-84d2-5f4392753ca3-/reversal:
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-        "401":
-          application/json: {}
-  post_/order/payments/v3/track_70fdbb06-bbf7-44e1-b50a-672d9f1d8b26/refund:
-    speakeasy-default-post-/order/payments/v3-/track-70fdbb06-bbf7-44e1-b50a-672d9f1d8b26-/refund:
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-  post_/order/payments/v3/track_1a46dc70-91f9-4892-8e25-0bb5205b69c7/void:
-    speakeasy-default-post-/order/payments/v3-/track-1a46dc70-91f9-4892-8e25-0bb5205b69c7-/void:
-      responses:
-        "200":
-          application/json: {}
-        "400":
-          application/json: {}
-  get_/reporter/api/v1/payments/track_f865abdd-3a61-4842-8000-1cffa38f1fbc:
-    speakeasy-default-get-/reporter/api/v1-/payments/track-f865abdd-3a61-4842-8000-1cffa38f1fbc:
-      responses:
-        "200":
-          application/json: {}
-        "401":
           application/json: {}
   get_/reporter/api/v1/payments:
     speakeasy-default-get-/reporter/api/v1-/payments:
@@ -1388,6 +546,10 @@ examples:
       responses:
         "200":
           application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
   get_/user/meta/v2/country:
     speakeasy-default-get-/user/meta/v2-/country:
       parameters:
@@ -1396,8 +558,14 @@ examples:
       responses:
         "200":
           application/json: {}
+        "400":
+          application/json: {}
+        "500":
+          application/json: {}
   post_/client/hooks/v2/test:
     speakeasy-default-post-/client/hooks/v2-/test:
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {}
@@ -1405,8 +573,14 @@ examples:
           application/json: {}
         "401":
           application/json: {}
+        "404":
+          application/json: {}
+        "500":
+          application/json: {}
   post_/client/plans/v1:
     speakeasy-default-post-/client/plans/v1:
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {}
@@ -1415,33 +589,6 @@ examples:
         "401":
           application/json: {}
         "500":
-          application/json: {}
-  get_/client/plans/v1/plan_d4869a78-0036-4d66-97bd-6afeb5282bcd:
-    speakeasy-default-get-/client/plans/v1-/plan-d4869a78-0036-4d66-97bd-6afeb5282bcd:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
-  put_/client/plans/v1/plan_d4869a78-0036-4d66-97bd-6afeb5282bcd:
-    speakeasy-default-put-/client/plans/v1-/plan-d4869a78-0036-4d66-97bd-6afeb5282bcd:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
-  delete_/client/plans/v1/plan_d4869a78-0036-4d66-97bd-6afeb5282bcd:
-    speakeasy-default-delete-/client/plans/v1-/plan-d4869a78-0036-4d66-97bd-6afeb5282bcd:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
           application/json: {}
   get_/client/plans/v1/search:
     speakeasy-default-get-/client/plans/v1-/search:
@@ -1455,50 +602,12 @@ examples:
           application/json: {}
         "401":
           application/json: {}
-  get_/client/subscriptions/v1/sub_c841ea40-613c-41a3-8984-7cb11f66d541:
-    speakeasy-default-get-/client/subscriptions/v1-/sub-c841ea40-613c-41a3-8984-7cb11f66d541:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
   get_/client/subscriptions/v1/search:
     speakeasy-default-get-/client/subscriptions/v1-/search:
       responses:
         "200":
           application/json: {}
         "401":
-          application/json: {}
-  put_/client/subscriptions/v1/sub_ee09b0f9-974f-4dee-b1b3-4ad8dad2e7b3:
-    speakeasy-default-put-/client/subscriptions/v1-/sub-ee09b0f9-974f-4dee-b1b3-4ad8dad2e7b3:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
-  put_/client/subscriptions/v1/sub_130aa5b2-9056-4c8e-b9c9-9149e68f17ce/resumption:
-    speakeasy-default-put-/client/subscriptions/v1-/sub-130aa5b2-9056-4c8e-b9c9-9149e68f17ce/resumption:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
-        "500":
-          application/json: {}
-  post_/client/subscriptions/v1/sub_ee09b0f9-974f-4dee-b1b3-4ad8dad2e7b2/cancel:
-    speakeasy-default-post-/client/subscriptions/v1-/sub-ee09b0f9-974f-4dee-b1b3-4ad8dad2e7b2-/cancel:
-      responses:
-        "200":
-          application/json: {}
-        "406":
-          application/json: {}
-        "500":
           application/json: {}
   get_/client/transactions/v1/search:
     speakeasy-default-get-/client/transactions/v1-/search:
@@ -1507,36 +616,24 @@ examples:
           application/json: {}
         "401":
           application/json: {}
-  get_/client/transactions/v1/txn_17553398-b91d-41e9-ae47-165e194d06a1:
-    speakeasy-default-get-/client/transactions/v1-/txn-17553398-b91d-41e9-ae47-165e194d06a1:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
-  post_/client/transactions/v1/txn_17553398-b91d-41e9-ae47-165e194d06a1/refund:
-    speakeasy-default-post-/client/transactions/v1-/txn-17553398-b91d-41e9-ae47-165e194d06a1-/refund:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
-          application/json: {}
-        "409":
-          application/json: {}
-  post_/invoice/quick-links/v2: {}
-  get_/invoice/quick-links/v2/link_291208af-ef95-4b7d-b171-aaaa16998d31: {}
+  post_/invoice/quick-links/v2:
+    speakeasy-default-post-/invoice/quick-links/v2:
+      requestBody:
+        application/json: {}
   post_/invoice/quick-links/v1:
     speakeasy-default-post-/invoice/quick-links/v1:
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {}
         "401":
           application/json: {}
+        "404":
+          application/json: {}
         "417":
+          application/json: {}
+        "500":
           application/json: {}
   get_/invoice/quick-links/v1:
     speakeasy-default-get-/invoice/quick-links/v1:
@@ -1552,54 +649,14 @@ examples:
           application/json: {}
         "417":
           application/json: {}
-  get_/invoice/quick-links/v1/link_297bfa4b-f61c-4c72-80a4-368d731e890c:
-    speakeasy-default-get-/invoice/quick-links/v1-/link-297bfa4b-f61c-4c72-80a4-368d731e890c:
-      responses:
-        "200":
-          application/json: {}
-        "404":
-          application/json: {}
-  put_/invoice/quick-links/v1/link_297bfa4b-f61c-4c72-80a4-368d731e890c:
-    speakeasy-default-put-/invoice/quick-links/v1-/link-297bfa4b-f61c-4c72-80a4-368d731e890c:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-        "500":
-          application/json: {}
-  delete_/invoice/quick-links/v1/link_297bfa4b-f61c-4c72-80a4-368d731e890c:
-    speakeasy-default-delete-/invoice/quick-links/v1-/link-297bfa4b-f61c-4c72-80a4-368d731e890c:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-        "500":
-          application/json: {}
   post_/user/v2:
     speakeasy-default-post-/user/v2:
+      requestBody:
+        application/json: {}
       responses:
         "200":
           application/json: {}
         "409":
-          application/json: {}
-  get_/user/v2:
-    speakeasy-default-get-/user/v2:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-  get_/user/v2/exists:
-    speakeasy-default-get-/user/v2-/exists:
-      parameters:
-        query:
-          email: "hzaidi@getsafepay.com"
-      responses:
-        "200":
-          application/json: {}
-        "400":
           application/json: {}
   get_/user/wallets/v1:
     speakeasy-default-get-/user/wallets/v1:
@@ -1607,14 +664,5 @@ examples:
         "200":
           application/json: {}
         "401":
-          application/json: {}
-  delete_/user/wallets/v1/inst_8ed5e401-ab7b-442c-8473-dee137827448:
-    speakeasy-default-delete-/user/wallets/v1-/inst-8ed5e401-ab7b-442c-8473-dee137827448:
-      responses:
-        "200":
-          application/json: {}
-        "401":
-          application/json: {}
-        "404":
           application/json: {}
 examplesVersion: 1.0.2

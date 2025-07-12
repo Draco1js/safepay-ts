@@ -8,11 +8,6 @@ import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type PostClientPassportV1TokenStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
 /**
  * 200
  */
@@ -24,65 +19,6 @@ export type PostClientPassportV1TokenResponse = {
   headers: { [k: string]: Array<string> };
   result: PostClientPassportV1TokenResponseBody;
 };
-
-/** @internal */
-export const PostClientPassportV1TokenStatus$inboundSchema: z.ZodType<
-  PostClientPassportV1TokenStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostClientPassportV1TokenStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostClientPassportV1TokenStatus$outboundSchema: z.ZodType<
-  PostClientPassportV1TokenStatus$Outbound,
-  z.ZodTypeDef,
-  PostClientPassportV1TokenStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostClientPassportV1TokenStatus$ {
-  /** @deprecated use `PostClientPassportV1TokenStatus$inboundSchema` instead. */
-  export const inboundSchema = PostClientPassportV1TokenStatus$inboundSchema;
-  /** @deprecated use `PostClientPassportV1TokenStatus$outboundSchema` instead. */
-  export const outboundSchema = PostClientPassportV1TokenStatus$outboundSchema;
-  /** @deprecated use `PostClientPassportV1TokenStatus$Outbound` instead. */
-  export type Outbound = PostClientPassportV1TokenStatus$Outbound;
-}
-
-export function postClientPassportV1TokenStatusToJSON(
-  postClientPassportV1TokenStatus: PostClientPassportV1TokenStatus,
-): string {
-  return JSON.stringify(
-    PostClientPassportV1TokenStatus$outboundSchema.parse(
-      postClientPassportV1TokenStatus,
-    ),
-  );
-}
-
-export function postClientPassportV1TokenStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostClientPassportV1TokenStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostClientPassportV1TokenStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostClientPassportV1TokenStatus' from JSON`,
-  );
-}
 
 /** @internal */
 export const PostClientPassportV1TokenResponseBody$inboundSchema: z.ZodType<

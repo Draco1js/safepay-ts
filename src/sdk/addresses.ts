@@ -12,7 +12,7 @@ export class Addresses extends ClientSDK {
    * Create Address
    */
   async create(
-    request?: operations.PostUserAddressV2Request | undefined,
+    request: operations.PostUserAddressV2Request,
     options?: RequestOptions,
   ): Promise<operations.PostUserAddressV2Response> {
     return unwrapAsync(addressesCreate(

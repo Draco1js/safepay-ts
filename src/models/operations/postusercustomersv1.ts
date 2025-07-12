@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type PostUserCustomersV1Request = {
   firstName?: string | undefined;
@@ -14,16 +15,6 @@ export type PostUserCustomersV1Request = {
   email?: string | undefined;
   phoneNumber?: string | undefined;
   country?: string | undefined;
-};
-
-export type PostUserCustomersV1UnauthorizedStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-export type PostUserCustomersV1BadRequestStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
 };
 
 export type PostUserCustomersV1CreatedAt = {
@@ -50,17 +41,12 @@ export type PostUserCustomersV1Data = {
   updatedAt?: PostUserCustomersV1UpdatedAt | undefined;
 };
 
-export type PostUserCustomersV1Status = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
 /**
  * 201
  */
 export type PostUserCustomersV1ResponseBody = {
   data?: PostUserCustomersV1Data | undefined;
-  status?: PostUserCustomersV1Status | undefined;
+  status?: models.Status | undefined;
 };
 
 export type PostUserCustomersV1Response = {
@@ -143,130 +129,6 @@ export function postUserCustomersV1RequestFromJSON(
     jsonString,
     (x) => PostUserCustomersV1Request$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'PostUserCustomersV1Request' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostUserCustomersV1UnauthorizedStatus$inboundSchema: z.ZodType<
-  PostUserCustomersV1UnauthorizedStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostUserCustomersV1UnauthorizedStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostUserCustomersV1UnauthorizedStatus$outboundSchema: z.ZodType<
-  PostUserCustomersV1UnauthorizedStatus$Outbound,
-  z.ZodTypeDef,
-  PostUserCustomersV1UnauthorizedStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostUserCustomersV1UnauthorizedStatus$ {
-  /** @deprecated use `PostUserCustomersV1UnauthorizedStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostUserCustomersV1UnauthorizedStatus$inboundSchema;
-  /** @deprecated use `PostUserCustomersV1UnauthorizedStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostUserCustomersV1UnauthorizedStatus$outboundSchema;
-  /** @deprecated use `PostUserCustomersV1UnauthorizedStatus$Outbound` instead. */
-  export type Outbound = PostUserCustomersV1UnauthorizedStatus$Outbound;
-}
-
-export function postUserCustomersV1UnauthorizedStatusToJSON(
-  postUserCustomersV1UnauthorizedStatus: PostUserCustomersV1UnauthorizedStatus,
-): string {
-  return JSON.stringify(
-    PostUserCustomersV1UnauthorizedStatus$outboundSchema.parse(
-      postUserCustomersV1UnauthorizedStatus,
-    ),
-  );
-}
-
-export function postUserCustomersV1UnauthorizedStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostUserCustomersV1UnauthorizedStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostUserCustomersV1UnauthorizedStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostUserCustomersV1UnauthorizedStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostUserCustomersV1BadRequestStatus$inboundSchema: z.ZodType<
-  PostUserCustomersV1BadRequestStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostUserCustomersV1BadRequestStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostUserCustomersV1BadRequestStatus$outboundSchema: z.ZodType<
-  PostUserCustomersV1BadRequestStatus$Outbound,
-  z.ZodTypeDef,
-  PostUserCustomersV1BadRequestStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostUserCustomersV1BadRequestStatus$ {
-  /** @deprecated use `PostUserCustomersV1BadRequestStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostUserCustomersV1BadRequestStatus$inboundSchema;
-  /** @deprecated use `PostUserCustomersV1BadRequestStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostUserCustomersV1BadRequestStatus$outboundSchema;
-  /** @deprecated use `PostUserCustomersV1BadRequestStatus$Outbound` instead. */
-  export type Outbound = PostUserCustomersV1BadRequestStatus$Outbound;
-}
-
-export function postUserCustomersV1BadRequestStatusToJSON(
-  postUserCustomersV1BadRequestStatus: PostUserCustomersV1BadRequestStatus,
-): string {
-  return JSON.stringify(
-    PostUserCustomersV1BadRequestStatus$outboundSchema.parse(
-      postUserCustomersV1BadRequestStatus,
-    ),
-  );
-}
-
-export function postUserCustomersV1BadRequestStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostUserCustomersV1BadRequestStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostUserCustomersV1BadRequestStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostUserCustomersV1BadRequestStatus' from JSON`,
   );
 }
 
@@ -499,76 +361,19 @@ export function postUserCustomersV1DataFromJSON(
 }
 
 /** @internal */
-export const PostUserCustomersV1Status$inboundSchema: z.ZodType<
-  PostUserCustomersV1Status,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostUserCustomersV1Status$Outbound = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostUserCustomersV1Status$outboundSchema: z.ZodType<
-  PostUserCustomersV1Status$Outbound,
-  z.ZodTypeDef,
-  PostUserCustomersV1Status
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostUserCustomersV1Status$ {
-  /** @deprecated use `PostUserCustomersV1Status$inboundSchema` instead. */
-  export const inboundSchema = PostUserCustomersV1Status$inboundSchema;
-  /** @deprecated use `PostUserCustomersV1Status$outboundSchema` instead. */
-  export const outboundSchema = PostUserCustomersV1Status$outboundSchema;
-  /** @deprecated use `PostUserCustomersV1Status$Outbound` instead. */
-  export type Outbound = PostUserCustomersV1Status$Outbound;
-}
-
-export function postUserCustomersV1StatusToJSON(
-  postUserCustomersV1Status: PostUserCustomersV1Status,
-): string {
-  return JSON.stringify(
-    PostUserCustomersV1Status$outboundSchema.parse(postUserCustomersV1Status),
-  );
-}
-
-export function postUserCustomersV1StatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostUserCustomersV1Status, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostUserCustomersV1Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostUserCustomersV1Status' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostUserCustomersV1ResponseBody$inboundSchema: z.ZodType<
   PostUserCustomersV1ResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.lazy(() => PostUserCustomersV1Data$inboundSchema).optional(),
-  status: z.lazy(() => PostUserCustomersV1Status$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PostUserCustomersV1ResponseBody$Outbound = {
   data?: PostUserCustomersV1Data$Outbound | undefined;
-  status?: PostUserCustomersV1Status$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -578,7 +383,7 @@ export const PostUserCustomersV1ResponseBody$outboundSchema: z.ZodType<
   PostUserCustomersV1ResponseBody
 > = z.object({
   data: z.lazy(() => PostUserCustomersV1Data$outboundSchema).optional(),
-  status: z.lazy(() => PostUserCustomersV1Status$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

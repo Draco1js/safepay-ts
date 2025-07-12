@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type MetadataRequest = {
   source?: string | undefined;
@@ -23,59 +24,44 @@ export type PostOrderPaymentsV3Request = {
   metadata?: MetadataRequest | undefined;
 };
 
-export type PostOrderPaymentsV3InternalServerErrorStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-export type PostOrderPaymentsV3NotFoundStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-export type PostOrderPaymentsV3BadRequestStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
 export type PostOrderPaymentsV3CYBERSOURCE = {
   kind?: string | undefined;
 };
 
-export type PostOrderPaymentsV3MPGS = {
+export type Mpgs = {
   kind?: string | undefined;
 };
 
-export type PostOrderPaymentsV3NextActions = {
+export type NextActions = {
   cybersource?: PostOrderPaymentsV3CYBERSOURCE | undefined;
-  mpgs?: PostOrderPaymentsV3MPGS | undefined;
+  mpgs?: Mpgs | undefined;
 };
 
-export type PostOrderPaymentsV3QuoteAmount = {
+export type QuoteAmount = {
   currency?: string | undefined;
   amount?: number | undefined;
 };
 
-export type PostOrderPaymentsV3BaseAmount = {
+export type BaseAmount = {
   currency?: string | undefined;
   amount?: number | undefined;
 };
 
-export type PostOrderPaymentsV3ConversionRate = {
+export type ConversionRate = {
   baseCurrency?: string | undefined;
   quoteCurrency?: string | undefined;
   rate?: number | undefined;
 };
 
-export type PostOrderPaymentsV3PurchaseTotals = {
-  quoteAmount?: PostOrderPaymentsV3QuoteAmount | undefined;
-  baseAmount?: PostOrderPaymentsV3BaseAmount | undefined;
-  conversionRate?: PostOrderPaymentsV3ConversionRate | undefined;
+export type PurchaseTotals = {
+  quoteAmount?: QuoteAmount | undefined;
+  baseAmount?: BaseAmount | undefined;
+  conversionRate?: ConversionRate | undefined;
 };
 
-export type PostOrderPaymentsV3TrackerMetadata = {};
+export type MetadataResponse = {};
 
-export type PostOrderPaymentsV3Tracker = {
+export type Tracker = {
   token?: string | undefined;
   client?: string | undefined;
   environment?: string | undefined;
@@ -83,24 +69,19 @@ export type PostOrderPaymentsV3Tracker = {
   intent?: string | undefined;
   mode?: string | undefined;
   entryMode?: string | undefined;
-  nextActions?: PostOrderPaymentsV3NextActions | undefined;
-  purchaseTotals?: PostOrderPaymentsV3PurchaseTotals | undefined;
-  metadata?: PostOrderPaymentsV3TrackerMetadata | undefined;
+  nextActions?: NextActions | undefined;
+  purchaseTotals?: PurchaseTotals | undefined;
+  metadata?: MetadataResponse | undefined;
 };
 
-export type PostOrderPaymentsV3Capabilities = {
+export type Capabilities = {
   cybersource?: boolean | undefined;
   mpgs?: boolean | undefined;
 };
 
 export type PostOrderPaymentsV3Data = {
-  tracker?: PostOrderPaymentsV3Tracker | undefined;
-  capabilities?: PostOrderPaymentsV3Capabilities | undefined;
-};
-
-export type PostOrderPaymentsV3Status = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
+  tracker?: Tracker | undefined;
+  capabilities?: Capabilities | undefined;
 };
 
 /**
@@ -108,7 +89,7 @@ export type PostOrderPaymentsV3Status = {
  */
 export type PostOrderPaymentsV3ResponseBody = {
   data?: PostOrderPaymentsV3Data | undefined;
-  status?: PostOrderPaymentsV3Status | undefined;
+  status?: models.Status | undefined;
 };
 
 export type PostOrderPaymentsV3Response = {
@@ -262,198 +243,6 @@ export function postOrderPaymentsV3RequestFromJSON(
 }
 
 /** @internal */
-export const PostOrderPaymentsV3InternalServerErrorStatus$inboundSchema:
-  z.ZodType<
-    PostOrderPaymentsV3InternalServerErrorStatus,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    errors: z.array(z.string()).optional(),
-    message: z.string().optional(),
-  });
-
-/** @internal */
-export type PostOrderPaymentsV3InternalServerErrorStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostOrderPaymentsV3InternalServerErrorStatus$outboundSchema:
-  z.ZodType<
-    PostOrderPaymentsV3InternalServerErrorStatus$Outbound,
-    z.ZodTypeDef,
-    PostOrderPaymentsV3InternalServerErrorStatus
-  > = z.object({
-    errors: z.array(z.string()).optional(),
-    message: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostOrderPaymentsV3InternalServerErrorStatus$ {
-  /** @deprecated use `PostOrderPaymentsV3InternalServerErrorStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostOrderPaymentsV3InternalServerErrorStatus$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3InternalServerErrorStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostOrderPaymentsV3InternalServerErrorStatus$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3InternalServerErrorStatus$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3InternalServerErrorStatus$Outbound;
-}
-
-export function postOrderPaymentsV3InternalServerErrorStatusToJSON(
-  postOrderPaymentsV3InternalServerErrorStatus:
-    PostOrderPaymentsV3InternalServerErrorStatus,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3InternalServerErrorStatus$outboundSchema.parse(
-      postOrderPaymentsV3InternalServerErrorStatus,
-    ),
-  );
-}
-
-export function postOrderPaymentsV3InternalServerErrorStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostOrderPaymentsV3InternalServerErrorStatus,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostOrderPaymentsV3InternalServerErrorStatus$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostOrderPaymentsV3InternalServerErrorStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostOrderPaymentsV3NotFoundStatus$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3NotFoundStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostOrderPaymentsV3NotFoundStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostOrderPaymentsV3NotFoundStatus$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3NotFoundStatus$Outbound,
-  z.ZodTypeDef,
-  PostOrderPaymentsV3NotFoundStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostOrderPaymentsV3NotFoundStatus$ {
-  /** @deprecated use `PostOrderPaymentsV3NotFoundStatus$inboundSchema` instead. */
-  export const inboundSchema = PostOrderPaymentsV3NotFoundStatus$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3NotFoundStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostOrderPaymentsV3NotFoundStatus$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3NotFoundStatus$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3NotFoundStatus$Outbound;
-}
-
-export function postOrderPaymentsV3NotFoundStatusToJSON(
-  postOrderPaymentsV3NotFoundStatus: PostOrderPaymentsV3NotFoundStatus,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3NotFoundStatus$outboundSchema.parse(
-      postOrderPaymentsV3NotFoundStatus,
-    ),
-  );
-}
-
-export function postOrderPaymentsV3NotFoundStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3NotFoundStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostOrderPaymentsV3NotFoundStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3NotFoundStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostOrderPaymentsV3BadRequestStatus$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3BadRequestStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostOrderPaymentsV3BadRequestStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostOrderPaymentsV3BadRequestStatus$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3BadRequestStatus$Outbound,
-  z.ZodTypeDef,
-  PostOrderPaymentsV3BadRequestStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostOrderPaymentsV3BadRequestStatus$ {
-  /** @deprecated use `PostOrderPaymentsV3BadRequestStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostOrderPaymentsV3BadRequestStatus$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3BadRequestStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostOrderPaymentsV3BadRequestStatus$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3BadRequestStatus$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3BadRequestStatus$Outbound;
-}
-
-export function postOrderPaymentsV3BadRequestStatusToJSON(
-  postOrderPaymentsV3BadRequestStatus: PostOrderPaymentsV3BadRequestStatus,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3BadRequestStatus$outboundSchema.parse(
-      postOrderPaymentsV3BadRequestStatus,
-    ),
-  );
-}
-
-export function postOrderPaymentsV3BadRequestStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3BadRequestStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostOrderPaymentsV3BadRequestStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3BadRequestStatus' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostOrderPaymentsV3CYBERSOURCE$inboundSchema: z.ZodType<
   PostOrderPaymentsV3CYBERSOURCE,
   z.ZodTypeDef,
@@ -510,68 +299,58 @@ export function postOrderPaymentsV3CYBERSOURCEFromJSON(
 }
 
 /** @internal */
-export const PostOrderPaymentsV3MPGS$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3MPGS,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  kind: z.string().optional(),
-});
+export const Mpgs$inboundSchema: z.ZodType<Mpgs, z.ZodTypeDef, unknown> = z
+  .object({
+    kind: z.string().optional(),
+  });
 
 /** @internal */
-export type PostOrderPaymentsV3MPGS$Outbound = {
+export type Mpgs$Outbound = {
   kind?: string | undefined;
 };
 
 /** @internal */
-export const PostOrderPaymentsV3MPGS$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3MPGS$Outbound,
-  z.ZodTypeDef,
-  PostOrderPaymentsV3MPGS
-> = z.object({
-  kind: z.string().optional(),
-});
+export const Mpgs$outboundSchema: z.ZodType<Mpgs$Outbound, z.ZodTypeDef, Mpgs> =
+  z.object({
+    kind: z.string().optional(),
+  });
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostOrderPaymentsV3MPGS$ {
-  /** @deprecated use `PostOrderPaymentsV3MPGS$inboundSchema` instead. */
-  export const inboundSchema = PostOrderPaymentsV3MPGS$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3MPGS$outboundSchema` instead. */
-  export const outboundSchema = PostOrderPaymentsV3MPGS$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3MPGS$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3MPGS$Outbound;
+export namespace Mpgs$ {
+  /** @deprecated use `Mpgs$inboundSchema` instead. */
+  export const inboundSchema = Mpgs$inboundSchema;
+  /** @deprecated use `Mpgs$outboundSchema` instead. */
+  export const outboundSchema = Mpgs$outboundSchema;
+  /** @deprecated use `Mpgs$Outbound` instead. */
+  export type Outbound = Mpgs$Outbound;
 }
 
-export function postOrderPaymentsV3MPGSToJSON(
-  postOrderPaymentsV3MPGS: PostOrderPaymentsV3MPGS,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3MPGS$outboundSchema.parse(postOrderPaymentsV3MPGS),
-  );
+export function mpgsToJSON(mpgs: Mpgs): string {
+  return JSON.stringify(Mpgs$outboundSchema.parse(mpgs));
 }
 
-export function postOrderPaymentsV3MPGSFromJSON(
+export function mpgsFromJSON(
   jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3MPGS, SDKValidationError> {
+): SafeParseResult<Mpgs, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostOrderPaymentsV3MPGS$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3MPGS' from JSON`,
+    (x) => Mpgs$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Mpgs' from JSON`,
   );
 }
 
 /** @internal */
-export const PostOrderPaymentsV3NextActions$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3NextActions,
+export const NextActions$inboundSchema: z.ZodType<
+  NextActions,
   z.ZodTypeDef,
   unknown
 > = z.object({
   CYBERSOURCE: z.lazy(() => PostOrderPaymentsV3CYBERSOURCE$inboundSchema)
     .optional(),
-  MPGS: z.lazy(() => PostOrderPaymentsV3MPGS$inboundSchema).optional(),
+  MPGS: z.lazy(() => Mpgs$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "CYBERSOURCE": "cybersource",
@@ -580,20 +359,20 @@ export const PostOrderPaymentsV3NextActions$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostOrderPaymentsV3NextActions$Outbound = {
+export type NextActions$Outbound = {
   CYBERSOURCE?: PostOrderPaymentsV3CYBERSOURCE$Outbound | undefined;
-  MPGS?: PostOrderPaymentsV3MPGS$Outbound | undefined;
+  MPGS?: Mpgs$Outbound | undefined;
 };
 
 /** @internal */
-export const PostOrderPaymentsV3NextActions$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3NextActions$Outbound,
+export const NextActions$outboundSchema: z.ZodType<
+  NextActions$Outbound,
   z.ZodTypeDef,
-  PostOrderPaymentsV3NextActions
+  NextActions
 > = z.object({
   cybersource: z.lazy(() => PostOrderPaymentsV3CYBERSOURCE$outboundSchema)
     .optional(),
-  mpgs: z.lazy(() => PostOrderPaymentsV3MPGS$outboundSchema).optional(),
+  mpgs: z.lazy(() => Mpgs$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     cybersource: "CYBERSOURCE",
@@ -605,38 +384,32 @@ export const PostOrderPaymentsV3NextActions$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostOrderPaymentsV3NextActions$ {
-  /** @deprecated use `PostOrderPaymentsV3NextActions$inboundSchema` instead. */
-  export const inboundSchema = PostOrderPaymentsV3NextActions$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3NextActions$outboundSchema` instead. */
-  export const outboundSchema = PostOrderPaymentsV3NextActions$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3NextActions$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3NextActions$Outbound;
+export namespace NextActions$ {
+  /** @deprecated use `NextActions$inboundSchema` instead. */
+  export const inboundSchema = NextActions$inboundSchema;
+  /** @deprecated use `NextActions$outboundSchema` instead. */
+  export const outboundSchema = NextActions$outboundSchema;
+  /** @deprecated use `NextActions$Outbound` instead. */
+  export type Outbound = NextActions$Outbound;
 }
 
-export function postOrderPaymentsV3NextActionsToJSON(
-  postOrderPaymentsV3NextActions: PostOrderPaymentsV3NextActions,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3NextActions$outboundSchema.parse(
-      postOrderPaymentsV3NextActions,
-    ),
-  );
+export function nextActionsToJSON(nextActions: NextActions): string {
+  return JSON.stringify(NextActions$outboundSchema.parse(nextActions));
 }
 
-export function postOrderPaymentsV3NextActionsFromJSON(
+export function nextActionsFromJSON(
   jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3NextActions, SDKValidationError> {
+): SafeParseResult<NextActions, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostOrderPaymentsV3NextActions$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3NextActions' from JSON`,
+    (x) => NextActions$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NextActions' from JSON`,
   );
 }
 
 /** @internal */
-export const PostOrderPaymentsV3QuoteAmount$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3QuoteAmount,
+export const QuoteAmount$inboundSchema: z.ZodType<
+  QuoteAmount,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -645,16 +418,16 @@ export const PostOrderPaymentsV3QuoteAmount$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostOrderPaymentsV3QuoteAmount$Outbound = {
+export type QuoteAmount$Outbound = {
   currency?: string | undefined;
   amount?: number | undefined;
 };
 
 /** @internal */
-export const PostOrderPaymentsV3QuoteAmount$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3QuoteAmount$Outbound,
+export const QuoteAmount$outboundSchema: z.ZodType<
+  QuoteAmount$Outbound,
   z.ZodTypeDef,
-  PostOrderPaymentsV3QuoteAmount
+  QuoteAmount
 > = z.object({
   currency: z.string().optional(),
   amount: z.number().int().optional(),
@@ -664,38 +437,32 @@ export const PostOrderPaymentsV3QuoteAmount$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostOrderPaymentsV3QuoteAmount$ {
-  /** @deprecated use `PostOrderPaymentsV3QuoteAmount$inboundSchema` instead. */
-  export const inboundSchema = PostOrderPaymentsV3QuoteAmount$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3QuoteAmount$outboundSchema` instead. */
-  export const outboundSchema = PostOrderPaymentsV3QuoteAmount$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3QuoteAmount$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3QuoteAmount$Outbound;
+export namespace QuoteAmount$ {
+  /** @deprecated use `QuoteAmount$inboundSchema` instead. */
+  export const inboundSchema = QuoteAmount$inboundSchema;
+  /** @deprecated use `QuoteAmount$outboundSchema` instead. */
+  export const outboundSchema = QuoteAmount$outboundSchema;
+  /** @deprecated use `QuoteAmount$Outbound` instead. */
+  export type Outbound = QuoteAmount$Outbound;
 }
 
-export function postOrderPaymentsV3QuoteAmountToJSON(
-  postOrderPaymentsV3QuoteAmount: PostOrderPaymentsV3QuoteAmount,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3QuoteAmount$outboundSchema.parse(
-      postOrderPaymentsV3QuoteAmount,
-    ),
-  );
+export function quoteAmountToJSON(quoteAmount: QuoteAmount): string {
+  return JSON.stringify(QuoteAmount$outboundSchema.parse(quoteAmount));
 }
 
-export function postOrderPaymentsV3QuoteAmountFromJSON(
+export function quoteAmountFromJSON(
   jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3QuoteAmount, SDKValidationError> {
+): SafeParseResult<QuoteAmount, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostOrderPaymentsV3QuoteAmount$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3QuoteAmount' from JSON`,
+    (x) => QuoteAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QuoteAmount' from JSON`,
   );
 }
 
 /** @internal */
-export const PostOrderPaymentsV3BaseAmount$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3BaseAmount,
+export const BaseAmount$inboundSchema: z.ZodType<
+  BaseAmount,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -704,16 +471,16 @@ export const PostOrderPaymentsV3BaseAmount$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostOrderPaymentsV3BaseAmount$Outbound = {
+export type BaseAmount$Outbound = {
   currency?: string | undefined;
   amount?: number | undefined;
 };
 
 /** @internal */
-export const PostOrderPaymentsV3BaseAmount$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3BaseAmount$Outbound,
+export const BaseAmount$outboundSchema: z.ZodType<
+  BaseAmount$Outbound,
   z.ZodTypeDef,
-  PostOrderPaymentsV3BaseAmount
+  BaseAmount
 > = z.object({
   currency: z.string().optional(),
   amount: z.number().int().optional(),
@@ -723,38 +490,32 @@ export const PostOrderPaymentsV3BaseAmount$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostOrderPaymentsV3BaseAmount$ {
-  /** @deprecated use `PostOrderPaymentsV3BaseAmount$inboundSchema` instead. */
-  export const inboundSchema = PostOrderPaymentsV3BaseAmount$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3BaseAmount$outboundSchema` instead. */
-  export const outboundSchema = PostOrderPaymentsV3BaseAmount$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3BaseAmount$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3BaseAmount$Outbound;
+export namespace BaseAmount$ {
+  /** @deprecated use `BaseAmount$inboundSchema` instead. */
+  export const inboundSchema = BaseAmount$inboundSchema;
+  /** @deprecated use `BaseAmount$outboundSchema` instead. */
+  export const outboundSchema = BaseAmount$outboundSchema;
+  /** @deprecated use `BaseAmount$Outbound` instead. */
+  export type Outbound = BaseAmount$Outbound;
 }
 
-export function postOrderPaymentsV3BaseAmountToJSON(
-  postOrderPaymentsV3BaseAmount: PostOrderPaymentsV3BaseAmount,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3BaseAmount$outboundSchema.parse(
-      postOrderPaymentsV3BaseAmount,
-    ),
-  );
+export function baseAmountToJSON(baseAmount: BaseAmount): string {
+  return JSON.stringify(BaseAmount$outboundSchema.parse(baseAmount));
 }
 
-export function postOrderPaymentsV3BaseAmountFromJSON(
+export function baseAmountFromJSON(
   jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3BaseAmount, SDKValidationError> {
+): SafeParseResult<BaseAmount, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostOrderPaymentsV3BaseAmount$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3BaseAmount' from JSON`,
+    (x) => BaseAmount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BaseAmount' from JSON`,
   );
 }
 
 /** @internal */
-export const PostOrderPaymentsV3ConversionRate$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3ConversionRate,
+export const ConversionRate$inboundSchema: z.ZodType<
+  ConversionRate,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -769,17 +530,17 @@ export const PostOrderPaymentsV3ConversionRate$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostOrderPaymentsV3ConversionRate$Outbound = {
+export type ConversionRate$Outbound = {
   base_currency?: string | undefined;
   quote_currency?: string | undefined;
   rate?: number | undefined;
 };
 
 /** @internal */
-export const PostOrderPaymentsV3ConversionRate$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3ConversionRate$Outbound,
+export const ConversionRate$outboundSchema: z.ZodType<
+  ConversionRate$Outbound,
   z.ZodTypeDef,
-  PostOrderPaymentsV3ConversionRate
+  ConversionRate
 > = z.object({
   baseCurrency: z.string().optional(),
   quoteCurrency: z.string().optional(),
@@ -795,48 +556,38 @@ export const PostOrderPaymentsV3ConversionRate$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostOrderPaymentsV3ConversionRate$ {
-  /** @deprecated use `PostOrderPaymentsV3ConversionRate$inboundSchema` instead. */
-  export const inboundSchema = PostOrderPaymentsV3ConversionRate$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3ConversionRate$outboundSchema` instead. */
-  export const outboundSchema =
-    PostOrderPaymentsV3ConversionRate$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3ConversionRate$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3ConversionRate$Outbound;
+export namespace ConversionRate$ {
+  /** @deprecated use `ConversionRate$inboundSchema` instead. */
+  export const inboundSchema = ConversionRate$inboundSchema;
+  /** @deprecated use `ConversionRate$outboundSchema` instead. */
+  export const outboundSchema = ConversionRate$outboundSchema;
+  /** @deprecated use `ConversionRate$Outbound` instead. */
+  export type Outbound = ConversionRate$Outbound;
 }
 
-export function postOrderPaymentsV3ConversionRateToJSON(
-  postOrderPaymentsV3ConversionRate: PostOrderPaymentsV3ConversionRate,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3ConversionRate$outboundSchema.parse(
-      postOrderPaymentsV3ConversionRate,
-    ),
-  );
+export function conversionRateToJSON(conversionRate: ConversionRate): string {
+  return JSON.stringify(ConversionRate$outboundSchema.parse(conversionRate));
 }
 
-export function postOrderPaymentsV3ConversionRateFromJSON(
+export function conversionRateFromJSON(
   jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3ConversionRate, SDKValidationError> {
+): SafeParseResult<ConversionRate, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostOrderPaymentsV3ConversionRate$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3ConversionRate' from JSON`,
+    (x) => ConversionRate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConversionRate' from JSON`,
   );
 }
 
 /** @internal */
-export const PostOrderPaymentsV3PurchaseTotals$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3PurchaseTotals,
+export const PurchaseTotals$inboundSchema: z.ZodType<
+  PurchaseTotals,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  quote_amount: z.lazy(() => PostOrderPaymentsV3QuoteAmount$inboundSchema)
-    .optional(),
-  base_amount: z.lazy(() => PostOrderPaymentsV3BaseAmount$inboundSchema)
-    .optional(),
-  conversion_rate: z.lazy(() => PostOrderPaymentsV3ConversionRate$inboundSchema)
-    .optional(),
+  quote_amount: z.lazy(() => QuoteAmount$inboundSchema).optional(),
+  base_amount: z.lazy(() => BaseAmount$inboundSchema).optional(),
+  conversion_rate: z.lazy(() => ConversionRate$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "quote_amount": "quoteAmount",
@@ -846,24 +597,21 @@ export const PostOrderPaymentsV3PurchaseTotals$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostOrderPaymentsV3PurchaseTotals$Outbound = {
-  quote_amount?: PostOrderPaymentsV3QuoteAmount$Outbound | undefined;
-  base_amount?: PostOrderPaymentsV3BaseAmount$Outbound | undefined;
-  conversion_rate?: PostOrderPaymentsV3ConversionRate$Outbound | undefined;
+export type PurchaseTotals$Outbound = {
+  quote_amount?: QuoteAmount$Outbound | undefined;
+  base_amount?: BaseAmount$Outbound | undefined;
+  conversion_rate?: ConversionRate$Outbound | undefined;
 };
 
 /** @internal */
-export const PostOrderPaymentsV3PurchaseTotals$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3PurchaseTotals$Outbound,
+export const PurchaseTotals$outboundSchema: z.ZodType<
+  PurchaseTotals$Outbound,
   z.ZodTypeDef,
-  PostOrderPaymentsV3PurchaseTotals
+  PurchaseTotals
 > = z.object({
-  quoteAmount: z.lazy(() => PostOrderPaymentsV3QuoteAmount$outboundSchema)
-    .optional(),
-  baseAmount: z.lazy(() => PostOrderPaymentsV3BaseAmount$outboundSchema)
-    .optional(),
-  conversionRate: z.lazy(() => PostOrderPaymentsV3ConversionRate$outboundSchema)
-    .optional(),
+  quoteAmount: z.lazy(() => QuoteAmount$outboundSchema).optional(),
+  baseAmount: z.lazy(() => BaseAmount$outboundSchema).optional(),
+  conversionRate: z.lazy(() => ConversionRate$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     quoteAmount: "quote_amount",
@@ -876,117 +624,100 @@ export const PostOrderPaymentsV3PurchaseTotals$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostOrderPaymentsV3PurchaseTotals$ {
-  /** @deprecated use `PostOrderPaymentsV3PurchaseTotals$inboundSchema` instead. */
-  export const inboundSchema = PostOrderPaymentsV3PurchaseTotals$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3PurchaseTotals$outboundSchema` instead. */
-  export const outboundSchema =
-    PostOrderPaymentsV3PurchaseTotals$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3PurchaseTotals$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3PurchaseTotals$Outbound;
+export namespace PurchaseTotals$ {
+  /** @deprecated use `PurchaseTotals$inboundSchema` instead. */
+  export const inboundSchema = PurchaseTotals$inboundSchema;
+  /** @deprecated use `PurchaseTotals$outboundSchema` instead. */
+  export const outboundSchema = PurchaseTotals$outboundSchema;
+  /** @deprecated use `PurchaseTotals$Outbound` instead. */
+  export type Outbound = PurchaseTotals$Outbound;
 }
 
-export function postOrderPaymentsV3PurchaseTotalsToJSON(
-  postOrderPaymentsV3PurchaseTotals: PostOrderPaymentsV3PurchaseTotals,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3PurchaseTotals$outboundSchema.parse(
-      postOrderPaymentsV3PurchaseTotals,
-    ),
-  );
+export function purchaseTotalsToJSON(purchaseTotals: PurchaseTotals): string {
+  return JSON.stringify(PurchaseTotals$outboundSchema.parse(purchaseTotals));
 }
 
-export function postOrderPaymentsV3PurchaseTotalsFromJSON(
+export function purchaseTotalsFromJSON(
   jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3PurchaseTotals, SDKValidationError> {
+): SafeParseResult<PurchaseTotals, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostOrderPaymentsV3PurchaseTotals$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3PurchaseTotals' from JSON`,
+    (x) => PurchaseTotals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PurchaseTotals' from JSON`,
   );
 }
 
 /** @internal */
-export const PostOrderPaymentsV3TrackerMetadata$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3TrackerMetadata,
+export const MetadataResponse$inboundSchema: z.ZodType<
+  MetadataResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({});
 
 /** @internal */
-export type PostOrderPaymentsV3TrackerMetadata$Outbound = {};
+export type MetadataResponse$Outbound = {};
 
 /** @internal */
-export const PostOrderPaymentsV3TrackerMetadata$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3TrackerMetadata$Outbound,
+export const MetadataResponse$outboundSchema: z.ZodType<
+  MetadataResponse$Outbound,
   z.ZodTypeDef,
-  PostOrderPaymentsV3TrackerMetadata
+  MetadataResponse
 > = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostOrderPaymentsV3TrackerMetadata$ {
-  /** @deprecated use `PostOrderPaymentsV3TrackerMetadata$inboundSchema` instead. */
-  export const inboundSchema = PostOrderPaymentsV3TrackerMetadata$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3TrackerMetadata$outboundSchema` instead. */
-  export const outboundSchema =
-    PostOrderPaymentsV3TrackerMetadata$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3TrackerMetadata$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3TrackerMetadata$Outbound;
+export namespace MetadataResponse$ {
+  /** @deprecated use `MetadataResponse$inboundSchema` instead. */
+  export const inboundSchema = MetadataResponse$inboundSchema;
+  /** @deprecated use `MetadataResponse$outboundSchema` instead. */
+  export const outboundSchema = MetadataResponse$outboundSchema;
+  /** @deprecated use `MetadataResponse$Outbound` instead. */
+  export type Outbound = MetadataResponse$Outbound;
 }
 
-export function postOrderPaymentsV3TrackerMetadataToJSON(
-  postOrderPaymentsV3TrackerMetadata: PostOrderPaymentsV3TrackerMetadata,
+export function metadataResponseToJSON(
+  metadataResponse: MetadataResponse,
 ): string {
   return JSON.stringify(
-    PostOrderPaymentsV3TrackerMetadata$outboundSchema.parse(
-      postOrderPaymentsV3TrackerMetadata,
-    ),
+    MetadataResponse$outboundSchema.parse(metadataResponse),
   );
 }
 
-export function postOrderPaymentsV3TrackerMetadataFromJSON(
+export function metadataResponseFromJSON(
   jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3TrackerMetadata, SDKValidationError> {
+): SafeParseResult<MetadataResponse, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      PostOrderPaymentsV3TrackerMetadata$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3TrackerMetadata' from JSON`,
+    (x) => MetadataResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MetadataResponse' from JSON`,
   );
 }
 
 /** @internal */
-export const PostOrderPaymentsV3Tracker$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3Tracker,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  token: z.string().optional(),
-  client: z.string().optional(),
-  environment: z.string().optional(),
-  state: z.string().optional(),
-  intent: z.string().optional(),
-  mode: z.string().optional(),
-  entry_mode: z.string().optional(),
-  next_actions: z.lazy(() => PostOrderPaymentsV3NextActions$inboundSchema)
-    .optional(),
-  purchase_totals: z.lazy(() => PostOrderPaymentsV3PurchaseTotals$inboundSchema)
-    .optional(),
-  metadata: z.lazy(() => PostOrderPaymentsV3TrackerMetadata$inboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "entry_mode": "entryMode",
-    "next_actions": "nextActions",
-    "purchase_totals": "purchaseTotals",
+export const Tracker$inboundSchema: z.ZodType<Tracker, z.ZodTypeDef, unknown> =
+  z.object({
+    token: z.string().optional(),
+    client: z.string().optional(),
+    environment: z.string().optional(),
+    state: z.string().optional(),
+    intent: z.string().optional(),
+    mode: z.string().optional(),
+    entry_mode: z.string().optional(),
+    next_actions: z.lazy(() => NextActions$inboundSchema).optional(),
+    purchase_totals: z.lazy(() => PurchaseTotals$inboundSchema).optional(),
+    metadata: z.lazy(() => MetadataResponse$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "entry_mode": "entryMode",
+      "next_actions": "nextActions",
+      "purchase_totals": "purchaseTotals",
+    });
   });
-});
 
 /** @internal */
-export type PostOrderPaymentsV3Tracker$Outbound = {
+export type Tracker$Outbound = {
   token?: string | undefined;
   client?: string | undefined;
   environment?: string | undefined;
@@ -994,16 +725,16 @@ export type PostOrderPaymentsV3Tracker$Outbound = {
   intent?: string | undefined;
   mode?: string | undefined;
   entry_mode?: string | undefined;
-  next_actions?: PostOrderPaymentsV3NextActions$Outbound | undefined;
-  purchase_totals?: PostOrderPaymentsV3PurchaseTotals$Outbound | undefined;
-  metadata?: PostOrderPaymentsV3TrackerMetadata$Outbound | undefined;
+  next_actions?: NextActions$Outbound | undefined;
+  purchase_totals?: PurchaseTotals$Outbound | undefined;
+  metadata?: MetadataResponse$Outbound | undefined;
 };
 
 /** @internal */
-export const PostOrderPaymentsV3Tracker$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3Tracker$Outbound,
+export const Tracker$outboundSchema: z.ZodType<
+  Tracker$Outbound,
   z.ZodTypeDef,
-  PostOrderPaymentsV3Tracker
+  Tracker
 > = z.object({
   token: z.string().optional(),
   client: z.string().optional(),
@@ -1012,12 +743,9 @@ export const PostOrderPaymentsV3Tracker$outboundSchema: z.ZodType<
   intent: z.string().optional(),
   mode: z.string().optional(),
   entryMode: z.string().optional(),
-  nextActions: z.lazy(() => PostOrderPaymentsV3NextActions$outboundSchema)
-    .optional(),
-  purchaseTotals: z.lazy(() => PostOrderPaymentsV3PurchaseTotals$outboundSchema)
-    .optional(),
-  metadata: z.lazy(() => PostOrderPaymentsV3TrackerMetadata$outboundSchema)
-    .optional(),
+  nextActions: z.lazy(() => NextActions$outboundSchema).optional(),
+  purchaseTotals: z.lazy(() => PurchaseTotals$outboundSchema).optional(),
+  metadata: z.lazy(() => MetadataResponse$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     entryMode: "entry_mode",
@@ -1030,36 +758,32 @@ export const PostOrderPaymentsV3Tracker$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostOrderPaymentsV3Tracker$ {
-  /** @deprecated use `PostOrderPaymentsV3Tracker$inboundSchema` instead. */
-  export const inboundSchema = PostOrderPaymentsV3Tracker$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3Tracker$outboundSchema` instead. */
-  export const outboundSchema = PostOrderPaymentsV3Tracker$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3Tracker$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3Tracker$Outbound;
+export namespace Tracker$ {
+  /** @deprecated use `Tracker$inboundSchema` instead. */
+  export const inboundSchema = Tracker$inboundSchema;
+  /** @deprecated use `Tracker$outboundSchema` instead. */
+  export const outboundSchema = Tracker$outboundSchema;
+  /** @deprecated use `Tracker$Outbound` instead. */
+  export type Outbound = Tracker$Outbound;
 }
 
-export function postOrderPaymentsV3TrackerToJSON(
-  postOrderPaymentsV3Tracker: PostOrderPaymentsV3Tracker,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3Tracker$outboundSchema.parse(postOrderPaymentsV3Tracker),
-  );
+export function trackerToJSON(tracker: Tracker): string {
+  return JSON.stringify(Tracker$outboundSchema.parse(tracker));
 }
 
-export function postOrderPaymentsV3TrackerFromJSON(
+export function trackerFromJSON(
   jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3Tracker, SDKValidationError> {
+): SafeParseResult<Tracker, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostOrderPaymentsV3Tracker$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3Tracker' from JSON`,
+    (x) => Tracker$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Tracker' from JSON`,
   );
 }
 
 /** @internal */
-export const PostOrderPaymentsV3Capabilities$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3Capabilities,
+export const Capabilities$inboundSchema: z.ZodType<
+  Capabilities,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1073,16 +797,16 @@ export const PostOrderPaymentsV3Capabilities$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PostOrderPaymentsV3Capabilities$Outbound = {
+export type Capabilities$Outbound = {
   CYBERSOURCE?: boolean | undefined;
   MPGS?: boolean | undefined;
 };
 
 /** @internal */
-export const PostOrderPaymentsV3Capabilities$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3Capabilities$Outbound,
+export const Capabilities$outboundSchema: z.ZodType<
+  Capabilities$Outbound,
   z.ZodTypeDef,
-  PostOrderPaymentsV3Capabilities
+  Capabilities
 > = z.object({
   cybersource: z.boolean().optional(),
   mpgs: z.boolean().optional(),
@@ -1097,32 +821,26 @@ export const PostOrderPaymentsV3Capabilities$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostOrderPaymentsV3Capabilities$ {
-  /** @deprecated use `PostOrderPaymentsV3Capabilities$inboundSchema` instead. */
-  export const inboundSchema = PostOrderPaymentsV3Capabilities$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3Capabilities$outboundSchema` instead. */
-  export const outboundSchema = PostOrderPaymentsV3Capabilities$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3Capabilities$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3Capabilities$Outbound;
+export namespace Capabilities$ {
+  /** @deprecated use `Capabilities$inboundSchema` instead. */
+  export const inboundSchema = Capabilities$inboundSchema;
+  /** @deprecated use `Capabilities$outboundSchema` instead. */
+  export const outboundSchema = Capabilities$outboundSchema;
+  /** @deprecated use `Capabilities$Outbound` instead. */
+  export type Outbound = Capabilities$Outbound;
 }
 
-export function postOrderPaymentsV3CapabilitiesToJSON(
-  postOrderPaymentsV3Capabilities: PostOrderPaymentsV3Capabilities,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3Capabilities$outboundSchema.parse(
-      postOrderPaymentsV3Capabilities,
-    ),
-  );
+export function capabilitiesToJSON(capabilities: Capabilities): string {
+  return JSON.stringify(Capabilities$outboundSchema.parse(capabilities));
 }
 
-export function postOrderPaymentsV3CapabilitiesFromJSON(
+export function capabilitiesFromJSON(
   jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3Capabilities, SDKValidationError> {
+): SafeParseResult<Capabilities, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => PostOrderPaymentsV3Capabilities$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3Capabilities' from JSON`,
+    (x) => Capabilities$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Capabilities' from JSON`,
   );
 }
 
@@ -1132,15 +850,14 @@ export const PostOrderPaymentsV3Data$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  tracker: z.lazy(() => PostOrderPaymentsV3Tracker$inboundSchema).optional(),
-  capabilities: z.lazy(() => PostOrderPaymentsV3Capabilities$inboundSchema)
-    .optional(),
+  tracker: z.lazy(() => Tracker$inboundSchema).optional(),
+  capabilities: z.lazy(() => Capabilities$inboundSchema).optional(),
 });
 
 /** @internal */
 export type PostOrderPaymentsV3Data$Outbound = {
-  tracker?: PostOrderPaymentsV3Tracker$Outbound | undefined;
-  capabilities?: PostOrderPaymentsV3Capabilities$Outbound | undefined;
+  tracker?: Tracker$Outbound | undefined;
+  capabilities?: Capabilities$Outbound | undefined;
 };
 
 /** @internal */
@@ -1149,9 +866,8 @@ export const PostOrderPaymentsV3Data$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostOrderPaymentsV3Data
 > = z.object({
-  tracker: z.lazy(() => PostOrderPaymentsV3Tracker$outboundSchema).optional(),
-  capabilities: z.lazy(() => PostOrderPaymentsV3Capabilities$outboundSchema)
-    .optional(),
+  tracker: z.lazy(() => Tracker$outboundSchema).optional(),
+  capabilities: z.lazy(() => Capabilities$outboundSchema).optional(),
 });
 
 /**
@@ -1186,76 +902,19 @@ export function postOrderPaymentsV3DataFromJSON(
 }
 
 /** @internal */
-export const PostOrderPaymentsV3Status$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3Status,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostOrderPaymentsV3Status$Outbound = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostOrderPaymentsV3Status$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3Status$Outbound,
-  z.ZodTypeDef,
-  PostOrderPaymentsV3Status
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostOrderPaymentsV3Status$ {
-  /** @deprecated use `PostOrderPaymentsV3Status$inboundSchema` instead. */
-  export const inboundSchema = PostOrderPaymentsV3Status$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3Status$outboundSchema` instead. */
-  export const outboundSchema = PostOrderPaymentsV3Status$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3Status$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3Status$Outbound;
-}
-
-export function postOrderPaymentsV3StatusToJSON(
-  postOrderPaymentsV3Status: PostOrderPaymentsV3Status,
-): string {
-  return JSON.stringify(
-    PostOrderPaymentsV3Status$outboundSchema.parse(postOrderPaymentsV3Status),
-  );
-}
-
-export function postOrderPaymentsV3StatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostOrderPaymentsV3Status, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostOrderPaymentsV3Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostOrderPaymentsV3Status' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostOrderPaymentsV3ResponseBody$inboundSchema: z.ZodType<
   PostOrderPaymentsV3ResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.lazy(() => PostOrderPaymentsV3Data$inboundSchema).optional(),
-  status: z.lazy(() => PostOrderPaymentsV3Status$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PostOrderPaymentsV3ResponseBody$Outbound = {
   data?: PostOrderPaymentsV3Data$Outbound | undefined;
-  status?: PostOrderPaymentsV3Status$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -1265,7 +924,7 @@ export const PostOrderPaymentsV3ResponseBody$outboundSchema: z.ZodType<
   PostOrderPaymentsV3ResponseBody
 > = z.object({
   data: z.lazy(() => PostOrderPaymentsV3Data$outboundSchema).optional(),
-  status: z.lazy(() => PostOrderPaymentsV3Status$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type GetClientTransactionsV1SearchRequest = {
   /**
@@ -51,17 +52,12 @@ export type GetClientTransactionsV1SearchRequest = {
   direction?: string | undefined;
 };
 
-export type GetClientTransactionsV1SearchStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
 export type GetClientTransactionsV1SearchPriceMoney = {
   currency?: string | undefined;
   amount?: string | undefined;
 };
 
-export type GetClientTransactionsV1SearchTransaction = {
+export type Transaction = {
   token?: string | undefined;
   chargeAt?: Date | undefined;
   charged?: Date | undefined;
@@ -83,7 +79,7 @@ export type GetClientTransactionsV1SearchTransaction = {
 };
 
 export type GetClientTransactionsV1SearchData = {
-  transactions?: Array<GetClientTransactionsV1SearchTransaction> | undefined;
+  transactions?: Array<Transaction> | undefined;
   count?: number | undefined;
   direction?: string | undefined;
   sortBy?: string | undefined;
@@ -94,6 +90,7 @@ export type GetClientTransactionsV1SearchData = {
  */
 export type GetClientTransactionsV1SearchResponseBody = {
   data?: GetClientTransactionsV1SearchData | undefined;
+  status?: models.Status | undefined;
 };
 
 export type GetClientTransactionsV1SearchResponse = {
@@ -202,68 +199,6 @@ export function getClientTransactionsV1SearchRequestFromJSON(
 }
 
 /** @internal */
-export const GetClientTransactionsV1SearchStatus$inboundSchema: z.ZodType<
-  GetClientTransactionsV1SearchStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type GetClientTransactionsV1SearchStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetClientTransactionsV1SearchStatus$outboundSchema: z.ZodType<
-  GetClientTransactionsV1SearchStatus$Outbound,
-  z.ZodTypeDef,
-  GetClientTransactionsV1SearchStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetClientTransactionsV1SearchStatus$ {
-  /** @deprecated use `GetClientTransactionsV1SearchStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetClientTransactionsV1SearchStatus$inboundSchema;
-  /** @deprecated use `GetClientTransactionsV1SearchStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetClientTransactionsV1SearchStatus$outboundSchema;
-  /** @deprecated use `GetClientTransactionsV1SearchStatus$Outbound` instead. */
-  export type Outbound = GetClientTransactionsV1SearchStatus$Outbound;
-}
-
-export function getClientTransactionsV1SearchStatusToJSON(
-  getClientTransactionsV1SearchStatus: GetClientTransactionsV1SearchStatus,
-): string {
-  return JSON.stringify(
-    GetClientTransactionsV1SearchStatus$outboundSchema.parse(
-      getClientTransactionsV1SearchStatus,
-    ),
-  );
-}
-
-export function getClientTransactionsV1SearchStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<GetClientTransactionsV1SearchStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetClientTransactionsV1SearchStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetClientTransactionsV1SearchStatus' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetClientTransactionsV1SearchPriceMoney$inboundSchema: z.ZodType<
   GetClientTransactionsV1SearchPriceMoney,
   z.ZodTypeDef,
@@ -332,8 +267,8 @@ export function getClientTransactionsV1SearchPriceMoneyFromJSON(
 }
 
 /** @internal */
-export const GetClientTransactionsV1SearchTransaction$inboundSchema: z.ZodType<
-  GetClientTransactionsV1SearchTransaction,
+export const Transaction$inboundSchema: z.ZodType<
+  Transaction,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -376,7 +311,7 @@ export const GetClientTransactionsV1SearchTransaction$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type GetClientTransactionsV1SearchTransaction$Outbound = {
+export type Transaction$Outbound = {
   token?: string | undefined;
   charge_at?: string | undefined;
   charged?: string | undefined;
@@ -398,10 +333,10 @@ export type GetClientTransactionsV1SearchTransaction$Outbound = {
 };
 
 /** @internal */
-export const GetClientTransactionsV1SearchTransaction$outboundSchema: z.ZodType<
-  GetClientTransactionsV1SearchTransaction$Outbound,
+export const Transaction$outboundSchema: z.ZodType<
+  Transaction$Outbound,
   z.ZodTypeDef,
-  GetClientTransactionsV1SearchTransaction
+  Transaction
 > = z.object({
   token: z.string().optional(),
   chargeAt: z.date().transform(v => v.toISOString()).optional(),
@@ -441,41 +376,26 @@ export const GetClientTransactionsV1SearchTransaction$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace GetClientTransactionsV1SearchTransaction$ {
-  /** @deprecated use `GetClientTransactionsV1SearchTransaction$inboundSchema` instead. */
-  export const inboundSchema =
-    GetClientTransactionsV1SearchTransaction$inboundSchema;
-  /** @deprecated use `GetClientTransactionsV1SearchTransaction$outboundSchema` instead. */
-  export const outboundSchema =
-    GetClientTransactionsV1SearchTransaction$outboundSchema;
-  /** @deprecated use `GetClientTransactionsV1SearchTransaction$Outbound` instead. */
-  export type Outbound = GetClientTransactionsV1SearchTransaction$Outbound;
+export namespace Transaction$ {
+  /** @deprecated use `Transaction$inboundSchema` instead. */
+  export const inboundSchema = Transaction$inboundSchema;
+  /** @deprecated use `Transaction$outboundSchema` instead. */
+  export const outboundSchema = Transaction$outboundSchema;
+  /** @deprecated use `Transaction$Outbound` instead. */
+  export type Outbound = Transaction$Outbound;
 }
 
-export function getClientTransactionsV1SearchTransactionToJSON(
-  getClientTransactionsV1SearchTransaction:
-    GetClientTransactionsV1SearchTransaction,
-): string {
-  return JSON.stringify(
-    GetClientTransactionsV1SearchTransaction$outboundSchema.parse(
-      getClientTransactionsV1SearchTransaction,
-    ),
-  );
+export function transactionToJSON(transaction: Transaction): string {
+  return JSON.stringify(Transaction$outboundSchema.parse(transaction));
 }
 
-export function getClientTransactionsV1SearchTransactionFromJSON(
+export function transactionFromJSON(
   jsonString: string,
-): SafeParseResult<
-  GetClientTransactionsV1SearchTransaction,
-  SDKValidationError
-> {
+): SafeParseResult<Transaction, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) =>
-      GetClientTransactionsV1SearchTransaction$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'GetClientTransactionsV1SearchTransaction' from JSON`,
+    (x) => Transaction$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Transaction' from JSON`,
   );
 }
 
@@ -485,9 +405,7 @@ export const GetClientTransactionsV1SearchData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  transactions: z.array(
-    z.lazy(() => GetClientTransactionsV1SearchTransaction$inboundSchema),
-  ).optional(),
+  transactions: z.array(z.lazy(() => Transaction$inboundSchema)).optional(),
   count: z.number().int().optional(),
   direction: z.string().optional(),
   sort_by: z.string().optional(),
@@ -499,9 +417,7 @@ export const GetClientTransactionsV1SearchData$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetClientTransactionsV1SearchData$Outbound = {
-  transactions?:
-    | Array<GetClientTransactionsV1SearchTransaction$Outbound>
-    | undefined;
+  transactions?: Array<Transaction$Outbound> | undefined;
   count?: number | undefined;
   direction?: string | undefined;
   sort_by?: string | undefined;
@@ -513,9 +429,7 @@ export const GetClientTransactionsV1SearchData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetClientTransactionsV1SearchData
 > = z.object({
-  transactions: z.array(
-    z.lazy(() => GetClientTransactionsV1SearchTransaction$outboundSchema),
-  ).optional(),
+  transactions: z.array(z.lazy(() => Transaction$outboundSchema)).optional(),
   count: z.number().int().optional(),
   direction: z.string().optional(),
   sortBy: z.string().optional(),
@@ -567,11 +481,13 @@ export const GetClientTransactionsV1SearchResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   data: z.lazy(() => GetClientTransactionsV1SearchData$inboundSchema)
     .optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetClientTransactionsV1SearchResponseBody$Outbound = {
   data?: GetClientTransactionsV1SearchData$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -583,6 +499,7 @@ export const GetClientTransactionsV1SearchResponseBody$outboundSchema:
   > = z.object({
     data: z.lazy(() => GetClientTransactionsV1SearchData$outboundSchema)
       .optional(),
+    status: models.Status$outboundSchema.optional(),
   });
 
 /**

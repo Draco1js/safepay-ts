@@ -29,12 +29,12 @@ import { Result } from "../types/fp.js";
  */
 export function usersCreateGuestJwt(
   client: SafepayCore,
-  request?: operations.PostUserV1GuestRequest | undefined,
+  request: operations.PostUserV1GuestRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     operations.PostUserV1GuestResponse,
-    | errors.PostUserV1GuestExpectationFailedError
+    | errors.ExpectationFailedError
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -54,13 +54,13 @@ export function usersCreateGuestJwt(
 
 async function $do(
   client: SafepayCore,
-  request?: operations.PostUserV1GuestRequest | undefined,
+  request: operations.PostUserV1GuestRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       operations.PostUserV1GuestResponse,
-      | errors.PostUserV1GuestExpectationFailedError
+      | errors.ExpectationFailedError
       | SafepayError
       | ResponseValidationError
       | ConnectionError
@@ -75,17 +75,14 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.PostUserV1GuestRequest$outboundSchema.optional().parse(value),
+    (value) => operations.PostUserV1GuestRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = payload === undefined
-    ? null
-    : encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/user/v1/guest")();
 
@@ -105,8 +102,18 @@ async function $do(
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 3600000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["5XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -140,7 +147,7 @@ async function $do(
 
   const [result] = await M.match<
     operations.PostUserV1GuestResponse,
-    | errors.PostUserV1GuestExpectationFailedError
+    | errors.ExpectationFailedError
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -154,9 +161,7 @@ async function $do(
       hdrs: true,
       key: "Result",
     }),
-    M.jsonErr(417, errors.PostUserV1GuestExpectationFailedError$inboundSchema, {
-      hdrs: true,
-    }),
+    M.jsonErr(417, errors.ExpectationFailedError$inboundSchema, { hdrs: true }),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

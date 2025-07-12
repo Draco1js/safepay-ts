@@ -66,7 +66,7 @@ run();
 
 ### Errors
 
-| Error Type                               | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| errors.GetUserWalletsV1UnauthorizedError | 401                                      | application/json                         |
-| errors.SafepayDefaultError               | 4XX, 5XX                                 | \*/\*                                    |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| errors.PostAuthV1CompanyAuthenticateUnauthorizedError | 401                                                   | application/json                                      |
+| errors.SafepayDefaultError                            | 4XX, 5XX                                              | \*/\*                                                 |

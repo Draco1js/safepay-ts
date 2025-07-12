@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type PostAuthV1CompanyAuthenticateRequest = {
   client?: string | undefined;
@@ -14,24 +15,9 @@ export type PostAuthV1CompanyAuthenticateRequest = {
   password?: string | undefined;
 };
 
-export type PostAuthV1CompanyAuthenticateExpectationFailedStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-export type PostAuthV1CompanyAuthenticateUnauthorizedStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
 export type PostAuthV1CompanyAuthenticateData = {
   session?: string | undefined;
   token?: string | undefined;
-};
-
-export type PostAuthV1CompanyAuthenticateStatus = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
 };
 
 /**
@@ -39,7 +25,7 @@ export type PostAuthV1CompanyAuthenticateStatus = {
  */
 export type PostAuthV1CompanyAuthenticateResponseBody = {
   data?: PostAuthV1CompanyAuthenticateData | undefined;
-  status?: PostAuthV1CompanyAuthenticateStatus | undefined;
+  status?: models.Status | undefined;
 };
 
 export type PostAuthV1CompanyAuthenticateResponse = {
@@ -113,148 +99,6 @@ export function postAuthV1CompanyAuthenticateRequestFromJSON(
 }
 
 /** @internal */
-export const PostAuthV1CompanyAuthenticateExpectationFailedStatus$inboundSchema:
-  z.ZodType<
-    PostAuthV1CompanyAuthenticateExpectationFailedStatus,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    errors: z.array(z.string()).optional(),
-    message: z.string().optional(),
-  });
-
-/** @internal */
-export type PostAuthV1CompanyAuthenticateExpectationFailedStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostAuthV1CompanyAuthenticateExpectationFailedStatus$outboundSchema:
-  z.ZodType<
-    PostAuthV1CompanyAuthenticateExpectationFailedStatus$Outbound,
-    z.ZodTypeDef,
-    PostAuthV1CompanyAuthenticateExpectationFailedStatus
-  > = z.object({
-    errors: z.array(z.string()).optional(),
-    message: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAuthV1CompanyAuthenticateExpectationFailedStatus$ {
-  /** @deprecated use `PostAuthV1CompanyAuthenticateExpectationFailedStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAuthV1CompanyAuthenticateExpectationFailedStatus$inboundSchema;
-  /** @deprecated use `PostAuthV1CompanyAuthenticateExpectationFailedStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAuthV1CompanyAuthenticateExpectationFailedStatus$outboundSchema;
-  /** @deprecated use `PostAuthV1CompanyAuthenticateExpectationFailedStatus$Outbound` instead. */
-  export type Outbound =
-    PostAuthV1CompanyAuthenticateExpectationFailedStatus$Outbound;
-}
-
-export function postAuthV1CompanyAuthenticateExpectationFailedStatusToJSON(
-  postAuthV1CompanyAuthenticateExpectationFailedStatus:
-    PostAuthV1CompanyAuthenticateExpectationFailedStatus,
-): string {
-  return JSON.stringify(
-    PostAuthV1CompanyAuthenticateExpectationFailedStatus$outboundSchema.parse(
-      postAuthV1CompanyAuthenticateExpectationFailedStatus,
-    ),
-  );
-}
-
-export function postAuthV1CompanyAuthenticateExpectationFailedStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAuthV1CompanyAuthenticateExpectationFailedStatus,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAuthV1CompanyAuthenticateExpectationFailedStatus$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostAuthV1CompanyAuthenticateExpectationFailedStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostAuthV1CompanyAuthenticateUnauthorizedStatus$inboundSchema:
-  z.ZodType<
-    PostAuthV1CompanyAuthenticateUnauthorizedStatus,
-    z.ZodTypeDef,
-    unknown
-  > = z.object({
-    errors: z.array(z.string()).optional(),
-    message: z.string().optional(),
-  });
-
-/** @internal */
-export type PostAuthV1CompanyAuthenticateUnauthorizedStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostAuthV1CompanyAuthenticateUnauthorizedStatus$outboundSchema:
-  z.ZodType<
-    PostAuthV1CompanyAuthenticateUnauthorizedStatus$Outbound,
-    z.ZodTypeDef,
-    PostAuthV1CompanyAuthenticateUnauthorizedStatus
-  > = z.object({
-    errors: z.array(z.string()).optional(),
-    message: z.string().optional(),
-  });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAuthV1CompanyAuthenticateUnauthorizedStatus$ {
-  /** @deprecated use `PostAuthV1CompanyAuthenticateUnauthorizedStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAuthV1CompanyAuthenticateUnauthorizedStatus$inboundSchema;
-  /** @deprecated use `PostAuthV1CompanyAuthenticateUnauthorizedStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAuthV1CompanyAuthenticateUnauthorizedStatus$outboundSchema;
-  /** @deprecated use `PostAuthV1CompanyAuthenticateUnauthorizedStatus$Outbound` instead. */
-  export type Outbound =
-    PostAuthV1CompanyAuthenticateUnauthorizedStatus$Outbound;
-}
-
-export function postAuthV1CompanyAuthenticateUnauthorizedStatusToJSON(
-  postAuthV1CompanyAuthenticateUnauthorizedStatus:
-    PostAuthV1CompanyAuthenticateUnauthorizedStatus,
-): string {
-  return JSON.stringify(
-    PostAuthV1CompanyAuthenticateUnauthorizedStatus$outboundSchema.parse(
-      postAuthV1CompanyAuthenticateUnauthorizedStatus,
-    ),
-  );
-}
-
-export function postAuthV1CompanyAuthenticateUnauthorizedStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<
-  PostAuthV1CompanyAuthenticateUnauthorizedStatus,
-  SDKValidationError
-> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAuthV1CompanyAuthenticateUnauthorizedStatus$inboundSchema.parse(
-        JSON.parse(x),
-      ),
-    `Failed to parse 'PostAuthV1CompanyAuthenticateUnauthorizedStatus' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostAuthV1CompanyAuthenticateData$inboundSchema: z.ZodType<
   PostAuthV1CompanyAuthenticateData,
   z.ZodTypeDef,
@@ -315,68 +159,6 @@ export function postAuthV1CompanyAuthenticateDataFromJSON(
 }
 
 /** @internal */
-export const PostAuthV1CompanyAuthenticateStatus$inboundSchema: z.ZodType<
-  PostAuthV1CompanyAuthenticateStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostAuthV1CompanyAuthenticateStatus$Outbound = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostAuthV1CompanyAuthenticateStatus$outboundSchema: z.ZodType<
-  PostAuthV1CompanyAuthenticateStatus$Outbound,
-  z.ZodTypeDef,
-  PostAuthV1CompanyAuthenticateStatus
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostAuthV1CompanyAuthenticateStatus$ {
-  /** @deprecated use `PostAuthV1CompanyAuthenticateStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    PostAuthV1CompanyAuthenticateStatus$inboundSchema;
-  /** @deprecated use `PostAuthV1CompanyAuthenticateStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    PostAuthV1CompanyAuthenticateStatus$outboundSchema;
-  /** @deprecated use `PostAuthV1CompanyAuthenticateStatus$Outbound` instead. */
-  export type Outbound = PostAuthV1CompanyAuthenticateStatus$Outbound;
-}
-
-export function postAuthV1CompanyAuthenticateStatusToJSON(
-  postAuthV1CompanyAuthenticateStatus: PostAuthV1CompanyAuthenticateStatus,
-): string {
-  return JSON.stringify(
-    PostAuthV1CompanyAuthenticateStatus$outboundSchema.parse(
-      postAuthV1CompanyAuthenticateStatus,
-    ),
-  );
-}
-
-export function postAuthV1CompanyAuthenticateStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostAuthV1CompanyAuthenticateStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      PostAuthV1CompanyAuthenticateStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostAuthV1CompanyAuthenticateStatus' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostAuthV1CompanyAuthenticateResponseBody$inboundSchema: z.ZodType<
   PostAuthV1CompanyAuthenticateResponseBody,
   z.ZodTypeDef,
@@ -384,14 +166,13 @@ export const PostAuthV1CompanyAuthenticateResponseBody$inboundSchema: z.ZodType<
 > = z.object({
   data: z.lazy(() => PostAuthV1CompanyAuthenticateData$inboundSchema)
     .optional(),
-  status: z.lazy(() => PostAuthV1CompanyAuthenticateStatus$inboundSchema)
-    .optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PostAuthV1CompanyAuthenticateResponseBody$Outbound = {
   data?: PostAuthV1CompanyAuthenticateData$Outbound | undefined;
-  status?: PostAuthV1CompanyAuthenticateStatus$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -403,8 +184,7 @@ export const PostAuthV1CompanyAuthenticateResponseBody$outboundSchema:
   > = z.object({
     data: z.lazy(() => PostAuthV1CompanyAuthenticateData$outboundSchema)
       .optional(),
-    status: z.lazy(() => PostAuthV1CompanyAuthenticateStatus$outboundSchema)
-      .optional(),
+    status: models.Status$outboundSchema.optional(),
   });
 
 /**

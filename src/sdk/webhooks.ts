@@ -12,7 +12,7 @@ export class Webhooks extends ClientSDK {
    * Test Webhook
    */
   async test(
-    request?: operations.PostClientHooksV2TestRequest | undefined,
+    request: operations.PostClientHooksV2TestRequest,
     options?: RequestOptions,
   ): Promise<operations.PostClientHooksV2TestResponse> {
     return unwrapAsync(webhooksTest(

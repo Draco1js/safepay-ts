@@ -7,6 +7,7 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type PostV1CompanyLoginList = {
   token?: string | undefined;
@@ -35,17 +36,12 @@ export type PostV1CompanyLoginData = {
   list?: Array<PostV1CompanyLoginList> | undefined;
 };
 
-export type PostV1CompanyLoginStatus = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
 /**
  * Login Company
  */
 export type PostV1CompanyLoginResponseBody = {
   data?: PostV1CompanyLoginData | undefined;
-  status?: PostV1CompanyLoginStatus | undefined;
+  status?: models.Status | undefined;
 };
 
 export type PostV1CompanyLoginResponse = {
@@ -241,76 +237,19 @@ export function postV1CompanyLoginDataFromJSON(
 }
 
 /** @internal */
-export const PostV1CompanyLoginStatus$inboundSchema: z.ZodType<
-  PostV1CompanyLoginStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostV1CompanyLoginStatus$Outbound = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostV1CompanyLoginStatus$outboundSchema: z.ZodType<
-  PostV1CompanyLoginStatus$Outbound,
-  z.ZodTypeDef,
-  PostV1CompanyLoginStatus
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostV1CompanyLoginStatus$ {
-  /** @deprecated use `PostV1CompanyLoginStatus$inboundSchema` instead. */
-  export const inboundSchema = PostV1CompanyLoginStatus$inboundSchema;
-  /** @deprecated use `PostV1CompanyLoginStatus$outboundSchema` instead. */
-  export const outboundSchema = PostV1CompanyLoginStatus$outboundSchema;
-  /** @deprecated use `PostV1CompanyLoginStatus$Outbound` instead. */
-  export type Outbound = PostV1CompanyLoginStatus$Outbound;
-}
-
-export function postV1CompanyLoginStatusToJSON(
-  postV1CompanyLoginStatus: PostV1CompanyLoginStatus,
-): string {
-  return JSON.stringify(
-    PostV1CompanyLoginStatus$outboundSchema.parse(postV1CompanyLoginStatus),
-  );
-}
-
-export function postV1CompanyLoginStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostV1CompanyLoginStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostV1CompanyLoginStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostV1CompanyLoginStatus' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostV1CompanyLoginResponseBody$inboundSchema: z.ZodType<
   PostV1CompanyLoginResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.lazy(() => PostV1CompanyLoginData$inboundSchema).optional(),
-  status: z.lazy(() => PostV1CompanyLoginStatus$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PostV1CompanyLoginResponseBody$Outbound = {
   data?: PostV1CompanyLoginData$Outbound | undefined;
-  status?: PostV1CompanyLoginStatus$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -320,7 +259,7 @@ export const PostV1CompanyLoginResponseBody$outboundSchema: z.ZodType<
   PostV1CompanyLoginResponseBody
 > = z.object({
   data: z.lazy(() => PostV1CompanyLoginData$outboundSchema).optional(),
-  status: z.lazy(() => PostV1CompanyLoginStatus$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

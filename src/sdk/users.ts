@@ -14,7 +14,7 @@ export class Users extends ClientSDK {
    * Create Guest JWT
    */
   async createGuestJwt(
-    request?: operations.PostUserV1GuestRequest | undefined,
+    request: operations.PostUserV1GuestRequest,
     options?: RequestOptions,
   ): Promise<operations.PostUserV1GuestResponse> {
     return unwrapAsync(usersCreateGuestJwt(

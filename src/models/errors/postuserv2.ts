@@ -3,52 +3,57 @@
  */
 
 import * as z from "zod";
+import * as models from "../index.js";
 import { SafepayError } from "./safepayerror.js";
 
 /**
  * 409
  */
-export type PostUserV2ConflictErrorData = {
+export type ConflictErrorData = {
   code?: string | undefined;
   message?: string | undefined;
+  status?: models.Status | undefined;
 };
 
 /**
  * 409
  */
-export class PostUserV2ConflictError extends SafepayError {
+export class ConflictError extends SafepayError {
   code?: string | undefined;
+  status?: models.Status | undefined;
 
   /** The original data that was passed to this error instance. */
-  data$: PostUserV2ConflictErrorData;
+  data$: ConflictErrorData;
 
   constructor(
-    err: PostUserV2ConflictErrorData,
+    err: ConflictErrorData,
     httpMeta: { response: Response; request: Request; body: string },
   ) {
     const message = err.message || `API error occurred: ${JSON.stringify(err)}`;
     super(message, httpMeta);
     this.data$ = err;
     if (err.code != null) this.code = err.code;
+    if (err.status != null) this.status = err.status;
 
-    this.name = "PostUserV2ConflictError";
+    this.name = "ConflictError";
   }
 }
 
 /** @internal */
-export const PostUserV2ConflictError$inboundSchema: z.ZodType<
-  PostUserV2ConflictError,
+export const ConflictError$inboundSchema: z.ZodType<
+  ConflictError,
   z.ZodTypeDef,
   unknown
 > = z.object({
   code: z.string().optional(),
   message: z.string().optional(),
+  status: models.Status$inboundSchema.optional(),
   request$: z.instanceof(Request),
   response$: z.instanceof(Response),
   body$: z.string(),
 })
   .transform((v) => {
-    return new PostUserV2ConflictError(v, {
+    return new ConflictError(v, {
       request: v.request$,
       response: v.response$,
       body: v.body$,
@@ -56,32 +61,34 @@ export const PostUserV2ConflictError$inboundSchema: z.ZodType<
   });
 
 /** @internal */
-export type PostUserV2ConflictError$Outbound = {
+export type ConflictError$Outbound = {
   code?: string | undefined;
   message?: string | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
-export const PostUserV2ConflictError$outboundSchema: z.ZodType<
-  PostUserV2ConflictError$Outbound,
+export const ConflictError$outboundSchema: z.ZodType<
+  ConflictError$Outbound,
   z.ZodTypeDef,
-  PostUserV2ConflictError
-> = z.instanceof(PostUserV2ConflictError)
+  ConflictError
+> = z.instanceof(ConflictError)
   .transform(v => v.data$)
   .pipe(z.object({
     code: z.string().optional(),
     message: z.string().optional(),
+    status: models.Status$outboundSchema.optional(),
   }));
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PostUserV2ConflictError$ {
-  /** @deprecated use `PostUserV2ConflictError$inboundSchema` instead. */
-  export const inboundSchema = PostUserV2ConflictError$inboundSchema;
-  /** @deprecated use `PostUserV2ConflictError$outboundSchema` instead. */
-  export const outboundSchema = PostUserV2ConflictError$outboundSchema;
-  /** @deprecated use `PostUserV2ConflictError$Outbound` instead. */
-  export type Outbound = PostUserV2ConflictError$Outbound;
+export namespace ConflictError$ {
+  /** @deprecated use `ConflictError$inboundSchema` instead. */
+  export const inboundSchema = ConflictError$inboundSchema;
+  /** @deprecated use `ConflictError$outboundSchema` instead. */
+  export const outboundSchema = ConflictError$outboundSchema;
+  /** @deprecated use `ConflictError$Outbound` instead. */
+  export type Outbound = ConflictError$Outbound;
 }

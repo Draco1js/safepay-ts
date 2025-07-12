@@ -3,7 +3,6 @@
  */
 
 import { orderPaymentsCreate } from "../funcs/orderPaymentsCreate.js";
-import { orderPaymentsResetTracking } from "../funcs/orderPaymentsResetTracking.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
@@ -13,26 +12,12 @@ export class OrderPayments extends ClientSDK {
    * Payment
    */
   async create(
-    request?: operations.PostOrderPaymentsV3Request | undefined,
+    request: operations.PostOrderPaymentsV3Request,
     options?: RequestOptions,
   ): Promise<operations.PostOrderPaymentsV3Response> {
     return unwrapAsync(orderPaymentsCreate(
       this,
       request,
-      options,
-    ));
-  }
-
-  /**
-   * Reset
-   */
-  async resetTracking(
-    options?: RequestOptions,
-  ): Promise<
-    operations.PutOrderPaymentsV3TrackAefeaefeC21a4678Ab1e181bfe2920beResponse
-  > {
-    return unwrapAsync(orderPaymentsResetTracking(
-      this,
       options,
     ));
   }

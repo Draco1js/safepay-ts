@@ -16,6 +16,7 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { ResponseValidationError } from "../models/errors/responsevalidationerror.js";
 import { SafepayError } from "../models/errors/safepayerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
@@ -33,6 +34,7 @@ export function metaListCountries(
 ): APIPromise<
   Result<
     operations.GetUserMetaV2CountriesResponse,
+    | errors.ErrorT
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -58,6 +60,7 @@ async function $do(
   [
     Result<
       operations.GetUserMetaV2CountriesResponse,
+      | errors.ErrorT
       | SafepayError
       | ResponseValidationError
       | ConnectionError
@@ -105,8 +108,18 @@ async function $do(
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 3600000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["5XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -126,7 +139,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["4XX", "5XX"],
+    errorCodes: ["400", "401", "404", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -141,6 +154,7 @@ async function $do(
 
   const [result] = await M.match<
     operations.GetUserMetaV2CountriesResponse,
+    | errors.ErrorT
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -154,6 +168,8 @@ async function $do(
       hdrs: true,
       key: "Result",
     }),
+    M.jsonErr([400, 401, 404], errors.ErrorT$inboundSchema),
+    M.jsonErr(500, errors.ErrorT$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

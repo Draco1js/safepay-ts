@@ -3,9 +3,7 @@ speakeasyVersion: latest
 sources:
     Safepay:
         inputs:
-            - location: safepay.json
-        overlays:
-            - location: .speakeasy/speakeasy-modifications-overlay.yaml
+            - location: safepay.yaml
         output: .speakeasy/out.openapi.yaml
         registry:
             location: registry.speakeasyapi.dev/dhaba/safepay-api/safepay
@@ -13,9 +11,6 @@ targets:
     safepay:
         target: typescript
         source: Safepay
-        publish:
-            npm:
-                token: $npm_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/dhaba/safepay-api/safepay-typescript-code-samples

@@ -29,13 +29,14 @@ import { Result } from "../types/fp.js";
  */
 export function webhooksTest(
   client: SafepayCore,
-  request?: operations.PostClientHooksV2TestRequest | undefined,
+  request: operations.PostClientHooksV2TestRequest,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     operations.PostClientHooksV2TestResponse,
     | errors.PostClientHooksV2TestBadRequestError
-    | errors.PostClientHooksV2TestUnauthorizedError
+    | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
+    | errors.ErrorT
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -55,14 +56,15 @@ export function webhooksTest(
 
 async function $do(
   client: SafepayCore,
-  request?: operations.PostClientHooksV2TestRequest | undefined,
+  request: operations.PostClientHooksV2TestRequest,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       operations.PostClientHooksV2TestResponse,
       | errors.PostClientHooksV2TestBadRequestError
-      | errors.PostClientHooksV2TestUnauthorizedError
+      | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
+      | errors.ErrorT
       | SafepayError
       | ResponseValidationError
       | ConnectionError
@@ -78,18 +80,14 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.PostClientHooksV2TestRequest$outboundSchema.optional().parse(
-        value,
-      ),
+      operations.PostClientHooksV2TestRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = payload === undefined
-    ? null
-    : encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/client/hooks/v2/test")();
 
@@ -109,8 +107,18 @@ async function $do(
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 3600000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["5XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -129,7 +137,7 @@ async function $do(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "401", "4XX", "5XX"],
+    errorCodes: ["400", "401", "404", "4XX", "500", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -145,7 +153,8 @@ async function $do(
   const [result] = await M.match<
     operations.PostClientHooksV2TestResponse,
     | errors.PostClientHooksV2TestBadRequestError
-    | errors.PostClientHooksV2TestUnauthorizedError
+    | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
+    | errors.ErrorT
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -164,9 +173,11 @@ async function $do(
     }),
     M.jsonErr(
       401,
-      errors.PostClientHooksV2TestUnauthorizedError$inboundSchema,
+      errors.PostAuthV1CompanyAuthenticateUnauthorizedError$inboundSchema,
       { hdrs: true },
     ),
+    M.jsonErr(404, errors.ErrorT$inboundSchema),
+    M.jsonErr(500, errors.ErrorT$inboundSchema),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

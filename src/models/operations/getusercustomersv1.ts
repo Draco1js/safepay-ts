@@ -7,20 +7,11 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type GetUserCustomersV1Request = {
   limit?: number | undefined;
   page?: number | undefined;
-};
-
-export type GetUserCustomersV1UnauthorizedStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-export type GetUserCustomersV1BadRequestStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
 };
 
 export type GetUserCustomersV1CreatedAt = {
@@ -50,17 +41,12 @@ export type GetUserCustomersV1Data = {
   count?: number | undefined;
 };
 
-export type GetUserCustomersV1Status = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
 /**
  * 200
  */
 export type GetUserCustomersV1ResponseBody = {
   data?: GetUserCustomersV1Data | undefined;
-  status?: GetUserCustomersV1Status | undefined;
+  status?: models.Status | undefined;
 };
 
 export type GetUserCustomersV1Response = {
@@ -122,129 +108,6 @@ export function getUserCustomersV1RequestFromJSON(
     jsonString,
     (x) => GetUserCustomersV1Request$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'GetUserCustomersV1Request' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetUserCustomersV1UnauthorizedStatus$inboundSchema: z.ZodType<
-  GetUserCustomersV1UnauthorizedStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type GetUserCustomersV1UnauthorizedStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetUserCustomersV1UnauthorizedStatus$outboundSchema: z.ZodType<
-  GetUserCustomersV1UnauthorizedStatus$Outbound,
-  z.ZodTypeDef,
-  GetUserCustomersV1UnauthorizedStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUserCustomersV1UnauthorizedStatus$ {
-  /** @deprecated use `GetUserCustomersV1UnauthorizedStatus$inboundSchema` instead. */
-  export const inboundSchema =
-    GetUserCustomersV1UnauthorizedStatus$inboundSchema;
-  /** @deprecated use `GetUserCustomersV1UnauthorizedStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetUserCustomersV1UnauthorizedStatus$outboundSchema;
-  /** @deprecated use `GetUserCustomersV1UnauthorizedStatus$Outbound` instead. */
-  export type Outbound = GetUserCustomersV1UnauthorizedStatus$Outbound;
-}
-
-export function getUserCustomersV1UnauthorizedStatusToJSON(
-  getUserCustomersV1UnauthorizedStatus: GetUserCustomersV1UnauthorizedStatus,
-): string {
-  return JSON.stringify(
-    GetUserCustomersV1UnauthorizedStatus$outboundSchema.parse(
-      getUserCustomersV1UnauthorizedStatus,
-    ),
-  );
-}
-
-export function getUserCustomersV1UnauthorizedStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<GetUserCustomersV1UnauthorizedStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetUserCustomersV1UnauthorizedStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetUserCustomersV1UnauthorizedStatus' from JSON`,
-  );
-}
-
-/** @internal */
-export const GetUserCustomersV1BadRequestStatus$inboundSchema: z.ZodType<
-  GetUserCustomersV1BadRequestStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type GetUserCustomersV1BadRequestStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetUserCustomersV1BadRequestStatus$outboundSchema: z.ZodType<
-  GetUserCustomersV1BadRequestStatus$Outbound,
-  z.ZodTypeDef,
-  GetUserCustomersV1BadRequestStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUserCustomersV1BadRequestStatus$ {
-  /** @deprecated use `GetUserCustomersV1BadRequestStatus$inboundSchema` instead. */
-  export const inboundSchema = GetUserCustomersV1BadRequestStatus$inboundSchema;
-  /** @deprecated use `GetUserCustomersV1BadRequestStatus$outboundSchema` instead. */
-  export const outboundSchema =
-    GetUserCustomersV1BadRequestStatus$outboundSchema;
-  /** @deprecated use `GetUserCustomersV1BadRequestStatus$Outbound` instead. */
-  export type Outbound = GetUserCustomersV1BadRequestStatus$Outbound;
-}
-
-export function getUserCustomersV1BadRequestStatusToJSON(
-  getUserCustomersV1BadRequestStatus: GetUserCustomersV1BadRequestStatus,
-): string {
-  return JSON.stringify(
-    GetUserCustomersV1BadRequestStatus$outboundSchema.parse(
-      getUserCustomersV1BadRequestStatus,
-    ),
-  );
-}
-
-export function getUserCustomersV1BadRequestStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<GetUserCustomersV1BadRequestStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      GetUserCustomersV1BadRequestStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetUserCustomersV1BadRequestStatus' from JSON`,
   );
 }
 
@@ -530,76 +393,19 @@ export function getUserCustomersV1DataFromJSON(
 }
 
 /** @internal */
-export const GetUserCustomersV1Status$inboundSchema: z.ZodType<
-  GetUserCustomersV1Status,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type GetUserCustomersV1Status$Outbound = {
-  errors?: Array<any> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const GetUserCustomersV1Status$outboundSchema: z.ZodType<
-  GetUserCustomersV1Status$Outbound,
-  z.ZodTypeDef,
-  GetUserCustomersV1Status
-> = z.object({
-  errors: z.array(z.any()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetUserCustomersV1Status$ {
-  /** @deprecated use `GetUserCustomersV1Status$inboundSchema` instead. */
-  export const inboundSchema = GetUserCustomersV1Status$inboundSchema;
-  /** @deprecated use `GetUserCustomersV1Status$outboundSchema` instead. */
-  export const outboundSchema = GetUserCustomersV1Status$outboundSchema;
-  /** @deprecated use `GetUserCustomersV1Status$Outbound` instead. */
-  export type Outbound = GetUserCustomersV1Status$Outbound;
-}
-
-export function getUserCustomersV1StatusToJSON(
-  getUserCustomersV1Status: GetUserCustomersV1Status,
-): string {
-  return JSON.stringify(
-    GetUserCustomersV1Status$outboundSchema.parse(getUserCustomersV1Status),
-  );
-}
-
-export function getUserCustomersV1StatusFromJSON(
-  jsonString: string,
-): SafeParseResult<GetUserCustomersV1Status, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => GetUserCustomersV1Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'GetUserCustomersV1Status' from JSON`,
-  );
-}
-
-/** @internal */
 export const GetUserCustomersV1ResponseBody$inboundSchema: z.ZodType<
   GetUserCustomersV1ResponseBody,
   z.ZodTypeDef,
   unknown
 > = z.object({
   data: z.lazy(() => GetUserCustomersV1Data$inboundSchema).optional(),
-  status: z.lazy(() => GetUserCustomersV1Status$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type GetUserCustomersV1ResponseBody$Outbound = {
   data?: GetUserCustomersV1Data$Outbound | undefined;
-  status?: GetUserCustomersV1Status$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -609,7 +415,7 @@ export const GetUserCustomersV1ResponseBody$outboundSchema: z.ZodType<
   GetUserCustomersV1ResponseBody
 > = z.object({
   data: z.lazy(() => GetUserCustomersV1Data$outboundSchema).optional(),
-  status: z.lazy(() => GetUserCustomersV1Status$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

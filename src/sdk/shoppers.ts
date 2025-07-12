@@ -12,7 +12,7 @@ export class Shoppers extends ClientSDK {
    * Create Safepay Shopper
    */
   async createSafepay(
-    request?: operations.PostUserV2Request | undefined,
+    request: operations.PostUserV2Request,
     options?: RequestOptions,
   ): Promise<operations.PostUserV2Response> {
     return unwrapAsync(shoppersCreateSafepay(

@@ -19,7 +19,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  await safepay.invoices.createQuickLink();
+  await safepay.invoices.createQuickLink({});
 
 
 }
@@ -40,7 +40,7 @@ import { invoicesCreateQuickLink } from "@dhaba/safepay-ts/funcs/invoicesCreateQ
 const safepay = new SafepayCore();
 
 async function run() {
-  const res = await invoicesCreateQuickLink(safepay);
+  const res = await invoicesCreateQuickLink(safepay, {});
   if (res.ok) {
     const { value: result } = res;
     

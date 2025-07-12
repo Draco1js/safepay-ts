@@ -19,7 +19,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  const result = await safepay.addresses.create();
+  const result = await safepay.addresses.create({});
 
   console.log(result);
 }
@@ -40,7 +40,7 @@ import { addressesCreate } from "@dhaba/safepay-ts/funcs/addressesCreate.js";
 const safepay = new SafepayCore();
 
 async function run() {
-  const res = await addressesCreate(safepay);
+  const res = await addressesCreate(safepay, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -67,8 +67,8 @@ run();
 
 ### Errors
 
-| Error Type                                | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| errors.PostUserAddressV2BadRequestError   | 400                                       | application/json                          |
-| errors.PostUserAddressV2UnauthorizedError | 401                                       | application/json                          |
-| errors.SafepayDefaultError                | 4XX, 5XX                                  | \*/\*                                     |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| errors.PostClientApiSettingsV1BadRequestError         | 400                                                   | application/json                                      |
+| errors.PostAuthV1CompanyAuthenticateUnauthorizedError | 401                                                   | application/json                                      |
+| errors.SafepayDefaultError                            | 4XX, 5XX                                              | \*/\*                                                 |

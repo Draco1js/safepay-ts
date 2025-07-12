@@ -12,7 +12,8 @@ import { PostAuthV2UserLoginBadRequestError } from "@dhaba/safepay-ts/models/err
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `code`             | *string*           | :heavy_minus_sign: | N/A                |
-| `message`          | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                   | Type                                    | Required                                | Description                             |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| `code`                                  | *string*                                | :heavy_minus_sign:                      | N/A                                     |
+| `message`                               | *string*                                | :heavy_minus_sign:                      | N/A                                     |
+| `status`                                | [models.Status](../../models/status.md) | :heavy_minus_sign:                      | N/A                                     |

@@ -7,7 +7,7 @@ import * as operations from "../../models/operations/index.js";
 import { formatResult, ToolDefinition } from "../tools.js";
 
 const args = {
-  request: operations.PostUserV1GuestRequest$inboundSchema.optional(),
+  request: operations.PostUserV1GuestRequest$inboundSchema,
 };
 
 export const tool$usersCreateGuestJwt: ToolDefinition<typeof args> = {

@@ -31,7 +31,7 @@ export function userWalletsListPaymentMethods(
 ): APIPromise<
   Result<
     operations.GetUserWalletsV1Response,
-    | errors.GetUserWalletsV1UnauthorizedError
+    | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -55,7 +55,7 @@ async function $do(
   [
     Result<
       operations.GetUserWalletsV1Response,
-      | errors.GetUserWalletsV1UnauthorizedError
+      | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
       | SafepayError
       | ResponseValidationError
       | ConnectionError
@@ -85,8 +85,18 @@ async function $do(
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 3600000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["5XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -119,7 +129,7 @@ async function $do(
 
   const [result] = await M.match<
     operations.GetUserWalletsV1Response,
-    | errors.GetUserWalletsV1UnauthorizedError
+    | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -133,9 +143,11 @@ async function $do(
       hdrs: true,
       key: "Result",
     }),
-    M.jsonErr(401, errors.GetUserWalletsV1UnauthorizedError$inboundSchema, {
-      hdrs: true,
-    }),
+    M.jsonErr(
+      401,
+      errors.PostAuthV1CompanyAuthenticateUnauthorizedError$inboundSchema,
+      { hdrs: true },
+    ),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

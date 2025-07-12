@@ -7,13 +7,10 @@ import { Addresses } from "./addresses.js";
 import { ApiKeys } from "./apikeys.js";
 import { ApiSettings } from "./apisettings.js";
 import { Auth } from "./auth.js";
-import { ClientPlans } from "./clientplans.js";
-import { ClientSubscriptions } from "./clientsubscriptions.js";
 import { ClientTransactions } from "./clienttransactions.js";
 import { Company } from "./company.js";
 import { Customers } from "./customers.js";
 import { Invoices } from "./invoices.js";
-import { Links } from "./links.js";
 import { Meta } from "./meta.js";
 import { OrderPayments } from "./orderpayments.js";
 import { Passport } from "./passport.js";
@@ -22,12 +19,8 @@ import { Plans } from "./plans.js";
 import { QuickLinks } from "./quicklinks.js";
 import { Shoppers } from "./shoppers.js";
 import { Subscriptions } from "./subscriptions.js";
-import { Transactions } from "./transactions.js";
-import { UserAddresses } from "./useraddresses.js";
-import { UserCustomers } from "./usercustomers.js";
 import { Users } from "./users.js";
 import { UserWallets } from "./userwallets.js";
-import { Wallets } from "./wallets.js";
 import { Webhooks } from "./webhooks.js";
 
 export class Safepay extends ClientSDK {
@@ -66,19 +59,9 @@ export class Safepay extends ClientSDK {
     return (this._customers ??= new Customers(this._options));
   }
 
-  private _userCustomers?: UserCustomers;
-  get userCustomers(): UserCustomers {
-    return (this._userCustomers ??= new UserCustomers(this._options));
-  }
-
   private _addresses?: Addresses;
   get addresses(): Addresses {
     return (this._addresses ??= new Addresses(this._options));
-  }
-
-  private _userAddresses?: UserAddresses;
-  get userAddresses(): UserAddresses {
-    return (this._userAddresses ??= new UserAddresses(this._options));
   }
 
   private _orderPayments?: OrderPayments;
@@ -106,21 +89,9 @@ export class Safepay extends ClientSDK {
     return (this._plans ??= new Plans(this._options));
   }
 
-  private _clientPlans?: ClientPlans;
-  get clientPlans(): ClientPlans {
-    return (this._clientPlans ??= new ClientPlans(this._options));
-  }
-
   private _subscriptions?: Subscriptions;
   get subscriptions(): Subscriptions {
     return (this._subscriptions ??= new Subscriptions(this._options));
-  }
-
-  private _clientSubscriptions?: ClientSubscriptions;
-  get clientSubscriptions(): ClientSubscriptions {
-    return (this._clientSubscriptions ??= new ClientSubscriptions(
-      this._options,
-    ));
   }
 
   private _clientTransactions?: ClientTransactions;
@@ -128,19 +99,9 @@ export class Safepay extends ClientSDK {
     return (this._clientTransactions ??= new ClientTransactions(this._options));
   }
 
-  private _transactions?: Transactions;
-  get transactions(): Transactions {
-    return (this._transactions ??= new Transactions(this._options));
-  }
-
   private _invoices?: Invoices;
   get invoices(): Invoices {
     return (this._invoices ??= new Invoices(this._options));
-  }
-
-  private _links?: Links;
-  get links(): Links {
-    return (this._links ??= new Links(this._options));
   }
 
   private _quickLinks?: QuickLinks;
@@ -156,10 +117,5 @@ export class Safepay extends ClientSDK {
   private _userWallets?: UserWallets;
   get userWallets(): UserWallets {
     return (this._userWallets ??= new UserWallets(this._options));
-  }
-
-  private _wallets?: Wallets;
-  get wallets(): Wallets {
-    return (this._wallets ??= new Wallets(this._options));
   }
 }

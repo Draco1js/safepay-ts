@@ -7,15 +7,11 @@ import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+import * as models from "../index.js";
 
 export type PostClientHooksV2TestRequest = {
   event?: string | undefined;
   identifier?: string | undefined;
-};
-
-export type PostClientHooksV2TestStatus = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
 };
 
 export type Details = {
@@ -31,6 +27,7 @@ export type PostClientHooksV2TestData = {
  */
 export type PostClientHooksV2TestResponseBody = {
   data?: PostClientHooksV2TestData | undefined;
+  status?: models.Status | undefined;
 };
 
 export type PostClientHooksV2TestResponse = {
@@ -94,65 +91,6 @@ export function postClientHooksV2TestRequestFromJSON(
     jsonString,
     (x) => PostClientHooksV2TestRequest$inboundSchema.parse(JSON.parse(x)),
     `Failed to parse 'PostClientHooksV2TestRequest' from JSON`,
-  );
-}
-
-/** @internal */
-export const PostClientHooksV2TestStatus$inboundSchema: z.ZodType<
-  PostClientHooksV2TestStatus,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/** @internal */
-export type PostClientHooksV2TestStatus$Outbound = {
-  errors?: Array<string> | undefined;
-  message?: string | undefined;
-};
-
-/** @internal */
-export const PostClientHooksV2TestStatus$outboundSchema: z.ZodType<
-  PostClientHooksV2TestStatus$Outbound,
-  z.ZodTypeDef,
-  PostClientHooksV2TestStatus
-> = z.object({
-  errors: z.array(z.string()).optional(),
-  message: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostClientHooksV2TestStatus$ {
-  /** @deprecated use `PostClientHooksV2TestStatus$inboundSchema` instead. */
-  export const inboundSchema = PostClientHooksV2TestStatus$inboundSchema;
-  /** @deprecated use `PostClientHooksV2TestStatus$outboundSchema` instead. */
-  export const outboundSchema = PostClientHooksV2TestStatus$outboundSchema;
-  /** @deprecated use `PostClientHooksV2TestStatus$Outbound` instead. */
-  export type Outbound = PostClientHooksV2TestStatus$Outbound;
-}
-
-export function postClientHooksV2TestStatusToJSON(
-  postClientHooksV2TestStatus: PostClientHooksV2TestStatus,
-): string {
-  return JSON.stringify(
-    PostClientHooksV2TestStatus$outboundSchema.parse(
-      postClientHooksV2TestStatus,
-    ),
-  );
-}
-
-export function postClientHooksV2TestStatusFromJSON(
-  jsonString: string,
-): SafeParseResult<PostClientHooksV2TestStatus, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => PostClientHooksV2TestStatus$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'PostClientHooksV2TestStatus' from JSON`,
   );
 }
 
@@ -272,11 +210,13 @@ export const PostClientHooksV2TestResponseBody$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   data: z.lazy(() => PostClientHooksV2TestData$inboundSchema).optional(),
+  status: models.Status$inboundSchema.optional(),
 });
 
 /** @internal */
 export type PostClientHooksV2TestResponseBody$Outbound = {
   data?: PostClientHooksV2TestData$Outbound | undefined;
+  status?: models.Status$Outbound | undefined;
 };
 
 /** @internal */
@@ -286,6 +226,7 @@ export const PostClientHooksV2TestResponseBody$outboundSchema: z.ZodType<
   PostClientHooksV2TestResponseBody
 > = z.object({
   data: z.lazy(() => PostClientHooksV2TestData$outboundSchema).optional(),
+  status: models.Status$outboundSchema.optional(),
 });
 
 /**

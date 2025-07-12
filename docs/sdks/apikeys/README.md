@@ -66,8 +66,8 @@ run();
 
 ### Errors
 
-| Error Type                                      | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| errors.PostClientApiSettingsV1BadRequestError   | 400                                             | application/json                                |
-| errors.PostClientApiSettingsV1UnauthorizedError | 401                                             | application/json                                |
-| errors.SafepayDefaultError                      | 4XX, 5XX                                        | \*/\*                                           |
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| errors.PostClientApiSettingsV1BadRequestError         | 400                                                   | application/json                                      |
+| errors.PostAuthV1CompanyAuthenticateUnauthorizedError | 401                                                   | application/json                                      |
+| errors.SafepayDefaultError                            | 4XX, 5XX                                              | \*/\*                                                 |

@@ -19,7 +19,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  const result = await safepay.shoppers.createSafepay();
+  const result = await safepay.shoppers.createSafepay({});
 
   console.log(result);
 }
@@ -40,7 +40,7 @@ import { shoppersCreateSafepay } from "@dhaba/safepay-ts/funcs/shoppersCreateSaf
 const safepay = new SafepayCore();
 
 async function run() {
-  const res = await shoppersCreateSafepay(safepay);
+  const res = await shoppersCreateSafepay(safepay, {});
   if (res.ok) {
     const { value: result } = res;
     console.log(result);
@@ -67,7 +67,7 @@ run();
 
 ### Errors
 
-| Error Type                     | Status Code                    | Content Type                   |
-| ------------------------------ | ------------------------------ | ------------------------------ |
-| errors.PostUserV2ConflictError | 409                            | application/json               |
-| errors.SafepayDefaultError     | 4XX, 5XX                       | \*/\*                          |
+| Error Type                 | Status Code                | Content Type               |
+| -------------------------- | -------------------------- | -------------------------- |
+| errors.ConflictError       | 409                        | application/json           |
+| errors.SafepayDefaultError | 4XX, 5XX                   | \*/\*                      |

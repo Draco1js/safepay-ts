@@ -1,9 +1,9 @@
-speakeasyVersion: 1.580.1
+speakeasyVersion: 1.581.0
 sources:
     Safepay:
         sourceNamespace: safepay
-        sourceRevisionDigest: sha256:dafd8fdcd0efa530f8876b77bf11a0662659a9a0ba73ebee833a26e6d5ca2b98
-        sourceBlobDigest: sha256:2f498b240fb13e519917019f56e09a6f5e8f02cd655257202b60e48de257455a
+        sourceRevisionDigest: sha256:bca5c9920c141134fea27a4cdcbb64c3cb341e4cd75c1e308f0bd4b5ef648f4c
+        sourceBlobDigest: sha256:20897bc30be12c931df63cac7cad2141f4bf8503ed9085ab979e99a2776470e5
         tags:
             - latest
             - 1.0.0
@@ -11,19 +11,17 @@ targets:
     safepay:
         source: Safepay
         sourceNamespace: safepay
-        sourceRevisionDigest: sha256:dafd8fdcd0efa530f8876b77bf11a0662659a9a0ba73ebee833a26e6d5ca2b98
-        sourceBlobDigest: sha256:2f498b240fb13e519917019f56e09a6f5e8f02cd655257202b60e48de257455a
+        sourceRevisionDigest: sha256:bca5c9920c141134fea27a4cdcbb64c3cb341e4cd75c1e308f0bd4b5ef648f4c
+        sourceBlobDigest: sha256:20897bc30be12c931df63cac7cad2141f4bf8503ed9085ab979e99a2776470e5
         codeSamplesNamespace: safepay-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:209e3b27e8cf658bbd55c56c0d8b8e900c0ed5b60b5ded62f1783a098672ec22
+        codeSamplesRevisionDigest: sha256:b3a10bb5154d1eab3ca4d4ba736c4746907d01addd4c2011524a7fea627a4bbd
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
         Safepay:
             inputs:
-                - location: safepay.json
-            overlays:
-                - location: .speakeasy/speakeasy-modifications-overlay.yaml
+                - location: safepay.yaml
             output: .speakeasy/out.openapi.yaml
             registry:
                 location: registry.speakeasyapi.dev/dhaba/safepay-api/safepay
@@ -31,9 +29,6 @@ workflow:
         safepay:
             target: typescript
             source: Safepay
-            publish:
-                npm:
-                    token: $npm_token
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/dhaba/safepay-api/safepay-typescript-code-samples

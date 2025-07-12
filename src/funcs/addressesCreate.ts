@@ -29,13 +29,13 @@ import { Result } from "../types/fp.js";
  */
 export function addressesCreate(
   client: SafepayCore,
-  request?: operations.PostUserAddressV2Request | undefined,
+  request: operations.PostUserAddressV2Request,
   options?: RequestOptions,
 ): APIPromise<
   Result<
     operations.PostUserAddressV2Response,
-    | errors.PostUserAddressV2BadRequestError
-    | errors.PostUserAddressV2UnauthorizedError
+    | errors.PostClientApiSettingsV1BadRequestError
+    | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -55,14 +55,14 @@ export function addressesCreate(
 
 async function $do(
   client: SafepayCore,
-  request?: operations.PostUserAddressV2Request | undefined,
+  request: operations.PostUserAddressV2Request,
   options?: RequestOptions,
 ): Promise<
   [
     Result<
       operations.PostUserAddressV2Response,
-      | errors.PostUserAddressV2BadRequestError
-      | errors.PostUserAddressV2UnauthorizedError
+      | errors.PostClientApiSettingsV1BadRequestError
+      | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
       | SafepayError
       | ResponseValidationError
       | ConnectionError
@@ -77,19 +77,14 @@ async function $do(
 > {
   const parsed = safeParse(
     request,
-    (value) =>
-      operations.PostUserAddressV2Request$outboundSchema.optional().parse(
-        value,
-      ),
+    (value) => operations.PostUserAddressV2Request$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = payload === undefined
-    ? null
-    : encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/user/address/v2")();
 
@@ -109,8 +104,18 @@ async function $do(
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 3600000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["5XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -144,8 +149,8 @@ async function $do(
 
   const [result] = await M.match<
     operations.PostUserAddressV2Response,
-    | errors.PostUserAddressV2BadRequestError
-    | errors.PostUserAddressV2UnauthorizedError
+    | errors.PostClientApiSettingsV1BadRequestError
+    | errors.PostAuthV1CompanyAuthenticateUnauthorizedError
     | SafepayError
     | ResponseValidationError
     | ConnectionError
@@ -159,12 +164,16 @@ async function $do(
       hdrs: true,
       key: "Result",
     }),
-    M.jsonErr(400, errors.PostUserAddressV2BadRequestError$inboundSchema, {
-      hdrs: true,
-    }),
-    M.jsonErr(401, errors.PostUserAddressV2UnauthorizedError$inboundSchema, {
-      hdrs: true,
-    }),
+    M.jsonErr(
+      400,
+      errors.PostClientApiSettingsV1BadRequestError$inboundSchema,
+      { hdrs: true },
+    ),
+    M.jsonErr(
+      401,
+      errors.PostAuthV1CompanyAuthenticateUnauthorizedError$inboundSchema,
+      { hdrs: true },
+    ),
     M.fail("4XX"),
     M.fail("5XX"),
   )(response, req, { extraFields: responseFields });

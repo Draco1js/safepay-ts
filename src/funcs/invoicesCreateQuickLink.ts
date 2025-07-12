@@ -29,7 +29,7 @@ import { Result } from "../types/fp.js";
  */
 export function invoicesCreateQuickLink(
   client: SafepayCore,
-  request?: operations.PostInvoiceQuickLinksV2Request | undefined,
+  request: operations.PostInvoiceQuickLinksV2Request,
   options?: RequestOptions,
 ): APIPromise<
   Result<
@@ -53,7 +53,7 @@ export function invoicesCreateQuickLink(
 
 async function $do(
   client: SafepayCore,
-  request?: operations.PostInvoiceQuickLinksV2Request | undefined,
+  request: operations.PostInvoiceQuickLinksV2Request,
   options?: RequestOptions,
 ): Promise<
   [
@@ -74,18 +74,14 @@ async function $do(
   const parsed = safeParse(
     request,
     (value) =>
-      operations.PostInvoiceQuickLinksV2Request$outboundSchema.optional().parse(
-        value,
-      ),
+      operations.PostInvoiceQuickLinksV2Request$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
     return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
-  const body = payload === undefined
-    ? null
-    : encodeJSON("body", payload, { explode: true });
+  const body = encodeJSON("body", payload, { explode: true });
 
   const path = pathToFunc("/invoice/quick-links/v2")();
 
@@ -105,8 +101,18 @@ async function $do(
     securitySource: null,
     retryConfig: options?.retries
       || client._options.retryConfig
+      || {
+        strategy: "backoff",
+        backoff: {
+          initialInterval: 500,
+          maxInterval: 60000,
+          exponent: 1.5,
+          maxElapsedTime: 3600000,
+        },
+        retryConnectionErrors: true,
+      }
       || { strategy: "none" },
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryCodes: options?.retryCodes || ["5XX", "5XX"],
   };
 
   const requestRes = client._createRequest(context, {
@@ -145,9 +151,9 @@ async function $do(
     | UnexpectedClientError
     | SDKValidationError
   >(
+    M.nil(200, z.void()),
     M.fail("4XX"),
     M.fail("5XX"),
-    M.nil("default", z.void()),
   )(response, req);
   if (!result.ok) {
     return [result, { status: "complete", request: req, response }];
