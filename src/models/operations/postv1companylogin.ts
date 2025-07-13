@@ -10,25 +10,25 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostV1CompanyLoginList = {
-  token?: string | undefined;
-  name?: string | undefined;
+  active?: number | undefined;
+  apiKey?: string | undefined;
+  apiSettings?: any | null | undefined;
+  avatar?: string | undefined;
+  createdAt?: Date | undefined;
   description?: string | undefined;
   email?: string | undefined;
-  phone?: string | undefined;
-  apiKey?: string | undefined;
-  avatar?: string | undefined;
-  website?: string | undefined;
-  payoutTerms?: string | undefined;
-  active?: number | undefined;
-  suspended?: number | undefined;
-  suspendReason?: string | undefined;
   emailSettings?: any | null | undefined;
-  apiSettings?: any | null | undefined;
+  name?: string | undefined;
   organization?: any | null | undefined;
+  payoutTerms?: string | undefined;
+  phone?: string | undefined;
+  suspendReason?: string | undefined;
+  suspended?: number | undefined;
+  token?: string | undefined;
+  updatedAt?: Date | undefined;
   verification?: any | null | undefined;
   verified?: number | undefined;
-  createdAt?: Date | undefined;
-  updatedAt?: Date | undefined;
+  website?: string | undefined;
 };
 
 export type PostV1CompanyLoginData = {
@@ -55,60 +55,60 @@ export const PostV1CompanyLoginList$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
-  name: z.string().optional(),
-  description: z.string().optional(),
-  email: z.string().optional(),
-  phone: z.string().optional(),
-  api_key: z.string().optional(),
-  avatar: z.string().optional(),
-  website: z.string().optional(),
-  payout_terms: z.string().optional(),
   active: z.number().int().optional(),
-  suspended: z.number().int().optional(),
-  suspend_reason: z.string().optional(),
-  email_settings: z.nullable(z.any()).optional(),
+  api_key: z.string().optional(),
   api_settings: z.nullable(z.any()).optional(),
-  organization: z.nullable(z.any()).optional(),
-  verification: z.nullable(z.any()).optional(),
-  verified: z.number().int().optional(),
+  avatar: z.string().optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  description: z.string().optional(),
+  email: z.string().optional(),
+  email_settings: z.nullable(z.any()).optional(),
+  name: z.string().optional(),
+  organization: z.nullable(z.any()).optional(),
+  payout_terms: z.string().optional(),
+  phone: z.string().optional(),
+  suspend_reason: z.string().optional(),
+  suspended: z.number().int().optional(),
+  token: z.string().optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  verification: z.nullable(z.any()).optional(),
+  verified: z.number().int().optional(),
+  website: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "api_key": "apiKey",
-    "payout_terms": "payoutTerms",
-    "suspend_reason": "suspendReason",
-    "email_settings": "emailSettings",
     "api_settings": "apiSettings",
     "created_at": "createdAt",
+    "email_settings": "emailSettings",
+    "payout_terms": "payoutTerms",
+    "suspend_reason": "suspendReason",
     "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type PostV1CompanyLoginList$Outbound = {
-  token?: string | undefined;
-  name?: string | undefined;
+  active?: number | undefined;
+  api_key?: string | undefined;
+  api_settings?: any | null | undefined;
+  avatar?: string | undefined;
+  created_at?: string | undefined;
   description?: string | undefined;
   email?: string | undefined;
-  phone?: string | undefined;
-  api_key?: string | undefined;
-  avatar?: string | undefined;
-  website?: string | undefined;
-  payout_terms?: string | undefined;
-  active?: number | undefined;
-  suspended?: number | undefined;
-  suspend_reason?: string | undefined;
   email_settings?: any | null | undefined;
-  api_settings?: any | null | undefined;
+  name?: string | undefined;
   organization?: any | null | undefined;
+  payout_terms?: string | undefined;
+  phone?: string | undefined;
+  suspend_reason?: string | undefined;
+  suspended?: number | undefined;
+  token?: string | undefined;
+  updated_at?: string | undefined;
   verification?: any | null | undefined;
   verified?: number | undefined;
-  created_at?: string | undefined;
-  updated_at?: string | undefined;
+  website?: string | undefined;
 };
 
 /** @internal */
@@ -117,33 +117,33 @@ export const PostV1CompanyLoginList$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostV1CompanyLoginList
 > = z.object({
-  token: z.string().optional(),
-  name: z.string().optional(),
+  active: z.number().int().optional(),
+  apiKey: z.string().optional(),
+  apiSettings: z.nullable(z.any()).optional(),
+  avatar: z.string().optional(),
+  createdAt: z.date().transform(v => v.toISOString()).optional(),
   description: z.string().optional(),
   email: z.string().optional(),
-  phone: z.string().optional(),
-  apiKey: z.string().optional(),
-  avatar: z.string().optional(),
-  website: z.string().optional(),
-  payoutTerms: z.string().optional(),
-  active: z.number().int().optional(),
-  suspended: z.number().int().optional(),
-  suspendReason: z.string().optional(),
   emailSettings: z.nullable(z.any()).optional(),
-  apiSettings: z.nullable(z.any()).optional(),
+  name: z.string().optional(),
   organization: z.nullable(z.any()).optional(),
+  payoutTerms: z.string().optional(),
+  phone: z.string().optional(),
+  suspendReason: z.string().optional(),
+  suspended: z.number().int().optional(),
+  token: z.string().optional(),
+  updatedAt: z.date().transform(v => v.toISOString()).optional(),
   verification: z.nullable(z.any()).optional(),
   verified: z.number().int().optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()).optional(),
+  website: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     apiKey: "api_key",
-    payoutTerms: "payout_terms",
-    suspendReason: "suspend_reason",
-    emailSettings: "email_settings",
     apiSettings: "api_settings",
     createdAt: "created_at",
+    emailSettings: "email_settings",
+    payoutTerms: "payout_terms",
+    suspendReason: "suspend_reason",
     updatedAt: "updated_at",
   });
 });

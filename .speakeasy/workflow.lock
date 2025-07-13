@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:bca5c9920c141134fea27a4cdcbb64c3cb341e4cd75c1e308f0bd4b5ef648f4c
         sourceBlobDigest: sha256:20897bc30be12c931df63cac7cad2141f4bf8503ed9085ab979e99a2776470e5
         codeSamplesNamespace: safepay-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:b3a10bb5154d1eab3ca4d4ba736c4746907d01addd4c2011524a7fea627a4bbd
+        codeSamplesRevisionDigest: sha256:d2498d811b52f1e1f5e0d924839c19866491ec89ff67410202761d1c788e8ed7
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

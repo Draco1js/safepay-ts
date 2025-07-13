@@ -25,27 +25,27 @@ export type GetInvoiceQuickLinksV1Request = {
 };
 
 export type GetInvoiceQuickLinksV1Metadatum = {
+  createdAt?: Date | undefined;
   id?: string | undefined;
   quickLinkId?: string | undefined;
   recipientViewUrl?: string | undefined;
-  createdAt?: Date | undefined;
   updatedAt?: Date | undefined;
 };
 
 export type GetInvoiceQuickLinksV1List = {
+  createdAt?: Date | undefined;
+  currency?: string | undefined;
   id?: string | undefined;
   merchantId?: string | undefined;
-  number?: string | undefined;
-  status?: string | undefined;
-  note?: string | undefined;
   metadata?: Array<GetInvoiceQuickLinksV1Metadatum> | undefined;
+  note?: string | undefined;
+  number?: string | undefined;
   payment?: Array<any> | undefined;
   recipients?: Array<any> | undefined;
+  status?: string | undefined;
   total?: number | undefined;
-  currency?: string | undefined;
-  workflow?: string | undefined;
-  createdAt?: Date | undefined;
   updatedAt?: Date | undefined;
+  workflow?: string | undefined;
 };
 
 export type GetInvoiceQuickLinksV1Data = {
@@ -134,28 +134,28 @@ export const GetInvoiceQuickLinksV1Metadatum$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
   id: z.string().optional(),
   quick_link_id: z.string().optional(),
   recipient_view_url: z.string().optional(),
-  created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 }).transform((v) => {
   return remap$(v, {
+    "created_at": "createdAt",
     "quick_link_id": "quickLinkId",
     "recipient_view_url": "recipientViewUrl",
-    "created_at": "createdAt",
     "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type GetInvoiceQuickLinksV1Metadatum$Outbound = {
+  created_at?: string | undefined;
   id?: string | undefined;
   quick_link_id?: string | undefined;
   recipient_view_url?: string | undefined;
-  created_at?: string | undefined;
   updated_at?: string | undefined;
 };
 
@@ -165,16 +165,16 @@ export const GetInvoiceQuickLinksV1Metadatum$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetInvoiceQuickLinksV1Metadatum
 > = z.object({
+  createdAt: z.date().transform(v => v.toISOString()).optional(),
   id: z.string().optional(),
   quickLinkId: z.string().optional(),
   recipientViewUrl: z.string().optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    createdAt: "created_at",
     quickLinkId: "quick_link_id",
     recipientViewUrl: "recipient_view_url",
-    createdAt: "created_at",
     updatedAt: "updated_at",
   });
 });
@@ -218,45 +218,45 @@ export const GetInvoiceQuickLinksV1List$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  id: z.string().optional(),
-  merchant_id: z.string().optional(),
-  number: z.string().optional(),
-  status: z.string().optional(),
-  note: z.string().optional(),
-  metadata: z.array(z.lazy(() => GetInvoiceQuickLinksV1Metadatum$inboundSchema))
-    .optional(),
-  payment: z.array(z.any()).optional(),
-  recipients: z.array(z.any()).optional(),
-  total: z.number().int().optional(),
-  currency: z.string().optional(),
-  workflow: z.string().optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  currency: z.string().optional(),
+  id: z.string().optional(),
+  merchant_id: z.string().optional(),
+  metadata: z.array(z.lazy(() => GetInvoiceQuickLinksV1Metadatum$inboundSchema))
+    .optional(),
+  note: z.string().optional(),
+  number: z.string().optional(),
+  payment: z.array(z.any()).optional(),
+  recipients: z.array(z.any()).optional(),
+  status: z.string().optional(),
+  total: z.number().int().optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  workflow: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "merchant_id": "merchantId",
     "created_at": "createdAt",
+    "merchant_id": "merchantId",
     "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type GetInvoiceQuickLinksV1List$Outbound = {
+  created_at?: string | undefined;
+  currency?: string | undefined;
   id?: string | undefined;
   merchant_id?: string | undefined;
-  number?: string | undefined;
-  status?: string | undefined;
-  note?: string | undefined;
   metadata?: Array<GetInvoiceQuickLinksV1Metadatum$Outbound> | undefined;
+  note?: string | undefined;
+  number?: string | undefined;
   payment?: Array<any> | undefined;
   recipients?: Array<any> | undefined;
+  status?: string | undefined;
   total?: number | undefined;
-  currency?: string | undefined;
-  workflow?: string | undefined;
-  created_at?: string | undefined;
   updated_at?: string | undefined;
+  workflow?: string | undefined;
 };
 
 /** @internal */
@@ -265,25 +265,25 @@ export const GetInvoiceQuickLinksV1List$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetInvoiceQuickLinksV1List
 > = z.object({
+  createdAt: z.date().transform(v => v.toISOString()).optional(),
+  currency: z.string().optional(),
   id: z.string().optional(),
   merchantId: z.string().optional(),
-  number: z.string().optional(),
-  status: z.string().optional(),
-  note: z.string().optional(),
   metadata: z.array(
     z.lazy(() => GetInvoiceQuickLinksV1Metadatum$outboundSchema),
   ).optional(),
+  note: z.string().optional(),
+  number: z.string().optional(),
   payment: z.array(z.any()).optional(),
   recipients: z.array(z.any()).optional(),
+  status: z.string().optional(),
   total: z.number().int().optional(),
-  currency: z.string().optional(),
-  workflow: z.string().optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
+  workflow: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    merchantId: "merchant_id",
     createdAt: "created_at",
+    merchantId: "merchant_id",
     updatedAt: "updated_at",
   });
 });

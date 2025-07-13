@@ -23,22 +23,22 @@ export type GetUserCustomersV1UpdatedAt = {
 };
 
 export type GetUserCustomersV1Customer = {
-  token?: string | undefined;
-  merchantApiKey?: string | undefined;
+  country?: string | undefined;
+  createdAt?: GetUserCustomersV1CreatedAt | undefined;
   email?: string | undefined;
   firstName?: string | undefined;
-  lastName?: string | undefined;
-  phoneNumber?: string | undefined;
-  country?: string | undefined;
-  isGuest?: boolean | undefined;
   isDeleted?: boolean | undefined;
-  createdAt?: GetUserCustomersV1CreatedAt | undefined;
+  isGuest?: boolean | undefined;
+  lastName?: string | undefined;
+  merchantApiKey?: string | undefined;
+  phoneNumber?: string | undefined;
+  token?: string | undefined;
   updatedAt?: GetUserCustomersV1UpdatedAt | undefined;
 };
 
 export type GetUserCustomersV1Data = {
-  customers?: Array<GetUserCustomersV1Customer> | undefined;
   count?: number | undefined;
+  customers?: Array<GetUserCustomersV1Customer> | undefined;
 };
 
 /**
@@ -229,44 +229,44 @@ export const GetUserCustomersV1Customer$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
-  merchant_api_key: z.string().optional(),
-  email: z.string().optional(),
-  first_name: z.string().optional(),
-  last_name: z.string().optional(),
-  phone_number: z.string().optional(),
   country: z.string().optional(),
-  is_guest: z.boolean().optional(),
-  is_deleted: z.boolean().optional(),
   created_at: z.lazy(() => GetUserCustomersV1CreatedAt$inboundSchema)
     .optional(),
+  email: z.string().optional(),
+  first_name: z.string().optional(),
+  is_deleted: z.boolean().optional(),
+  is_guest: z.boolean().optional(),
+  last_name: z.string().optional(),
+  merchant_api_key: z.string().optional(),
+  phone_number: z.string().optional(),
+  token: z.string().optional(),
   updated_at: z.lazy(() => GetUserCustomersV1UpdatedAt$inboundSchema)
     .optional(),
 }).transform((v) => {
   return remap$(v, {
-    "merchant_api_key": "merchantApiKey",
-    "first_name": "firstName",
-    "last_name": "lastName",
-    "phone_number": "phoneNumber",
-    "is_guest": "isGuest",
-    "is_deleted": "isDeleted",
     "created_at": "createdAt",
+    "first_name": "firstName",
+    "is_deleted": "isDeleted",
+    "is_guest": "isGuest",
+    "last_name": "lastName",
+    "merchant_api_key": "merchantApiKey",
+    "phone_number": "phoneNumber",
     "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type GetUserCustomersV1Customer$Outbound = {
-  token?: string | undefined;
-  merchant_api_key?: string | undefined;
+  country?: string | undefined;
+  created_at?: GetUserCustomersV1CreatedAt$Outbound | undefined;
   email?: string | undefined;
   first_name?: string | undefined;
-  last_name?: string | undefined;
-  phone_number?: string | undefined;
-  country?: string | undefined;
-  is_guest?: boolean | undefined;
   is_deleted?: boolean | undefined;
-  created_at?: GetUserCustomersV1CreatedAt$Outbound | undefined;
+  is_guest?: boolean | undefined;
+  last_name?: string | undefined;
+  merchant_api_key?: string | undefined;
+  phone_number?: string | undefined;
+  token?: string | undefined;
   updated_at?: GetUserCustomersV1UpdatedAt$Outbound | undefined;
 };
 
@@ -276,28 +276,28 @@ export const GetUserCustomersV1Customer$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetUserCustomersV1Customer
 > = z.object({
-  token: z.string().optional(),
-  merchantApiKey: z.string().optional(),
-  email: z.string().optional(),
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  phoneNumber: z.string().optional(),
   country: z.string().optional(),
-  isGuest: z.boolean().optional(),
-  isDeleted: z.boolean().optional(),
   createdAt: z.lazy(() => GetUserCustomersV1CreatedAt$outboundSchema)
     .optional(),
+  email: z.string().optional(),
+  firstName: z.string().optional(),
+  isDeleted: z.boolean().optional(),
+  isGuest: z.boolean().optional(),
+  lastName: z.string().optional(),
+  merchantApiKey: z.string().optional(),
+  phoneNumber: z.string().optional(),
+  token: z.string().optional(),
   updatedAt: z.lazy(() => GetUserCustomersV1UpdatedAt$outboundSchema)
     .optional(),
 }).transform((v) => {
   return remap$(v, {
-    merchantApiKey: "merchant_api_key",
-    firstName: "first_name",
-    lastName: "last_name",
-    phoneNumber: "phone_number",
-    isGuest: "is_guest",
-    isDeleted: "is_deleted",
     createdAt: "created_at",
+    firstName: "first_name",
+    isDeleted: "is_deleted",
+    isGuest: "is_guest",
+    lastName: "last_name",
+    merchantApiKey: "merchant_api_key",
+    phoneNumber: "phone_number",
     updatedAt: "updated_at",
   });
 });
@@ -339,15 +339,15 @@ export const GetUserCustomersV1Data$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  count: z.number().int().optional(),
   customers: z.array(z.lazy(() => GetUserCustomersV1Customer$inboundSchema))
     .optional(),
-  count: z.number().int().optional(),
 });
 
 /** @internal */
 export type GetUserCustomersV1Data$Outbound = {
-  customers?: Array<GetUserCustomersV1Customer$Outbound> | undefined;
   count?: number | undefined;
+  customers?: Array<GetUserCustomersV1Customer$Outbound> | undefined;
 };
 
 /** @internal */
@@ -356,9 +356,9 @@ export const GetUserCustomersV1Data$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetUserCustomersV1Data
 > = z.object({
+  count: z.number().int().optional(),
   customers: z.array(z.lazy(() => GetUserCustomersV1Customer$outboundSchema))
     .optional(),
-  count: z.number().int().optional(),
 });
 
 /**

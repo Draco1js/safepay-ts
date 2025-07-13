@@ -12,5 +12,5 @@ let value: GetClientTransactionsV1SearchPriceMoney = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
 | `amount`           | *string*           | :heavy_minus_sign: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |

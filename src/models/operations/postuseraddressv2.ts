@@ -10,34 +10,34 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostUserAddressV2Request = {
+  city?: string | undefined;
+  country?: string | undefined;
+  postalCode?: string | undefined;
+  state?: string | undefined;
   street1?: string | undefined;
   street2?: string | undefined;
-  city?: string | undefined;
-  state?: string | undefined;
-  postalCode?: string | undefined;
-  country?: string | undefined;
 };
 
 export type PostUserAddressV2CreatedAt = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 export type PostUserAddressV2UpdatedAt = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 export type PostUserAddressV2Data = {
-  token?: string | undefined;
+  city?: string | undefined;
+  country?: string | undefined;
+  createdAt?: PostUserAddressV2CreatedAt | undefined;
+  isDefault?: boolean | undefined;
+  postalCode?: string | undefined;
+  state?: string | undefined;
   street1?: string | undefined;
   street2?: string | undefined;
-  city?: string | undefined;
-  state?: string | undefined;
-  postalCode?: string | undefined;
-  country?: string | undefined;
-  isDefault?: boolean | undefined;
-  createdAt?: PostUserAddressV2CreatedAt | undefined;
+  token?: string | undefined;
   updatedAt?: PostUserAddressV2UpdatedAt | undefined;
 };
 
@@ -60,12 +60,12 @@ export const PostUserAddressV2Request$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  city: z.string().optional(),
+  country: z.string().optional(),
+  postal_code: z.string().optional(),
+  state: z.string().optional(),
   street1: z.string().optional(),
   street2: z.string().optional(),
-  city: z.string().optional(),
-  state: z.string().optional(),
-  postal_code: z.string().optional(),
-  country: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "postal_code": "postalCode",
@@ -74,12 +74,12 @@ export const PostUserAddressV2Request$inboundSchema: z.ZodType<
 
 /** @internal */
 export type PostUserAddressV2Request$Outbound = {
+  city?: string | undefined;
+  country?: string | undefined;
+  postal_code?: string | undefined;
+  state?: string | undefined;
   street1?: string | undefined;
   street2?: string | undefined;
-  city?: string | undefined;
-  state?: string | undefined;
-  postal_code?: string | undefined;
-  country?: string | undefined;
 };
 
 /** @internal */
@@ -88,12 +88,12 @@ export const PostUserAddressV2Request$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserAddressV2Request
 > = z.object({
+  city: z.string().optional(),
+  country: z.string().optional(),
+  postalCode: z.string().optional(),
+  state: z.string().optional(),
   street1: z.string().optional(),
   street2: z.string().optional(),
-  city: z.string().optional(),
-  state: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     postalCode: "postal_code",
@@ -137,14 +137,14 @@ export const PostUserAddressV2CreatedAt$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /** @internal */
 export type PostUserAddressV2CreatedAt$Outbound = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 /** @internal */
@@ -153,8 +153,8 @@ export const PostUserAddressV2CreatedAt$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserAddressV2CreatedAt
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /**
@@ -194,14 +194,14 @@ export const PostUserAddressV2UpdatedAt$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /** @internal */
 export type PostUserAddressV2UpdatedAt$Outbound = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 /** @internal */
@@ -210,8 +210,8 @@ export const PostUserAddressV2UpdatedAt$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserAddressV2UpdatedAt
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /**
@@ -251,36 +251,36 @@ export const PostUserAddressV2Data$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
+  city: z.string().optional(),
+  country: z.string().optional(),
+  created_at: z.lazy(() => PostUserAddressV2CreatedAt$inboundSchema).optional(),
+  is_default: z.boolean().optional(),
+  postal_code: z.string().optional(),
+  state: z.string().optional(),
   street1: z.string().optional(),
   street2: z.string().optional(),
-  city: z.string().optional(),
-  state: z.string().optional(),
-  postal_code: z.string().optional(),
-  country: z.string().optional(),
-  is_default: z.boolean().optional(),
-  created_at: z.lazy(() => PostUserAddressV2CreatedAt$inboundSchema).optional(),
+  token: z.string().optional(),
   updated_at: z.lazy(() => PostUserAddressV2UpdatedAt$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "postal_code": "postalCode",
-    "is_default": "isDefault",
     "created_at": "createdAt",
+    "is_default": "isDefault",
+    "postal_code": "postalCode",
     "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type PostUserAddressV2Data$Outbound = {
-  token?: string | undefined;
+  city?: string | undefined;
+  country?: string | undefined;
+  created_at?: PostUserAddressV2CreatedAt$Outbound | undefined;
+  is_default?: boolean | undefined;
+  postal_code?: string | undefined;
+  state?: string | undefined;
   street1?: string | undefined;
   street2?: string | undefined;
-  city?: string | undefined;
-  state?: string | undefined;
-  postal_code?: string | undefined;
-  country?: string | undefined;
-  is_default?: boolean | undefined;
-  created_at?: PostUserAddressV2CreatedAt$Outbound | undefined;
+  token?: string | undefined;
   updated_at?: PostUserAddressV2UpdatedAt$Outbound | undefined;
 };
 
@@ -290,21 +290,21 @@ export const PostUserAddressV2Data$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserAddressV2Data
 > = z.object({
-  token: z.string().optional(),
+  city: z.string().optional(),
+  country: z.string().optional(),
+  createdAt: z.lazy(() => PostUserAddressV2CreatedAt$outboundSchema).optional(),
+  isDefault: z.boolean().optional(),
+  postalCode: z.string().optional(),
+  state: z.string().optional(),
   street1: z.string().optional(),
   street2: z.string().optional(),
-  city: z.string().optional(),
-  state: z.string().optional(),
-  postalCode: z.string().optional(),
-  country: z.string().optional(),
-  isDefault: z.boolean().optional(),
-  createdAt: z.lazy(() => PostUserAddressV2CreatedAt$outboundSchema).optional(),
+  token: z.string().optional(),
   updatedAt: z.lazy(() => PostUserAddressV2UpdatedAt$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
-    postalCode: "postal_code",
-    isDefault: "is_default",
     createdAt: "created_at",
+    isDefault: "is_default",
+    postalCode: "postal_code",
     updatedAt: "updated_at",
   });
 });

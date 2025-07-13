@@ -10,18 +10,18 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostClientPlansV1Request = {
+  active?: boolean | undefined;
   amount?: string | undefined;
   currency?: string | undefined;
   interval?: string | undefined;
-  type?: string | undefined;
   intervalCount?: number | undefined;
   product?: string | undefined;
-  active?: boolean | undefined;
+  type?: string | undefined;
 };
 
 export type PostClientPlansV1Data = {
-  requestId?: string | undefined;
   planId?: string | undefined;
+  requestId?: string | undefined;
 };
 
 /**
@@ -43,13 +43,13 @@ export const PostClientPlansV1Request$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  active: z.boolean().optional(),
   amount: z.string().optional(),
   currency: z.string().optional(),
   interval: z.string().optional(),
-  type: z.string().optional(),
   interval_count: z.number().int().optional(),
   product: z.string().optional(),
-  active: z.boolean().optional(),
+  type: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "interval_count": "intervalCount",
@@ -58,13 +58,13 @@ export const PostClientPlansV1Request$inboundSchema: z.ZodType<
 
 /** @internal */
 export type PostClientPlansV1Request$Outbound = {
+  active?: boolean | undefined;
   amount?: string | undefined;
   currency?: string | undefined;
   interval?: string | undefined;
-  type?: string | undefined;
   interval_count?: number | undefined;
   product?: string | undefined;
-  active?: boolean | undefined;
+  type?: string | undefined;
 };
 
 /** @internal */
@@ -73,13 +73,13 @@ export const PostClientPlansV1Request$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostClientPlansV1Request
 > = z.object({
+  active: z.boolean().optional(),
   amount: z.string().optional(),
   currency: z.string().optional(),
   interval: z.string().optional(),
-  type: z.string().optional(),
   intervalCount: z.number().int().optional(),
   product: z.string().optional(),
-  active: z.boolean().optional(),
+  type: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     intervalCount: "interval_count",
@@ -123,19 +123,19 @@ export const PostClientPlansV1Data$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  request_id: z.string().optional(),
   plan_id: z.string().optional(),
+  request_id: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "request_id": "requestId",
     "plan_id": "planId",
+    "request_id": "requestId",
   });
 });
 
 /** @internal */
 export type PostClientPlansV1Data$Outbound = {
-  request_id?: string | undefined;
   plan_id?: string | undefined;
+  request_id?: string | undefined;
 };
 
 /** @internal */
@@ -144,12 +144,12 @@ export const PostClientPlansV1Data$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostClientPlansV1Data
 > = z.object({
-  requestId: z.string().optional(),
   planId: z.string().optional(),
+  requestId: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    requestId: "request_id",
     planId: "plan_id",
+    requestId: "request_id",
   });
 });
 

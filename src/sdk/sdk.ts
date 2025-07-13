@@ -24,24 +24,9 @@ import { UserWallets } from "./userwallets.js";
 import { Webhooks } from "./webhooks.js";
 
 export class Safepay extends ClientSDK {
-  private _company?: Company;
-  get company(): Company {
-    return (this._company ??= new Company(this._options));
-  }
-
   private _auth?: Auth;
   get auth(): Auth {
     return (this._auth ??= new Auth(this._options));
-  }
-
-  private _users?: Users;
-  get users(): Users {
-    return (this._users ??= new Users(this._options));
-  }
-
-  private _apiKeys?: ApiKeys;
-  get apiKeys(): ApiKeys {
-    return (this._apiKeys ??= new ApiKeys(this._options));
   }
 
   private _apiSettings?: ApiSettings;
@@ -49,39 +34,19 @@ export class Safepay extends ClientSDK {
     return (this._apiSettings ??= new ApiSettings(this._options));
   }
 
-  private _passport?: Passport;
-  get passport(): Passport {
-    return (this._passport ??= new Passport(this._options));
-  }
-
-  private _customers?: Customers;
-  get customers(): Customers {
-    return (this._customers ??= new Customers(this._options));
-  }
-
-  private _addresses?: Addresses;
-  get addresses(): Addresses {
-    return (this._addresses ??= new Addresses(this._options));
-  }
-
-  private _orderPayments?: OrderPayments;
-  get orderPayments(): OrderPayments {
-    return (this._orderPayments ??= new OrderPayments(this._options));
-  }
-
-  private _payments?: Payments;
-  get payments(): Payments {
-    return (this._payments ??= new Payments(this._options));
-  }
-
-  private _meta?: Meta;
-  get meta(): Meta {
-    return (this._meta ??= new Meta(this._options));
+  private _apiKeys?: ApiKeys;
+  get apiKeys(): ApiKeys {
+    return (this._apiKeys ??= new ApiKeys(this._options));
   }
 
   private _webhooks?: Webhooks;
   get webhooks(): Webhooks {
     return (this._webhooks ??= new Webhooks(this._options));
+  }
+
+  private _passport?: Passport;
+  get passport(): Passport {
+    return (this._passport ??= new Passport(this._options));
   }
 
   private _plans?: Plans;
@@ -99,14 +64,44 @@ export class Safepay extends ClientSDK {
     return (this._clientTransactions ??= new ClientTransactions(this._options));
   }
 
+  private _quickLinks?: QuickLinks;
+  get quickLinks(): QuickLinks {
+    return (this._quickLinks ??= new QuickLinks(this._options));
+  }
+
   private _invoices?: Invoices;
   get invoices(): Invoices {
     return (this._invoices ??= new Invoices(this._options));
   }
 
-  private _quickLinks?: QuickLinks;
-  get quickLinks(): QuickLinks {
-    return (this._quickLinks ??= new QuickLinks(this._options));
+  private _orderPayments?: OrderPayments;
+  get orderPayments(): OrderPayments {
+    return (this._orderPayments ??= new OrderPayments(this._options));
+  }
+
+  private _payments?: Payments;
+  get payments(): Payments {
+    return (this._payments ??= new Payments(this._options));
+  }
+
+  private _addresses?: Addresses;
+  get addresses(): Addresses {
+    return (this._addresses ??= new Addresses(this._options));
+  }
+
+  private _customers?: Customers;
+  get customers(): Customers {
+    return (this._customers ??= new Customers(this._options));
+  }
+
+  private _meta?: Meta;
+  get meta(): Meta {
+    return (this._meta ??= new Meta(this._options));
+  }
+
+  private _users?: Users;
+  get users(): Users {
+    return (this._users ??= new Users(this._options));
   }
 
   private _shoppers?: Shoppers;
@@ -117,5 +112,10 @@ export class Safepay extends ClientSDK {
   private _userWallets?: UserWallets;
   get userWallets(): UserWallets {
     return (this._userWallets ??= new UserWallets(this._options));
+  }
+
+  private _company?: Company;
+  get company(): Company {
+    return (this._company ??= new Company(this._options));
   }
 }

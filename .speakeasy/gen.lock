@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
-id: e1e7f164-18ca-4348-b11a-3f32d0c7a1fa
+id: fefcac39-086a-4bf8-aa47-ffc1643c28d5
 management:
   docChecksum: 945f3e1212cba6cd66abc30a84d5026c
   docVersion: 1.0.0
   speakeasyVersion: 1.581.0
   generationVersion: 2.656.5
   releaseVersion: 0.0.3
-  configChecksum: 7629b93aedbfce9a81ff3bcc4b1d1ad7
+  configChecksum: ab8cf0d35c567e7021502a2235d0e610
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -17,7 +17,6 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.5
     groups: 2.81.2
-    mcpServer: 0.9.3
     methodArguments: 0.1.2
     nameOverrides: 2.81.2
     nullables: 0.1.1
@@ -225,7 +224,7 @@ generatedFiles:
   - eslint.config.mjs
   - examples/.env.template
   - examples/README.md
-  - examples/companyLogin.example.ts
+  - examples/authCreateMerchantJwt.example.ts
   - examples/package.json
   - jsr.json
   - package.json
@@ -277,46 +276,6 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
-  - src/mcp-server/build.mts
-  - src/mcp-server/cli.ts
-  - src/mcp-server/cli/start/command.ts
-  - src/mcp-server/cli/start/impl.ts
-  - src/mcp-server/console-logger.ts
-  - src/mcp-server/extensions.ts
-  - src/mcp-server/mcp-server.ts
-  - src/mcp-server/prompts.ts
-  - src/mcp-server/resources.ts
-  - src/mcp-server/scopes.ts
-  - src/mcp-server/server.ts
-  - src/mcp-server/shared.ts
-  - src/mcp-server/tools.ts
-  - src/mcp-server/tools/addressesCreate.ts
-  - src/mcp-server/tools/apiKeysCreate.ts
-  - src/mcp-server/tools/apiSettingsGetApiKey.ts
-  - src/mcp-server/tools/apiSettingsUpdateKey.ts
-  - src/mcp-server/tools/authCreateMerchantJwt.ts
-  - src/mcp-server/tools/authLogin.ts
-  - src/mcp-server/tools/clientTransactionsSearch.ts
-  - src/mcp-server/tools/companyLogin.ts
-  - src/mcp-server/tools/customersCreate.ts
-  - src/mcp-server/tools/customersList.ts
-  - src/mcp-server/tools/invoicesCreateQuickLink.ts
-  - src/mcp-server/tools/metaGetCountry.ts
-  - src/mcp-server/tools/metaListCountries.ts
-  - src/mcp-server/tools/orderPaymentsCreate.ts
-  - src/mcp-server/tools/passportGenerateToken.ts
-  - src/mcp-server/tools/paymentsSearch.ts
-  - src/mcp-server/tools/plansCreate.ts
-  - src/mcp-server/tools/plansSearch.ts
-  - src/mcp-server/tools/quickLinksCreate.ts
-  - src/mcp-server/tools/quickLinksSearch.ts
-  - src/mcp-server/tools/shoppersCreateSafepay.ts
-  - src/mcp-server/tools/subscriptionsSearch.ts
-  - src/mcp-server/tools/userWalletsListPaymentMethods.ts
-  - src/mcp-server/tools/usersCreateGuestJwt.ts
-  - src/mcp-server/tools/usersExists.ts
-  - src/mcp-server/tools/usersFindSafepayShopper.ts
-  - src/mcp-server/tools/webhooksTest.ts
   - src/models/address.ts
   - src/models/datetimeseconds.ts
   - src/models/errors/error.ts

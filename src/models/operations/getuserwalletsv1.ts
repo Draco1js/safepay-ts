@@ -18,15 +18,15 @@ export type GetUserWalletsV1ContactUpdatedAt = {
 };
 
 export type GetUserWalletsV1Contact = {
-  token?: string | undefined;
-  user?: string | undefined;
-  firstName?: string | undefined;
-  lastName?: string | undefined;
-  email?: string | undefined;
-  phone?: string | undefined;
-  isDefault?: boolean | undefined;
   createdAt?: GetUserWalletsV1ContactCreatedAt | undefined;
+  email?: string | undefined;
+  firstName?: string | undefined;
+  isDefault?: boolean | undefined;
+  lastName?: string | undefined;
+  phone?: string | undefined;
+  token?: string | undefined;
   updatedAt?: GetUserWalletsV1ContactUpdatedAt | undefined;
+  user?: string | undefined;
 };
 
 export type CybersourceCreatedAt = {
@@ -38,32 +38,32 @@ export type CybersourceUpdatedAt = {
 };
 
 export type GetUserWalletsV1Cybersource = {
-  token?: string | undefined;
-  paymentMethod?: string | undefined;
-  scheme?: number | undefined;
   bin?: string | undefined;
-  lastFour?: string | undefined;
+  createdAt?: CybersourceCreatedAt | undefined;
   expiryMonth?: string | undefined;
   expiryYear?: string | undefined;
-  createdAt?: CybersourceCreatedAt | undefined;
+  lastFour?: string | undefined;
+  paymentMethod?: string | undefined;
+  scheme?: number | undefined;
+  token?: string | undefined;
   updatedAt?: CybersourceUpdatedAt | undefined;
 };
 
 export type GetUserWalletsV1Data = {
-  token?: string | undefined;
-  user?: string | undefined;
-  paymentMethodToken?: string | undefined;
+  address?: models.Address | undefined;
+  contact?: GetUserWalletsV1Contact | undefined;
+  createdAt?: Date | undefined;
+  cybersource?: GetUserWalletsV1Cybersource | undefined;
   deduplicationKey?: string | undefined;
-  intent?: string | undefined;
-  last4?: string | undefined;
-  instrumentType?: string | undefined;
   expiryMonth?: string | undefined;
   expiryYear?: string | undefined;
-  contact?: GetUserWalletsV1Contact | undefined;
-  address?: models.Address | undefined;
-  cybersource?: GetUserWalletsV1Cybersource | undefined;
-  createdAt?: Date | undefined;
+  instrumentType?: string | undefined;
+  intent?: string | undefined;
+  last4?: string | undefined;
+  paymentMethodToken?: string | undefined;
+  token?: string | undefined;
   updatedAt?: Date | undefined;
+  user?: string | undefined;
 };
 
 /**
@@ -197,38 +197,38 @@ export const GetUserWalletsV1Contact$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
-  user: z.string().optional(),
-  first_name: z.string().optional(),
-  last_name: z.string().optional(),
-  email: z.string().optional(),
-  phone: z.string().optional(),
-  is_default: z.boolean().optional(),
   created_at: z.lazy(() => GetUserWalletsV1ContactCreatedAt$inboundSchema)
     .optional(),
+  email: z.string().optional(),
+  first_name: z.string().optional(),
+  is_default: z.boolean().optional(),
+  last_name: z.string().optional(),
+  phone: z.string().optional(),
+  token: z.string().optional(),
   updated_at: z.lazy(() => GetUserWalletsV1ContactUpdatedAt$inboundSchema)
     .optional(),
+  user: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "first_name": "firstName",
-    "last_name": "lastName",
-    "is_default": "isDefault",
     "created_at": "createdAt",
+    "first_name": "firstName",
+    "is_default": "isDefault",
+    "last_name": "lastName",
     "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type GetUserWalletsV1Contact$Outbound = {
-  token?: string | undefined;
-  user?: string | undefined;
-  first_name?: string | undefined;
-  last_name?: string | undefined;
-  email?: string | undefined;
-  phone?: string | undefined;
-  is_default?: boolean | undefined;
   created_at?: GetUserWalletsV1ContactCreatedAt$Outbound | undefined;
+  email?: string | undefined;
+  first_name?: string | undefined;
+  is_default?: boolean | undefined;
+  last_name?: string | undefined;
+  phone?: string | undefined;
+  token?: string | undefined;
   updated_at?: GetUserWalletsV1ContactUpdatedAt$Outbound | undefined;
+  user?: string | undefined;
 };
 
 /** @internal */
@@ -237,23 +237,23 @@ export const GetUserWalletsV1Contact$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetUserWalletsV1Contact
 > = z.object({
-  token: z.string().optional(),
-  user: z.string().optional(),
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  email: z.string().optional(),
-  phone: z.string().optional(),
-  isDefault: z.boolean().optional(),
   createdAt: z.lazy(() => GetUserWalletsV1ContactCreatedAt$outboundSchema)
     .optional(),
+  email: z.string().optional(),
+  firstName: z.string().optional(),
+  isDefault: z.boolean().optional(),
+  lastName: z.string().optional(),
+  phone: z.string().optional(),
+  token: z.string().optional(),
   updatedAt: z.lazy(() => GetUserWalletsV1ContactUpdatedAt$outboundSchema)
     .optional(),
+  user: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    firstName: "first_name",
-    lastName: "last_name",
-    isDefault: "is_default",
     createdAt: "created_at",
+    firstName: "first_name",
+    isDefault: "is_default",
+    lastName: "last_name",
     updatedAt: "updated_at",
   });
 });
@@ -403,36 +403,36 @@ export const GetUserWalletsV1Cybersource$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
-  payment_method: z.string().optional(),
-  scheme: z.number().int().optional(),
   bin: z.string().optional(),
-  last_four: z.string().optional(),
+  created_at: z.lazy(() => CybersourceCreatedAt$inboundSchema).optional(),
   expiry_month: z.string().optional(),
   expiry_year: z.string().optional(),
-  created_at: z.lazy(() => CybersourceCreatedAt$inboundSchema).optional(),
+  last_four: z.string().optional(),
+  payment_method: z.string().optional(),
+  scheme: z.number().int().optional(),
+  token: z.string().optional(),
   updated_at: z.lazy(() => CybersourceUpdatedAt$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "payment_method": "paymentMethod",
-    "last_four": "lastFour",
+    "created_at": "createdAt",
     "expiry_month": "expiryMonth",
     "expiry_year": "expiryYear",
-    "created_at": "createdAt",
+    "last_four": "lastFour",
+    "payment_method": "paymentMethod",
     "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type GetUserWalletsV1Cybersource$Outbound = {
-  token?: string | undefined;
-  payment_method?: string | undefined;
-  scheme?: number | undefined;
   bin?: string | undefined;
-  last_four?: string | undefined;
+  created_at?: CybersourceCreatedAt$Outbound | undefined;
   expiry_month?: string | undefined;
   expiry_year?: string | undefined;
-  created_at?: CybersourceCreatedAt$Outbound | undefined;
+  last_four?: string | undefined;
+  payment_method?: string | undefined;
+  scheme?: number | undefined;
+  token?: string | undefined;
   updated_at?: CybersourceUpdatedAt$Outbound | undefined;
 };
 
@@ -442,22 +442,22 @@ export const GetUserWalletsV1Cybersource$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetUserWalletsV1Cybersource
 > = z.object({
-  token: z.string().optional(),
-  paymentMethod: z.string().optional(),
-  scheme: z.number().int().optional(),
   bin: z.string().optional(),
-  lastFour: z.string().optional(),
+  createdAt: z.lazy(() => CybersourceCreatedAt$outboundSchema).optional(),
   expiryMonth: z.string().optional(),
   expiryYear: z.string().optional(),
-  createdAt: z.lazy(() => CybersourceCreatedAt$outboundSchema).optional(),
+  lastFour: z.string().optional(),
+  paymentMethod: z.string().optional(),
+  scheme: z.number().int().optional(),
+  token: z.string().optional(),
   updatedAt: z.lazy(() => CybersourceUpdatedAt$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
-    paymentMethod: "payment_method",
-    lastFour: "last_four",
+    createdAt: "created_at",
     expiryMonth: "expiry_month",
     expiryYear: "expiry_year",
-    createdAt: "created_at",
+    lastFour: "last_four",
+    paymentMethod: "payment_method",
     updatedAt: "updated_at",
   });
 });
@@ -501,52 +501,52 @@ export const GetUserWalletsV1Data$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
-  user: z.string().optional(),
-  payment_method_token: z.string().optional(),
-  deduplication_key: z.string().optional(),
-  intent: z.string().optional(),
-  last_4: z.string().optional(),
-  instrument_type: z.string().optional(),
-  expiry_month: z.string().optional(),
-  expiry_year: z.string().optional(),
-  contact: z.lazy(() => GetUserWalletsV1Contact$inboundSchema).optional(),
   address: models.Address$inboundSchema.optional(),
-  cybersource: z.lazy(() => GetUserWalletsV1Cybersource$inboundSchema)
-    .optional(),
+  contact: z.lazy(() => GetUserWalletsV1Contact$inboundSchema).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  cybersource: z.lazy(() => GetUserWalletsV1Cybersource$inboundSchema)
+    .optional(),
+  deduplication_key: z.string().optional(),
+  expiry_month: z.string().optional(),
+  expiry_year: z.string().optional(),
+  instrument_type: z.string().optional(),
+  intent: z.string().optional(),
+  last_4: z.string().optional(),
+  payment_method_token: z.string().optional(),
+  token: z.string().optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  user: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "payment_method_token": "paymentMethodToken",
+    "created_at": "createdAt",
     "deduplication_key": "deduplicationKey",
-    "last_4": "last4",
-    "instrument_type": "instrumentType",
     "expiry_month": "expiryMonth",
     "expiry_year": "expiryYear",
-    "created_at": "createdAt",
+    "instrument_type": "instrumentType",
+    "last_4": "last4",
+    "payment_method_token": "paymentMethodToken",
     "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type GetUserWalletsV1Data$Outbound = {
-  token?: string | undefined;
-  user?: string | undefined;
-  payment_method_token?: string | undefined;
+  address?: models.Address$Outbound | undefined;
+  contact?: GetUserWalletsV1Contact$Outbound | undefined;
+  created_at?: string | undefined;
+  cybersource?: GetUserWalletsV1Cybersource$Outbound | undefined;
   deduplication_key?: string | undefined;
-  intent?: string | undefined;
-  last_4?: string | undefined;
-  instrument_type?: string | undefined;
   expiry_month?: string | undefined;
   expiry_year?: string | undefined;
-  contact?: GetUserWalletsV1Contact$Outbound | undefined;
-  address?: models.Address$Outbound | undefined;
-  cybersource?: GetUserWalletsV1Cybersource$Outbound | undefined;
-  created_at?: string | undefined;
+  instrument_type?: string | undefined;
+  intent?: string | undefined;
+  last_4?: string | undefined;
+  payment_method_token?: string | undefined;
+  token?: string | undefined;
   updated_at?: string | undefined;
+  user?: string | undefined;
 };
 
 /** @internal */
@@ -555,30 +555,30 @@ export const GetUserWalletsV1Data$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetUserWalletsV1Data
 > = z.object({
-  token: z.string().optional(),
-  user: z.string().optional(),
-  paymentMethodToken: z.string().optional(),
-  deduplicationKey: z.string().optional(),
-  intent: z.string().optional(),
-  last4: z.string().optional(),
-  instrumentType: z.string().optional(),
-  expiryMonth: z.string().optional(),
-  expiryYear: z.string().optional(),
-  contact: z.lazy(() => GetUserWalletsV1Contact$outboundSchema).optional(),
   address: models.Address$outboundSchema.optional(),
+  contact: z.lazy(() => GetUserWalletsV1Contact$outboundSchema).optional(),
+  createdAt: z.date().transform(v => v.toISOString()).optional(),
   cybersource: z.lazy(() => GetUserWalletsV1Cybersource$outboundSchema)
     .optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
+  deduplicationKey: z.string().optional(),
+  expiryMonth: z.string().optional(),
+  expiryYear: z.string().optional(),
+  instrumentType: z.string().optional(),
+  intent: z.string().optional(),
+  last4: z.string().optional(),
+  paymentMethodToken: z.string().optional(),
+  token: z.string().optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
+  user: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    paymentMethodToken: "payment_method_token",
+    createdAt: "created_at",
     deduplicationKey: "deduplication_key",
-    last4: "last_4",
-    instrumentType: "instrument_type",
     expiryMonth: "expiry_month",
     expiryYear: "expiry_year",
-    createdAt: "created_at",
+    instrumentType: "instrument_type",
+    last4: "last_4",
+    paymentMethodToken: "payment_method_token",
     updatedAt: "updated_at",
   });
 });

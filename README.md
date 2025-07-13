@@ -82,88 +82,6 @@ yarn add <UNSET> zod
 
 > [!NOTE]
 > This package is published with CommonJS and ES Modules (ESM) support.
-
-
-### Model Context Protocol (MCP) Server
-
-This SDK is also an installable MCP server where the various SDK methods are
-exposed as tools that can be invoked by AI applications.
-
-> Node.js v20 or greater is required to run the MCP server from npm.
-
-<details>
-<summary>Claude installation steps</summary>
-
-Add the following server definition to your `claude_desktop_config.json` file:
-
-```json
-{
-  "mcpServers": {
-    "Safepay": {
-      "command": "npx",
-      "args": [
-        "-y", "--package", "@dhaba/safepay-ts",
-        "--",
-        "mcp", "start"
-      ]
-    }
-  }
-}
-```
-
-</details>
-
-<details>
-<summary>Cursor installation steps</summary>
-
-Create a `.cursor/mcp.json` file in your project root with the following content:
-
-```json
-{
-  "mcpServers": {
-    "Safepay": {
-      "command": "npx",
-      "args": [
-        "-y", "--package", "@dhaba/safepay-ts",
-        "--",
-        "mcp", "start"
-      ]
-    }
-  }
-}
-```
-
-</details>
-
-You can also run MCP servers as a standalone binary with no additional dependencies. You must pull these binaries from available Github releases:
-
-```bash
-curl -L -o mcp-server \
-    https://github.com/{org}/{repo}/releases/download/{tag}/mcp-server-bun-darwin-arm64 && \
-chmod +x mcp-server
-```
-
-If the repo is a private repo you must add your Github PAT to download a release `-H "Authorization: Bearer {GITHUB_PAT}"`.
-
-
-```json
-{
-  "mcpServers": {
-    "Todos": {
-      "command": "./DOWNLOAD/PATH/mcp-server",
-      "args": [
-        "start"
-      ]
-    }
-  }
-}
-```
-
-For a full list of server arguments, run:
-
-```sh
-npx -y --package @dhaba/safepay-ts -- mcp start --help
-```
 <!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
@@ -183,7 +101,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  const result = await safepay.company.login();
+  const result = await safepay.auth.createMerchantJwt({});
 
   console.log(result);
 }
@@ -236,8 +154,8 @@ run();
 
 ### [meta](docs/sdks/meta/README.md)
 
-* [listCountries](docs/sdks/meta/README.md#listcountries) - Countries
 * [getCountry](docs/sdks/meta/README.md#getcountry) - Country
+* [listCountries](docs/sdks/meta/README.md#listcountries) - Countries
 
 ### [orderPayments](docs/sdks/orderpayments/README.md)
 
@@ -273,8 +191,8 @@ run();
 ### [users](docs/sdks/users/README.md)
 
 * [createGuestJwt](docs/sdks/users/README.md#createguestjwt) - Create Guest JWT
-* [findSafepayShopper](docs/sdks/users/README.md#findsafepayshopper) - Find Safepay Shopper
 * [exists](docs/sdks/users/README.md#exists) - Safepay Shopper Exists
+* [findSafepayShopper](docs/sdks/users/README.md#findsafepayshopper) - Find Safepay Shopper
 
 ### [userWallets](docs/sdks/userwallets/README.md)
 
@@ -345,7 +263,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  const result = await safepay.company.login({
+  const result = await safepay.auth.createMerchantJwt({}, {
     retries: {
       strategy: "backoff",
       backoff: {
@@ -383,7 +301,7 @@ const safepay = new Safepay({
 });
 
 async function run() {
-  const result = await safepay.company.login();
+  const result = await safepay.auth.createMerchantJwt({});
 
   console.log(result);
 }
@@ -416,7 +334,7 @@ const safepay = new Safepay();
 
 async function run() {
   try {
-    const result = await safepay.company.login();
+    const result = await safepay.auth.createMerchantJwt({});
 
     console.log(result);
   } catch (error) {
@@ -428,9 +346,11 @@ async function run() {
       console.log(error.headers);
 
       // Depending on the method different errors may be thrown
-      if (error instanceof errors.ErrorT) {
-        console.log(error.data$.code); // string
-        console.log(error.data$.message); // string
+      if (
+        error instanceof errors.PostAuthV1CompanyAuthenticateUnauthorizedError
+      ) {
+        console.log(error.data$.data); // any
+        console.log(error.data$.status); // models.Status
       }
     }
   }
@@ -464,12 +384,12 @@ run();
 * [`PostClientPlansV1BadRequestError`](./src/models/errors/postclientplansv1badrequesterror.ts): 400. Status code `400`. Applicable to 2 of 27 methods.*
 * [`PostAuthV2UserLoginUnauthorizedError`](./src/models/errors/postauthv2userloginunauthorizederror.ts): 401. Status code `401`. Applicable to 2 of 27 methods.*
 * [`PostAuthV2UserLoginBadRequestError`](./src/models/errors/postauthv2userloginbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 27 methods.*
-* [`GetUserV2ExistsBadRequestError`](./src/models/errors/getuserv2existsbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 27 methods.*
 * [`PostClientHooksV2TestBadRequestError`](./src/models/errors/postclienthooksv2testbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 27 methods.*
+* [`GetUserV2ExistsBadRequestError`](./src/models/errors/getuserv2existsbadrequesterror.ts): 400. Status code `400`. Applicable to 1 of 27 methods.*
 * [`NotFoundError`](./src/models/errors/notfounderror.ts): 404. Status code `404`. Applicable to 1 of 27 methods.*
 * [`ConflictError`](./src/models/errors/conflicterror.ts): 409. Status code `409`. Applicable to 1 of 27 methods.*
-* [`PostOrderPaymentsV3InternalServerError`](./src/models/errors/postorderpaymentsv3internalservererror.ts): 500. Status code `500`. Applicable to 1 of 27 methods.*
 * [`PostClientPlansV1InternalServerError`](./src/models/errors/postclientplansv1internalservererror.ts): 500. Status code `500`. Applicable to 1 of 27 methods.*
+* [`PostOrderPaymentsV3InternalServerError`](./src/models/errors/postorderpaymentsv3internalservererror.ts): 500. Status code `500`. Applicable to 1 of 27 methods.*
 * [`ResponseValidationError`](./src/models/errors/responsevalidationerror.ts): Type mismatch between the data returned from the server and the structure expected by the SDK. See `error.rawValue` for the raw value and `error.pretty()` for a nicely formatted multi-line string.
 
 </details>
@@ -499,7 +419,7 @@ const safepay = new Safepay({
 });
 
 async function run() {
-  const result = await safepay.company.login();
+  const result = await safepay.auth.createMerchantJwt({});
 
   console.log(result);
 }
@@ -519,7 +439,7 @@ const safepay = new Safepay({
 });
 
 async function run() {
-  const result = await safepay.company.login();
+  const result = await safepay.auth.createMerchantJwt({});
 
   console.log(result);
 }

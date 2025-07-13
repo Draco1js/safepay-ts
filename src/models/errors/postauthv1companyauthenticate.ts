@@ -112,74 +112,6 @@ export class PostClientApiSettingsV1BadRequestError extends SafepayError {
 }
 
 /**
- * 500
- */
-export type PostOrderPaymentsV3InternalServerErrorData = {
-  data?: any | null | undefined;
-  status?: models.Status | undefined;
-};
-
-/**
- * 500
- */
-export class PostOrderPaymentsV3InternalServerError extends SafepayError {
-  data?: any | null | undefined;
-  status?: models.Status | undefined;
-
-  /** The original data that was passed to this error instance. */
-  data$: PostOrderPaymentsV3InternalServerErrorData;
-
-  constructor(
-    err: PostOrderPaymentsV3InternalServerErrorData,
-    httpMeta: { response: Response; request: Request; body: string },
-  ) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message, httpMeta);
-    this.data$ = err;
-    if (err.data != null) this.data = err.data;
-    if (err.status != null) this.status = err.status;
-
-    this.name = "PostOrderPaymentsV3InternalServerError";
-  }
-}
-
-/**
- * 404
- */
-export type NotFoundErrorData = {
-  data?: any | null | undefined;
-  status?: models.Status | undefined;
-};
-
-/**
- * 404
- */
-export class NotFoundError extends SafepayError {
-  data?: any | null | undefined;
-  status?: models.Status | undefined;
-
-  /** The original data that was passed to this error instance. */
-  data$: NotFoundErrorData;
-
-  constructor(
-    err: NotFoundErrorData,
-    httpMeta: { response: Response; request: Request; body: string },
-  ) {
-    const message = "message" in err && typeof err.message === "string"
-      ? err.message
-      : `API error occurred: ${JSON.stringify(err)}`;
-    super(message, httpMeta);
-    this.data$ = err;
-    if (err.data != null) this.data = err.data;
-    if (err.status != null) this.status = err.status;
-
-    this.name = "NotFoundError";
-  }
-}
-
-/**
  * 400
  */
 export type PostClientHooksV2TestBadRequestErrorData = {
@@ -281,6 +213,74 @@ export class PostClientPlansV1BadRequestError extends SafepayError {
     if (err.status != null) this.status = err.status;
 
     this.name = "PostClientPlansV1BadRequestError";
+  }
+}
+
+/**
+ * 500
+ */
+export type PostOrderPaymentsV3InternalServerErrorData = {
+  data?: any | null | undefined;
+  status?: models.Status | undefined;
+};
+
+/**
+ * 500
+ */
+export class PostOrderPaymentsV3InternalServerError extends SafepayError {
+  data?: any | null | undefined;
+  status?: models.Status | undefined;
+
+  /** The original data that was passed to this error instance. */
+  data$: PostOrderPaymentsV3InternalServerErrorData;
+
+  constructor(
+    err: PostOrderPaymentsV3InternalServerErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = "message" in err && typeof err.message === "string"
+      ? err.message
+      : `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
+    this.data$ = err;
+    if (err.data != null) this.data = err.data;
+    if (err.status != null) this.status = err.status;
+
+    this.name = "PostOrderPaymentsV3InternalServerError";
+  }
+}
+
+/**
+ * 404
+ */
+export type NotFoundErrorData = {
+  data?: any | null | undefined;
+  status?: models.Status | undefined;
+};
+
+/**
+ * 404
+ */
+export class NotFoundError extends SafepayError {
+  data?: any | null | undefined;
+  status?: models.Status | undefined;
+
+  /** The original data that was passed to this error instance. */
+  data$: NotFoundErrorData;
+
+  constructor(
+    err: NotFoundErrorData,
+    httpMeta: { response: Response; request: Request; body: string },
+  ) {
+    const message = "message" in err && typeof err.message === "string"
+      ? err.message
+      : `API error occurred: ${JSON.stringify(err)}`;
+    super(message, httpMeta);
+    this.data$ = err;
+    if (err.data != null) this.data = err.data;
+    if (err.status != null) this.status = err.status;
+
+    this.name = "NotFoundError";
   }
 }
 
@@ -445,110 +445,6 @@ export namespace PostClientApiSettingsV1BadRequestError$ {
 }
 
 /** @internal */
-export const PostOrderPaymentsV3InternalServerError$inboundSchema: z.ZodType<
-  PostOrderPaymentsV3InternalServerError,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  data: z.nullable(z.any()).optional(),
-  status: models.Status$inboundSchema.optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new PostOrderPaymentsV3InternalServerError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
-
-/** @internal */
-export type PostOrderPaymentsV3InternalServerError$Outbound = {
-  data?: any | null | undefined;
-  status?: models.Status$Outbound | undefined;
-};
-
-/** @internal */
-export const PostOrderPaymentsV3InternalServerError$outboundSchema: z.ZodType<
-  PostOrderPaymentsV3InternalServerError$Outbound,
-  z.ZodTypeDef,
-  PostOrderPaymentsV3InternalServerError
-> = z.instanceof(PostOrderPaymentsV3InternalServerError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    data: z.nullable(z.any()).optional(),
-    status: models.Status$outboundSchema.optional(),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace PostOrderPaymentsV3InternalServerError$ {
-  /** @deprecated use `PostOrderPaymentsV3InternalServerError$inboundSchema` instead. */
-  export const inboundSchema =
-    PostOrderPaymentsV3InternalServerError$inboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3InternalServerError$outboundSchema` instead. */
-  export const outboundSchema =
-    PostOrderPaymentsV3InternalServerError$outboundSchema;
-  /** @deprecated use `PostOrderPaymentsV3InternalServerError$Outbound` instead. */
-  export type Outbound = PostOrderPaymentsV3InternalServerError$Outbound;
-}
-
-/** @internal */
-export const NotFoundError$inboundSchema: z.ZodType<
-  NotFoundError,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  data: z.nullable(z.any()).optional(),
-  status: models.Status$inboundSchema.optional(),
-  request$: z.instanceof(Request),
-  response$: z.instanceof(Response),
-  body$: z.string(),
-})
-  .transform((v) => {
-    return new NotFoundError(v, {
-      request: v.request$,
-      response: v.response$,
-      body: v.body$,
-    });
-  });
-
-/** @internal */
-export type NotFoundError$Outbound = {
-  data?: any | null | undefined;
-  status?: models.Status$Outbound | undefined;
-};
-
-/** @internal */
-export const NotFoundError$outboundSchema: z.ZodType<
-  NotFoundError$Outbound,
-  z.ZodTypeDef,
-  NotFoundError
-> = z.instanceof(NotFoundError)
-  .transform(v => v.data$)
-  .pipe(z.object({
-    data: z.nullable(z.any()).optional(),
-    status: models.Status$outboundSchema.optional(),
-  }));
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace NotFoundError$ {
-  /** @deprecated use `NotFoundError$inboundSchema` instead. */
-  export const inboundSchema = NotFoundError$inboundSchema;
-  /** @deprecated use `NotFoundError$outboundSchema` instead. */
-  export const outboundSchema = NotFoundError$outboundSchema;
-  /** @deprecated use `NotFoundError$Outbound` instead. */
-  export type Outbound = NotFoundError$Outbound;
-}
-
-/** @internal */
 export const PostClientHooksV2TestBadRequestError$inboundSchema: z.ZodType<
   PostClientHooksV2TestBadRequestError,
   z.ZodTypeDef,
@@ -706,4 +602,108 @@ export namespace PostClientPlansV1BadRequestError$ {
   export const outboundSchema = PostClientPlansV1BadRequestError$outboundSchema;
   /** @deprecated use `PostClientPlansV1BadRequestError$Outbound` instead. */
   export type Outbound = PostClientPlansV1BadRequestError$Outbound;
+}
+
+/** @internal */
+export const PostOrderPaymentsV3InternalServerError$inboundSchema: z.ZodType<
+  PostOrderPaymentsV3InternalServerError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  data: z.nullable(z.any()).optional(),
+  status: models.Status$inboundSchema.optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
+})
+  .transform((v) => {
+    return new PostOrderPaymentsV3InternalServerError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
+  });
+
+/** @internal */
+export type PostOrderPaymentsV3InternalServerError$Outbound = {
+  data?: any | null | undefined;
+  status?: models.Status$Outbound | undefined;
+};
+
+/** @internal */
+export const PostOrderPaymentsV3InternalServerError$outboundSchema: z.ZodType<
+  PostOrderPaymentsV3InternalServerError$Outbound,
+  z.ZodTypeDef,
+  PostOrderPaymentsV3InternalServerError
+> = z.instanceof(PostOrderPaymentsV3InternalServerError)
+  .transform(v => v.data$)
+  .pipe(z.object({
+    data: z.nullable(z.any()).optional(),
+    status: models.Status$outboundSchema.optional(),
+  }));
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PostOrderPaymentsV3InternalServerError$ {
+  /** @deprecated use `PostOrderPaymentsV3InternalServerError$inboundSchema` instead. */
+  export const inboundSchema =
+    PostOrderPaymentsV3InternalServerError$inboundSchema;
+  /** @deprecated use `PostOrderPaymentsV3InternalServerError$outboundSchema` instead. */
+  export const outboundSchema =
+    PostOrderPaymentsV3InternalServerError$outboundSchema;
+  /** @deprecated use `PostOrderPaymentsV3InternalServerError$Outbound` instead. */
+  export type Outbound = PostOrderPaymentsV3InternalServerError$Outbound;
+}
+
+/** @internal */
+export const NotFoundError$inboundSchema: z.ZodType<
+  NotFoundError,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  data: z.nullable(z.any()).optional(),
+  status: models.Status$inboundSchema.optional(),
+  request$: z.instanceof(Request),
+  response$: z.instanceof(Response),
+  body$: z.string(),
+})
+  .transform((v) => {
+    return new NotFoundError(v, {
+      request: v.request$,
+      response: v.response$,
+      body: v.body$,
+    });
+  });
+
+/** @internal */
+export type NotFoundError$Outbound = {
+  data?: any | null | undefined;
+  status?: models.Status$Outbound | undefined;
+};
+
+/** @internal */
+export const NotFoundError$outboundSchema: z.ZodType<
+  NotFoundError$Outbound,
+  z.ZodTypeDef,
+  NotFoundError
+> = z.instanceof(NotFoundError)
+  .transform(v => v.data$)
+  .pipe(z.object({
+    data: z.nullable(z.any()).optional(),
+    status: models.Status$outboundSchema.optional(),
+  }));
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace NotFoundError$ {
+  /** @deprecated use `NotFoundError$inboundSchema` instead. */
+  export const inboundSchema = NotFoundError$inboundSchema;
+  /** @deprecated use `NotFoundError$outboundSchema` instead. */
+  export const outboundSchema = NotFoundError$outboundSchema;
+  /** @deprecated use `NotFoundError$Outbound` instead. */
+  export type Outbound = NotFoundError$Outbound;
 }

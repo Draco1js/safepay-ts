@@ -53,36 +53,36 @@ export type GetClientTransactionsV1SearchRequest = {
 };
 
 export type GetClientTransactionsV1SearchPriceMoney = {
-  currency?: string | undefined;
   amount?: string | undefined;
+  currency?: string | undefined;
 };
 
 export type Transaction = {
-  token?: string | undefined;
+  amount?: string | undefined;
   chargeAt?: Date | undefined;
   charged?: Date | undefined;
-  status?: string | undefined;
-  amount?: string | undefined;
-  currency?: string | undefined;
-  instrumentId?: string | undefined;
-  subscriptionId?: string | undefined;
   createdAt?: Date | undefined;
-  updatedAt?: Date | undefined;
+  currency?: string | undefined;
   failures?: Array<any> | undefined;
-  subscription?: any | null | undefined;
+  instrumentId?: string | undefined;
   merchantApiKey?: string | undefined;
-  userId?: string | undefined;
-  transactionType?: string | undefined;
-  proration?: boolean | undefined;
-  tracker?: string | undefined;
   priceMoney?: GetClientTransactionsV1SearchPriceMoney | undefined;
+  proration?: boolean | undefined;
+  status?: string | undefined;
+  subscription?: any | null | undefined;
+  subscriptionId?: string | undefined;
+  token?: string | undefined;
+  tracker?: string | undefined;
+  transactionType?: string | undefined;
+  updatedAt?: Date | undefined;
+  userId?: string | undefined;
 };
 
 export type GetClientTransactionsV1SearchData = {
-  transactions?: Array<Transaction> | undefined;
   count?: number | undefined;
   direction?: string | undefined;
   sortBy?: string | undefined;
+  transactions?: Array<Transaction> | undefined;
 };
 
 /**
@@ -204,14 +204,14 @@ export const GetClientTransactionsV1SearchPriceMoney$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currency: z.string().optional(),
   amount: z.string().optional(),
+  currency: z.string().optional(),
 });
 
 /** @internal */
 export type GetClientTransactionsV1SearchPriceMoney$Outbound = {
-  currency?: string | undefined;
   amount?: string | undefined;
+  currency?: string | undefined;
 };
 
 /** @internal */
@@ -220,8 +220,8 @@ export const GetClientTransactionsV1SearchPriceMoney$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetClientTransactionsV1SearchPriceMoney
 > = z.object({
-  currency: z.string().optional(),
   amount: z.string().optional(),
+  currency: z.string().optional(),
 });
 
 /**
@@ -272,64 +272,64 @@ export const Transaction$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
+  amount: z.string().optional(),
   charge_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   charged: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
-  status: z.string().optional(),
-  amount: z.string().optional(),
-  currency: z.string().optional(),
-  instrument_id: z.string().optional(),
-  subscription_id: z.string().optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
+  currency: z.string().optional(),
   failures: z.array(z.any()).optional(),
-  subscription: z.nullable(z.any()).optional(),
+  instrument_id: z.string().optional(),
   merchant_api_key: z.string().optional(),
-  user_id: z.string().optional(),
-  transaction_type: z.string().optional(),
-  proration: z.boolean().optional(),
-  tracker: z.string().optional(),
   price_money: z.lazy(() =>
     GetClientTransactionsV1SearchPriceMoney$inboundSchema
   ).optional(),
+  proration: z.boolean().optional(),
+  status: z.string().optional(),
+  subscription: z.nullable(z.any()).optional(),
+  subscription_id: z.string().optional(),
+  token: z.string().optional(),
+  tracker: z.string().optional(),
+  transaction_type: z.string().optional(),
+  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  user_id: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "charge_at": "chargeAt",
-    "instrument_id": "instrumentId",
-    "subscription_id": "subscriptionId",
     "created_at": "createdAt",
-    "updated_at": "updatedAt",
+    "instrument_id": "instrumentId",
     "merchant_api_key": "merchantApiKey",
-    "user_id": "userId",
-    "transaction_type": "transactionType",
     "price_money": "priceMoney",
+    "subscription_id": "subscriptionId",
+    "transaction_type": "transactionType",
+    "updated_at": "updatedAt",
+    "user_id": "userId",
   });
 });
 
 /** @internal */
 export type Transaction$Outbound = {
-  token?: string | undefined;
+  amount?: string | undefined;
   charge_at?: string | undefined;
   charged?: string | undefined;
-  status?: string | undefined;
-  amount?: string | undefined;
-  currency?: string | undefined;
-  instrument_id?: string | undefined;
-  subscription_id?: string | undefined;
   created_at?: string | undefined;
-  updated_at?: string | undefined;
+  currency?: string | undefined;
   failures?: Array<any> | undefined;
-  subscription?: any | null | undefined;
+  instrument_id?: string | undefined;
   merchant_api_key?: string | undefined;
-  user_id?: string | undefined;
-  transaction_type?: string | undefined;
-  proration?: boolean | undefined;
-  tracker?: string | undefined;
   price_money?: GetClientTransactionsV1SearchPriceMoney$Outbound | undefined;
+  proration?: boolean | undefined;
+  status?: string | undefined;
+  subscription?: any | null | undefined;
+  subscription_id?: string | undefined;
+  token?: string | undefined;
+  tracker?: string | undefined;
+  transaction_type?: string | undefined;
+  updated_at?: string | undefined;
+  user_id?: string | undefined;
 };
 
 /** @internal */
@@ -338,37 +338,37 @@ export const Transaction$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Transaction
 > = z.object({
-  token: z.string().optional(),
+  amount: z.string().optional(),
   chargeAt: z.date().transform(v => v.toISOString()).optional(),
   charged: z.date().transform(v => v.toISOString()).optional(),
-  status: z.string().optional(),
-  amount: z.string().optional(),
-  currency: z.string().optional(),
-  instrumentId: z.string().optional(),
-  subscriptionId: z.string().optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()).optional(),
+  currency: z.string().optional(),
   failures: z.array(z.any()).optional(),
-  subscription: z.nullable(z.any()).optional(),
+  instrumentId: z.string().optional(),
   merchantApiKey: z.string().optional(),
-  userId: z.string().optional(),
-  transactionType: z.string().optional(),
-  proration: z.boolean().optional(),
-  tracker: z.string().optional(),
   priceMoney: z.lazy(() =>
     GetClientTransactionsV1SearchPriceMoney$outboundSchema
   ).optional(),
+  proration: z.boolean().optional(),
+  status: z.string().optional(),
+  subscription: z.nullable(z.any()).optional(),
+  subscriptionId: z.string().optional(),
+  token: z.string().optional(),
+  tracker: z.string().optional(),
+  transactionType: z.string().optional(),
+  updatedAt: z.date().transform(v => v.toISOString()).optional(),
+  userId: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     chargeAt: "charge_at",
-    instrumentId: "instrument_id",
-    subscriptionId: "subscription_id",
     createdAt: "created_at",
-    updatedAt: "updated_at",
+    instrumentId: "instrument_id",
     merchantApiKey: "merchant_api_key",
-    userId: "user_id",
-    transactionType: "transaction_type",
     priceMoney: "price_money",
+    subscriptionId: "subscription_id",
+    transactionType: "transaction_type",
+    updatedAt: "updated_at",
+    userId: "user_id",
   });
 });
 
@@ -405,10 +405,10 @@ export const GetClientTransactionsV1SearchData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  transactions: z.array(z.lazy(() => Transaction$inboundSchema)).optional(),
   count: z.number().int().optional(),
   direction: z.string().optional(),
   sort_by: z.string().optional(),
+  transactions: z.array(z.lazy(() => Transaction$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     "sort_by": "sortBy",
@@ -417,10 +417,10 @@ export const GetClientTransactionsV1SearchData$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetClientTransactionsV1SearchData$Outbound = {
-  transactions?: Array<Transaction$Outbound> | undefined;
   count?: number | undefined;
   direction?: string | undefined;
   sort_by?: string | undefined;
+  transactions?: Array<Transaction$Outbound> | undefined;
 };
 
 /** @internal */
@@ -429,10 +429,10 @@ export const GetClientTransactionsV1SearchData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetClientTransactionsV1SearchData
 > = z.object({
-  transactions: z.array(z.lazy(() => Transaction$outboundSchema)).optional(),
   count: z.number().int().optional(),
   direction: z.string().optional(),
   sortBy: z.string().optional(),
+  transactions: z.array(z.lazy(() => Transaction$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     sortBy: "sort_by",

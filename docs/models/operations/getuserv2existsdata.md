@@ -12,8 +12,8 @@ let value: GetUserV2ExistsData = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `exists`           | *boolean*          | :heavy_minus_sign: | N/A                |
-| `isLocal`          | *boolean*          | :heavy_minus_sign: | N/A                |
-| `hasPassword`      | *boolean*          | :heavy_minus_sign: | N/A                |
-| `phone`            | *string*           | :heavy_minus_sign: | N/A                |
 | `email`            | *string*           | :heavy_minus_sign: | N/A                |
+| `exists`           | *boolean*          | :heavy_minus_sign: | N/A                |
+| `hasPassword`      | *boolean*          | :heavy_minus_sign: | N/A                |
+| `isLocal`          | *boolean*          | :heavy_minus_sign: | N/A                |
+| `phone`            | *string*           | :heavy_minus_sign: | N/A                |

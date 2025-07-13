@@ -10,58 +10,58 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostUserV2Request = {
+  email?: string | undefined;
   firstName?: string | undefined;
   lastName?: string | undefined;
-  email?: string | undefined;
-  phone?: string | undefined;
   password?: string | undefined;
+  phone?: string | undefined;
 };
 
 export type PostUserV2CreatedAt = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 export type PostUserV2UpdatedAt = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 export type PostUserV2Contact = {
-  token?: string | undefined;
-  user?: string | undefined;
-  firstName?: string | undefined;
-  lastName?: string | undefined;
-  email?: string | undefined;
-  phone?: string | undefined;
-  isDefault?: boolean | undefined;
   createdAt?: PostUserV2CreatedAt | undefined;
+  email?: string | undefined;
+  firstName?: string | undefined;
+  isDefault?: boolean | undefined;
+  lastName?: string | undefined;
+  phone?: string | undefined;
+  token?: string | undefined;
   updatedAt?: PostUserV2UpdatedAt | undefined;
+  user?: string | undefined;
 };
 
 export type PostUserV2Verification = {
-  userId?: string | undefined;
   code?: string | undefined;
-  verificationType?: number | undefined;
-  expiresAt?: Date | undefined;
   createdAt?: Date | undefined;
+  expiresAt?: Date | undefined;
   updatedAt?: Date | undefined;
+  userId?: string | undefined;
+  verificationType?: number | undefined;
 };
 
 export type PostUserV2Data = {
-  token?: string | undefined;
+  avatar?: string | undefined;
   contacts?: Array<PostUserV2Contact> | undefined;
+  createdAt?: Date | undefined;
+  email?: string | undefined;
   firstName?: string | undefined;
   lastName?: string | undefined;
-  email?: string | undefined;
   phone?: string | undefined;
-  avatar?: string | undefined;
-  suspended?: number | undefined;
   suspendReason?: string | undefined;
-  verified?: number | undefined;
-  verification?: PostUserV2Verification | undefined;
-  createdAt?: Date | undefined;
+  suspended?: number | undefined;
+  token?: string | undefined;
   updatedAt?: Date | undefined;
+  verification?: PostUserV2Verification | undefined;
+  verified?: number | undefined;
 };
 
 /**
@@ -83,11 +83,11 @@ export const PostUserV2Request$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  email: z.string().optional(),
   first_name: z.string().optional(),
   last_name: z.string().optional(),
-  email: z.string().optional(),
-  phone: z.string().optional(),
   password: z.string().optional(),
+  phone: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "first_name": "firstName",
@@ -97,11 +97,11 @@ export const PostUserV2Request$inboundSchema: z.ZodType<
 
 /** @internal */
 export type PostUserV2Request$Outbound = {
+  email?: string | undefined;
   first_name?: string | undefined;
   last_name?: string | undefined;
-  email?: string | undefined;
-  phone?: string | undefined;
   password?: string | undefined;
+  phone?: string | undefined;
 };
 
 /** @internal */
@@ -110,11 +110,11 @@ export const PostUserV2Request$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserV2Request
 > = z.object({
+  email: z.string().optional(),
   firstName: z.string().optional(),
   lastName: z.string().optional(),
-  email: z.string().optional(),
-  phone: z.string().optional(),
   password: z.string().optional(),
+  phone: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     firstName: "first_name",
@@ -159,14 +159,14 @@ export const PostUserV2CreatedAt$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /** @internal */
 export type PostUserV2CreatedAt$Outbound = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 /** @internal */
@@ -175,8 +175,8 @@ export const PostUserV2CreatedAt$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserV2CreatedAt
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /**
@@ -216,14 +216,14 @@ export const PostUserV2UpdatedAt$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /** @internal */
 export type PostUserV2UpdatedAt$Outbound = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 /** @internal */
@@ -232,8 +232,8 @@ export const PostUserV2UpdatedAt$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserV2UpdatedAt
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /**
@@ -273,36 +273,36 @@ export const PostUserV2Contact$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
-  user: z.string().optional(),
-  first_name: z.string().optional(),
-  last_name: z.string().optional(),
-  email: z.string().optional(),
-  phone: z.string().optional(),
-  is_default: z.boolean().optional(),
   created_at: z.lazy(() => PostUserV2CreatedAt$inboundSchema).optional(),
+  email: z.string().optional(),
+  first_name: z.string().optional(),
+  is_default: z.boolean().optional(),
+  last_name: z.string().optional(),
+  phone: z.string().optional(),
+  token: z.string().optional(),
   updated_at: z.lazy(() => PostUserV2UpdatedAt$inboundSchema).optional(),
+  user: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "first_name": "firstName",
-    "last_name": "lastName",
-    "is_default": "isDefault",
     "created_at": "createdAt",
+    "first_name": "firstName",
+    "is_default": "isDefault",
+    "last_name": "lastName",
     "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type PostUserV2Contact$Outbound = {
-  token?: string | undefined;
-  user?: string | undefined;
-  first_name?: string | undefined;
-  last_name?: string | undefined;
-  email?: string | undefined;
-  phone?: string | undefined;
-  is_default?: boolean | undefined;
   created_at?: PostUserV2CreatedAt$Outbound | undefined;
+  email?: string | undefined;
+  first_name?: string | undefined;
+  is_default?: boolean | undefined;
+  last_name?: string | undefined;
+  phone?: string | undefined;
+  token?: string | undefined;
   updated_at?: PostUserV2UpdatedAt$Outbound | undefined;
+  user?: string | undefined;
 };
 
 /** @internal */
@@ -311,21 +311,21 @@ export const PostUserV2Contact$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserV2Contact
 > = z.object({
-  token: z.string().optional(),
-  user: z.string().optional(),
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  email: z.string().optional(),
-  phone: z.string().optional(),
-  isDefault: z.boolean().optional(),
   createdAt: z.lazy(() => PostUserV2CreatedAt$outboundSchema).optional(),
+  email: z.string().optional(),
+  firstName: z.string().optional(),
+  isDefault: z.boolean().optional(),
+  lastName: z.string().optional(),
+  phone: z.string().optional(),
+  token: z.string().optional(),
   updatedAt: z.lazy(() => PostUserV2UpdatedAt$outboundSchema).optional(),
+  user: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    firstName: "first_name",
-    lastName: "last_name",
-    isDefault: "is_default",
     createdAt: "created_at",
+    firstName: "first_name",
+    isDefault: "is_default",
+    lastName: "last_name",
     updatedAt: "updated_at",
   });
 });
@@ -367,33 +367,33 @@ export const PostUserV2Verification$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  user_id: z.string().optional(),
   code: z.string().optional(),
-  verification_type: z.number().int().optional(),
-  expires_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
+    .optional(),
+  expires_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  user_id: z.string().optional(),
+  verification_type: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
+    "created_at": "createdAt",
+    "expires_at": "expiresAt",
+    "updated_at": "updatedAt",
     "user_id": "userId",
     "verification_type": "verificationType",
-    "expires_at": "expiresAt",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type PostUserV2Verification$Outbound = {
-  user_id?: string | undefined;
   code?: string | undefined;
-  verification_type?: number | undefined;
-  expires_at?: string | undefined;
   created_at?: string | undefined;
+  expires_at?: string | undefined;
   updated_at?: string | undefined;
+  user_id?: string | undefined;
+  verification_type?: number | undefined;
 };
 
 /** @internal */
@@ -402,19 +402,19 @@ export const PostUserV2Verification$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserV2Verification
 > = z.object({
-  userId: z.string().optional(),
   code: z.string().optional(),
-  verificationType: z.number().int().optional(),
-  expiresAt: z.date().transform(v => v.toISOString()).optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
+  expiresAt: z.date().transform(v => v.toISOString()).optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
+  userId: z.string().optional(),
+  verificationType: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
+    createdAt: "created_at",
+    expiresAt: "expires_at",
+    updatedAt: "updated_at",
     userId: "user_id",
     verificationType: "verification_type",
-    expiresAt: "expires_at",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
   });
 });
 
@@ -455,46 +455,46 @@ export const PostUserV2Data$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
-  contacts: z.array(z.lazy(() => PostUserV2Contact$inboundSchema)).optional(),
-  first_name: z.string().optional(),
-  last_name: z.string().optional(),
-  email: z.string().optional(),
-  phone: z.string().optional(),
   avatar: z.string().optional(),
-  suspended: z.number().int().optional(),
-  suspend_reason: z.string().optional(),
-  verified: z.number().int().optional(),
-  verification: z.lazy(() => PostUserV2Verification$inboundSchema).optional(),
+  contacts: z.array(z.lazy(() => PostUserV2Contact$inboundSchema)).optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  email: z.string().optional(),
+  first_name: z.string().optional(),
+  last_name: z.string().optional(),
+  phone: z.string().optional(),
+  suspend_reason: z.string().optional(),
+  suspended: z.number().int().optional(),
+  token: z.string().optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  verification: z.lazy(() => PostUserV2Verification$inboundSchema).optional(),
+  verified: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
+    "created_at": "createdAt",
     "first_name": "firstName",
     "last_name": "lastName",
     "suspend_reason": "suspendReason",
-    "created_at": "createdAt",
     "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type PostUserV2Data$Outbound = {
-  token?: string | undefined;
+  avatar?: string | undefined;
   contacts?: Array<PostUserV2Contact$Outbound> | undefined;
+  created_at?: string | undefined;
+  email?: string | undefined;
   first_name?: string | undefined;
   last_name?: string | undefined;
-  email?: string | undefined;
   phone?: string | undefined;
-  avatar?: string | undefined;
-  suspended?: number | undefined;
   suspend_reason?: string | undefined;
-  verified?: number | undefined;
-  verification?: PostUserV2Verification$Outbound | undefined;
-  created_at?: string | undefined;
+  suspended?: number | undefined;
+  token?: string | undefined;
   updated_at?: string | undefined;
+  verification?: PostUserV2Verification$Outbound | undefined;
+  verified?: number | undefined;
 };
 
 /** @internal */
@@ -503,25 +503,25 @@ export const PostUserV2Data$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserV2Data
 > = z.object({
-  token: z.string().optional(),
+  avatar: z.string().optional(),
   contacts: z.array(z.lazy(() => PostUserV2Contact$outboundSchema)).optional(),
+  createdAt: z.date().transform(v => v.toISOString()).optional(),
+  email: z.string().optional(),
   firstName: z.string().optional(),
   lastName: z.string().optional(),
-  email: z.string().optional(),
   phone: z.string().optional(),
-  avatar: z.string().optional(),
-  suspended: z.number().int().optional(),
   suspendReason: z.string().optional(),
-  verified: z.number().int().optional(),
-  verification: z.lazy(() => PostUserV2Verification$outboundSchema).optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
+  suspended: z.number().int().optional(),
+  token: z.string().optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
+  verification: z.lazy(() => PostUserV2Verification$outboundSchema).optional(),
+  verified: z.number().int().optional(),
 }).transform((v) => {
   return remap$(v, {
+    createdAt: "created_at",
     firstName: "first_name",
     lastName: "last_name",
     suspendReason: "suspend_reason",
-    createdAt: "created_at",
     updatedAt: "updated_at",
   });
 });

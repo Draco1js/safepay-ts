@@ -15,44 +15,44 @@ import {
 import { SDKValidationError } from "./errors/sdkvalidationerror.js";
 
 export type Address = {
-  token?: string | undefined;
-  owner?: string | undefined;
-  street1?: string | undefined;
   city?: string | undefined;
   country?: string | undefined;
-  isDefault?: boolean | undefined;
   createdAt?: DateTimeSeconds | undefined;
+  isDefault?: boolean | undefined;
+  owner?: string | undefined;
+  street1?: string | undefined;
+  token?: string | undefined;
   updatedAt?: DateTimeSeconds | undefined;
 };
 
 /** @internal */
 export const Address$inboundSchema: z.ZodType<Address, z.ZodTypeDef, unknown> =
   z.object({
-    token: z.string().optional(),
-    owner: z.string().optional(),
-    street1: z.string().optional(),
     city: z.string().optional(),
     country: z.string().optional(),
-    is_default: z.boolean().optional(),
     created_at: DateTimeSeconds$inboundSchema.optional(),
+    is_default: z.boolean().optional(),
+    owner: z.string().optional(),
+    street1: z.string().optional(),
+    token: z.string().optional(),
     updated_at: DateTimeSeconds$inboundSchema.optional(),
   }).transform((v) => {
     return remap$(v, {
-      "is_default": "isDefault",
       "created_at": "createdAt",
+      "is_default": "isDefault",
       "updated_at": "updatedAt",
     });
   });
 
 /** @internal */
 export type Address$Outbound = {
-  token?: string | undefined;
-  owner?: string | undefined;
-  street1?: string | undefined;
   city?: string | undefined;
   country?: string | undefined;
-  is_default?: boolean | undefined;
   created_at?: DateTimeSeconds$Outbound | undefined;
+  is_default?: boolean | undefined;
+  owner?: string | undefined;
+  street1?: string | undefined;
+  token?: string | undefined;
   updated_at?: DateTimeSeconds$Outbound | undefined;
 };
 
@@ -62,18 +62,18 @@ export const Address$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Address
 > = z.object({
-  token: z.string().optional(),
-  owner: z.string().optional(),
-  street1: z.string().optional(),
   city: z.string().optional(),
   country: z.string().optional(),
-  isDefault: z.boolean().optional(),
   createdAt: DateTimeSeconds$outboundSchema.optional(),
+  isDefault: z.boolean().optional(),
+  owner: z.string().optional(),
+  street1: z.string().optional(),
+  token: z.string().optional(),
   updatedAt: DateTimeSeconds$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
-    isDefault: "is_default",
     createdAt: "created_at",
+    isDefault: "is_default",
     updatedAt: "updated_at",
   });
 });

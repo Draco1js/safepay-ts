@@ -10,34 +10,34 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostUserCustomersV1Request = {
+  country?: string | undefined;
+  email?: string | undefined;
   firstName?: string | undefined;
   lastName?: string | undefined;
-  email?: string | undefined;
   phoneNumber?: string | undefined;
-  country?: string | undefined;
 };
 
 export type PostUserCustomersV1CreatedAt = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 export type PostUserCustomersV1UpdatedAt = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 export type PostUserCustomersV1Data = {
-  token?: string | undefined;
-  merchantApiKey?: string | undefined;
+  country?: string | undefined;
+  createdAt?: PostUserCustomersV1CreatedAt | undefined;
   email?: string | undefined;
   firstName?: string | undefined;
-  lastName?: string | undefined;
-  phoneNumber?: string | undefined;
-  country?: string | undefined;
-  isGuest?: boolean | undefined;
   isDeleted?: boolean | undefined;
-  createdAt?: PostUserCustomersV1CreatedAt | undefined;
+  isGuest?: boolean | undefined;
+  lastName?: string | undefined;
+  merchantApiKey?: string | undefined;
+  phoneNumber?: string | undefined;
+  token?: string | undefined;
   updatedAt?: PostUserCustomersV1UpdatedAt | undefined;
 };
 
@@ -60,11 +60,11 @@ export const PostUserCustomersV1Request$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  country: z.string().optional(),
+  email: z.string().optional(),
   first_name: z.string().optional(),
   last_name: z.string().optional(),
-  email: z.string().optional(),
   phone_number: z.string().optional(),
-  country: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "first_name": "firstName",
@@ -75,11 +75,11 @@ export const PostUserCustomersV1Request$inboundSchema: z.ZodType<
 
 /** @internal */
 export type PostUserCustomersV1Request$Outbound = {
+  country?: string | undefined;
+  email?: string | undefined;
   first_name?: string | undefined;
   last_name?: string | undefined;
-  email?: string | undefined;
   phone_number?: string | undefined;
-  country?: string | undefined;
 };
 
 /** @internal */
@@ -88,11 +88,11 @@ export const PostUserCustomersV1Request$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserCustomersV1Request
 > = z.object({
+  country: z.string().optional(),
+  email: z.string().optional(),
   firstName: z.string().optional(),
   lastName: z.string().optional(),
-  email: z.string().optional(),
   phoneNumber: z.string().optional(),
-  country: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     firstName: "first_name",
@@ -138,14 +138,14 @@ export const PostUserCustomersV1CreatedAt$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /** @internal */
 export type PostUserCustomersV1CreatedAt$Outbound = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 /** @internal */
@@ -154,8 +154,8 @@ export const PostUserCustomersV1CreatedAt$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserCustomersV1CreatedAt
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /**
@@ -197,14 +197,14 @@ export const PostUserCustomersV1UpdatedAt$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /** @internal */
 export type PostUserCustomersV1UpdatedAt$Outbound = {
-  seconds?: number | undefined;
   nanos?: number | undefined;
+  seconds?: number | undefined;
 };
 
 /** @internal */
@@ -213,8 +213,8 @@ export const PostUserCustomersV1UpdatedAt$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserCustomersV1UpdatedAt
 > = z.object({
-  seconds: z.number().int().optional(),
   nanos: z.number().int().optional(),
+  seconds: z.number().int().optional(),
 });
 
 /**
@@ -256,44 +256,44 @@ export const PostUserCustomersV1Data$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
-  merchant_api_key: z.string().optional(),
-  email: z.string().optional(),
-  first_name: z.string().optional(),
-  last_name: z.string().optional(),
-  phone_number: z.string().optional(),
   country: z.string().optional(),
-  is_guest: z.boolean().optional(),
-  is_deleted: z.boolean().optional(),
   created_at: z.lazy(() => PostUserCustomersV1CreatedAt$inboundSchema)
     .optional(),
+  email: z.string().optional(),
+  first_name: z.string().optional(),
+  is_deleted: z.boolean().optional(),
+  is_guest: z.boolean().optional(),
+  last_name: z.string().optional(),
+  merchant_api_key: z.string().optional(),
+  phone_number: z.string().optional(),
+  token: z.string().optional(),
   updated_at: z.lazy(() => PostUserCustomersV1UpdatedAt$inboundSchema)
     .optional(),
 }).transform((v) => {
   return remap$(v, {
-    "merchant_api_key": "merchantApiKey",
-    "first_name": "firstName",
-    "last_name": "lastName",
-    "phone_number": "phoneNumber",
-    "is_guest": "isGuest",
-    "is_deleted": "isDeleted",
     "created_at": "createdAt",
+    "first_name": "firstName",
+    "is_deleted": "isDeleted",
+    "is_guest": "isGuest",
+    "last_name": "lastName",
+    "merchant_api_key": "merchantApiKey",
+    "phone_number": "phoneNumber",
     "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type PostUserCustomersV1Data$Outbound = {
-  token?: string | undefined;
-  merchant_api_key?: string | undefined;
+  country?: string | undefined;
+  created_at?: PostUserCustomersV1CreatedAt$Outbound | undefined;
   email?: string | undefined;
   first_name?: string | undefined;
-  last_name?: string | undefined;
-  phone_number?: string | undefined;
-  country?: string | undefined;
-  is_guest?: boolean | undefined;
   is_deleted?: boolean | undefined;
-  created_at?: PostUserCustomersV1CreatedAt$Outbound | undefined;
+  is_guest?: boolean | undefined;
+  last_name?: string | undefined;
+  merchant_api_key?: string | undefined;
+  phone_number?: string | undefined;
+  token?: string | undefined;
   updated_at?: PostUserCustomersV1UpdatedAt$Outbound | undefined;
 };
 
@@ -303,28 +303,28 @@ export const PostUserCustomersV1Data$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserCustomersV1Data
 > = z.object({
-  token: z.string().optional(),
-  merchantApiKey: z.string().optional(),
-  email: z.string().optional(),
-  firstName: z.string().optional(),
-  lastName: z.string().optional(),
-  phoneNumber: z.string().optional(),
   country: z.string().optional(),
-  isGuest: z.boolean().optional(),
-  isDeleted: z.boolean().optional(),
   createdAt: z.lazy(() => PostUserCustomersV1CreatedAt$outboundSchema)
     .optional(),
+  email: z.string().optional(),
+  firstName: z.string().optional(),
+  isDeleted: z.boolean().optional(),
+  isGuest: z.boolean().optional(),
+  lastName: z.string().optional(),
+  merchantApiKey: z.string().optional(),
+  phoneNumber: z.string().optional(),
+  token: z.string().optional(),
   updatedAt: z.lazy(() => PostUserCustomersV1UpdatedAt$outboundSchema)
     .optional(),
 }).transform((v) => {
   return remap$(v, {
-    merchantApiKey: "merchant_api_key",
-    firstName: "first_name",
-    lastName: "last_name",
-    phoneNumber: "phone_number",
-    isGuest: "is_guest",
-    isDeleted: "is_deleted",
     createdAt: "created_at",
+    firstName: "first_name",
+    isDeleted: "is_deleted",
+    isGuest: "is_guest",
+    lastName: "last_name",
+    merchantApiKey: "merchant_api_key",
+    phoneNumber: "phone_number",
     updatedAt: "updated_at",
   });
 });

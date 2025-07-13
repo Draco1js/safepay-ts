@@ -12,5 +12,5 @@ let value: PostClientPlansV1Data = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `requestId`        | *string*           | :heavy_minus_sign: | N/A                |
 | `planId`           | *string*           | :heavy_minus_sign: | N/A                |
+| `requestId`        | *string*           | :heavy_minus_sign: | N/A                |

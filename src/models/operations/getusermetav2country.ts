@@ -27,20 +27,20 @@ export type Locality = {
   name?: string | undefined;
 };
 
-export type StreetAddress = {
-  name?: string | undefined;
-};
-
 export type PostCode = {
   name?: string | undefined;
 };
 
+export type StreetAddress = {
+  name?: string | undefined;
+};
+
 export type GetUserMetaV2CountryData = {
-  required?: Array<string> | undefined;
   administrativeArea?: AdministrativeArea | undefined;
   locality?: Locality | undefined;
-  streetAddress?: StreetAddress | undefined;
   postCode?: PostCode | undefined;
+  streetAddress?: StreetAddress | undefined;
+  required?: Array<string> | undefined;
 };
 
 /**
@@ -271,56 +271,6 @@ export function localityFromJSON(
 }
 
 /** @internal */
-export const StreetAddress$inboundSchema: z.ZodType<
-  StreetAddress,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  name: z.string().optional(),
-});
-
-/** @internal */
-export type StreetAddress$Outbound = {
-  name?: string | undefined;
-};
-
-/** @internal */
-export const StreetAddress$outboundSchema: z.ZodType<
-  StreetAddress$Outbound,
-  z.ZodTypeDef,
-  StreetAddress
-> = z.object({
-  name: z.string().optional(),
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace StreetAddress$ {
-  /** @deprecated use `StreetAddress$inboundSchema` instead. */
-  export const inboundSchema = StreetAddress$inboundSchema;
-  /** @deprecated use `StreetAddress$outboundSchema` instead. */
-  export const outboundSchema = StreetAddress$outboundSchema;
-  /** @deprecated use `StreetAddress$Outbound` instead. */
-  export type Outbound = StreetAddress$Outbound;
-}
-
-export function streetAddressToJSON(streetAddress: StreetAddress): string {
-  return JSON.stringify(StreetAddress$outboundSchema.parse(streetAddress));
-}
-
-export function streetAddressFromJSON(
-  jsonString: string,
-): SafeParseResult<StreetAddress, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => StreetAddress$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'StreetAddress' from JSON`,
-  );
-}
-
-/** @internal */
 export const PostCode$inboundSchema: z.ZodType<
   PostCode,
   z.ZodTypeDef,
@@ -371,32 +321,82 @@ export function postCodeFromJSON(
 }
 
 /** @internal */
+export const StreetAddress$inboundSchema: z.ZodType<
+  StreetAddress,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  name: z.string().optional(),
+});
+
+/** @internal */
+export type StreetAddress$Outbound = {
+  name?: string | undefined;
+};
+
+/** @internal */
+export const StreetAddress$outboundSchema: z.ZodType<
+  StreetAddress$Outbound,
+  z.ZodTypeDef,
+  StreetAddress
+> = z.object({
+  name: z.string().optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace StreetAddress$ {
+  /** @deprecated use `StreetAddress$inboundSchema` instead. */
+  export const inboundSchema = StreetAddress$inboundSchema;
+  /** @deprecated use `StreetAddress$outboundSchema` instead. */
+  export const outboundSchema = StreetAddress$outboundSchema;
+  /** @deprecated use `StreetAddress$Outbound` instead. */
+  export type Outbound = StreetAddress$Outbound;
+}
+
+export function streetAddressToJSON(streetAddress: StreetAddress): string {
+  return JSON.stringify(StreetAddress$outboundSchema.parse(streetAddress));
+}
+
+export function streetAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<StreetAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StreetAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StreetAddress' from JSON`,
+  );
+}
+
+/** @internal */
 export const GetUserMetaV2CountryData$inboundSchema: z.ZodType<
   GetUserMetaV2CountryData,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  required: z.array(z.string()).optional(),
   AdministrativeArea: z.lazy(() => AdministrativeArea$inboundSchema).optional(),
   Locality: z.lazy(() => Locality$inboundSchema).optional(),
-  StreetAddress: z.lazy(() => StreetAddress$inboundSchema).optional(),
   PostCode: z.lazy(() => PostCode$inboundSchema).optional(),
+  StreetAddress: z.lazy(() => StreetAddress$inboundSchema).optional(),
+  required: z.array(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "AdministrativeArea": "administrativeArea",
     "Locality": "locality",
-    "StreetAddress": "streetAddress",
     "PostCode": "postCode",
+    "StreetAddress": "streetAddress",
   });
 });
 
 /** @internal */
 export type GetUserMetaV2CountryData$Outbound = {
-  required?: Array<string> | undefined;
   AdministrativeArea?: AdministrativeArea$Outbound | undefined;
   Locality?: Locality$Outbound | undefined;
-  StreetAddress?: StreetAddress$Outbound | undefined;
   PostCode?: PostCode$Outbound | undefined;
+  StreetAddress?: StreetAddress$Outbound | undefined;
+  required?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -405,18 +405,18 @@ export const GetUserMetaV2CountryData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetUserMetaV2CountryData
 > = z.object({
-  required: z.array(z.string()).optional(),
   administrativeArea: z.lazy(() => AdministrativeArea$outboundSchema)
     .optional(),
   locality: z.lazy(() => Locality$outboundSchema).optional(),
-  streetAddress: z.lazy(() => StreetAddress$outboundSchema).optional(),
   postCode: z.lazy(() => PostCode$outboundSchema).optional(),
+  streetAddress: z.lazy(() => StreetAddress$outboundSchema).optional(),
+  required: z.array(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     administrativeArea: "AdministrativeArea",
     locality: "Locality",
-    streetAddress: "StreetAddress",
     postCode: "PostCode",
+    streetAddress: "StreetAddress",
   });
 });
 

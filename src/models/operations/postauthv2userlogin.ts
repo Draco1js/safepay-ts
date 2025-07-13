@@ -10,15 +10,15 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostAuthV2UserLoginRequest = {
-  type?: string | undefined;
   email?: string | undefined;
   password?: string | undefined;
+  type?: string | undefined;
 };
 
 export type PostAuthV2UserLoginData = {
+  refreshToken?: string | undefined;
   session?: string | undefined;
   token?: string | undefined;
-  refreshToken?: string | undefined;
 };
 
 /**
@@ -40,16 +40,16 @@ export const PostAuthV2UserLoginRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  type: z.string().optional(),
   email: z.string().optional(),
   password: z.string().optional(),
+  type: z.string().optional(),
 });
 
 /** @internal */
 export type PostAuthV2UserLoginRequest$Outbound = {
-  type?: string | undefined;
   email?: string | undefined;
   password?: string | undefined;
+  type?: string | undefined;
 };
 
 /** @internal */
@@ -58,9 +58,9 @@ export const PostAuthV2UserLoginRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostAuthV2UserLoginRequest
 > = z.object({
-  type: z.string().optional(),
   email: z.string().optional(),
   password: z.string().optional(),
+  type: z.string().optional(),
 });
 
 /**
@@ -100,9 +100,9 @@ export const PostAuthV2UserLoginData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  refresh_token: z.string().optional(),
   session: z.string().optional(),
   token: z.string().optional(),
-  refresh_token: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "refresh_token": "refreshToken",
@@ -111,9 +111,9 @@ export const PostAuthV2UserLoginData$inboundSchema: z.ZodType<
 
 /** @internal */
 export type PostAuthV2UserLoginData$Outbound = {
+  refresh_token?: string | undefined;
   session?: string | undefined;
   token?: string | undefined;
-  refresh_token?: string | undefined;
 };
 
 /** @internal */
@@ -122,9 +122,9 @@ export const PostAuthV2UserLoginData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostAuthV2UserLoginData
 > = z.object({
+  refreshToken: z.string().optional(),
   session: z.string().optional(),
   token: z.string().optional(),
-  refreshToken: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     refreshToken: "refresh_token",

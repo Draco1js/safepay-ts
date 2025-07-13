@@ -12,6 +12,6 @@ let value: PostAuthV2UserLoginRequest = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `type`             | *string*           | :heavy_minus_sign: | N/A                |
 | `email`            | *string*           | :heavy_minus_sign: | N/A                |
 | `password`         | *string*           | :heavy_minus_sign: | N/A                |
+| `type`             | *string*           | :heavy_minus_sign: | N/A                |

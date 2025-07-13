@@ -25,18 +25,6 @@ export class Users extends ClientSDK {
   }
 
   /**
-   * Find Safepay Shopper
-   */
-  async findSafepayShopper(
-    options?: RequestOptions,
-  ): Promise<operations.GetUserV2Response> {
-    return unwrapAsync(usersFindSafepayShopper(
-      this,
-      options,
-    ));
-  }
-
-  /**
    * Safepay Shopper Exists
    */
   async exists(
@@ -46,6 +34,18 @@ export class Users extends ClientSDK {
     return unwrapAsync(usersExists(
       this,
       request,
+      options,
+    ));
+  }
+
+  /**
+   * Find Safepay Shopper
+   */
+  async findSafepayShopper(
+    options?: RequestOptions,
+  ): Promise<operations.GetUserV2Response> {
+    return unwrapAsync(usersFindSafepayShopper(
+      this,
       options,
     ));
   }

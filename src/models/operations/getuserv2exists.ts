@@ -13,11 +13,11 @@ export type GetUserV2ExistsRequest = {
 };
 
 export type GetUserV2ExistsData = {
-  exists?: boolean | undefined;
-  isLocal?: boolean | undefined;
-  hasPassword?: boolean | undefined;
-  phone?: string | undefined;
   email?: string | undefined;
+  exists?: boolean | undefined;
+  hasPassword?: boolean | undefined;
+  isLocal?: boolean | undefined;
+  phone?: string | undefined;
 };
 
 /**
@@ -92,25 +92,25 @@ export const GetUserV2ExistsData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  exists: z.boolean().optional(),
-  is_local: z.boolean().optional(),
-  has_password: z.boolean().optional(),
-  phone: z.string().optional(),
   email: z.string().optional(),
+  exists: z.boolean().optional(),
+  has_password: z.boolean().optional(),
+  is_local: z.boolean().optional(),
+  phone: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    "is_local": "isLocal",
     "has_password": "hasPassword",
+    "is_local": "isLocal",
   });
 });
 
 /** @internal */
 export type GetUserV2ExistsData$Outbound = {
-  exists?: boolean | undefined;
-  is_local?: boolean | undefined;
-  has_password?: boolean | undefined;
-  phone?: string | undefined;
   email?: string | undefined;
+  exists?: boolean | undefined;
+  has_password?: boolean | undefined;
+  is_local?: boolean | undefined;
+  phone?: string | undefined;
 };
 
 /** @internal */
@@ -119,15 +119,15 @@ export const GetUserV2ExistsData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetUserV2ExistsData
 > = z.object({
-  exists: z.boolean().optional(),
-  isLocal: z.boolean().optional(),
-  hasPassword: z.boolean().optional(),
-  phone: z.string().optional(),
   email: z.string().optional(),
+  exists: z.boolean().optional(),
+  hasPassword: z.boolean().optional(),
+  isLocal: z.boolean().optional(),
+  phone: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
-    isLocal: "is_local",
     hasPassword: "has_password",
+    isLocal: "is_local",
   });
 });
 

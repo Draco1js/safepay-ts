@@ -12,5 +12,5 @@ let value: QuoteAmount = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `currency`         | *string*           | :heavy_minus_sign: | N/A                |
 | `amount`           | *number*           | :heavy_minus_sign: | N/A                |
+| `currency`         | *string*           | :heavy_minus_sign: | N/A                |

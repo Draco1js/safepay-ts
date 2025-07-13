@@ -10,20 +10,6 @@ import { unwrapAsync } from "../types/fp.js";
 
 export class Meta extends ClientSDK {
   /**
-   * Countries
-   */
-  async listCountries(
-    request?: operations.GetUserMetaV2CountriesRequest | undefined,
-    options?: RequestOptions,
-  ): Promise<operations.GetUserMetaV2CountriesResponse> {
-    return unwrapAsync(metaListCountries(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
    * Country
    */
   async getCountry(
@@ -31,6 +17,20 @@ export class Meta extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.GetUserMetaV2CountryResponse> {
     return unwrapAsync(metaGetCountry(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Countries
+   */
+  async listCountries(
+    request?: operations.GetUserMetaV2CountriesRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.GetUserMetaV2CountriesResponse> {
+    return unwrapAsync(metaListCountries(
       this,
       request,
       options,

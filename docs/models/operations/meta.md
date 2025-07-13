@@ -12,8 +12,8 @@ let value: Meta = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `limit`            | *number*           | :heavy_minus_sign: | N/A                |
-| `page`             | *number*           | :heavy_minus_sign: | N/A                |
-| `offset`           | *number*           | :heavy_minus_sign: | N/A                |
-| `sortBy`           | *string*           | :heavy_minus_sign: | N/A                |
 | `direction`        | *string*           | :heavy_minus_sign: | N/A                |
+| `limit`            | *number*           | :heavy_minus_sign: | N/A                |
+| `offset`           | *number*           | :heavy_minus_sign: | N/A                |
+| `page`             | *number*           | :heavy_minus_sign: | N/A                |
+| `sortBy`           | *string*           | :heavy_minus_sign: | N/A                |

@@ -5,7 +5,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function run() {
-  const result = await safepay.company.login();
+  const result = await safepay.auth.createMerchantJwt({});
 
   console.log(result);
 }

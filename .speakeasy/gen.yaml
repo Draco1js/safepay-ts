@@ -4,7 +4,6 @@ generation:
     enabled: true
     schemaPath: .speakeasy/out.openapi.yaml
   sdkClassName: Safepay
-  maintainOpenAPIOrder: true
   deduplicateErrors: true
   usageSnippets:
     optionalPropertyRendering: withExample
@@ -32,13 +31,13 @@ typescript:
     devDependencies: {}
     peerDependencies: {}
   additionalPackageJSON: {}
-  author: Speakeasy
+  author: Dhaba
   baseErrorName: SafepayError
   clientServerStatusCodesAsErrors: true
   constFieldsAlwaysOptional: false
   defaultErrorName: SafepayDefaultError
   enableCustomCodeRegions: false
-  enableMCPServer: true
+  enableMCPServer: false
   enableReactQuery: false
   enumFormat: union
   envVarPrefix: SAFEPAY

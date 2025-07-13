@@ -10,11 +10,11 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostClientApiSettingsV1Data = {
-  token?: string | undefined;
   clientId?: string | undefined;
-  webhookSecret?: string | undefined;
   createdAt?: Date | undefined;
+  token?: string | undefined;
   updatedAt?: Date | undefined;
+  webhookSecret?: string | undefined;
 };
 
 /**
@@ -36,29 +36,29 @@ export const PostClientApiSettingsV1Data$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
   client_id: z.string().optional(),
-  webhook_secret: z.string().optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  token: z.string().optional(),
   updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  webhook_secret: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "client_id": "clientId",
-    "webhook_secret": "webhookSecret",
     "created_at": "createdAt",
     "updated_at": "updatedAt",
+    "webhook_secret": "webhookSecret",
   });
 });
 
 /** @internal */
 export type PostClientApiSettingsV1Data$Outbound = {
-  token?: string | undefined;
   client_id?: string | undefined;
-  webhook_secret?: string | undefined;
   created_at?: string | undefined;
+  token?: string | undefined;
   updated_at?: string | undefined;
+  webhook_secret?: string | undefined;
 };
 
 /** @internal */
@@ -67,17 +67,17 @@ export const PostClientApiSettingsV1Data$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostClientApiSettingsV1Data
 > = z.object({
-  token: z.string().optional(),
   clientId: z.string().optional(),
-  webhookSecret: z.string().optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
+  token: z.string().optional(),
   updatedAt: z.date().transform(v => v.toISOString()).optional(),
+  webhookSecret: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     clientId: "client_id",
-    webhookSecret: "webhook_secret",
     createdAt: "created_at",
     updatedAt: "updated_at",
+    webhookSecret: "webhook_secret",
   });
 });
 

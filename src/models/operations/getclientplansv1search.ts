@@ -45,36 +45,36 @@ export type GetClientPlansV1SearchRequest = {
 };
 
 export type GetClientPlansV1SearchPriceMoney = {
-  currency?: string | undefined;
   amount?: string | undefined;
+  currency?: string | undefined;
 };
 
 export type GetClientPlansV1SearchPlan = {
-  token?: string | undefined;
+  active?: boolean | undefined;
+  amount?: string | undefined;
+  applyAmountChangeOnExistingSubscriptions?: boolean | undefined;
+  archived?: boolean | undefined;
+  createdAt?: Date | undefined;
+  currency?: string | undefined;
+  description?: string | undefined;
+  interval?: string | undefined;
+  intervalCount?: number | undefined;
   merchantApiKey?: string | undefined;
   name?: string | undefined;
-  amount?: string | undefined;
-  currency?: string | undefined;
-  intervalCount?: number | undefined;
-  interval?: string | undefined;
-  product?: string | undefined;
-  type?: string | undefined;
-  trialPeriodDays?: number | undefined;
-  description?: string | undefined;
-  createdAt?: Date | undefined;
-  updatedAt?: Date | undefined;
-  active?: boolean | undefined;
-  archived?: boolean | undefined;
   numberOfBillingCycles?: number | undefined;
-  applyAmountChangeOnExistingSubscriptions?: boolean | undefined;
   priceMoney?: GetClientPlansV1SearchPriceMoney | undefined;
+  product?: string | undefined;
+  token?: string | undefined;
+  trialPeriodDays?: number | undefined;
+  type?: string | undefined;
+  updatedAt?: Date | undefined;
 };
 
 export type GetClientPlansV1SearchData = {
-  plans?: Array<GetClientPlansV1SearchPlan> | undefined;
   count?: number | undefined;
-  sortBy?: string | undefined;
   direction?: string | undefined;
+  plans?: Array<GetClientPlansV1SearchPlan> | undefined;
+  sortBy?: string | undefined;
 };
 
 /**
@@ -183,14 +183,14 @@ export const GetClientPlansV1SearchPriceMoney$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  currency: z.string().optional(),
   amount: z.string().optional(),
+  currency: z.string().optional(),
 });
 
 /** @internal */
 export type GetClientPlansV1SearchPriceMoney$Outbound = {
-  currency?: string | undefined;
   amount?: string | undefined;
+  currency?: string | undefined;
 };
 
 /** @internal */
@@ -199,8 +199,8 @@ export const GetClientPlansV1SearchPriceMoney$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetClientPlansV1SearchPriceMoney
 > = z.object({
-  currency: z.string().optional(),
   amount: z.string().optional(),
+  currency: z.string().optional(),
 });
 
 /**
@@ -242,61 +242,61 @@ export const GetClientPlansV1SearchPlan$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  token: z.string().optional(),
-  merchant_api_key: z.string().optional(),
-  name: z.string().optional(),
+  active: z.boolean().optional(),
   amount: z.string().optional(),
-  currency: z.string().optional(),
-  interval_count: z.number().int().optional(),
-  interval: z.string().optional(),
-  product: z.string().optional(),
-  type: z.string().optional(),
-  trial_period_days: z.number().int().optional(),
-  description: z.string().optional(),
+  apply_amount_change_on_existing_subscriptions: z.boolean().optional(),
+  archived: z.boolean().optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
-  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
-    .optional(),
-  active: z.boolean().optional(),
-  archived: z.boolean().optional(),
+  currency: z.string().optional(),
+  description: z.string().optional(),
+  interval: z.string().optional(),
+  interval_count: z.number().int().optional(),
+  merchant_api_key: z.string().optional(),
+  name: z.string().optional(),
   number_of_billing_cycles: z.number().int().optional(),
-  apply_amount_change_on_existing_subscriptions: z.boolean().optional(),
   price_money: z.lazy(() => GetClientPlansV1SearchPriceMoney$inboundSchema)
+    .optional(),
+  product: z.string().optional(),
+  token: z.string().optional(),
+  trial_period_days: z.number().int().optional(),
+  type: z.string().optional(),
+  updated_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
 }).transform((v) => {
   return remap$(v, {
-    "merchant_api_key": "merchantApiKey",
-    "interval_count": "intervalCount",
-    "trial_period_days": "trialPeriodDays",
-    "created_at": "createdAt",
-    "updated_at": "updatedAt",
-    "number_of_billing_cycles": "numberOfBillingCycles",
     "apply_amount_change_on_existing_subscriptions":
       "applyAmountChangeOnExistingSubscriptions",
+    "created_at": "createdAt",
+    "interval_count": "intervalCount",
+    "merchant_api_key": "merchantApiKey",
+    "number_of_billing_cycles": "numberOfBillingCycles",
     "price_money": "priceMoney",
+    "trial_period_days": "trialPeriodDays",
+    "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type GetClientPlansV1SearchPlan$Outbound = {
-  token?: string | undefined;
+  active?: boolean | undefined;
+  amount?: string | undefined;
+  apply_amount_change_on_existing_subscriptions?: boolean | undefined;
+  archived?: boolean | undefined;
+  created_at?: string | undefined;
+  currency?: string | undefined;
+  description?: string | undefined;
+  interval?: string | undefined;
+  interval_count?: number | undefined;
   merchant_api_key?: string | undefined;
   name?: string | undefined;
-  amount?: string | undefined;
-  currency?: string | undefined;
-  interval_count?: number | undefined;
-  interval?: string | undefined;
-  product?: string | undefined;
-  type?: string | undefined;
-  trial_period_days?: number | undefined;
-  description?: string | undefined;
-  created_at?: string | undefined;
-  updated_at?: string | undefined;
-  active?: boolean | undefined;
-  archived?: boolean | undefined;
   number_of_billing_cycles?: number | undefined;
-  apply_amount_change_on_existing_subscriptions?: boolean | undefined;
   price_money?: GetClientPlansV1SearchPriceMoney$Outbound | undefined;
+  product?: string | undefined;
+  token?: string | undefined;
+  trial_period_days?: number | undefined;
+  type?: string | undefined;
+  updated_at?: string | undefined;
 };
 
 /** @internal */
@@ -305,36 +305,36 @@ export const GetClientPlansV1SearchPlan$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetClientPlansV1SearchPlan
 > = z.object({
-  token: z.string().optional(),
+  active: z.boolean().optional(),
+  amount: z.string().optional(),
+  applyAmountChangeOnExistingSubscriptions: z.boolean().optional(),
+  archived: z.boolean().optional(),
+  createdAt: z.date().transform(v => v.toISOString()).optional(),
+  currency: z.string().optional(),
+  description: z.string().optional(),
+  interval: z.string().optional(),
+  intervalCount: z.number().int().optional(),
   merchantApiKey: z.string().optional(),
   name: z.string().optional(),
-  amount: z.string().optional(),
-  currency: z.string().optional(),
-  intervalCount: z.number().int().optional(),
-  interval: z.string().optional(),
-  product: z.string().optional(),
-  type: z.string().optional(),
-  trialPeriodDays: z.number().int().optional(),
-  description: z.string().optional(),
-  createdAt: z.date().transform(v => v.toISOString()).optional(),
-  updatedAt: z.date().transform(v => v.toISOString()).optional(),
-  active: z.boolean().optional(),
-  archived: z.boolean().optional(),
   numberOfBillingCycles: z.number().int().optional(),
-  applyAmountChangeOnExistingSubscriptions: z.boolean().optional(),
   priceMoney: z.lazy(() => GetClientPlansV1SearchPriceMoney$outboundSchema)
     .optional(),
+  product: z.string().optional(),
+  token: z.string().optional(),
+  trialPeriodDays: z.number().int().optional(),
+  type: z.string().optional(),
+  updatedAt: z.date().transform(v => v.toISOString()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    merchantApiKey: "merchant_api_key",
-    intervalCount: "interval_count",
-    trialPeriodDays: "trial_period_days",
-    createdAt: "created_at",
-    updatedAt: "updated_at",
-    numberOfBillingCycles: "number_of_billing_cycles",
     applyAmountChangeOnExistingSubscriptions:
       "apply_amount_change_on_existing_subscriptions",
+    createdAt: "created_at",
+    intervalCount: "interval_count",
+    merchantApiKey: "merchant_api_key",
+    numberOfBillingCycles: "number_of_billing_cycles",
     priceMoney: "price_money",
+    trialPeriodDays: "trial_period_days",
+    updatedAt: "updated_at",
   });
 });
 
@@ -375,11 +375,11 @@ export const GetClientPlansV1SearchData$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  count: z.number().int().optional(),
+  direction: z.string().optional(),
   plans: z.array(z.lazy(() => GetClientPlansV1SearchPlan$inboundSchema))
     .optional(),
-  count: z.number().int().optional(),
   sort_by: z.string().optional(),
-  direction: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     "sort_by": "sortBy",
@@ -388,10 +388,10 @@ export const GetClientPlansV1SearchData$inboundSchema: z.ZodType<
 
 /** @internal */
 export type GetClientPlansV1SearchData$Outbound = {
-  plans?: Array<GetClientPlansV1SearchPlan$Outbound> | undefined;
   count?: number | undefined;
-  sort_by?: string | undefined;
   direction?: string | undefined;
+  plans?: Array<GetClientPlansV1SearchPlan$Outbound> | undefined;
+  sort_by?: string | undefined;
 };
 
 /** @internal */
@@ -400,11 +400,11 @@ export const GetClientPlansV1SearchData$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   GetClientPlansV1SearchData
 > = z.object({
+  count: z.number().int().optional(),
+  direction: z.string().optional(),
   plans: z.array(z.lazy(() => GetClientPlansV1SearchPlan$outboundSchema))
     .optional(),
-  count: z.number().int().optional(),
   sortBy: z.string().optional(),
-  direction: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
     sortBy: "sort_by",

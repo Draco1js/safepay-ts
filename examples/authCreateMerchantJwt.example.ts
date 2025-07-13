@@ -6,7 +6,7 @@
  * Example usage of the @dhaba/safepay-ts SDK
  *
  * To run this example from the examples directory:
- * npm run build && npx tsx companyLogin.ts
+ * npm run build && npx tsx authCreateMerchantJwt.ts
  */
 
 import { Safepay } from "@dhaba/safepay-ts";
@@ -14,7 +14,7 @@ import { Safepay } from "@dhaba/safepay-ts";
 const safepay = new Safepay();
 
 async function main() {
-  const result = await safepay.login();
+  const result = await safepay.createMerchantJwt({});
 
   console.log(result);
 }

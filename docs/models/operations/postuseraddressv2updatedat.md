@@ -12,5 +12,5 @@ let value: PostUserAddressV2UpdatedAt = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `seconds`          | *number*           | :heavy_minus_sign: | N/A                |
 | `nanos`            | *number*           | :heavy_minus_sign: | N/A                |
+| `seconds`          | *number*           | :heavy_minus_sign: | N/A                |

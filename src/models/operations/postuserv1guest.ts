@@ -10,10 +10,10 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as models from "../index.js";
 
 export type PostUserV1GuestRequest = {
+  country?: string | undefined;
+  email?: string | undefined;
   firstName?: string | undefined;
   lastName?: string | undefined;
-  email?: string | undefined;
-  country?: string | undefined;
   phone?: string | undefined;
 };
 
@@ -41,10 +41,10 @@ export const PostUserV1GuestRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  country: z.string().optional(),
+  email: z.string().optional(),
   first_name: z.string().optional(),
   last_name: z.string().optional(),
-  email: z.string().optional(),
-  country: z.string().optional(),
   phone: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -55,10 +55,10 @@ export const PostUserV1GuestRequest$inboundSchema: z.ZodType<
 
 /** @internal */
 export type PostUserV1GuestRequest$Outbound = {
+  country?: string | undefined;
+  email?: string | undefined;
   first_name?: string | undefined;
   last_name?: string | undefined;
-  email?: string | undefined;
-  country?: string | undefined;
   phone?: string | undefined;
 };
 
@@ -68,10 +68,10 @@ export const PostUserV1GuestRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   PostUserV1GuestRequest
 > = z.object({
+  country: z.string().optional(),
+  email: z.string().optional(),
   firstName: z.string().optional(),
   lastName: z.string().optional(),
-  email: z.string().optional(),
-  country: z.string().optional(),
   phone: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {

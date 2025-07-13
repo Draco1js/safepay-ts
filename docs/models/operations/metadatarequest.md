@@ -12,5 +12,5 @@ let value: MetadataRequest = {};
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `source`           | *string*           | :heavy_minus_sign: | N/A                |
 | `orderId`          | *string*           | :heavy_minus_sign: | N/A                |
+| `source`           | *string*           | :heavy_minus_sign: | N/A                |

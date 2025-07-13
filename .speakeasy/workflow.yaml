@@ -11,6 +11,9 @@ targets:
     safepay:
         target: typescript
         source: Safepay
+        publish:
+            npm:
+                token: $npm_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/dhaba/safepay-api/safepay-typescript-code-samples
