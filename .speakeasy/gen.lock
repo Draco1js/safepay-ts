@@ -3,10 +3,13 @@ id: fefcac39-086a-4bf8-aa47-ffc1643c28d5
 management:
   docChecksum: 945f3e1212cba6cd66abc30a84d5026c
   docVersion: 1.0.0
-  speakeasyVersion: 1.581.0
-  generationVersion: 2.656.5
-  releaseVersion: 0.0.3
-  configChecksum: ab8cf0d35c567e7021502a2235d0e610
+  speakeasyVersion: 1.583.0
+  generationVersion: 2.658.3
+  releaseVersion: 0.0.4
+  configChecksum: 7668cd510eb04a2393a47d9cdf7a2de4
+  repoURL: https://github.com/Draco1js/safepay-ts.git
+  installationURL: https://github.com/Draco1js/safepay-ts
+  published: true
 features:
   typescript:
     additionalDependencies: 0.1.0

@@ -1,6 +1,6 @@
 {
   "name": "@dhaba/safepay-ts",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Dhaba",
   "type": "module",
   "tshy": {
@@ -19,6 +19,10 @@
     }
   },
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Draco1js/safepay-ts.git"
+  },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
     "build": "tshy",
