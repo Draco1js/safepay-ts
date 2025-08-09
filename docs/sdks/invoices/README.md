@@ -13,6 +13,7 @@ Create
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/invoice/quick-links/v2" method="post" path="/invoice/quick-links/v2" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
