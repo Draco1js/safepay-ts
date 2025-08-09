@@ -13,6 +13,7 @@ Test Webhook
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/client/hooks/v2/test" method="post" path="/client/hooks/v2/test" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 

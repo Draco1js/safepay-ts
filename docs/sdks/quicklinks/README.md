@@ -14,6 +14,7 @@ Create Quick Link
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/invoice/quick-links/v1" method="post" path="/invoice/quick-links/v1" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
@@ -82,6 +83,7 @@ Search Quick Links
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/invoice/quick-links/v1" method="get" path="/invoice/quick-links/v1" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
