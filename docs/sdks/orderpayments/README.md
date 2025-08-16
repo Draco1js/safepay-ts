@@ -13,6 +13,7 @@ Payment
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/order/payments/v3" method="post" path="/order/payments/v3" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 

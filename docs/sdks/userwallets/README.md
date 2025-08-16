@@ -13,6 +13,7 @@ List Payment Methods
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/user/wallets/v1" method="get" path="/user/wallets/v1" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
