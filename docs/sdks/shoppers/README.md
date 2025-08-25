@@ -13,6 +13,7 @@ Create Safepay Shopper
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/user/v2" method="post" path="/user/v2" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 

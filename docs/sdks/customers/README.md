@@ -14,6 +14,7 @@ Create Customer
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/user/customers/v1" method="post" path="/user/customers/v1" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
@@ -80,6 +81,7 @@ List Customers
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/user/customers/v1" method="get" path="/user/customers/v1" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
