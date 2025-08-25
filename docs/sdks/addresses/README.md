@@ -13,6 +13,7 @@ Create Address
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/user/address/v2" method="post" path="/user/address/v2" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
