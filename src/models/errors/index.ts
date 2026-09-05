@@ -10,4 +10,5 @@ export * from "./postauthv2userlogin.js";
 export * from "./postuserv2.js";
 export * from "./responsevalidationerror.js";
 export * from "./safepaydefaulterror.js";
+export * from "./safepayerror.js";
 export * from "./sdkvalidationerror.js";
