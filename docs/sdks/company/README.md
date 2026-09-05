@@ -1,5 +1,4 @@
 # Company
-(*company*)
 
 ## Overview
 
@@ -13,6 +12,7 @@ Login Company
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/v1/company/login" method="post" path="/v1/company/login" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
