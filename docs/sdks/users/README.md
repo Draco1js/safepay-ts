@@ -1,5 +1,4 @@
 # Users
-(*users*)
 
 ## Overview
 
@@ -15,6 +14,7 @@ Create Guest JWT
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/user/v1/guest" method="post" path="/user/v1/guest" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
@@ -80,6 +80,7 @@ Safepay Shopper Exists
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/user/v2/exists" method="get" path="/user/v2/exists" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
@@ -149,6 +150,7 @@ Find Safepay Shopper
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/user/v2" method="get" path="/user/v2" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
