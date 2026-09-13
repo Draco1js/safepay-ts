@@ -1,5 +1,4 @@
 # ApiSettings
-(*apiSettings*)
 
 ## Overview
 
@@ -14,6 +13,7 @@ Find Api Key
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/client/api-settings/v1" method="get" path="/client/api-settings/v1" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
@@ -78,6 +78,7 @@ Update Api Key
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="put_/client/api-settings/v1" method="put" path="/client/api-settings/v1" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 

@@ -47,37 +47,30 @@ To begin integrating, we recommend you sign up for our sandbox account - its fre
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-> [!TIP]
-> To finish publishing your SDK to npm and others you must [run your first generation action](https://www.speakeasy.com/docs/github-setup#step-by-step-guide).
-
-
 The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
 ```bash
-npm add <UNSET>
+npm add @dhaba/safepay-ts
 ```
 
 ### PNPM
 
 ```bash
-pnpm add <UNSET>
+pnpm add @dhaba/safepay-ts
 ```
 
 ### Bun
 
 ```bash
-bun add <UNSET>
+bun add @dhaba/safepay-ts
 ```
 
 ### Yarn
 
 ```bash
-yarn add <UNSET> zod
-
-# Note that Yarn does not install peer dependencies automatically. You will need
-# to install zod as shown above.
+yarn add @dhaba/safepay-ts
 ```
 
 > [!NOTE]
@@ -117,88 +110,87 @@ run();
 <details open>
 <summary>Available methods</summary>
 
-### [addresses](docs/sdks/addresses/README.md)
+### [Addresses](docs/sdks/addresses/README.md)
 
 * [create](docs/sdks/addresses/README.md#create) - Create Address
 
-### [apiKeys](docs/sdks/apikeys/README.md)
+### [ApiKeys](docs/sdks/apikeys/README.md)
 
 * [create](docs/sdks/apikeys/README.md#create) - Create API Key
 
-### [apiSettings](docs/sdks/apisettings/README.md)
+### [ApiSettings](docs/sdks/apisettings/README.md)
 
 * [getApiKey](docs/sdks/apisettings/README.md#getapikey) - Find Api Key
 * [updateKey](docs/sdks/apisettings/README.md#updatekey) - Update Api Key
 
-### [auth](docs/sdks/auth/README.md)
+### [Auth](docs/sdks/auth/README.md)
 
 * [createMerchantJwt](docs/sdks/auth/README.md#createmerchantjwt) - Create Merchant JWT
 * [login](docs/sdks/auth/README.md#login) - Create Shopper JWT Using Password
 
-### [clientTransactions](docs/sdks/clienttransactions/README.md)
+### [ClientTransactions](docs/sdks/clienttransactions/README.md)
 
 * [search](docs/sdks/clienttransactions/README.md#search) - Search Transactions
 
-### [company](docs/sdks/company/README.md)
+### [Company](docs/sdks/company/README.md)
 
 * [login](docs/sdks/company/README.md#login) - Login Company
 
-### [customers](docs/sdks/customers/README.md)
+### [Customers](docs/sdks/customers/README.md)
 
 * [create](docs/sdks/customers/README.md#create) - Create Customer
 * [list](docs/sdks/customers/README.md#list) - List Customers
 
-### [invoices](docs/sdks/invoices/README.md)
+### [Invoices](docs/sdks/invoices/README.md)
 
 * [createQuickLink](docs/sdks/invoices/README.md#createquicklink) - Create
 
-### [meta](docs/sdks/meta/README.md)
+### [Meta](docs/sdks/meta/README.md)
 
 * [getCountry](docs/sdks/meta/README.md#getcountry) - Country
 * [listCountries](docs/sdks/meta/README.md#listcountries) - Countries
 
-### [orderPayments](docs/sdks/orderpayments/README.md)
+### [OrderPayments](docs/sdks/orderpayments/README.md)
 
 * [create](docs/sdks/orderpayments/README.md#create) - Payment
 
-### [passport](docs/sdks/passport/README.md)
+### [Passport](docs/sdks/passport/README.md)
 
 * [generateToken](docs/sdks/passport/README.md#generatetoken) - Generate Time-Based Token
 
-### [payments](docs/sdks/payments/README.md)
+### [Payments](docs/sdks/payments/README.md)
 
 * [search](docs/sdks/payments/README.md#search) - Search Payments
 
-### [plans](docs/sdks/plans/README.md)
+### [Plans](docs/sdks/plans/README.md)
 
 * [create](docs/sdks/plans/README.md#create) - Create Plan
 * [search](docs/sdks/plans/README.md#search) - Search Plans
 
-### [quickLinks](docs/sdks/quicklinks/README.md)
+### [QuickLinks](docs/sdks/quicklinks/README.md)
 
 * [create](docs/sdks/quicklinks/README.md#create) - Create Quick Link
 * [search](docs/sdks/quicklinks/README.md#search) - Search Quick Links
 
-
-### [shoppers](docs/sdks/shoppers/README.md)
+### [Shoppers](docs/sdks/shoppers/README.md)
 
 * [createSafepay](docs/sdks/shoppers/README.md#createsafepay) - Create Safepay Shopper
 
-### [subscriptions](docs/sdks/subscriptions/README.md)
+### [Subscriptions](docs/sdks/subscriptions/README.md)
 
 * [search](docs/sdks/subscriptions/README.md#search) - Search Subscriptions
 
-### [users](docs/sdks/users/README.md)
+### [Users](docs/sdks/users/README.md)
 
 * [createGuestJwt](docs/sdks/users/README.md#createguestjwt) - Create Guest JWT
 * [exists](docs/sdks/users/README.md#exists) - Safepay Shopper Exists
 * [findSafepayShopper](docs/sdks/users/README.md#findsafepayshopper) - Find Safepay Shopper
 
-### [userWallets](docs/sdks/userwallets/README.md)
+### [UserWallets](docs/sdks/userwallets/README.md)
 
 * [listPaymentMethods](docs/sdks/userwallets/README.md#listpaymentmethods) - List Payment Methods
 
-### [webhooks](docs/sdks/webhooks/README.md)
+### [Webhooks](docs/sdks/webhooks/README.md)
 
 * [test](docs/sdks/webhooks/README.md#test) - Test Webhook
 
@@ -415,7 +407,7 @@ You can override the default server globally by passing a server index to the `s
 import { Safepay } from "@dhaba/safepay-ts";
 
 const safepay = new Safepay({
-  serverIdx: 1,
+  serverIdx: 0,
 });
 
 async function run() {
@@ -462,19 +454,23 @@ The `HTTPClient` constructor takes an optional `fetcher` argument that can be
 used to integrate a third-party HTTP client or when writing tests to mock out
 the HTTP client and feed in fixtures.
 
-The following example shows how to use the `"beforeRequest"` hook to to add a
-custom header and a timeout to requests and how to use the `"requestError"` hook
-to log errors:
+The following example shows how to:
+- route requests through a proxy server using [undici](https://www.npmjs.com/package/undici)'s ProxyAgent
+- use the `"beforeRequest"` hook to add a custom header and a timeout to requests
+- use the `"requestError"` hook to log errors
 
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
+import { ProxyAgent } from "undici";
 import { HTTPClient } from "@dhaba/safepay-ts/lib/http";
 
+const dispatcher = new ProxyAgent("http://proxy.example.com:8080");
+
 const httpClient = new HTTPClient({
-  // fetcher takes a function that has the same signature as native `fetch`.
-  fetcher: (request) => {
-    return fetch(request);
-  }
+  // 'fetcher' takes a function that has the same signature as native 'fetch'.
+  fetcher: (input, init) =>
+    // 'dispatcher' is specific to undici and not part of the standard Fetch API.
+    fetch(input, { ...init, dispatcher } as RequestInit),
 });
 
 httpClient.addHook("beforeRequest", (request) => {
@@ -494,7 +490,7 @@ httpClient.addHook("requestError", (error, request) => {
   console.groupEnd();
 });
 
-const sdk = new Safepay({ httpClient });
+const sdk = new Safepay({ httpClient: httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
