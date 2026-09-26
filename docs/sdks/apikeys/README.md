@@ -1,5 +1,4 @@
 # ApiKeys
-(*apiKeys*)
 
 ## Overview
 
@@ -13,6 +12,7 @@ Create API Key
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/client/api-settings/v1" method="post" path="/client/api-settings/v1" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
