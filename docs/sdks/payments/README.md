@@ -1,5 +1,4 @@
 # Payments
-(*payments*)
 
 ## Overview
 
@@ -13,6 +12,7 @@ Search Payments
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/reporter/api/v1/payments" method="get" path="/reporter/api/v1/payments" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
