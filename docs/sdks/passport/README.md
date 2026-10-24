@@ -1,5 +1,4 @@
 # Passport
-(*passport*)
 
 ## Overview
 
@@ -13,6 +12,7 @@ Generate Time-Based Token
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/client/passport/v1/token" method="post" path="/client/passport/v1/token" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
