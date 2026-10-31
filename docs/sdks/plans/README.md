@@ -1,5 +1,4 @@
 # Plans
-(*plans*)
 
 ## Overview
 
@@ -14,6 +13,7 @@ Create Plan
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/client/plans/v1" method="post" path="/client/plans/v1" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
@@ -81,6 +81,7 @@ Search Plans
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/client/plans/v1/search" method="get" path="/client/plans/v1/search" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
