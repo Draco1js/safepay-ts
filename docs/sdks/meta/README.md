@@ -1,5 +1,4 @@
 # Meta
-(*meta*)
 
 ## Overview
 
@@ -14,6 +13,7 @@ Country
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/user/meta/v2/country" method="get" path="/user/meta/v2/country" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
@@ -84,6 +84,7 @@ Countries
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/user/meta/v2/countries" method="get" path="/user/meta/v2/countries" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
