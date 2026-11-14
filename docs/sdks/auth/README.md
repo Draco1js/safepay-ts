@@ -1,5 +1,4 @@
 # Auth
-(*auth*)
 
 ## Overview
 
@@ -14,6 +13,7 @@ Create Merchant JWT
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/auth/v1/company/authenticate" method="post" path="/auth/v1/company/authenticate" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
@@ -80,6 +80,7 @@ Create Shopper JWT Using Password
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="post_/auth/v2/user/login" method="post" path="/auth/v2/user/login" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
