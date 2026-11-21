@@ -1,5 +1,4 @@
 # ClientTransactions
-(*clientTransactions*)
 
 ## Overview
 
@@ -13,6 +12,7 @@ Search Transactions
 
 ### Example Usage
 
+<!-- UsageSnippet language="typescript" operationID="get_/client/transactions/v1/search" method="get" path="/client/transactions/v1/search" -->
 ```typescript
 import { Safepay } from "@dhaba/safepay-ts";
 
