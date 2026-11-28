@@ -1,6 +1,6 @@
 {
   "name": "@dhaba/safepay-ts",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "author": "Dhaba",
   "type": "module",
   "tshy": {
@@ -10,6 +10,7 @@
     "exports": {
       ".": "./src/index.ts",
       "./package.json": "./package.json",
+      "./node": "./src/node.ts",
       "./types": "./src/types/index.ts",
       "./models/errors": "./src/models/errors/index.ts",
       "./models": "./src/models/index.ts",
@@ -19,24 +20,27 @@
     }
   },
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Draco1js/safepay-ts.git"
+  },
   "scripts": {
     "lint": "eslint --cache --max-warnings=0 src",
     "build": "tshy",
     "prepublishOnly": "npm run build"
   },
-  "peerDependencies": {
-    "zod": "^3"
-  },
+  "peerDependencies": {},
   "devDependencies": {
-    "@eslint/js": "^9.19.0",
-    "eslint": "^9.19.0",
+    "@eslint/js": "^9.26.0",
+    "eslint": "^9.26.0",
     "globals": "^15.14.0",
-    "tshy": "^2.0.0",
-    "typescript": "^5.4.5",
-    "typescript-eslint": "^8.22.0",
-    "zod": "^3.25.17"
+    "tshy": "^3.3.2",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.26.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "zod": "^3.25.0 || ^4.6.6"
+  },
   "exports": {
     ".": {
       "import": {
@@ -50,6 +54,17 @@
       }
     },
     "./package.json": "./package.json",
+    "./node": {
+      "import": {
+        "@dhaba/safepay-ts/source": "./src/node.ts",
+        "types": "./dist/esm/node.d.ts",
+        "default": "./dist/esm/node.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/node.d.ts",
+        "default": "./dist/commonjs/node.js"
+      }
+    },
     "./types": {
       "import": {
         "@dhaba/safepay-ts/source": "./src/types/index.ts",
